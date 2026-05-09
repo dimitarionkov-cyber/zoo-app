@@ -1,0 +1,108 @@
+[
+  {
+    "id": "12160671273",
+    "nameBg": "При слона",
+    "nameEn": "At the Elephant",
+    "category": "food",
+    "lat": 42.6569450,
+    "lng": 23.3329625
+  },
+  {
+    "id": "12161613555",
+    "nameBg": "Заведение за хранене",
+    "nameEn": "Food Stand",
+    "category": "food",
+    "lat": 42.6596668,
+    "lng": 23.3299201
+  },
+  {
+    "id": "12155929473",
+    "nameBg": "Ветеринарна клиника",
+    "nameEn": "Veterinary Clinic",
+    "category": "medical",
+    "lat": 42.6596105,
+    "lng": 23.3280073
+  },
+  {
+    "id": "5659288227",
+    "nameBg": "Главен вход",
+    "nameEn": "Main Entrance",
+    "category": "entrance",
+    "lat": 42.6597941,
+    "lng": 23.3340426
+  },
+  {
+    "id": "5659255862",
+    "nameBg": "Западен вход",
+    "nameEn": "West Entrance",
+    "category": "entrance",
+    "lat": 42.6601390,
+    "lng": 23.3307871
+  },
+  {
+    "id": "5659255906",
+    "nameBg": "Южен вход",
+    "nameEn": "South Entrance",
+    "category": "entrance",
+    "lat": 42.6567756,
+    "lng": 23.3325660
+  },
+  {
+    "id": "5659255909",
+    "nameBg": "Югоизточен вход",
+    "nameEn": "South-East Entrance",
+    "category": "entrance",
+    "lat": 42.6567433,
+    "lng": 23.3329547
+  },
+  {
+    "id": "12299528711",
+    "nameBg": "Каса (Главен вход)",
+    "nameEn": "Ticket Office (Main)",
+    "category": "ticket",
+    "openingHours": "Nov-Mar: 08:30-16:30; Apr-Oct: 09:30-18:00",
+    "lat": 42.6598857,
+    "lng": 23.3340456
+  },
+  {
+    "id": "12302041481",
+    "nameBg": "Каса (Западен вход)",
+    "nameEn": "Ticket Office (West)",
+    "category": "ticket",
+    "openingHours": "Nov-Mar: 08:30-16:30; Apr-Oct: 09:30-18:00",
+    "lat": 42.6580047,
+    "lng": 23.3285326
+  },
+  {
+    "id": "7916950067",
+    "nameBg": "Магазин",
+    "nameEn": "Kiosk",
+    "category": "shop",
+    "lat": 42.6578061,
+    "lng": 23.3293450
+  },
+  {
+    "id": "7916950068",
+    "nameBg": "Магазин играчки",
+    "nameEn": "Toy Shop",
+    "category": "shop",
+    "lat": 42.6578096,
+    "lng": 23.3291606
+  },
+  {
+    "id": "7916950069",
+    "nameBg": "Магазин",
+    "nameEn": "Kiosk",
+    "category": "shop",
+    "lat": 42.6586396,
+    "lng": 23.3292759
+  },
+  {
+    "id": "4773666481",
+    "nameBg": "Въртележка",
+    "nameEn": "Carousel",
+    "category": "attraction",
+    "lat": 42.6575441,
+    "lng": 23.3332326
+  }
+]
