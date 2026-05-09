@@ -61,6 +61,16 @@ function stripHtml(html) {
   return div.textContent?.trim() ?? ''
 }
 
+function extractFirstImage(html) {
+  if (!html) return null
+  // Parse the content:encoded HTML and grab the first real img src
+  const div = document.createElement('div')
+  div.innerHTML = html
+  const img = div.querySelector('img')
+  // Prefer data-src (lazy-load) then src
+  return img?.getAttribute('data-src') || img?.getAttribute('src') || null
+}
+
 function useZooNews() {
   const [news,    setNews]    = useState([])
   const [loading, setLoading] = useState(true)
@@ -75,18 +85,28 @@ function useZooNews() {
         return r.text()
       })
       .then(xml => {
-        const doc   = new DOMParser().parseFromString(xml, 'text/xml')
+        const doc = new DOMParser().parseFromString(xml, 'text/xml')
         const items = [...doc.querySelectorAll('item')].slice(0, 3).map(item => {
           const get = tag => item.querySelector(tag)?.textContent?.trim() ?? ''
-          // WordPress RSS: guid holds the permalink
-          const link = get('guid') || get('link')
-          const raw  = get('description')
-          const excerpt = stripHtml(raw).slice(0, 130)
+
+          // content:encoded holds the full post HTML — use it for the thumbnail
+          const contentEncoded =
+            item.getElementsByTagName('content:encoded')[0]?.textContent ||
+            item.getElementsByTagNameNS(
+              'http://purl.org/rss/1.0/modules/content/', 'encoded'
+            )[0]?.textContent || ''
+
+          const image   = extractFirstImage(contentEncoded)
+          const link    = get('guid') || get('link')
+          const raw     = get('description')
+          const excerpt = stripHtml(raw).slice(0, 110)
+
           return {
             title:   get('title'),
             link,
             pubDate: get('pubDate'),
-            excerpt: excerpt + (excerpt.length === 130 ? '…' : ''),
+            excerpt: excerpt + (excerpt.length === 110 ? '…' : ''),
+            image,
           }
         })
         setNews(items)
@@ -168,19 +188,29 @@ export default function HomePage() {
                 href={item.link}
                 target="_blank"
                 rel="noreferrer"
-                className="block bg-[--color-bg-card] rounded-2xl px-4 py-3.5 border border-[--color-border] active:scale-[0.98] transition-transform"
+                className="flex items-start gap-3 bg-[--color-bg-card] rounded-2xl p-3 border border-[--color-border] active:scale-[0.98] transition-transform"
               >
-                <p className="text-[11px] text-zoo-green font-semibold uppercase tracking-wide mb-1">
-                  {formatDate(item.pubDate)}
-                </p>
-                <p className="text-sm font-semibold text-zoo-brown leading-snug mb-1">
-                  {item.title}
-                </p>
-                {item.excerpt && (
-                  <p className="text-xs text-zoo-brown opacity-60 leading-relaxed">
-                    {item.excerpt}
-                  </p>
+                {item.image && (
+                  <img
+                    src={item.image}
+                    alt=""
+                    className="w-16 h-16 rounded-xl object-cover shrink-0"
+                    loading="lazy"
+                  />
                 )}
+                <div className="flex-1 min-w-0 py-0.5">
+                  <p className="text-[11px] text-zoo-green font-semibold uppercase tracking-wide mb-1">
+                    {formatDate(item.pubDate)}
+                  </p>
+                  <p className="text-sm font-semibold text-zoo-brown leading-snug mb-1">
+                    {item.title}
+                  </p>
+                  {item.excerpt && (
+                    <p className="text-xs text-zoo-brown opacity-60 leading-relaxed line-clamp-2">
+                      {item.excerpt}
+                    </p>
+                  )}
+                </div>
               </a>
             ))}
           </div>

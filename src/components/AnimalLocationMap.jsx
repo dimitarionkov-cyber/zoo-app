@@ -4,9 +4,8 @@
  * with a directions button and live distance from the user.
  */
 import { useState, useEffect, useCallback } from 'react'
-import { GoogleMap, useJsApiLoader, Marker } from '@react-google-maps/api'
-
-const MAPS_KEY = import.meta.env.VITE_GOOGLE_MAPS_KEY
+import { GoogleMap, Marker } from '@react-google-maps/api'
+import { useMaps } from '../context/MapsContext'
 
 const MAP_OPTIONS = {
   mapTypeId: 'satellite',
@@ -40,10 +39,7 @@ function formatDist(m) {
 }
 
 export default function AnimalLocationMap({ animal }) {
-  const { isLoaded } = useJsApiLoader({
-    googleMapsApiKey: MAPS_KEY,
-    id: 'google-map-script',
-  })
+  const { isLoaded } = useMaps()
 
   const [userPos,  setUserPos]  = useState(null)   // { lat, lng }
   const [distance, setDistance] = useState(null)   // metres | null

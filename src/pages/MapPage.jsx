@@ -1,7 +1,8 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { GoogleMap, useJsApiLoader, Marker, InfoWindow, Polyline } from '@react-google-maps/api'
+import { GoogleMap, Marker, InfoWindow, Polyline } from '@react-google-maps/api'
 import { useData } from '../context/DataContext'
+import { useMaps } from '../context/MapsContext'
 import pathsData from '../data/paths.json'
 import routeData from '../data/route.json'
 
@@ -195,9 +196,7 @@ export default function MapPage() {
   // Full route polyline — actual path through the graph (315 pts)
   const routePolyline = routeData.fullPolyline.map(([lat, lng]) => ({ lat, lng }))
 
-  const { isLoaded, loadError } = useJsApiLoader({
-    googleMapsApiKey: import.meta.env.VITE_GOOGLE_MAPS_KEY,
-  })
+  const { isLoaded, loadError } = useMaps()
 
   if (loadError) return (
     <div className="flex items-center justify-center h-full text-red-500 p-4">
