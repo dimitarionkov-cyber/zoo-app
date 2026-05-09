@@ -1,6 +1,7 @@
 import { useParams, useNavigate } from 'react-router-dom'
 import { useData } from '../context/DataContext'
 import DistributionMap from '../components/DistributionMap'
+import AnimalLocationMap from '../components/AnimalLocationMap'
 import ErrorBoundary from '../components/ErrorBoundary'
 
 const IUCN_STYLE = {
@@ -49,7 +50,6 @@ export default function AnimalDetailPage() {
   )
 
   const iucnStyle = animal.iucn ? (IUCN_STYLE[animal.iucn.code] ?? IUCN_STYLE.LC) : null
-  const mapsUrl = `https://www.google.com/maps/dir/?api=1&destination=${animal.lat},${animal.lng}&travelmode=walking`
   const visibleSections = INFO_SECTIONS.filter(s => animal[s.key])
 
   return (
@@ -171,14 +171,6 @@ export default function AnimalDetailPage() {
         </div>
       )}
 
-      {/* CITES note */}
-      {animal.cites && (
-        <p className="text-xs text-zoo-brown opacity-50 px-4 mt-3">
-          Вашингтонска конвенция CITES – {animal.cites}
-          {animal.populationTrend ? ` · Тенденция: ${animal.populationTrend}` : ''}
-        </p>
-      )}
-
       {/* Distribution map */}
       {animal.distributionCountries?.length > 0 && (
         <ErrorBoundary fallback={null}>
@@ -186,15 +178,10 @@ export default function AnimalDetailPage() {
         </ErrorBoundary>
       )}
 
-      {/* Navigation */}
-      <a
-        href={mapsUrl}
-        target="_blank"
-        rel="noreferrer"
-        className="mx-4 mt-5 flex items-center justify-center gap-2 bg-zoo-green text-white rounded-2xl py-3.5 font-semibold text-sm active:opacity-80 transition-opacity"
-      >
-        🗺️ Упътване до клетката
-      </a>
+      {/* Location map + directions */}
+      <ErrorBoundary fallback={null}>
+        <AnimalLocationMap animal={animal} />
+      </ErrorBoundary>
     </div>
   )
 }
