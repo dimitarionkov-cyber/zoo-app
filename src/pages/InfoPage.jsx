@@ -235,24 +235,26 @@ export default function InfoPage() {
           </div>
         </Section>
 
-        {/* Directions — one button per entrance */}
-        <div className="flex flex-col gap-2">
-          {ENTRANCES.map(e => (
-            <a
-              key={e.label}
-              href={`https://www.google.com/maps/dir/?api=1&destination=${e.lat},${e.lng}&travelmode=transit`}
-              target="_blank"
-              rel="noreferrer"
-              className="flex items-center gap-3 bg-[--color-bg-card] border border-[--color-border] rounded-2xl px-4 py-3.5 active:opacity-70 transition-opacity"
-            >
-              <span className="text-2xl leading-none">🗺️</span>
-              <div className="flex-1 min-w-0">
-                <p className="font-bold text-sm text-zoo-green">{e.label}</p>
-                <p className="text-xs text-zoo-brown opacity-60">{e.sublabel}</p>
-              </div>
-              <span className="text-zoo-green text-lg leading-none opacity-60">›</span>
-            </a>
-          ))}
+        {/* Directions — two half-width buttons */}
+        <div>
+          <p className="text-xs font-bold uppercase tracking-widest text-zoo-brown opacity-50 mb-2 px-1">
+            Упътвания
+          </p>
+          <div className="grid grid-cols-2 gap-2">
+            {ENTRANCES.map(e => (
+              <a
+                key={e.label}
+                href={`https://www.google.com/maps/dir/?api=1&destination=${e.lat},${e.lng}&travelmode=transit`}
+                target="_blank"
+                rel="noreferrer"
+                className="flex flex-col items-center gap-1.5 bg-zoo-green rounded-2xl px-3 py-4 active:opacity-80 transition-opacity"
+              >
+                <span className="text-2xl leading-none">🗺️</span>
+                <p className="font-bold text-sm text-white text-center leading-tight">{e.label}</p>
+                <p className="text-[11px] text-white/70 text-center leading-tight">{e.sublabel}</p>
+              </a>
+            ))}
+          </div>
         </div>
 
       </div>
