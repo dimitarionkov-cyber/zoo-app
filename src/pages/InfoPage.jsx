@@ -1,55 +1,76 @@
 import { useState } from 'react'
 
-// ── Data ─────────────────────────────────────────────────────────────────────
+// ── Data (source: zoosofia.eu) ────────────────────────────────────────────────
 
 const HOURS = [
-  { season: 'Лято',   period: 'Април – Октомври', time: '09:00 – 19:00' },
-  { season: 'Зима',   period: 'Ноември – Март',   time: '09:00 – 17:00' },
+  {
+    season: 'Лято',
+    period: 'Април – Октомври',
+    rows: [
+      { label: 'Каса',              time: '9:30 – 18:00' },
+      { label: 'Достъп до парка',   time: 'до 19:00'     },
+      { label: 'Изложбена зала',    time: '9:30 – 18:00' },
+    ],
+  },
+  {
+    season: 'Зима',
+    period: 'Ноември – Март',
+    rows: [
+      { label: 'Каса',              time: '8:30 – 16:30' },
+      { label: 'Достъп до парка',   time: 'до 17:00'     },
+      { label: 'Изложбена зала',    time: '9:00 – 16:30' },
+    ],
+  },
 ]
 
 const PRICES = [
-  { label: 'Възрастни',           price: '12 лв' },
-  { label: 'Деца (3–14 г.)',      price: '6 лв'  },
-  { label: 'Пенсионери',          price: '6 лв'  },
-  { label: 'Деца до 3 г.',        price: 'Безплатно' },
-  { label: 'Семеен билет (2+2)',  price: '28 лв' },
+  { label: 'Деца до 3 г.',                        price: 'Безплатно', free: true  },
+  { label: 'Деца и младежи (3–18 г.)',             price: '€2.56'                 },
+  { label: 'Възрастни (18+)',                      price: '€5.11'                 },
+  { label: 'Пенсионери / Студенти / Докторанти',   price: '€2.56'                 },
+  { label: 'Хора с увреждания (50%+)',             price: '€2.56'                 },
+  { label: 'Деца с увреждания + придружител',      price: 'Безплатно', free: true  },
+]
+
+const FAMILY_PRICES = [
+  { label: '2 родители + 1 дете (3–18 г.)',   price: '€10.23' },
+  { label: '2 родители + 2+ деца (3–18 г.)',  price: '€12.78' },
+]
+
+const GROUP_PRICES = [
+  { label: 'Деца 3–18 г. (група от 15+)',  price: '€2.05' },
+  { label: 'Възрастни 18+ (група от 15+)', price: '€3.05' },
+]
+
+const SUBSCRIPTION = [
+  { label: 'Годишна карта (2 посещения/ден)', price: '€76.69' },
+  { label: 'Издаване на карта',               price: '€3.07'  },
 ]
 
 const TRANSPORT = [
   {
-    type: 'Трамвай',
-    icon: '🚋',
-    colour: 'bg-yellow-100 text-yellow-800 border-yellow-300',
-    lines: [
-      { num: '1',  stop: 'Зоологическа градина' },
-      { num: '7',  stop: 'Зоологическа градина' },
-      { num: '10', stop: 'Зоологическа градина' },
-    ],
-  },
-  {
-    type: 'Тролейбус',
-    icon: '🚎',
+    type: 'Метро + Автобус',
+    icon: '🚇',
     colour: 'bg-blue-100 text-blue-800 border-blue-300',
-    lines: [
-      { num: '5',  stop: 'Зоологическа градина' },
-      { num: '11', stop: 'Зоологическа градина' },
-    ],
+    note: 'Метро Линия 2 → спирка „Витоша" → автобус до Западен вход (ул. Сребърна 1)',
+    lines: ['64', '66', '68', '83', '88', '98', '120', '288', '805'],
+    warning: 'Линии 68 и 805 — само в делнични дни',
   },
   {
-    type: 'Автобус',
+    type: 'Автобус → Централен вход',
     icon: '🚌',
     colour: 'bg-green-100 text-green-800 border-green-300',
-    lines: [
-      { num: '68', stop: 'Зоологическа градина' },
-    ],
+    note: 'Спирка „ЖК Дианабад" · бул. Симеоновско шосе',
+    lines: ['67', '102'],
+    warning: null,
   },
 ]
 
 const CONTACTS = [
-  { icon: '📍', label: 'Адрес',    value: 'ул. Сребърна 1, 1407 София' },
-  { icon: '📞', label: 'Телефон',  value: '+359 2 862 40 22', href: 'tel:+35928624022' },
-  { icon: '🌐', label: 'Уебсайт', value: 'sofia-zoo.com', href: 'https://sofia-zoo.com' },
-  { icon: '📧', label: 'Имейл',   value: 'zoosofia@sofia-zoo.com', href: 'mailto:zoosofia@sofia-zoo.com' },
+  { icon: '📍', label: 'Западен вход',  value: 'ул. Сребърна 1, 1407 София' },
+  { icon: '📞', label: 'Телефон',       value: '0878 640 375',               href: 'tel:+359878640375',       note: 'Пон–Пет, 8:00–17:00' },
+  { icon: '📧', label: 'Имейл',         value: 'zoosofia@zoosofia.eu',       href: 'mailto:zoosofia@zoosofia.eu' },
+  { icon: '🌐', label: 'Уебсайт',       value: 'zoosofia.eu',                href: 'https://zoosofia.eu'      },
 ]
 
 // ── Collapsible section ───────────────────────────────────────────────────────
@@ -63,7 +84,10 @@ function Section({ icon, title, defaultOpen = false, children }) {
       >
         <span className="text-2xl leading-none">{icon}</span>
         <span className="flex-1 font-bold text-zoo-green">{title}</span>
-        <span className={`text-zoo-brown opacity-50 text-lg leading-none transition-transform duration-200 ${open ? 'rotate-180' : ''}`}>
+        <span
+          className="text-zoo-brown opacity-50 text-xl leading-none transition-transform duration-200"
+          style={{ display: 'inline-block', transform: open ? 'rotate(90deg)' : 'rotate(0deg)' }}
+        >
           ›
         </span>
       </button>
@@ -76,6 +100,17 @@ function Section({ icon, title, defaultOpen = false, children }) {
   )
 }
 
+function PriceRow({ label, price, free }) {
+  return (
+    <div className="flex items-center justify-between py-2.5 border-b border-[--color-border] last:border-0">
+      <span className="text-sm text-zoo-brown pr-3 leading-snug">{label}</span>
+      <span className={`text-sm font-bold shrink-0 ${free ? 'text-zoo-green' : 'text-zoo-brown'}`}>
+        {price}
+      </span>
+    </div>
+  )
+}
+
 // ── Page ─────────────────────────────────────────────────────────────────────
 export default function InfoPage() {
   return (
@@ -83,95 +118,106 @@ export default function InfoPage() {
       {/* Header */}
       <div className="bg-zoo-green px-4 pt-10 pb-5">
         <h1 className="text-2xl font-bold text-white">Информация</h1>
-        <p className="text-white/70 text-sm mt-0.5">Зоопарк София</p>
+        <p className="text-white/70 text-sm mt-0.5">Зоопарк София · zoosofia.eu</p>
       </div>
 
       <div className="flex flex-col gap-3 px-4 mt-4">
 
         {/* Working hours */}
         <Section icon="🕘" title="Работно време" defaultOpen>
-          <p className="text-xs text-zoo-brown opacity-60 mt-3 mb-3">
+          <p className="text-xs text-zoo-brown opacity-60 mt-3 mb-1">
             Отворен всеки ден, включително официални празници.
           </p>
-          <div className="space-y-2">
-            {HOURS.map(h => (
-              <div key={h.season} className="flex items-center justify-between py-2.5 border-b border-[--color-border] last:border-0">
-                <div>
-                  <p className="font-semibold text-zoo-green text-sm">{h.season}</p>
-                  <p className="text-xs text-zoo-brown opacity-60">{h.period}</p>
-                </div>
-                <span className="text-sm font-bold text-zoo-brown">{h.time}</span>
+          {HOURS.map(h => (
+            <div key={h.season} className="mt-3">
+              <div className="flex items-baseline gap-2 mb-1">
+                <p className="text-sm font-bold text-zoo-green">{h.season}</p>
+                <p className="text-xs text-zoo-brown opacity-50">{h.period}</p>
               </div>
-            ))}
-          </div>
+              {h.rows.map(r => (
+                <div key={r.label} className="flex justify-between items-center py-1.5 border-b border-[--color-border] last:border-0">
+                  <span className="text-xs text-zoo-brown opacity-70">{r.label}</span>
+                  <span className="text-xs font-semibold text-zoo-brown">{r.time}</span>
+                </div>
+              ))}
+            </div>
+          ))}
         </Section>
 
         {/* Ticket prices */}
         <Section icon="🎟️" title="Цени на билети">
-          <div className="space-y-0 mt-3">
-            {PRICES.map(p => (
-              <div key={p.label} className="flex items-center justify-between py-2.5 border-b border-[--color-border] last:border-0">
-                <span className="text-sm text-zoo-brown">{p.label}</span>
-                <span className={`text-sm font-bold ${p.price === 'Безплатно' ? 'text-zoo-green' : 'text-zoo-brown'}`}>
-                  {p.price}
-                </span>
-              </div>
-            ))}
+          <div className="mt-3">
+            <p className="text-[10px] font-bold uppercase tracking-widest text-zoo-brown opacity-50 mb-1">Индивидуални</p>
+            {PRICES.map(p => <PriceRow key={p.label} {...p} />)}
           </div>
-          <p className="text-[11px] text-zoo-brown opacity-40 mt-3">
-            * Цените може да са актуализирани — проверете официалния сайт.
+
+          <div className="mt-4">
+            <p className="text-[10px] font-bold uppercase tracking-widest text-zoo-brown opacity-50 mb-1">Семейни билети</p>
+            {FAMILY_PRICES.map(p => <PriceRow key={p.label} {...p} />)}
+          </div>
+
+          <div className="mt-4">
+            <p className="text-[10px] font-bold uppercase tracking-widest text-zoo-brown opacity-50 mb-1">Групи (15+ човека · 16-ият безплатно)</p>
+            {GROUP_PRICES.map(p => <PriceRow key={p.label} {...p} />)}
+          </div>
+
+          <div className="mt-4">
+            <p className="text-[10px] font-bold uppercase tracking-widest text-zoo-brown opacity-50 mb-1">Абонамент</p>
+            {SUBSCRIPTION.map(p => <PriceRow key={p.label} {...p} />)}
+          </div>
+
+          <p className="text-[11px] text-zoo-brown opacity-40 mt-4">
+            Плащане: в брой, ПОС терминал или билетни автомати. Цените са в евро.
           </p>
         </Section>
 
         {/* Public transport */}
         <Section icon="🚌" title="Обществен транспорт">
-          <div className="space-y-4 mt-3">
+          <div className="space-y-5 mt-3">
             {TRANSPORT.map(t => (
               <div key={t.type}>
-                <p className="text-xs font-bold uppercase tracking-widest text-zoo-brown opacity-60 mb-2">
+                <p className="text-xs font-bold text-zoo-brown opacity-70 mb-1">
                   {t.icon} {t.type}
                 </p>
-                <div className="flex flex-wrap gap-2">
-                  {t.lines.map(l => (
-                    <div key={l.num} className={`flex items-center gap-1.5 px-3 py-1.5 rounded-xl border text-xs font-semibold ${t.colour}`}>
-                      <span className="text-base font-black">{l.num}</span>
-                      <span className="opacity-80">{l.stop}</span>
-                    </div>
+                <p className="text-xs text-zoo-brown opacity-60 mb-2 leading-relaxed">{t.note}</p>
+                <div className="flex flex-wrap gap-1.5">
+                  {t.lines.map(num => (
+                    <span key={num} className={`px-2.5 py-1 rounded-lg border text-xs font-black ${t.colour}`}>
+                      {num}
+                    </span>
                   ))}
                 </div>
+                {t.warning && (
+                  <p className="text-[11px] text-amber-600 mt-2">⚠ {t.warning}</p>
+                )}
               </div>
             ))}
-          </div>
-          <div className="mt-4 bg-zoo-green/10 rounded-xl p-3">
-            <p className="text-xs text-zoo-green font-semibold">💡 Съвет</p>
-            <p className="text-xs text-zoo-brown mt-1 leading-relaxed">
-              Слезте на спирка „Зоологическа градина" — главният вход е на ул. Сребърна 1.
-            </p>
           </div>
         </Section>
 
         {/* Contact */}
         <Section icon="📞" title="Контакти и адрес">
-          <div className="space-y-0 mt-3">
+          <div className="mt-3">
             {CONTACTS.map(c => (
               <div key={c.label} className="flex items-start gap-3 py-2.5 border-b border-[--color-border] last:border-0">
-                <span className="text-lg leading-tight mt-0.5">{c.icon}</span>
+                <span className="text-lg leading-tight mt-0.5 shrink-0">{c.icon}</span>
                 <div className="flex-1 min-w-0">
                   <p className="text-[11px] text-zoo-brown opacity-50 uppercase tracking-wide">{c.label}</p>
                   {c.href ? (
-                    <a href={c.href} className="text-sm font-medium text-zoo-green underline-offset-2 hover:underline truncate block">
+                    <a href={c.href} className="text-sm font-medium text-zoo-green truncate block">
                       {c.value}
                     </a>
                   ) : (
                     <p className="text-sm font-medium text-zoo-brown">{c.value}</p>
                   )}
+                  {c.note && <p className="text-[11px] text-zoo-brown opacity-40">{c.note}</p>}
                 </div>
               </div>
             ))}
           </div>
         </Section>
 
-        {/* Google Maps static link */}
+        {/* Directions button */}
         <a
           href="https://www.google.com/maps/dir/?api=1&destination=42.6583263,23.3311395&travelmode=transit"
           target="_blank"
