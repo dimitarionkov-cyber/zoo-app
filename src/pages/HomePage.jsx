@@ -1,5 +1,7 @@
+import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 
+// ── Quick-access tiles ────────────────────────────────────────────────────────
 const sections = [
   {
     to: '/map',
@@ -39,29 +41,150 @@ const sections = [
   },
 ]
 
+// ── RSS helpers ───────────────────────────────────────────────────────────────
+const BG_MONTHS = [
+  'яну', 'фев', 'мар', 'апр', 'май', 'юни',
+  'юли', 'авг', 'сеп', 'окт', 'ное', 'дек',
+]
+
+function formatDate(str) {
+  if (!str) return ''
+  const d = new Date(str)
+  if (isNaN(d)) return ''
+  return `${d.getDate()} ${BG_MONTHS[d.getMonth()]} ${d.getFullYear()}`
+}
+
+function stripHtml(html) {
+  if (!html) return ''
+  const div = document.createElement('div')
+  div.innerHTML = html
+  return div.textContent?.trim() ?? ''
+}
+
+function useZooNews() {
+  const [news,    setNews]    = useState([])
+  const [loading, setLoading] = useState(true)
+  const [error,   setError]   = useState(false)
+
+  useEffect(() => {
+    const proxy = 'https://api.allorigins.win/raw?url='
+    const feed  = encodeURIComponent('https://zoosofia.eu/feed/')
+    fetch(proxy + feed)
+      .then(r => {
+        if (!r.ok) throw new Error('Network error')
+        return r.text()
+      })
+      .then(xml => {
+        const doc   = new DOMParser().parseFromString(xml, 'text/xml')
+        const items = [...doc.querySelectorAll('item')].slice(0, 3).map(item => {
+          const get = tag => item.querySelector(tag)?.textContent?.trim() ?? ''
+          // WordPress RSS: guid holds the permalink
+          const link = get('guid') || get('link')
+          const raw  = get('description')
+          const excerpt = stripHtml(raw).slice(0, 130)
+          return {
+            title:   get('title'),
+            link,
+            pubDate: get('pubDate'),
+            excerpt: excerpt + (excerpt.length === 130 ? '…' : ''),
+          }
+        })
+        setNews(items)
+        setLoading(false)
+      })
+      .catch(() => { setError(true); setLoading(false) })
+  }, [])
+
+  return { news, loading, error }
+}
+
+// ── Component ─────────────────────────────────────────────────────────────────
 export default function HomePage() {
+  const { news, loading, error } = useZooNews()
+
   return (
-    <div className="flex flex-col min-h-full">
+    <div className="flex flex-col pb-6">
       {/* Hero */}
-      <div className="bg-zoo-green px-6 pt-14 pb-8 text-center">
-        <p className="text-6xl mb-3">🐾</p>
+      <div className="bg-zoo-green px-6 pt-14 pb-6 text-center">
+        <p className="text-5xl mb-2">🐾</p>
         <h1 className="text-3xl font-bold text-white tracking-wide">Зоопарк София</h1>
         <p className="text-white/70 text-sm mt-1">Неофициален наръчник на посетителя</p>
       </div>
 
-      {/* Quick-access grid */}
-      <div className="grid grid-cols-2 gap-3 p-4 flex-1">
+      {/* Quick-access grid — compact */}
+      <div className="grid grid-cols-2 gap-3 px-4 pt-4">
         {sections.map(({ to, label, icon, desc, bg, border, text }) => (
           <Link
             key={to}
             to={to}
-            className={`${bg} border ${border} rounded-2xl p-5 flex flex-col items-center gap-2 shadow-sm active:scale-95 transition-transform`}
+            className={`${bg} border ${border} rounded-2xl px-4 py-3.5 flex flex-col items-center gap-1.5 active:scale-95 transition-transform`}
           >
-            <span className="text-4xl leading-none">{icon}</span>
-            <span className={`font-bold text-base ${text}`}>{label}</span>
-            <span className="text-xs text-zoo-brown opacity-70 text-center leading-snug">{desc}</span>
+            <span className="text-3xl leading-none">{icon}</span>
+            <span className={`font-bold text-sm ${text}`}>{label}</span>
+            <span className="text-[11px] text-zoo-brown opacity-70 text-center leading-tight">{desc}</span>
           </Link>
         ))}
+      </div>
+
+      {/* News & events */}
+      <div className="px-4 pt-5">
+        <div className="flex items-center justify-between mb-3">
+          <h2 className="text-sm font-bold uppercase tracking-widest text-zoo-green">
+            Новини и събития
+          </h2>
+          <a
+            href="https://zoosofia.eu/новини/"
+            target="_blank"
+            rel="noreferrer"
+            className="text-xs text-zoo-brown opacity-50 active:opacity-100"
+          >
+            Всички →
+          </a>
+        </div>
+
+        {loading && (
+          <div className="space-y-3">
+            {[1, 2, 3].map(i => (
+              <div key={i} className="bg-[--color-bg-card] rounded-2xl p-4 border border-[--color-border] animate-pulse">
+                <div className="h-3 bg-zoo-bark/40 rounded w-1/3 mb-2" />
+                <div className="h-4 bg-zoo-bark/40 rounded w-3/4 mb-1" />
+                <div className="h-3 bg-zoo-bark/30 rounded w-full" />
+              </div>
+            ))}
+          </div>
+        )}
+
+        {error && (
+          <div className="bg-[--color-bg-card] rounded-2xl p-4 border border-[--color-border] text-center">
+            <p className="text-sm text-zoo-brown opacity-50">Новините не са достъпни в момента</p>
+          </div>
+        )}
+
+        {!loading && !error && (
+          <div className="space-y-3">
+            {news.map((item, i) => (
+              <a
+                key={i}
+                href={item.link}
+                target="_blank"
+                rel="noreferrer"
+                className="block bg-[--color-bg-card] rounded-2xl px-4 py-3.5 border border-[--color-border] active:scale-[0.98] transition-transform"
+              >
+                <p className="text-[11px] text-zoo-green font-semibold uppercase tracking-wide mb-1">
+                  {formatDate(item.pubDate)}
+                </p>
+                <p className="text-sm font-semibold text-zoo-brown leading-snug mb-1">
+                  {item.title}
+                </p>
+                {item.excerpt && (
+                  <p className="text-xs text-zoo-brown opacity-60 leading-relaxed">
+                    {item.excerpt}
+                  </p>
+                )}
+              </a>
+            ))}
+          </div>
+        )}
       </div>
     </div>
   )
