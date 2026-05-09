@@ -134,9 +134,26 @@ const prevMatrix = []   // prevMatrix[i] = prev array for source i
 console.log(`\nComputing ${N} Dijkstra runs...`)
 for (let i = 0; i < N; i++) {
   const { dist, prev } = dijkstra(snapped[i].nodeId)
-  distMatrix.push(snapped.map(s => dist[s.nodeId]))
+  // Replace Infinity distances with haversine fallback so TSP can still work
+  const row = snapped.map((s, j) => {
+    const d = dist[s.nodeId]
+    if (isFinite(d)) return d
+    // Fallback: straight-line distance (penalised ×2 to prefer real paths)
+    return haversine(snapped[i].wp.lat, snapped[i].wp.lng, s.wp.lat, s.wp.lng) * 2
+  })
+  distMatrix.push(row)
   prevMatrix.push(prev)
 }
+
+// Report how many pairs are truly unreachable (used fallback)
+let unreachable = 0
+for (let i = 0; i < N; i++) {
+  const { dist } = dijkstra(snapped[i].nodeId)
+  for (let j = 0; j < N; j++) {
+    if (!isFinite(dist[snapped[j].nodeId])) unreachable++
+  }
+}
+if (unreachable > 0) console.warn(`⚠  ${unreachable} waypoint pairs unreachable via graph — using straight-line fallback`)
 console.log('Done.')
 
 // ── Nearest-neighbour TSP (start and end at entrance = index 0) ───────────────
