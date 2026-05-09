@@ -29,12 +29,8 @@ export default function AnimalsHubPage() {
   const activeType      = searchParams.get('type')
   const activeContinent = searchParams.get('continent')
 
-  // If a filter is active, show the list view
-  if (activeType || activeContinent) {
-    return <AnimalsListPage />
-  }
-
   // ── Count animals per category / continent ──────────────────────────────────
+  // Must stay above any conditional return (Rules of Hooks)
   const typeCounts = useMemo(() => {
     const counts = {}
     allAnimals.forEach(a => { counts[a.animalType] = (counts[a.animalType] || 0) + 1 })
@@ -50,6 +46,11 @@ export default function AnimalsHubPage() {
   }, [allAnimals])
 
   const [activeTab, setActiveTab] = useState('type') // 'type' | 'origin'
+
+  // If a filter is active, delegate to the list view
+  if (activeType || activeContinent) {
+    return <AnimalsListPage />
+  }
 
   return (
     <div className="flex flex-col pb-6">
