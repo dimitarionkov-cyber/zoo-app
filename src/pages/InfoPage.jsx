@@ -67,10 +67,28 @@ const TRANSPORT = [
 ]
 
 const CONTACTS = [
+  { icon: '📍', label: 'Главен вход',   value: 'бул. Симеоновско шосе (ЖК Дианабад)' },
   { icon: '📍', label: 'Западен вход',  value: 'ул. Сребърна 1, 1407 София' },
   { icon: '📞', label: 'Телефон',       value: '0878 640 375',               href: 'tel:+359878640375',       note: 'Пон–Пет, 8:00–17:00' },
   { icon: '📧', label: 'Имейл',         value: 'zoosofia@zoosofia.eu',       href: 'mailto:zoosofia@zoosofia.eu' },
   { icon: '🌐', label: 'Уебсайт',       value: 'zoosofia.eu',                href: 'https://zoosofia.eu'      },
+]
+
+const ENTRANCES = [
+  {
+    label: 'Главен вход',
+    sublabel: 'бул. Симеоновско шосе',
+    icon: '🚪',
+    lat: 42.6597941,
+    lng: 23.3340426,
+  },
+  {
+    label: 'Западен вход',
+    sublabel: 'ул. Сребърна 1',
+    icon: '🚪',
+    lat: 42.660139,
+    lng: 23.3307871,
+  },
 ]
 
 // ── Collapsible section ───────────────────────────────────────────────────────
@@ -217,15 +235,25 @@ export default function InfoPage() {
           </div>
         </Section>
 
-        {/* Directions button */}
-        <a
-          href="https://www.google.com/maps/dir/?api=1&destination=42.6583263,23.3311395&travelmode=transit"
-          target="_blank"
-          rel="noreferrer"
-          className="flex items-center justify-center gap-2 bg-zoo-green text-white rounded-2xl py-3.5 font-semibold text-sm active:opacity-80 transition-opacity"
-        >
-          🗺️ Упътване до зоопарка
-        </a>
+        {/* Directions — one button per entrance */}
+        <div className="flex flex-col gap-2">
+          {ENTRANCES.map(e => (
+            <a
+              key={e.label}
+              href={`https://www.google.com/maps/dir/?api=1&destination=${e.lat},${e.lng}&travelmode=transit`}
+              target="_blank"
+              rel="noreferrer"
+              className="flex items-center gap-3 bg-[--color-bg-card] border border-[--color-border] rounded-2xl px-4 py-3.5 active:opacity-70 transition-opacity"
+            >
+              <span className="text-2xl leading-none">🗺️</span>
+              <div className="flex-1 min-w-0">
+                <p className="font-bold text-sm text-zoo-green">{e.label}</p>
+                <p className="text-xs text-zoo-brown opacity-60">{e.sublabel}</p>
+              </div>
+              <span className="text-zoo-green text-lg leading-none opacity-60">›</span>
+            </a>
+          ))}
+        </div>
 
       </div>
     </div>
