@@ -70,7 +70,12 @@
       191,
       414
     ],
-    "description": ""
+    "description": "",
+    "continents": [
+      "europe",
+      "asia",
+      "africa"
+    ]
   },
   {
     "id": "12155929446",
@@ -82,7 +87,10 @@
     "lat": 42.6582517,
     "lng": 23.3326915,
     "photo": null,
-    "description": ""
+    "description": "",
+    "continents": [
+      "australia"
+    ]
   },
   {
     "id": "12155929475",
@@ -94,7 +102,10 @@
     "lat": 42.6593418,
     "lng": 23.3313164,
     "photo": null,
-    "description": ""
+    "description": "",
+    "continents": [
+      "asia"
+    ]
   },
   {
     "id": "12156208251",
@@ -106,7 +117,10 @@
     "lat": 42.6592686,
     "lng": 23.3310787,
     "photo": null,
-    "description": ""
+    "description": "",
+    "continents": [
+      "australia"
+    ]
   },
   {
     "id": "12156208253",
@@ -118,7 +132,12 @@
     "lat": 42.6590027,
     "lng": 23.3311828,
     "photo": null,
-    "description": ""
+    "description": "",
+    "continents": [
+      "europe",
+      "asia",
+      "north_america"
+    ]
   },
   {
     "id": "12156208255",
@@ -130,7 +149,11 @@
     "lat": 42.6588781,
     "lng": 23.3308433,
     "photo": null,
-    "description": ""
+    "description": "",
+    "continents": [
+      "europe",
+      "asia"
+    ]
   },
   {
     "id": "12156208256",
@@ -142,7 +165,12 @@
     "lat": 42.6588263,
     "lng": 23.3308151,
     "photo": null,
-    "description": ""
+    "description": "",
+    "continents": [
+      "europe",
+      "asia",
+      "north_america"
+    ]
   },
   {
     "id": "12160409460",
@@ -154,7 +182,11 @@
     "lat": 42.6583725,
     "lng": 23.3310393,
     "photo": null,
-    "description": ""
+    "description": "",
+    "continents": [
+      "europe",
+      "asia"
+    ]
   },
   {
     "id": "12160421310",
@@ -166,7 +198,11 @@
     "lat": 42.6587602,
     "lng": 23.330821,
     "photo": null,
-    "description": ""
+    "description": "",
+    "continents": [
+      "north_america",
+      "south_america"
+    ]
   },
   {
     "id": "12160421312",
@@ -178,7 +214,12 @@
     "lat": 42.6589244,
     "lng": 23.3309609,
     "photo": null,
-    "description": ""
+    "description": "",
+    "continents": [
+      "europe",
+      "asia",
+      "africa"
+    ]
   },
   {
     "id": "12170636005",
@@ -190,7 +231,12 @@
     "lat": 42.6587065,
     "lng": 23.3338521,
     "photo": null,
-    "description": ""
+    "description": "",
+    "continents": [
+      "europe",
+      "asia",
+      "africa"
+    ]
   },
   {
     "id": "12160421324",
@@ -202,7 +248,12 @@
     "lat": 42.6590534,
     "lng": 23.3311892,
     "photo": null,
-    "description": ""
+    "description": "",
+    "continents": [
+      "europe",
+      "asia",
+      "africa"
+    ]
   },
   {
     "id": "12160421326",
@@ -214,7 +265,10 @@
     "lat": 42.6593335,
     "lng": 23.3311631,
     "photo": null,
-    "description": ""
+    "description": "",
+    "continents": [
+      "south_america"
+    ]
   },
   {
     "id": "12160421329",
@@ -226,7 +280,10 @@
     "lat": 42.6593502,
     "lng": 23.3312329,
     "photo": null,
-    "description": ""
+    "description": "",
+    "continents": [
+      "south_america"
+    ]
   },
   {
     "id": "12160884131",
@@ -238,7 +295,10 @@
     "lat": 42.6597871,
     "lng": 23.3332068,
     "photo": null,
-    "description": ""
+    "description": "",
+    "continents": [
+      "australia"
+    ]
   },
   {
     "id": "12170600564",
@@ -250,7 +310,11 @@
     "lat": 42.6595479,
     "lng": 23.3334193,
     "photo": null,
-    "description": ""
+    "description": "",
+    "continents": [
+      "europe",
+      "asia"
+    ]
   },
   {
     "id": "12170600565",
@@ -262,7 +326,11 @@
     "lat": 42.6594808,
     "lng": 23.3335009,
     "photo": null,
-    "description": ""
+    "description": "",
+    "continents": [
+      "europe",
+      "asia"
+    ]
   },
   {
     "id": "12170600566",
@@ -274,7 +342,11 @@
     "lat": 42.6594124,
     "lng": 23.3335841,
     "photo": null,
-    "description": ""
+    "description": "",
+    "continents": [
+      "europe",
+      "asia"
+    ]
   },
   {
     "id": "12170600567",
@@ -286,7 +358,12 @@
     "lat": 42.6593361,
     "lng": 23.333677,
     "photo": null,
-    "description": ""
+    "description": "",
+    "continents": [
+      "europe",
+      "asia",
+      "africa"
+    ]
   },
   {
     "id": "12170600568",
@@ -298,7 +375,11 @@
     "lat": 42.6592624,
     "lng": 23.3337666,
     "photo": null,
-    "description": ""
+    "description": "",
+    "continents": [
+      "europe",
+      "north_america"
+    ]
   },
   {
     "id": "12170613238",
@@ -310,7 +391,10 @@
     "lat": 42.6593078,
     "lng": 23.331385,
     "photo": null,
-    "description": ""
+    "description": "",
+    "continents": [
+      "south_america"
+    ]
   },
   {
     "id": "12170613240",
@@ -322,7 +406,11 @@
     "lat": 42.6582586,
     "lng": 23.3308029,
     "photo": null,
-    "description": ""
+    "description": "",
+    "continents": [
+      "europe",
+      "africa"
+    ]
   },
   {
     "id": "12170636004",
@@ -334,7 +422,11 @@
     "lat": 42.6588277,
     "lng": 23.3337086,
     "photo": null,
-    "description": ""
+    "description": "",
+    "continents": [
+      "europe",
+      "asia"
+    ]
   },
   {
     "id": "12170636005",
@@ -346,7 +438,12 @@
     "lat": 42.6587065,
     "lng": 23.3338521,
     "photo": null,
-    "description": ""
+    "description": "",
+    "continents": [
+      "europe",
+      "asia",
+      "africa"
+    ]
   },
   {
     "id": "12170636006",
@@ -358,7 +455,12 @@
     "lat": 42.6586345,
     "lng": 23.3335664,
     "photo": null,
-    "description": ""
+    "description": "",
+    "continents": [
+      "europe",
+      "asia",
+      "north_america"
+    ]
   },
   {
     "id": "12173320223",
@@ -370,7 +472,12 @@
     "lat": 42.6596298,
     "lng": 23.3324663,
     "photo": null,
-    "description": ""
+    "description": "",
+    "continents": [
+      "europe",
+      "asia",
+      "north_america"
+    ]
   },
   {
     "id": "12173320277",
@@ -382,7 +489,10 @@
     "lat": 42.6593054,
     "lng": 23.3311148,
     "photo": null,
-    "description": ""
+    "description": "",
+    "continents": [
+      "australia"
+    ]
   },
   {
     "id": "12173320278",
@@ -394,7 +504,10 @@
     "lat": 42.6592274,
     "lng": 23.3310619,
     "photo": null,
-    "description": ""
+    "description": "",
+    "continents": [
+      "africa"
+    ]
   },
   {
     "id": "12173320279",
@@ -406,7 +519,10 @@
     "lat": 42.6591709,
     "lng": 23.3310697,
     "photo": null,
-    "description": ""
+    "description": "",
+    "continents": [
+      "australia"
+    ]
   },
   {
     "id": "12173320280",
@@ -418,7 +534,12 @@
     "lat": 42.6591245,
     "lng": 23.3311268,
     "photo": null,
-    "description": ""
+    "description": "",
+    "continents": [
+      "europe",
+      "asia",
+      "africa"
+    ]
   },
   {
     "id": "12173320281",
@@ -430,7 +551,10 @@
     "lat": 42.6590974,
     "lng": 23.3311678,
     "photo": null,
-    "description": ""
+    "description": "",
+    "continents": [
+      "south_america"
+    ]
   },
   {
     "id": "12173320283",
@@ -442,7 +566,10 @@
     "lat": 42.6589543,
     "lng": 23.3311476,
     "photo": null,
-    "description": ""
+    "description": "",
+    "continents": [
+      "south_america"
+    ]
   },
   {
     "id": "12173320284",
@@ -454,7 +581,10 @@
     "lat": 42.6589199,
     "lng": 23.3311008,
     "photo": null,
-    "description": ""
+    "description": "",
+    "continents": [
+      "south_america"
+    ]
   },
   {
     "id": "12173320285",
@@ -466,7 +596,11 @@
     "lat": 42.6589119,
     "lng": 23.3310303,
     "photo": null,
-    "description": ""
+    "description": "",
+    "continents": [
+      "europe",
+      "asia"
+    ]
   },
   {
     "id": "12173320286",
@@ -478,7 +612,12 @@
     "lat": 42.658911,
     "lng": 23.3308989,
     "photo": null,
-    "description": ""
+    "description": "",
+    "continents": [
+      "europe",
+      "asia",
+      "north_america"
+    ]
   },
   {
     "id": "12173320288",
@@ -490,7 +629,12 @@
     "lat": 42.658711,
     "lng": 23.3308817,
     "photo": null,
-    "description": ""
+    "description": "",
+    "continents": [
+      "europe",
+      "asia",
+      "africa"
+    ]
   },
   {
     "id": "12173320289",
@@ -502,7 +646,10 @@
     "lat": 42.6586708,
     "lng": 23.3309196,
     "photo": null,
-    "description": ""
+    "description": "",
+    "continents": [
+      "africa"
+    ]
   },
   {
     "id": "12173320299",
@@ -514,7 +661,10 @@
     "lat": 42.6586035,
     "lng": 23.3309325,
     "photo": null,
-    "description": ""
+    "description": "",
+    "continents": [
+      "africa"
+    ]
   },
   {
     "id": "12173320300",
@@ -526,7 +676,10 @@
     "lat": 42.6585448,
     "lng": 23.3308963,
     "photo": null,
-    "description": ""
+    "description": "",
+    "continents": [
+      "south_america"
+    ]
   },
   {
     "id": "12173321414",
@@ -538,7 +691,10 @@
     "lat": 42.6584937,
     "lng": 23.3307938,
     "photo": null,
-    "description": ""
+    "description": "",
+    "continents": [
+      "africa"
+    ]
   },
   {
     "id": "12210523130",
@@ -550,7 +706,10 @@
     "lat": 42.6592302,
     "lng": 23.3342884,
     "photo": null,
-    "description": ""
+    "description": "",
+    "continents": [
+      "north_america"
+    ]
   },
   {
     "id": "vampirska_riba_001",
@@ -588,7 +747,10 @@
       170,
       218
     ],
-    "description": ""
+    "description": "",
+    "continents": [
+      "south_america"
+    ]
   },
   {
     "id": "way_1073541664",
@@ -600,7 +762,10 @@
     "lat": 42.658688,
     "lng": 23.331465,
     "photo": null,
-    "description": ""
+    "description": "",
+    "continents": [
+      "africa"
+    ]
   },
   {
     "id": "way_1073541665",
@@ -612,7 +777,10 @@
     "lat": 42.659015,
     "lng": 23.331506,
     "photo": null,
-    "description": ""
+    "description": "",
+    "continents": [
+      "australia"
+    ]
   },
   {
     "id": "way_1073541666",
@@ -624,7 +792,10 @@
     "lat": 42.6585795,
     "lng": 23.3318516,
     "photo": null,
-    "description": ""
+    "description": "",
+    "continents": [
+      "africa"
+    ]
   },
   {
     "id": "way_1313327309",
@@ -636,7 +807,10 @@
     "lat": 42.6583692,
     "lng": 23.334271,
     "photo": null,
-    "description": ""
+    "description": "",
+    "continents": [
+      "asia"
+    ]
   },
   {
     "id": "way_1313338294",
@@ -648,7 +822,11 @@
     "lat": 42.6586501,
     "lng": 23.3295252,
     "photo": null,
-    "description": ""
+    "description": "",
+    "continents": [
+      "africa",
+      "asia"
+    ]
   },
   {
     "id": "way_1313798144",
@@ -660,7 +838,10 @@
     "lat": 42.6582309,
     "lng": 23.3309319,
     "photo": null,
-    "description": ""
+    "description": "",
+    "continents": [
+      "south_america"
+    ]
   },
   {
     "id": "way_1313822057",
@@ -672,7 +853,10 @@
     "lat": 42.6588292,
     "lng": 23.3317311,
     "photo": null,
-    "description": ""
+    "description": "",
+    "continents": [
+      "australia"
+    ]
   },
   {
     "id": "way_1313822059",
@@ -684,7 +868,10 @@
     "lat": 42.6584087,
     "lng": 23.3312535,
     "photo": null,
-    "description": ""
+    "description": "",
+    "continents": [
+      "africa"
+    ]
   },
   {
     "id": "way_1313827371",
@@ -696,7 +883,10 @@
     "lat": 42.65853,
     "lng": 23.332279,
     "photo": null,
-    "description": ""
+    "description": "",
+    "continents": [
+      "asia"
+    ]
   },
   {
     "id": "way_1313847178",
@@ -708,7 +898,10 @@
     "lat": 42.6603506,
     "lng": 23.3310894,
     "photo": null,
-    "description": ""
+    "description": "",
+    "continents": [
+      "asia"
+    ]
   },
   {
     "id": "way_1313922725",
@@ -720,7 +913,11 @@
     "lat": 42.6594082,
     "lng": 23.330431,
     "photo": null,
-    "description": ""
+    "description": "",
+    "continents": [
+      "europe",
+      "asia"
+    ]
   },
   {
     "id": "way_1313922727",
@@ -732,7 +929,10 @@
     "lat": 42.6594744,
     "lng": 23.3306337,
     "photo": null,
-    "description": ""
+    "description": "",
+    "continents": [
+      "south_america"
+    ]
   },
   {
     "id": "way_1313935828",
@@ -744,7 +944,12 @@
     "lat": 42.6594614,
     "lng": 23.329642,
     "photo": null,
-    "description": ""
+    "description": "",
+    "continents": [
+      "europe",
+      "asia",
+      "north_america"
+    ]
   },
   {
     "id": "way_1313935830",
@@ -756,7 +961,11 @@
     "lat": 42.6595773,
     "lng": 23.3296982,
     "photo": null,
-    "description": ""
+    "description": "",
+    "continents": [
+      "europe",
+      "asia"
+    ]
   },
   {
     "id": "way_1313935831",
@@ -768,7 +977,10 @@
     "lat": 42.6596353,
     "lng": 23.3297265,
     "photo": null,
-    "description": ""
+    "description": "",
+    "continents": [
+      "africa"
+    ]
   },
   {
     "id": "way_1313935832",
@@ -780,7 +992,10 @@
     "lat": 42.6596959,
     "lng": 23.3297598,
     "photo": null,
-    "description": ""
+    "description": "",
+    "continents": [
+      "africa"
+    ]
   },
   {
     "id": "way_1313935833",
@@ -792,7 +1007,10 @@
     "lat": 42.6597398,
     "lng": 23.3297986,
     "photo": null,
-    "description": ""
+    "description": "",
+    "continents": [
+      "north_america"
+    ]
   },
   {
     "id": "way_1313935835",
@@ -804,7 +1022,10 @@
     "lat": 42.6598096,
     "lng": 23.3299108,
     "photo": null,
-    "description": ""
+    "description": "",
+    "continents": [
+      "north_america"
+    ]
   },
   {
     "id": "way_1313935836",
@@ -816,7 +1037,10 @@
     "lat": 42.6598594,
     "lng": 23.3299492,
     "photo": null,
-    "description": ""
+    "description": "",
+    "continents": [
+      "south_america"
+    ]
   },
   {
     "id": "way_1313935837",
@@ -828,7 +1052,10 @@
     "lat": 42.6599296,
     "lng": 23.330053,
     "photo": null,
-    "description": ""
+    "description": "",
+    "continents": [
+      "africa"
+    ]
   },
   {
     "id": "way_1313935839",
@@ -840,7 +1067,10 @@
     "lat": 42.6598814,
     "lng": 23.3300209,
     "photo": null,
-    "description": ""
+    "description": "",
+    "continents": [
+      "africa"
+    ]
   },
   {
     "id": "way_1313940073",
@@ -852,7 +1082,10 @@
     "lat": 42.6600389,
     "lng": 23.3301204,
     "photo": null,
-    "description": ""
+    "description": "",
+    "continents": [
+      "africa"
+    ]
   },
   {
     "id": "way_1313940074",
@@ -864,7 +1097,10 @@
     "lat": 42.6594722,
     "lng": 23.3305131,
     "photo": null,
-    "description": ""
+    "description": "",
+    "continents": [
+      "south_america"
+    ]
   },
   {
     "id": "way_1313940075",
@@ -876,7 +1112,10 @@
     "lat": 42.659408,
     "lng": 23.3302811,
     "photo": null,
-    "description": ""
+    "description": "",
+    "continents": [
+      "europe"
+    ]
   },
   {
     "id": "way_1313940076",
@@ -888,7 +1127,12 @@
     "lat": 42.6592648,
     "lng": 23.3294824,
     "photo": null,
-    "description": ""
+    "description": "",
+    "continents": [
+      "europe",
+      "asia",
+      "north_america"
+    ]
   },
   {
     "id": "way_1313951936",
@@ -900,7 +1144,10 @@
     "lat": 42.6582314,
     "lng": 23.3301659,
     "photo": null,
-    "description": ""
+    "description": "",
+    "continents": [
+      "asia"
+    ]
   },
   {
     "id": "way_1313951942",
@@ -912,7 +1159,11 @@
     "lat": 42.6586822,
     "lng": 23.3299942,
     "photo": null,
-    "description": ""
+    "description": "",
+    "continents": [
+      "europe",
+      "asia"
+    ]
   },
   {
     "id": "way_1313951943",
@@ -924,7 +1175,10 @@
     "lat": 42.6591029,
     "lng": 23.3298793,
     "photo": null,
-    "description": ""
+    "description": "",
+    "continents": [
+      "north_america"
+    ]
   },
   {
     "id": "way_1313995551",
@@ -936,7 +1190,10 @@
     "lat": 42.6601637,
     "lng": 23.3305426,
     "photo": null,
-    "description": ""
+    "description": "",
+    "continents": [
+      "north_america"
+    ]
   },
   {
     "id": "way_1314154182",
@@ -948,7 +1205,10 @@
     "lat": 42.6603038,
     "lng": 23.3306762,
     "photo": null,
-    "description": ""
+    "description": "",
+    "continents": [
+      "asia"
+    ]
   },
   {
     "id": "way_1314162645",
@@ -960,7 +1220,10 @@
     "lat": 42.660188,
     "lng": 23.3307085,
     "photo": null,
-    "description": ""
+    "description": "",
+    "continents": [
+      "africa"
+    ]
   },
   {
     "id": "way_1314168821",
@@ -972,7 +1235,10 @@
     "lat": 42.6602747,
     "lng": 23.3305077,
     "photo": null,
-    "description": ""
+    "description": "",
+    "continents": [
+      "north_america"
+    ]
   },
   {
     "id": "way_1314247560",
@@ -984,7 +1250,10 @@
     "lat": 42.6587111,
     "lng": 23.3312825,
     "photo": null,
-    "description": ""
+    "description": "",
+    "continents": [
+      "africa"
+    ]
   },
   {
     "id": "way_1314249087",
@@ -996,7 +1265,11 @@
     "lat": 42.6590558,
     "lng": 23.3322078,
     "photo": null,
-    "description": ""
+    "description": "",
+    "continents": [
+      "europe",
+      "asia"
+    ]
   },
   {
     "id": "way_1314607625",
@@ -1008,7 +1281,12 @@
     "lat": 42.6602415,
     "lng": 23.3304035,
     "photo": null,
-    "description": ""
+    "description": "",
+    "continents": [
+      "europe",
+      "asia",
+      "africa"
+    ]
   },
   {
     "id": "way_1314607626",
@@ -1020,7 +1298,10 @@
     "lat": 42.6600468,
     "lng": 23.3306472,
     "photo": null,
-    "description": ""
+    "description": "",
+    "continents": [
+      "north_america"
+    ]
   },
   {
     "id": "way_1314607627",
@@ -1032,7 +1313,10 @@
     "lat": 42.6600605,
     "lng": 23.3306865,
     "photo": null,
-    "description": ""
+    "description": "",
+    "continents": [
+      "south_america"
+    ]
   },
   {
     "id": "way_1314611617",
@@ -1044,7 +1328,10 @@
     "lat": 42.6601373,
     "lng": 23.3307036,
     "photo": null,
-    "description": ""
+    "description": "",
+    "continents": [
+      "africa"
+    ]
   },
   {
     "id": "way_1314611619",
@@ -1056,7 +1343,10 @@
     "lat": 42.6600485,
     "lng": 23.3305414,
     "photo": null,
-    "description": ""
+    "description": "",
+    "continents": [
+      "asia"
+    ]
   },
   {
     "id": "way_1314611620",
@@ -1068,7 +1358,10 @@
     "lat": 42.6600326,
     "lng": 23.3305489,
     "photo": null,
-    "description": ""
+    "description": "",
+    "continents": [
+      "south_america"
+    ]
   },
   {
     "id": "way_1314702010",
@@ -1080,7 +1373,11 @@
     "lat": 42.6599613,
     "lng": 23.3306285,
     "photo": null,
-    "description": ""
+    "description": "",
+    "continents": [
+      "north_america",
+      "south_america"
+    ]
   },
   {
     "id": "way_1314702011",
@@ -1092,7 +1389,10 @@
     "lat": 42.6599654,
     "lng": 23.3306146,
     "photo": null,
-    "description": ""
+    "description": "",
+    "continents": [
+      "north_america"
+    ]
   },
   {
     "id": "way_1314702012",
@@ -1104,7 +1404,11 @@
     "lat": 42.6599724,
     "lng": 23.3307757,
     "photo": null,
-    "description": ""
+    "description": "",
+    "continents": [
+      "north_america",
+      "south_america"
+    ]
   },
   {
     "id": "way_1314702014",
@@ -1116,7 +1420,10 @@
     "lat": 42.6600035,
     "lng": 23.3307956,
     "photo": null,
-    "description": ""
+    "description": "",
+    "continents": [
+      "australia"
+    ]
   },
   {
     "id": "way_1314702015",
@@ -1128,7 +1435,10 @@
     "lat": 42.6599882,
     "lng": 23.3308014,
     "photo": null,
-    "description": ""
+    "description": "",
+    "continents": [
+      "north_america"
+    ]
   },
   {
     "id": "way_1314702016",
@@ -1140,7 +1450,11 @@
     "lat": 42.6599761,
     "lng": 23.3307919,
     "photo": null,
-    "description": ""
+    "description": "",
+    "continents": [
+      "australia",
+      "asia"
+    ]
   },
   {
     "id": "way_1314702019",
@@ -1152,7 +1466,10 @@
     "lat": 42.659954,
     "lng": 23.3306539,
     "photo": null,
-    "description": ""
+    "description": "",
+    "continents": [
+      "north_america"
+    ]
   },
   {
     "id": "way_1314702020",
@@ -1164,7 +1481,10 @@
     "lat": 42.6599576,
     "lng": 23.3306412,
     "photo": null,
-    "description": ""
+    "description": "",
+    "continents": [
+      "north_america"
+    ]
   },
   {
     "id": "way_1314702022",
@@ -1176,7 +1496,10 @@
     "lat": 42.6600129,
     "lng": 23.3307885,
     "photo": null,
-    "description": ""
+    "description": "",
+    "continents": [
+      "africa"
+    ]
   },
   {
     "id": "way_1314702023",
@@ -1188,7 +1511,10 @@
     "lat": 42.6600394,
     "lng": 23.3307946,
     "photo": null,
-    "description": ""
+    "description": "",
+    "continents": [
+      "africa"
+    ]
   },
   {
     "id": "way_1314702024",
@@ -1200,7 +1526,10 @@
     "lat": 42.660049,
     "lng": 23.3308181,
     "photo": null,
-    "description": ""
+    "description": "",
+    "continents": [
+      "africa"
+    ]
   },
   {
     "id": "way_1314702032",
@@ -1212,7 +1541,10 @@
     "lat": 42.6600772,
     "lng": 23.3307801,
     "photo": null,
-    "description": ""
+    "description": "",
+    "continents": [
+      "australia"
+    ]
   },
   {
     "id": "way_1314702033",
@@ -1224,7 +1556,10 @@
     "lat": 42.6600868,
     "lng": 23.3307918,
     "photo": null,
-    "description": ""
+    "description": "",
+    "continents": [
+      "asia"
+    ]
   },
   {
     "id": "way_1314702034",
@@ -1236,7 +1571,10 @@
     "lat": 42.6600961,
     "lng": 23.3308029,
     "photo": null,
-    "description": ""
+    "description": "",
+    "continents": [
+      "asia"
+    ]
   },
   {
     "id": "way_1314702035",
@@ -1248,7 +1586,10 @@
     "lat": 42.6601048,
     "lng": 23.3308132,
     "photo": null,
-    "description": ""
+    "description": "",
+    "continents": [
+      "africa"
+    ]
   },
   {
     "id": "way_1314702036",
@@ -1260,7 +1601,10 @@
     "lat": 42.6601124,
     "lng": 23.3308223,
     "photo": null,
-    "description": ""
+    "description": "",
+    "continents": [
+      "asia"
+    ]
   },
   {
     "id": "way_1314702039",
@@ -1272,7 +1616,10 @@
     "lat": 42.6601174,
     "lng": 23.3308343,
     "photo": null,
-    "description": ""
+    "description": "",
+    "continents": [
+      "asia"
+    ]
   },
   {
     "id": "way_1314702040",
@@ -1284,7 +1631,10 @@
     "lat": 42.6601264,
     "lng": 23.3308458,
     "photo": null,
-    "description": ""
+    "description": "",
+    "continents": [
+      "asia"
+    ]
   },
   {
     "id": "way_1314702041",
@@ -1296,7 +1646,10 @@
     "lat": 42.660135,
     "lng": 23.3308579,
     "photo": null,
-    "description": ""
+    "description": "",
+    "continents": [
+      "south_america"
+    ]
   },
   {
     "id": "way_1314702042",
@@ -1308,7 +1661,10 @@
     "lat": 42.6601435,
     "lng": 23.3308705,
     "photo": null,
-    "description": ""
+    "description": "",
+    "continents": [
+      "africa"
+    ]
   },
   {
     "id": "way_1314702043",
@@ -1320,7 +1676,11 @@
     "lat": 42.6601515,
     "lng": 23.3308834,
     "photo": null,
-    "description": ""
+    "description": "",
+    "continents": [
+      "north_america",
+      "south_america"
+    ]
   },
   {
     "id": "way_1314702044",
@@ -1332,7 +1692,10 @@
     "lat": 42.660159,
     "lng": 23.3308969,
     "photo": null,
-    "description": ""
+    "description": "",
+    "continents": [
+      "north_america"
+    ]
   },
   {
     "id": "way_1314702045",
@@ -1344,7 +1707,10 @@
     "lat": 42.6601666,
     "lng": 23.3309222,
     "photo": null,
-    "description": ""
+    "description": "",
+    "continents": [
+      "south_america"
+    ]
   },
   {
     "id": "way_1314702046",
@@ -1356,7 +1722,10 @@
     "lat": 42.6601854,
     "lng": 23.330966,
     "photo": null,
-    "description": ""
+    "description": "",
+    "continents": [
+      "south_america"
+    ]
   },
   {
     "id": "way_1314702047",
@@ -1368,7 +1737,11 @@
     "lat": 42.6602022,
     "lng": 23.3310114,
     "photo": null,
-    "description": ""
+    "description": "",
+    "continents": [
+      "australia",
+      "asia"
+    ]
   },
   {
     "id": "way_1314702048",
@@ -1380,7 +1753,10 @@
     "lat": 42.6602174,
     "lng": 23.3310574,
     "photo": null,
-    "description": ""
+    "description": "",
+    "continents": [
+      "asia"
+    ]
   },
   {
     "id": "way_1314702049",
@@ -1392,7 +1768,10 @@
     "lat": 42.6602292,
     "lng": 23.3311038,
     "photo": null,
-    "description": ""
+    "description": "",
+    "continents": [
+      "asia"
+    ]
   },
   {
     "id": "way_1314702050",
@@ -1404,7 +1783,10 @@
     "lat": 42.6602397,
     "lng": 23.3311508,
     "photo": null,
-    "description": ""
+    "description": "",
+    "continents": [
+      "asia"
+    ]
   },
   {
     "id": "way_1314702051",
@@ -1416,7 +1798,11 @@
     "lat": 42.6602463,
     "lng": 23.3312006,
     "photo": null,
-    "description": ""
+    "description": "",
+    "continents": [
+      "south_america",
+      "north_america"
+    ]
   },
   {
     "id": "way_1314702052",
@@ -1428,7 +1814,10 @@
     "lat": 42.6602505,
     "lng": 23.3312509,
     "photo": null,
-    "description": ""
+    "description": "",
+    "continents": [
+      "asia"
+    ]
   },
   {
     "id": "way_1314702053",
@@ -1440,7 +1829,11 @@
     "lat": 42.6602469,
     "lng": 23.3313145,
     "photo": null,
-    "description": ""
+    "description": "",
+    "continents": [
+      "south_america",
+      "north_america"
+    ]
   },
   {
     "id": "way_1314702055",
@@ -1452,7 +1845,11 @@
     "lat": 42.6602421,
     "lng": 23.3313569,
     "photo": null,
-    "description": ""
+    "description": "",
+    "continents": [
+      "south_america",
+      "north_america"
+    ]
   },
   {
     "id": "way_1314702057",
@@ -1464,7 +1861,11 @@
     "lat": 42.6601092,
     "lng": 23.3313004,
     "photo": null,
-    "description": ""
+    "description": "",
+    "continents": [
+      "south_america",
+      "asia"
+    ]
   },
   {
     "id": "way_1314702060",
@@ -1476,7 +1877,10 @@
     "lat": 42.6602012,
     "lng": 23.331359,
     "photo": null,
-    "description": ""
+    "description": "",
+    "continents": [
+      "south_america"
+    ]
   },
   {
     "id": "way_1314702068",
@@ -1488,7 +1892,10 @@
     "lat": 42.6600389,
     "lng": 23.3315748,
     "photo": null,
-    "description": ""
+    "description": "",
+    "continents": [
+      "africa"
+    ]
   },
   {
     "id": "way_1314702069",
@@ -1500,7 +1907,10 @@
     "lat": 42.6600429,
     "lng": 23.3315936,
     "photo": null,
-    "description": ""
+    "description": "",
+    "continents": [
+      "australia"
+    ]
   },
   {
     "id": "way_1314702072",
@@ -1512,7 +1922,15 @@
     "lat": 42.6601566,
     "lng": 23.3318341,
     "photo": null,
-    "description": ""
+    "description": "",
+    "continents": [
+      "europe",
+      "asia",
+      "africa",
+      "north_america",
+      "south_america",
+      "australia"
+    ]
   },
   {
     "id": "way_1314702074",
@@ -1524,7 +1942,11 @@
     "lat": 42.6602163,
     "lng": 23.3314653,
     "photo": null,
-    "description": ""
+    "description": "",
+    "continents": [
+      "africa",
+      "south_america"
+    ]
   },
   {
     "id": "way_1314702075",
@@ -1536,7 +1958,10 @@
     "lat": 42.6602253,
     "lng": 23.3314833,
     "photo": null,
-    "description": ""
+    "description": "",
+    "continents": [
+      "south_america"
+    ]
   },
   {
     "id": "way_1314702076",
@@ -1548,7 +1973,10 @@
     "lat": 42.6602348,
     "lng": 23.3315027,
     "photo": null,
-    "description": ""
+    "description": "",
+    "continents": [
+      "south_america"
+    ]
   },
   {
     "id": "way_1314702077",
@@ -1560,7 +1988,10 @@
     "lat": 42.6602438,
     "lng": 23.3315222,
     "photo": null,
-    "description": ""
+    "description": "",
+    "continents": [
+      "south_america"
+    ]
   },
   {
     "id": "way_1314702078",
@@ -1572,7 +2003,10 @@
     "lat": 42.6602529,
     "lng": 23.331545,
     "photo": null,
-    "description": ""
+    "description": "",
+    "continents": [
+      "south_america"
+    ]
   },
   {
     "id": "way_1314702079",
@@ -1584,7 +2018,10 @@
     "lat": 42.6602618,
     "lng": 23.3315715,
     "photo": null,
-    "description": ""
+    "description": "",
+    "continents": [
+      "africa"
+    ]
   },
   {
     "id": "way_1314702080",
@@ -1596,7 +2033,10 @@
     "lat": 42.6602689,
     "lng": 23.3315992,
     "photo": null,
-    "description": ""
+    "description": "",
+    "continents": [
+      "asia"
+    ]
   },
   {
     "id": "way_1314702081",
@@ -1608,7 +2048,11 @@
     "lat": 42.6602737,
     "lng": 23.3316252,
     "photo": null,
-    "description": ""
+    "description": "",
+    "continents": [
+      "south_america",
+      "north_america"
+    ]
   },
   {
     "id": "way_1314702082",
@@ -1620,7 +2064,11 @@
     "lat": 42.6602762,
     "lng": 23.3316519,
     "photo": null,
-    "description": ""
+    "description": "",
+    "continents": [
+      "north_america",
+      "south_america"
+    ]
   },
   {
     "id": "way_1314702083",
@@ -1632,7 +2080,10 @@
     "lat": 42.660277,
     "lng": 23.3316785,
     "photo": null,
-    "description": ""
+    "description": "",
+    "continents": [
+      "asia"
+    ]
   },
   {
     "id": "way_1314702084",
@@ -1644,7 +2095,11 @@
     "lat": 42.6602763,
     "lng": 23.3317037,
     "photo": null,
-    "description": ""
+    "description": "",
+    "continents": [
+      "north_america",
+      "asia"
+    ]
   },
   {
     "id": "way_1314702085",
@@ -1656,7 +2111,11 @@
     "lat": 42.6602743,
     "lng": 23.3317274,
     "photo": null,
-    "description": ""
+    "description": "",
+    "continents": [
+      "europe",
+      "south_america"
+    ]
   },
   {
     "id": "way_1314702086",
@@ -1668,7 +2127,10 @@
     "lat": 42.6602711,
     "lng": 23.3317499,
     "photo": null,
-    "description": ""
+    "description": "",
+    "continents": [
+      "south_america"
+    ]
   },
   {
     "id": "way_1314702087",
@@ -1680,7 +2142,10 @@
     "lat": 42.6602659,
     "lng": 23.3317723,
     "photo": null,
-    "description": ""
+    "description": "",
+    "continents": [
+      "south_america"
+    ]
   },
   {
     "id": "way_1314702088",
@@ -1692,7 +2157,10 @@
     "lat": 42.6602587,
     "lng": 23.3317931,
     "photo": null,
-    "description": ""
+    "description": "",
+    "continents": [
+      "africa"
+    ]
   },
   {
     "id": "way_1314702089",
@@ -1704,7 +2172,10 @@
     "lat": 42.6602483,
     "lng": 23.3318119,
     "photo": null,
-    "description": ""
+    "description": "",
+    "continents": [
+      "africa"
+    ]
   },
   {
     "id": "way_1314702090",
@@ -1716,7 +2187,10 @@
     "lat": 42.6602182,
     "lng": 23.3318387,
     "photo": null,
-    "description": ""
+    "description": "",
+    "continents": [
+      "south_america"
+    ]
   },
   {
     "id": "way_1314702091",
@@ -1728,7 +2202,11 @@
     "lat": 42.6602342,
     "lng": 23.331828,
     "photo": null,
-    "description": ""
+    "description": "",
+    "continents": [
+      "south_america",
+      "asia"
+    ]
   },
   {
     "id": "way_1314899579",
@@ -1740,7 +2218,10 @@
     "lat": 42.6595422,
     "lng": 23.3317828,
     "photo": null,
-    "description": ""
+    "description": "",
+    "continents": [
+      "asia"
+    ]
   },
   {
     "id": "way_1314899580",
@@ -1752,7 +2233,12 @@
     "lat": 42.6595405,
     "lng": 23.3317081,
     "photo": null,
-    "description": ""
+    "description": "",
+    "continents": [
+      "europe",
+      "asia",
+      "africa"
+    ]
   },
   {
     "id": "way_1314899581",
@@ -1764,7 +2250,10 @@
     "lat": 42.6595313,
     "lng": 23.3316504,
     "photo": null,
-    "description": ""
+    "description": "",
+    "continents": [
+      "asia"
+    ]
   },
   {
     "id": "way_1314899582",
@@ -1776,7 +2265,10 @@
     "lat": 42.6595284,
     "lng": 23.3315914,
     "photo": null,
-    "description": ""
+    "description": "",
+    "continents": [
+      "asia"
+    ]
   },
   {
     "id": "way_1314899583",
@@ -1788,7 +2280,10 @@
     "lat": 42.6595256,
     "lng": 23.3315324,
     "photo": null,
-    "description": ""
+    "description": "",
+    "continents": [
+      "asia"
+    ]
   },
   {
     "id": "way_1314928272",
@@ -1800,7 +2295,10 @@
     "lat": 42.6588647,
     "lng": 23.3342881,
     "photo": null,
-    "description": ""
+    "description": "",
+    "continents": [
+      "south_america"
+    ]
   },
   {
     "id": "way_1381690081",
@@ -1812,7 +2310,11 @@
     "lat": 42.6599095,
     "lng": 23.3303888,
     "photo": null,
-    "description": ""
+    "description": "",
+    "continents": [
+      "south_america",
+      "north_america"
+    ]
   },
   {
     "id": "way_1381692164",
@@ -1824,7 +2326,10 @@
     "lat": 42.6597963,
     "lng": 23.3306705,
     "photo": null,
-    "description": ""
+    "description": "",
+    "continents": [
+      "asia"
+    ]
   },
   {
     "id": "way_1381692165",
@@ -1836,7 +2341,11 @@
     "lat": 42.6599885,
     "lng": 23.3310311,
     "photo": null,
-    "description": ""
+    "description": "",
+    "continents": [
+      "asia",
+      "africa"
+    ]
   },
   {
     "id": "way_1381695866",
@@ -1848,7 +2357,10 @@
     "lat": 42.6598551,
     "lng": 23.3314406,
     "photo": null,
-    "description": ""
+    "description": "",
+    "continents": [
+      "africa"
+    ]
   },
   {
     "id": "way_1381695867",
@@ -1860,7 +2372,10 @@
     "lat": 42.659978,
     "lng": 23.3318486,
     "photo": null,
-    "description": ""
+    "description": "",
+    "continents": [
+      "asia"
+    ]
   },
   {
     "id": "way_1381812198",
@@ -1872,7 +2387,10 @@
     "lat": 42.658801,
     "lng": 23.3329364,
     "photo": null,
-    "description": ""
+    "description": "",
+    "continents": [
+      "europe"
+    ]
   },
   {
     "id": "way_1382112702",
@@ -1884,6 +2402,10 @@
     "lat": 42.6595836,
     "lng": 23.3308439,
     "photo": null,
-    "description": ""
+    "description": "",
+    "continents": [
+      "europe",
+      "asia"
+    ]
   }
 ]
