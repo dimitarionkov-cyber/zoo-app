@@ -6,6 +6,7 @@ import MapPage from './pages/MapPage'
 import AnimalsHubPage from './pages/AnimalsHubPage'
 import AnimalDetailPage from './pages/AnimalDetailPage'
 import SearchPage from './pages/SearchPage'
+import InfoPage from './pages/InfoPage'
 import SettingsPage from './pages/SettingsPage'
 
 export default function App() {
@@ -19,6 +20,7 @@ export default function App() {
             <Route path="animals" element={<AnimalsHubPage />} />
             <Route path="animals/:id" element={<AnimalDetailPage />} />
             <Route path="search" element={<SearchPage />} />
+            <Route path="info" element={<InfoPage />} />
             <Route path="settings" element={<SettingsPage />} />
           </Route>
         </Routes>
