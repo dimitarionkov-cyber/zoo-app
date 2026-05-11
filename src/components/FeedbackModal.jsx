@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzt4r4hSbr42bK8Uxy88CBX1GmX6fBfO1OvPfbM8nIcNiNrMks_kHadtknnspAlvbFhlA/exec'
+const FEEDBACK_URL = '/api/feedback'
 
 const TYPES = [
   { key: 'bug',     emoji: '🐛', label: 'Грешка' },
@@ -47,15 +47,13 @@ export default function FeedbackModal({ open, onClose }) {
         appVersion:  typeof __APP_VERSION__ !== 'undefined' ? __APP_VERSION__ : 'dev',
         page:        window.location.pathname,
       })
-      // Image beacon bypasses CORS + follows the Apps Script redirect
-      await new Promise(resolve => {
-        const img = new Image()
-        img.onload = resolve
-        img.onerror = resolve   // fires because response is JSON, not an image — but the request was sent
-        setTimeout(resolve, 8000)
-        img.src = `${SCRIPT_URL}?${params}`
-      })
-      setStatus('success')
+      const res  = await fetch(`${FEEDBACK_URL}?${params}`)
+      const data = await res.json()
+      if (data.ok) {
+        setStatus('success')
+      } else {
+        setStatus('error')
+      }
     } catch {
       setStatus('error')
     }
