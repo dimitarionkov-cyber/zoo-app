@@ -191,9 +191,9 @@ export default function MapPage() {
   const { allAnimals, allPois, darkMode } = useData()
   const [selected,   setSelected]   = useState(null)
   const [showRoute,  setShowRoute]  = useState(false)
+  const [menuOpen,   setMenuOpen]   = useState(false)
   const navigate = useNavigate()
 
-  // Full route polyline — actual path through the graph (315 pts)
   const routePolyline = routeData.fullPolyline.map(([lat, lng]) => ({ lat, lng }))
 
   const { isLoaded, loadError } = useMaps()
@@ -211,27 +211,63 @@ export default function MapPage() {
   )
 
   return (
-    <div className="relative w-full h-full">
+    <div className="flex flex-col w-full h-full">
 
-    {/* Route toggle button */}
-    <button
-      onClick={() => { setShowRoute(r => !r); setSelected(null) }}
-      className="absolute top-3 right-3 z-10 flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-bold shadow-lg transition-colors"
-      style={{
-        backgroundColor: showRoute ? '#3a6b35' : 'rgba(255,255,255,0.92)',
-        color: showRoute ? '#fff' : '#3a6b35',
-        border: '2px solid #3a6b35',
-      }}
-    >
-      🦶 {showRoute ? `Маршрут · ${(routeData.totalDistanceM/1000).toFixed(2)} км` : 'Покажи маршрут'}
-    </button>
+    {/* ── Header ── */}
+    <div className="bg-zoo-green px-4 pt-10 pb-3 flex items-center gap-3 relative z-20">
+      <button
+        onClick={() => setMenuOpen(o => !o)}
+        className="text-white text-xl w-8 h-8 flex items-center justify-center rounded-lg active:bg-white/20 transition-colors"
+        aria-label="Меню"
+      >
+        {menuOpen ? '✕' : '☰'}
+      </button>
+      <h1 className="flex-1 text-xl font-bold text-white tracking-wide">Карта</h1>
+    </div>
 
+    {/* ── Hamburger dropdown — overlays the map ── */}
+    {menuOpen && (
+      <div className="absolute left-0 right-0 z-10 px-4 pt-1 top-[88px]">
+        <div className="bg-[--color-bg-card] rounded-2xl border border-[--color-border] shadow-xl overflow-hidden">
+          {/* Routes section */}
+          <div className="px-4 pt-3 pb-1">
+            <p className="text-[10px] font-bold uppercase tracking-widest text-zoo-brown opacity-50">
+              Маршрути
+            </p>
+          </div>
+          <button
+            onClick={() => { setShowRoute(r => !r); setSelected(null); setMenuOpen(false) }}
+            className="w-full flex items-center gap-3 px-4 py-3 active:bg-[--color-border] transition-colors"
+          >
+            <span className="text-lg">🦶</span>
+            <div className="flex-1 text-left">
+              <p className="text-sm font-semibold text-[--color-text-main]">Оптимален маршрут</p>
+              <p className="text-xs text-zoo-brown opacity-50">
+                {(routeData.totalDistanceM / 1000).toFixed(2)} км · {routeData.steps?.length ?? 0} спирки
+              </p>
+            </div>
+            <div className={`w-10 h-5 rounded-full transition-colors relative ${showRoute ? 'bg-zoo-green' : 'bg-gray-300'}`}>
+              <span className={`absolute top-0.5 w-4 h-4 bg-white rounded-full shadow transition-transform ${showRoute ? 'translate-x-5' : 'translate-x-0.5'}`} />
+            </div>
+          </button>
+          <div className="h-px bg-[--color-border] mx-4" />
+          <div className="px-4 py-3">
+            <p className="text-xs text-zoo-brown opacity-40 text-center">
+              Препоръчани маршрути — очаквайте скоро
+            </p>
+          </div>
+        </div>
+      </div>
+    )}
+
+    {/* ── Map fills remaining height ── */}
+    <div className="flex-1 relative">
     <GoogleMap
       mapContainerStyle={{ width: '100%', height: '100%' }}
       center={ZOO_CENTER}
       zoom={17}
       options={mapOptions}
-      onClick={() => setSelected(null)}
+      onClick={() => { setSelected(null); setMenuOpen(false) }}
     >
       {/* Zoo pathways */}
       {pathsData.map(path => (
@@ -314,6 +350,7 @@ export default function MapPage() {
         </InfoWindow>
       )}
     </GoogleMap>
+    </div>
     </div>
   )
 }
