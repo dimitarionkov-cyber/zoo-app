@@ -77,48 +77,33 @@ function useZooNews() {
   const [error,   setError]   = useState(false)
 
   useEffect(() => {
-    const feed = encodeURIComponent('https://zoosofia.eu/feed/')
-    const proxies = [
-      'https://corsproxy.io/?' + feed,
-      'https://api.allorigins.win/raw?url=' + feed,
-    ]
     const controller = new AbortController()
     const timeout = setTimeout(() => controller.abort(), 8000)
 
-    const parseXml = (xml) => {
-      const doc = new DOMParser().parseFromString(xml, 'text/xml')
-      return [...doc.querySelectorAll('item')].slice(0, 3).map(item => {
-        const get = tag => item.querySelector(tag)?.textContent?.trim() ?? ''
-        const contentEncoded =
-          item.getElementsByTagName('content:encoded')[0]?.textContent ||
-          item.getElementsByTagNameNS(
-            'http://purl.org/rss/1.0/modules/content/', 'encoded'
-          )[0]?.textContent || ''
-        const image   = extractFirstImage(contentEncoded)
-        const link    = get('guid') || get('link')
-        const excerpt = stripHtml(get('description')).slice(0, 110)
-        return {
-          title:   get('title'),
-          link,
-          pubDate: get('pubDate'),
-          excerpt: excerpt + (excerpt.length === 110 ? '…' : ''),
-          image,
-        }
-      })
-    }
+    const url = 'https://api.rss2json.com/v1/api.json?rss_url=' +
+      encodeURIComponent('https://zoosofia.eu/feed/')
 
-    const tryProxy = (index) => {
-      if (index >= proxies.length) { setError(true); setLoading(false); return }
-      fetch(proxies[index], { signal: controller.signal })
-        .then(r => { if (!r.ok) throw new Error('bad response'); return r.text() })
-        .then(xml => { clearTimeout(timeout); setNews(parseXml(xml)); setLoading(false) })
-        .catch(err => {
-          if (err.name === 'AbortError') { setError(true); setLoading(false) }
-          else tryProxy(index + 1)
+    fetch(url, { signal: controller.signal })
+      .then(r => { if (!r.ok) throw new Error('bad response'); return r.json() })
+      .then(data => {
+        clearTimeout(timeout)
+        if (data.status !== 'ok') throw new Error('feed error')
+        const items = data.items.slice(0, 3).map(item => {
+          const image = item.thumbnail || extractFirstImage(item.content) || null
+          const excerpt = stripHtml(item.description).slice(0, 110)
+          return {
+            title:   item.title,
+            link:    item.link,
+            pubDate: item.pubDate,
+            excerpt: excerpt + (excerpt.length === 110 ? '…' : ''),
+            image,
+          }
         })
-    }
+        setNews(items)
+        setLoading(false)
+      })
+      .catch(() => { setError(true); setLoading(false) })
 
-    tryProxy(0)
     return () => { clearTimeout(timeout); controller.abort() }
   }, [])
 
