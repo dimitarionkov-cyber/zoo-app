@@ -264,6 +264,22 @@ export default function SettingsPage() {
           Копира пълния JSON с всички добавени животни и координати, готов за поставяне в animals.json.
         </p>
       </section>
+
+      {/* Build info */}
+      <div className="pt-4 flex flex-col items-center gap-1.5">
+        <div className="flex items-center gap-2">
+          <span className="text-sm font-bold text-zoo-green">Зоопарк София</span>
+          <span className="text-[10px] font-bold uppercase tracking-wider bg-zoo-green/15 text-zoo-green px-2 py-0.5 rounded-full">
+            Beta
+          </span>
+        </div>
+        <p className="text-xs text-zoo-brown opacity-50">
+          v{__APP_VERSION__} · {__BUILD_DATE__}
+        </p>
+        <p className="text-[10px] text-zoo-brown opacity-30 text-center">
+          Неофициално приложение. Не е свързано официално със Зоопарк София.
+        </p>
+      </div>
     </div>
   )
 }
