@@ -77,42 +77,49 @@ function useZooNews() {
   const [error,   setError]   = useState(false)
 
   useEffect(() => {
-    const proxy = 'https://api.allorigins.win/raw?url='
-    const feed  = encodeURIComponent('https://zoosofia.eu/feed/')
-    fetch(proxy + feed)
-      .then(r => {
-        if (!r.ok) throw new Error('Network error')
-        return r.text()
+    const feed = encodeURIComponent('https://zoosofia.eu/feed/')
+    const proxies = [
+      'https://corsproxy.io/?' + feed,
+      'https://api.allorigins.win/raw?url=' + feed,
+    ]
+    const controller = new AbortController()
+    const timeout = setTimeout(() => controller.abort(), 8000)
+
+    const parseXml = (xml) => {
+      const doc = new DOMParser().parseFromString(xml, 'text/xml')
+      return [...doc.querySelectorAll('item')].slice(0, 3).map(item => {
+        const get = tag => item.querySelector(tag)?.textContent?.trim() ?? ''
+        const contentEncoded =
+          item.getElementsByTagName('content:encoded')[0]?.textContent ||
+          item.getElementsByTagNameNS(
+            'http://purl.org/rss/1.0/modules/content/', 'encoded'
+          )[0]?.textContent || ''
+        const image   = extractFirstImage(contentEncoded)
+        const link    = get('guid') || get('link')
+        const excerpt = stripHtml(get('description')).slice(0, 110)
+        return {
+          title:   get('title'),
+          link,
+          pubDate: get('pubDate'),
+          excerpt: excerpt + (excerpt.length === 110 ? '…' : ''),
+          image,
+        }
       })
-      .then(xml => {
-        const doc = new DOMParser().parseFromString(xml, 'text/xml')
-        const items = [...doc.querySelectorAll('item')].slice(0, 3).map(item => {
-          const get = tag => item.querySelector(tag)?.textContent?.trim() ?? ''
+    }
 
-          // content:encoded holds the full post HTML — use it for the thumbnail
-          const contentEncoded =
-            item.getElementsByTagName('content:encoded')[0]?.textContent ||
-            item.getElementsByTagNameNS(
-              'http://purl.org/rss/1.0/modules/content/', 'encoded'
-            )[0]?.textContent || ''
-
-          const image   = extractFirstImage(contentEncoded)
-          const link    = get('guid') || get('link')
-          const raw     = get('description')
-          const excerpt = stripHtml(raw).slice(0, 110)
-
-          return {
-            title:   get('title'),
-            link,
-            pubDate: get('pubDate'),
-            excerpt: excerpt + (excerpt.length === 110 ? '…' : ''),
-            image,
-          }
+    const tryProxy = (index) => {
+      if (index >= proxies.length) { setError(true); setLoading(false); return }
+      fetch(proxies[index], { signal: controller.signal })
+        .then(r => { if (!r.ok) throw new Error('bad response'); return r.text() })
+        .then(xml => { clearTimeout(timeout); setNews(parseXml(xml)); setLoading(false) })
+        .catch(err => {
+          if (err.name === 'AbortError') { setError(true); setLoading(false) }
+          else tryProxy(index + 1)
         })
-        setNews(items)
-        setLoading(false)
-      })
-      .catch(() => { setError(true); setLoading(false) })
+    }
+
+    tryProxy(0)
+    return () => { clearTimeout(timeout); controller.abort() }
   }, [])
 
   return { news, loading, error }
