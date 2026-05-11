@@ -1,0 +1,4100 @@
+{
+  "startEntrance": {
+    "id": "west-entrance",
+    "nameBg": "Западен вход",
+    "nameEn": "West Entrance",
+    "parking": 32
+  },
+  "endEntrance": {
+    "id": "west-entrance",
+    "nameBg": "Западен вход",
+    "nameEn": "West Entrance",
+    "parking": 32
+  },
+  "circular": true,
+  "totalDistanceM": 3726,
+  "animalCount": 165,
+  "generatedAt": "2026-05-11T16:33:23.359Z",
+  "steps": [
+    {
+      "step": 0,
+      "id": "west-entrance",
+      "nameBg": "Западен вход",
+      "nameEn": "West Entrance",
+      "lat": 42.660139,
+      "lng": 23.3307871,
+      "legDistM": 0,
+      "animalType": "entrance"
+    },
+    {
+      "step": 1,
+      "id": "way_1314607627",
+      "nameBg": "Червенокрака костенурка",
+      "nameEn": "Red-footed Tortoise",
+      "lat": 42.6600605,
+      "lng": 23.3306865,
+      "legDistM": 0,
+      "animalType": "влечуго"
+    },
+    {
+      "step": 2,
+      "id": "way_1313940073",
+      "nameBg": "Гривесто бодливо свинче",
+      "nameEn": "African Crested Porcupine",
+      "lat": 42.6600389,
+      "lng": 23.3301204,
+      "legDistM": 93,
+      "animalType": "бозайник"
+    },
+    {
+      "step": 3,
+      "id": "way_1313935837",
+      "nameBg": "Белоопашата мангуста",
+      "nameEn": "White-tailed Mongoose",
+      "lat": 42.6599296,
+      "lng": 23.330053,
+      "legDistM": 27,
+      "animalType": "бозайник"
+    },
+    {
+      "step": 4,
+      "id": "way_1313935839",
+      "nameBg": "Ивичеста мангуста",
+      "nameEn": "Banded Mongoose",
+      "lat": 42.6598814,
+      "lng": 23.3300209,
+      "legDistM": 12,
+      "animalType": "бозайник"
+    },
+    {
+      "step": 5,
+      "id": "way_1313935836",
+      "nameBg": "Носато мече",
+      "nameEn": "South American Coati",
+      "lat": 42.6598594,
+      "lng": 23.3299492,
+      "legDistM": 13,
+      "animalType": "бозайник"
+    },
+    {
+      "step": 6,
+      "id": "way_1313935835",
+      "nameBg": "Енот",
+      "nameEn": "Common Raccoon",
+      "lat": 42.6598096,
+      "lng": 23.3299108,
+      "legDistM": 13,
+      "animalType": "бозайник"
+    },
+    {
+      "step": 7,
+      "id": "way_1313935833",
+      "nameBg": "Блатен рис",
+      "nameEn": "Bobcat",
+      "lat": 42.6597398,
+      "lng": 23.3297986,
+      "legDistM": 24,
+      "animalType": "бозайник"
+    },
+    {
+      "step": 8,
+      "id": "way_1313935832",
+      "nameBg": "Сервал",
+      "nameEn": "Serval",
+      "lat": 42.6596959,
+      "lng": 23.3297598,
+      "legDistM": 12,
+      "animalType": "бозайник"
+    },
+    {
+      "step": 9,
+      "id": "way_1313935831",
+      "nameBg": "Сервал",
+      "nameEn": "Serval",
+      "lat": 42.6596353,
+      "lng": 23.3297265,
+      "legDistM": 15,
+      "animalType": "бозайник"
+    },
+    {
+      "step": 10,
+      "id": "way_1313935830",
+      "nameBg": "Язовец",
+      "nameEn": "European Badger",
+      "lat": 42.6595773,
+      "lng": 23.3296982,
+      "legDistM": 14,
+      "animalType": "бозайник"
+    },
+    {
+      "step": 11,
+      "id": "way_1313935828",
+      "nameBg": "Вълк",
+      "nameEn": "Grey Wolf",
+      "lat": 42.6594614,
+      "lng": 23.329642,
+      "legDistM": 27,
+      "animalType": "бозайник"
+    },
+    {
+      "step": 12,
+      "id": "way_1313940076",
+      "nameBg": "Вълк",
+      "nameEn": "Grey Wolf",
+      "lat": 42.6592648,
+      "lng": 23.3294824,
+      "legDistM": 51,
+      "animalType": "бозайник"
+    },
+    {
+      "step": 13,
+      "id": "way_1313951943",
+      "nameBg": "Кафява мечка гризли",
+      "nameEn": "Grizzly Bear",
+      "lat": 42.6591029,
+      "lng": 23.3298793,
+      "legDistM": 23,
+      "animalType": "бозайник"
+    },
+    {
+      "step": 14,
+      "id": "chakal_001",
+      "nameBg": "Чакал",
+      "nameEn": "Jackal",
+      "lat": 42.658908,
+      "lng": 23.3295316,
+      "legDistM": 16,
+      "animalType": "бозайник"
+    },
+    {
+      "step": 15,
+      "id": "way_1313338294",
+      "nameBg": "Ивичеста хиена",
+      "nameEn": "Striped Hyena",
+      "lat": 42.6586501,
+      "lng": 23.3295252,
+      "legDistM": 51,
+      "animalType": "бозайник"
+    },
+    {
+      "step": 16,
+      "id": "way_1313951942",
+      "nameBg": "Евроазиатска кафява мечка",
+      "nameEn": "Eurasian Brown Bear",
+      "lat": 42.6586822,
+      "lng": 23.3299942,
+      "legDistM": 26,
+      "animalType": "бозайник"
+    },
+    {
+      "step": 17,
+      "id": "way_1313951936",
+      "nameBg": "Бърнеста мечка",
+      "nameEn": "Sloth Bear",
+      "lat": 42.6582314,
+      "lng": 23.3301659,
+      "legDistM": 49,
+      "animalType": "бозайник"
+    },
+    {
+      "step": 18,
+      "id": "way_1313798144",
+      "nameBg": "Лама",
+      "nameEn": "Llama",
+      "lat": 42.6582309,
+      "lng": 23.3309319,
+      "legDistM": 118,
+      "animalType": "бозайник"
+    },
+    {
+      "step": 19,
+      "id": "way_1313822059",
+      "nameBg": "Четкоуха свиня",
+      "nameEn": "Red River Hog",
+      "lat": 42.6584087,
+      "lng": 23.3312535,
+      "legDistM": 99,
+      "animalType": "бозайник"
+    },
+    {
+      "step": 20,
+      "id": "way_1073541664",
+      "nameBg": "Гривест козирог",
+      "nameEn": "Barbary Sheep",
+      "lat": 42.658688,
+      "lng": 23.331465,
+      "legDistM": 12,
+      "animalType": "бозайник"
+    },
+    {
+      "step": 21,
+      "id": "way_1073541666",
+      "nameBg": "Камерунска мини коза",
+      "nameEn": "Cameroon Goat",
+      "lat": 42.6585795,
+      "lng": 23.3318516,
+      "legDistM": 36,
+      "animalType": "бозайник"
+    },
+    {
+      "step": 22,
+      "id": "way_1313822057",
+      "nameBg": "Ръждиво кенгуру",
+      "nameEn": "Red Kangaroo",
+      "lat": 42.6588292,
+      "lng": 23.3317311,
+      "legDistM": 13,
+      "animalType": "бозайник"
+    },
+    {
+      "step": 23,
+      "id": "12170613238",
+      "nameBg": "Магеланова гъска",
+      "nameEn": "Upland Goose",
+      "lat": 42.6593078,
+      "lng": 23.331385,
+      "legDistM": 74,
+      "animalType": "птица"
+    },
+    {
+      "step": 24,
+      "id": "12155929475",
+      "nameBg": "Мандаринка",
+      "nameEn": "Mandarin Duck",
+      "lat": 42.6593418,
+      "lng": 23.3313164,
+      "legDistM": 26,
+      "animalType": "птица"
+    },
+    {
+      "step": 25,
+      "id": "12160421329",
+      "nameBg": "Огърличесто бърне",
+      "nameEn": "Ringed Teal",
+      "lat": 42.6593502,
+      "lng": 23.3312329,
+      "legDistM": 10,
+      "animalType": "птица"
+    },
+    {
+      "step": 26,
+      "id": "12160421326",
+      "nameBg": "Синьо-жълт ара",
+      "nameEn": "Blue-and-yellow Macaw",
+      "lat": 42.6593335,
+      "lng": 23.3311631,
+      "legDistM": 10,
+      "animalType": "птица"
+    },
+    {
+      "step": 27,
+      "id": "12173320277",
+      "nameBg": "Присмехулна кукабура",
+      "nameEn": "Laughing Kookaburra",
+      "lat": 42.6593054,
+      "lng": 23.3311148,
+      "legDistM": 9,
+      "animalType": "птица"
+    },
+    {
+      "step": 28,
+      "id": "12156208251",
+      "nameBg": "Корела",
+      "nameEn": "Cockatiel",
+      "lat": 42.6592686,
+      "lng": 23.3310787,
+      "legDistM": 9,
+      "animalType": "птица"
+    },
+    {
+      "step": 29,
+      "id": "12173320278",
+      "nameBg": "Сив папагал",
+      "nameEn": "Grey Parrot",
+      "lat": 42.6592274,
+      "lng": 23.3310619,
+      "legDistM": 5,
+      "animalType": "птица"
+    },
+    {
+      "step": 30,
+      "id": "12173320279",
+      "nameBg": "Вълнисто папагалче",
+      "nameEn": "Budgerigar",
+      "lat": 42.6591709,
+      "lng": 23.3310697,
+      "legDistM": 9,
+      "animalType": "птица"
+    },
+    {
+      "step": 31,
+      "id": "12173320280",
+      "nameBg": "Белошипа ветрушка",
+      "nameEn": "Lesser Kestrel",
+      "lat": 42.6591245,
+      "lng": 23.3311268,
+      "legDistM": 8,
+      "animalType": "птица"
+    },
+    {
+      "step": 32,
+      "id": "12173320283",
+      "nameBg": "Червен ибис",
+      "nameEn": "Scarlet Ibis",
+      "lat": 42.6589543,
+      "lng": 23.3311476,
+      "legDistM": 10,
+      "animalType": "птица"
+    },
+    {
+      "step": 33,
+      "id": "12173320285",
+      "nameBg": "Горска улулица",
+      "nameEn": "Tawny Owl",
+      "lat": 42.6589119,
+      "lng": 23.3310303,
+      "legDistM": 2,
+      "animalType": "птица"
+    },
+    {
+      "step": 34,
+      "id": "12160421312",
+      "nameBg": "Белоглав лешояд",
+      "nameEn": "Griffon Vulture",
+      "lat": 42.6589244,
+      "lng": 23.3309609,
+      "legDistM": 7,
+      "animalType": "птица"
+    },
+    {
+      "step": 35,
+      "id": "12173320286",
+      "nameBg": "Полярна сова",
+      "nameEn": "Snowy Owl",
+      "lat": 42.658911,
+      "lng": 23.3308989,
+      "legDistM": 6,
+      "animalType": "птица"
+    },
+    {
+      "step": 36,
+      "id": "12156208255",
+      "nameBg": "Бухал",
+      "nameEn": "Eurasian Eagle-Owl",
+      "lat": 42.6588781,
+      "lng": 23.3308433,
+      "legDistM": 10,
+      "animalType": "птица"
+    },
+    {
+      "step": 37,
+      "id": "12156208256",
+      "nameBg": "Голям ястреб",
+      "nameEn": "Northern Goshawk",
+      "lat": 42.6588263,
+      "lng": 23.3308151,
+      "legDistM": 9,
+      "animalType": "птица"
+    },
+    {
+      "step": 38,
+      "id": "12160421310",
+      "nameBg": "Мишелов на Харис",
+      "nameEn": "Harris's Hawk",
+      "lat": 42.6587602,
+      "lng": 23.330821,
+      "legDistM": 8,
+      "animalType": "птица"
+    },
+    {
+      "step": 39,
+      "id": "12170613240",
+      "nameBg": "Бяло магаре от Азинара",
+      "nameEn": "Asinara Donkey",
+      "lat": 42.6582586,
+      "lng": 23.3308029,
+      "legDistM": 41,
+      "animalType": "бозайник"
+    },
+    {
+      "step": 40,
+      "id": "12173321414",
+      "nameBg": "Сивобуза птица носорог",
+      "nameEn": "Grey-cheeked Hornbill",
+      "lat": 42.6584937,
+      "lng": 23.3307938,
+      "legDistM": 13,
+      "animalType": "птица"
+    },
+    {
+      "step": 41,
+      "id": "12160409460",
+      "nameBg": "Обикновена овца",
+      "nameEn": "Domestic Sheep",
+      "lat": 42.6583725,
+      "lng": 23.3310393,
+      "legDistM": 6,
+      "animalType": "бозайник"
+    },
+    {
+      "step": 42,
+      "id": "12173320300",
+      "nameBg": "Оринокска гъска",
+      "nameEn": "Orinoco Goose",
+      "lat": 42.6585448,
+      "lng": 23.3308963,
+      "legDistM": 4,
+      "animalType": "птица"
+    },
+    {
+      "step": 43,
+      "id": "12173320299",
+      "nameBg": "Птица носорог тръбач",
+      "nameEn": "Trumpeter Hornbill",
+      "lat": 42.6586035,
+      "lng": 23.3309325,
+      "legDistM": 13,
+      "animalType": "птица"
+    },
+    {
+      "step": 44,
+      "id": "12173320289",
+      "nameBg": "Смехурка",
+      "nameEn": "African Collared Dove",
+      "lat": 42.6586708,
+      "lng": 23.3309196,
+      "legDistM": 12,
+      "animalType": "птица"
+    },
+    {
+      "step": 45,
+      "id": "12173320288",
+      "nameBg": "Бял щъркел",
+      "nameEn": "White Stork",
+      "lat": 42.658711,
+      "lng": 23.3308817,
+      "legDistM": 7,
+      "animalType": "птица"
+    },
+    {
+      "step": 46,
+      "id": "12173320284",
+      "nameBg": "Червен ибис",
+      "nameEn": "Scarlet Ibis",
+      "lat": 42.6589199,
+      "lng": 23.3311008,
+      "legDistM": 27,
+      "animalType": "птица"
+    },
+    {
+      "step": 47,
+      "id": "way_1314247560",
+      "nameBg": "Гривест козирог",
+      "nameEn": "Barbary Sheep",
+      "lat": 42.6587111,
+      "lng": 23.3312825,
+      "legDistM": 0,
+      "animalType": "бозайник"
+    },
+    {
+      "step": 48,
+      "id": "12156208253",
+      "nameBg": "Гарван гробар",
+      "nameEn": "Common Raven",
+      "lat": 42.6590027,
+      "lng": 23.3311828,
+      "legDistM": 20,
+      "animalType": "птица"
+    },
+    {
+      "step": 49,
+      "id": "way_1073541665",
+      "nameBg": "Ръждиво кенгуру",
+      "nameEn": "Red Kangaroo",
+      "lat": 42.659015,
+      "lng": 23.331506,
+      "legDistM": 4,
+      "animalType": "бозайник"
+    },
+    {
+      "step": 50,
+      "id": "12160421324",
+      "nameBg": "Египетски лешояд",
+      "nameEn": "Egyptian Vulture",
+      "lat": 42.6590534,
+      "lng": 23.3311892,
+      "legDistM": 8,
+      "animalType": "птица"
+    },
+    {
+      "step": 51,
+      "id": "12173320281",
+      "nameBg": "Зелен аракари",
+      "nameEn": "Green Aracari",
+      "lat": 42.6590974,
+      "lng": 23.3311678,
+      "legDistM": 10,
+      "animalType": "птица"
+    },
+    {
+      "step": 52,
+      "id": "way_1314249087",
+      "nameBg": "Свиня",
+      "nameEn": "Domestic Pig",
+      "lat": 42.6590558,
+      "lng": 23.3322078,
+      "legDistM": 125,
+      "animalType": "бозайник"
+    },
+    {
+      "step": 53,
+      "id": "12155929446",
+      "nameBg": "Ему",
+      "nameEn": "Emu",
+      "lat": 42.6582517,
+      "lng": 23.3326915,
+      "legDistM": 98,
+      "animalType": "птица"
+    },
+    {
+      "step": 54,
+      "id": "way_1313827371",
+      "nameBg": "Домашен як",
+      "nameEn": "Domestic Yak",
+      "lat": 42.65853,
+      "lng": 23.332279,
+      "legDistM": 35,
+      "animalType": "бозайник"
+    },
+    {
+      "step": 55,
+      "id": "hipopotam_002",
+      "nameBg": "Хипопотам джудже",
+      "nameEn": "Pygmy Hippopotamus",
+      "lat": 42.6565949,
+      "lng": 23.3327233,
+      "legDistM": 210,
+      "animalType": "бозайник"
+    },
+    {
+      "step": 56,
+      "id": "hipopotam_001",
+      "nameBg": "Обикновен хипопотам",
+      "nameEn": "Common Hippopotamus",
+      "lat": 42.6565949,
+      "lng": 23.3327233,
+      "legDistM": 0,
+      "animalType": "бозайник"
+    },
+    {
+      "step": 57,
+      "id": "nosorog_001",
+      "nameBg": "Бял носорог",
+      "nameEn": "White Rhinoceros",
+      "lat": 42.6565949,
+      "lng": 23.3327233,
+      "legDistM": 0,
+      "animalType": "бозайник"
+    },
+    {
+      "step": 58,
+      "id": "slon_001",
+      "nameBg": "Азиатска слоница",
+      "nameEn": "Asian Elephant",
+      "lat": 42.6565949,
+      "lng": 23.3327233,
+      "legDistM": 0,
+      "animalType": "бозайник"
+    },
+    {
+      "step": 59,
+      "id": "lemur_001",
+      "nameBg": "Котешки лемур",
+      "nameEn": "Ring-tailed Lemur",
+      "lat": 42.6572609,
+      "lng": 23.3336819,
+      "legDistM": 129,
+      "animalType": "бозайник"
+    },
+    {
+      "step": 60,
+      "id": "marmozet_001",
+      "nameBg": "Мармозетка на Жофроа",
+      "nameEn": "Geoffroy's Marmoset",
+      "lat": 42.6572609,
+      "lng": 23.3336819,
+      "legDistM": 0,
+      "animalType": "бозайник"
+    },
+    {
+      "step": 61,
+      "id": "lapunder_001",
+      "nameBg": "Лапундер",
+      "nameEn": "Pig-tailed Macaque",
+      "lat": 42.6572609,
+      "lng": 23.3336819,
+      "legDistM": 0,
+      "animalType": "бозайник"
+    },
+    {
+      "step": 62,
+      "id": "kapucin_001",
+      "nameBg": "Кафяв капуцин",
+      "nameEn": "Brown Capuchin",
+      "lat": 42.6572609,
+      "lng": 23.3336819,
+      "legDistM": 0,
+      "animalType": "бозайник"
+    },
+    {
+      "step": 63,
+      "id": "langur_001",
+      "nameBg": "Ханумански лангур",
+      "nameEn": "Hanuman Langur",
+      "lat": 42.6577454,
+      "lng": 23.3338227,
+      "legDistM": 133,
+      "animalType": "бозайник"
+    },
+    {
+      "step": 64,
+      "id": "pavian_001",
+      "nameBg": "Мантиест павиан",
+      "nameEn": "Hamadryas Baboon",
+      "lat": 42.6577454,
+      "lng": 23.3338227,
+      "legDistM": 0,
+      "animalType": "бозайник"
+    },
+    {
+      "step": 65,
+      "id": "rezus_001",
+      "nameBg": "Макак резус",
+      "nameEn": "Rhesus Macaque",
+      "lat": 42.6577454,
+      "lng": 23.3338227,
+      "legDistM": 0,
+      "animalType": "бозайник"
+    },
+    {
+      "step": 66,
+      "id": "lvski_makak_001",
+      "nameBg": "Лъвски макак",
+      "nameEn": "Lion-tailed Macaque",
+      "lat": 42.6577454,
+      "lng": 23.3338227,
+      "legDistM": 0,
+      "animalType": "бозайник"
+    },
+    {
+      "step": 67,
+      "id": "kolobus_001",
+      "nameBg": "Чернобял колобус",
+      "nameEn": "Angola Colobus",
+      "lat": 42.6582398,
+      "lng": 23.3341374,
+      "legDistM": 107,
+      "animalType": "бозайник"
+    },
+    {
+      "step": 68,
+      "id": "gibon_001",
+      "nameBg": "Белоръки гибон",
+      "nameEn": "White-handed Gibbon",
+      "lat": 42.6582398,
+      "lng": 23.3341374,
+      "legDistM": 0,
+      "animalType": "бозайник"
+    },
+    {
+      "step": 69,
+      "id": "tamarin_001",
+      "nameBg": "Златоръкия тамарин",
+      "nameEn": "Golden Lion Tamarin",
+      "lat": 42.6582398,
+      "lng": 23.3341374,
+      "legDistM": 0,
+      "animalType": "бозайник"
+    },
+    {
+      "step": 70,
+      "id": "way_1313327309",
+      "nameBg": "Сиаманг",
+      "nameEn": "Siamang",
+      "lat": 42.6583692,
+      "lng": 23.334271,
+      "legDistM": 14,
+      "animalType": "бозайник"
+    },
+    {
+      "step": 71,
+      "id": "12170636005",
+      "nameBg": "Белоглав лешояд",
+      "nameEn": "Griffon Vulture",
+      "lat": 42.6587065,
+      "lng": 23.3338521,
+      "legDistM": 43,
+      "animalType": "птица"
+    },
+    {
+      "step": 72,
+      "id": "12170636005",
+      "nameBg": "Белоглав лешояд",
+      "nameEn": "Griffon Vulture",
+      "lat": 42.6587065,
+      "lng": 23.3338521,
+      "legDistM": 0,
+      "animalType": "птица"
+    },
+    {
+      "step": 73,
+      "id": "way_1314928272",
+      "nameBg": "Носато мече",
+      "nameEn": "South American Coati",
+      "lat": 42.6588647,
+      "lng": 23.3342881,
+      "legDistM": 22,
+      "animalType": "бозайник"
+    },
+    {
+      "step": 74,
+      "id": "12170636004",
+      "nameBg": "Черен лешояд (Картал)",
+      "nameEn": "Eurasian Black Vulture",
+      "lat": 42.6588277,
+      "lng": 23.3337086,
+      "legDistM": 45,
+      "animalType": "птица"
+    },
+    {
+      "step": 75,
+      "id": "12170636006",
+      "nameBg": "Скален орел",
+      "nameEn": "Golden Eagle",
+      "lat": 42.6586345,
+      "lng": 23.3335664,
+      "legDistM": 17,
+      "animalType": "птица"
+    },
+    {
+      "step": 76,
+      "id": "way_1381812198",
+      "nameBg": "Пони",
+      "nameEn": "Pony",
+      "lat": 42.658801,
+      "lng": 23.3329364,
+      "legDistM": 32,
+      "animalType": "бозайник"
+    },
+    {
+      "step": 77,
+      "id": "12170600567",
+      "nameBg": "Розов пеликан",
+      "nameEn": "Great White Pelican",
+      "lat": 42.6593361,
+      "lng": 23.333677,
+      "legDistM": 94,
+      "animalType": "птица"
+    },
+    {
+      "step": 78,
+      "id": "12170600568",
+      "nameBg": "Белобуза гъска",
+      "nameEn": "Barnacle Goose",
+      "lat": 42.6592624,
+      "lng": 23.3337666,
+      "legDistM": 0,
+      "animalType": "птица"
+    },
+    {
+      "step": 79,
+      "id": "12170600565",
+      "nameBg": "Поен лебед",
+      "nameEn": "Whooper Swan",
+      "lat": 42.6594808,
+      "lng": 23.3335009,
+      "legDistM": 46,
+      "animalType": "птица"
+    },
+    {
+      "step": 80,
+      "id": "12170600566",
+      "nameBg": "Къдроглав пеликан",
+      "nameEn": "Dalmatian Pelican",
+      "lat": 42.6594124,
+      "lng": 23.3335841,
+      "legDistM": 0,
+      "animalType": "птица"
+    },
+    {
+      "step": 81,
+      "id": "12170600564",
+      "nameBg": "Ням лебед",
+      "nameEn": "Mute Swan",
+      "lat": 42.6595479,
+      "lng": 23.3334193,
+      "legDistM": 1,
+      "animalType": "птица"
+    },
+    {
+      "step": 82,
+      "id": "12160884131",
+      "nameBg": "Черен лебед",
+      "nameEn": "Black Swan",
+      "lat": 42.6597871,
+      "lng": 23.3332068,
+      "legDistM": 40,
+      "animalType": "птица"
+    },
+    {
+      "step": 83,
+      "id": "12210523130",
+      "nameBg": "Червенобуза костенурка",
+      "nameEn": "Red-eared Slider",
+      "lat": 42.6592302,
+      "lng": 23.3342884,
+      "legDistM": 178,
+      "animalType": "влечуго"
+    },
+    {
+      "step": 84,
+      "id": "12173320223",
+      "nameBg": "Домашна патица",
+      "nameEn": "Domestic Duck",
+      "lat": 42.6596298,
+      "lng": 23.3324663,
+      "legDistM": 319,
+      "animalType": "птица"
+    },
+    {
+      "step": 85,
+      "id": "way_1314702072",
+      "nameBg": "Кожеста костенурка",
+      "nameEn": "Leatherback Turtle",
+      "lat": 42.6601566,
+      "lng": 23.3318341,
+      "legDistM": 92,
+      "animalType": "влечуго"
+    },
+    {
+      "step": 86,
+      "id": "way_1314702088",
+      "nameBg": "Трофеус Мури",
+      "nameEn": "Moorii Cichlid",
+      "lat": 42.6602587,
+      "lng": 23.3317931,
+      "legDistM": 0,
+      "animalType": "риба"
+    },
+    {
+      "step": 87,
+      "id": "way_1314702089",
+      "nameBg": "Мангано, Електрикаво син хап и Червена зебра",
+      "nameEn": "Mixed African Cichlids",
+      "lat": 42.6602483,
+      "lng": 23.3318119,
+      "legDistM": 0,
+      "animalType": "риба"
+    },
+    {
+      "step": 88,
+      "id": "way_1314702090",
+      "nameBg": "Императорска тетра",
+      "nameEn": "Emperor Tetra",
+      "lat": 42.6602182,
+      "lng": 23.3318387,
+      "legDistM": 0,
+      "animalType": "риба"
+    },
+    {
+      "step": 89,
+      "id": "way_1314702091",
+      "nameBg": "Тернеция и Четирипоясен барбус",
+      "nameEn": "Mixed Tetras",
+      "lat": 42.6602342,
+      "lng": 23.331828,
+      "legDistM": 0,
+      "animalType": "риба"
+    },
+    {
+      "step": 90,
+      "id": "way_1381695867",
+      "nameBg": "Бенгалски тигър",
+      "nameEn": "Bengal Tiger",
+      "lat": 42.659978,
+      "lng": 23.3318486,
+      "legDistM": 0,
+      "animalType": "бозайник"
+    },
+    {
+      "step": 91,
+      "id": "way_1314702083",
+      "nameBg": "Мистус",
+      "nameEn": "Asian Catfish",
+      "lat": 42.660277,
+      "lng": 23.3316785,
+      "legDistM": 25,
+      "animalType": "риба"
+    },
+    {
+      "step": 92,
+      "id": "way_1314702084",
+      "nameBg": "Зебровидна цихлазома и Барбус филаментозус",
+      "nameEn": "Mixed Cichlids",
+      "lat": 42.6602763,
+      "lng": 23.3317037,
+      "legDistM": 0,
+      "animalType": "риба"
+    },
+    {
+      "step": 93,
+      "id": "way_1314702085",
+      "nameBg": "Европейска змиорка и Птеригоплихт",
+      "nameEn": "European Eel & Pleco",
+      "lat": 42.6602743,
+      "lng": 23.3317274,
+      "legDistM": 0,
+      "animalType": "риба"
+    },
+    {
+      "step": 94,
+      "id": "way_1314702086",
+      "nameBg": "Скалария, Анциструс и Златноплещеста розова тетра",
+      "nameEn": "Mixed Tropical Fish",
+      "lat": 42.6602711,
+      "lng": 23.3317499,
+      "legDistM": 0,
+      "animalType": "риба"
+    },
+    {
+      "step": 95,
+      "id": "way_1314702087",
+      "nameBg": "Бронзов коридорас",
+      "nameEn": "Bronze Corydoras",
+      "lat": 42.6602659,
+      "lng": 23.3317723,
+      "legDistM": 0,
+      "animalType": "риба"
+    },
+    {
+      "step": 96,
+      "id": "way_1314702082",
+      "nameBg": "Плата",
+      "nameEn": "Southern Platyfish",
+      "lat": 42.6602762,
+      "lng": 23.3316519,
+      "legDistM": 4,
+      "animalType": "риба"
+    },
+    {
+      "step": 97,
+      "id": "way_1314702081",
+      "nameBg": "Тернеция, Червен дявол и Корална червена моливка",
+      "nameEn": "Mixed Tropical Fish",
+      "lat": 42.6602737,
+      "lng": 23.3316252,
+      "legDistM": 18,
+      "animalType": "риба"
+    },
+    {
+      "step": 98,
+      "id": "way_1314702080",
+      "nameBg": "Риба клоун и Доматен клоун",
+      "nameEn": "Clownfish",
+      "lat": 42.6602689,
+      "lng": 23.3315992,
+      "legDistM": 14,
+      "animalType": "риба"
+    },
+    {
+      "step": 99,
+      "id": "way_1314702078",
+      "nameBg": "Зебровидна акара",
+      "nameEn": "Zebra Acara",
+      "lat": 42.6602529,
+      "lng": 23.331545,
+      "legDistM": 2,
+      "animalType": "риба"
+    },
+    {
+      "step": 100,
+      "id": "way_1314702079",
+      "nameBg": "Кафяв протоптер",
+      "nameEn": "West African Lungfish",
+      "lat": 42.6602618,
+      "lng": 23.3315715,
+      "legDistM": 0,
+      "animalType": "риба"
+    },
+    {
+      "step": 101,
+      "id": "way_1314702053",
+      "nameBg": "Обикновен опосум",
+      "nameEn": "Common Opossum",
+      "lat": 42.6602469,
+      "lng": 23.3313145,
+      "legDistM": 8,
+      "animalType": "бозайник"
+    },
+    {
+      "step": 102,
+      "id": "way_1314702055",
+      "nameBg": "Кинкажу",
+      "nameEn": "Kinkajou",
+      "lat": 42.6602421,
+      "lng": 23.3313569,
+      "legDistM": 0,
+      "animalType": "бозайник"
+    },
+    {
+      "step": 103,
+      "id": "way_1314702057",
+      "nameBg": "Птеригоплихт, Абрамитес, Redhook Myleus и Пангас",
+      "nameEn": "Mixed Tropical Fish",
+      "lat": 42.6601092,
+      "lng": 23.3313004,
+      "legDistM": 0,
+      "animalType": "риба"
+    },
+    {
+      "step": 104,
+      "id": "way_1314702060",
+      "nameBg": "Червеноопашат сом и Колосома",
+      "nameEn": "Mixed Catfish & Tambaqui",
+      "lat": 42.6602012,
+      "lng": 23.331359,
+      "legDistM": 0,
+      "animalType": "риба"
+    },
+    {
+      "step": 105,
+      "id": "way_1314702068",
+      "nameBg": "Саванен варан",
+      "nameEn": "Savannah Monitor",
+      "lat": 42.6600389,
+      "lng": 23.3315748,
+      "legDistM": 0,
+      "animalType": "влечуго"
+    },
+    {
+      "step": 106,
+      "id": "way_1314702069",
+      "nameBg": "Брадата агама",
+      "nameEn": "Bearded Dragon",
+      "lat": 42.6600429,
+      "lng": 23.3315936,
+      "legDistM": 0,
+      "animalType": "влечуго"
+    },
+    {
+      "step": 107,
+      "id": "way_1314702074",
+      "nameBg": "Крибензис и Церос тетра",
+      "nameEn": "Mixed Cichlids",
+      "lat": 42.6602163,
+      "lng": 23.3314653,
+      "legDistM": 0,
+      "animalType": "риба"
+    },
+    {
+      "step": 108,
+      "id": "way_1314702075",
+      "nameBg": "Мраморно сомче, Калихт и Червенолентова тетра",
+      "nameEn": "Mixed Catfish & Tetras",
+      "lat": 42.6602253,
+      "lng": 23.3314833,
+      "legDistM": 0,
+      "animalType": "риба"
+    },
+    {
+      "step": 109,
+      "id": "way_1314702076",
+      "nameBg": "Птеригоплихт",
+      "nameEn": "Sailfin Pleco",
+      "lat": 42.6602348,
+      "lng": 23.3315027,
+      "legDistM": 0,
+      "animalType": "риба"
+    },
+    {
+      "step": 110,
+      "id": "way_1314702077",
+      "nameBg": "Червена пираня",
+      "nameEn": "Red Piranha",
+      "lat": 42.6602438,
+      "lng": 23.3315222,
+      "legDistM": 0,
+      "animalType": "риба"
+    },
+    {
+      "step": 111,
+      "id": "way_1314702051",
+      "nameBg": "Игуана",
+      "nameEn": "Green Iguana",
+      "lat": 42.6602463,
+      "lng": 23.3312006,
+      "legDistM": 33,
+      "animalType": "влечуго"
+    },
+    {
+      "step": 112,
+      "id": "way_1314702052",
+      "nameBg": "Жълтоглав воден варан",
+      "nameEn": "Yellow-headed Monitor",
+      "lat": 42.6602505,
+      "lng": 23.3312509,
+      "legDistM": 0,
+      "animalType": "влечуго"
+    },
+    {
+      "step": 113,
+      "id": "way_1314702050",
+      "nameBg": "Тигров питон албинос",
+      "nameEn": "Burmese Python (albino)",
+      "lat": 42.6602397,
+      "lng": 23.3311508,
+      "legDistM": 1,
+      "animalType": "влечуго"
+    },
+    {
+      "step": 114,
+      "id": "way_1314702049",
+      "nameBg": "Мрежест питон",
+      "nameEn": "Reticulated Python",
+      "lat": 42.6602292,
+      "lng": 23.3311038,
+      "legDistM": 1,
+      "animalType": "влечуго"
+    },
+    {
+      "step": 115,
+      "id": "way_1313847178",
+      "nameBg": "Амурски тигър",
+      "nameEn": "Amur Tiger",
+      "lat": 42.6603506,
+      "lng": 23.3310894,
+      "legDistM": 2,
+      "animalType": "бозайник"
+    },
+    {
+      "step": 116,
+      "id": "way_1314899579",
+      "nameBg": "Сребърен фазан",
+      "nameEn": "Silver Pheasant",
+      "lat": 42.6595422,
+      "lng": 23.3317828,
+      "legDistM": 184,
+      "animalType": "птица"
+    },
+    {
+      "step": 117,
+      "id": "way_1314899580",
+      "nameBg": "Домашен гълъб",
+      "nameEn": "Domestic Pigeon",
+      "lat": 42.6595405,
+      "lng": 23.3317081,
+      "legDistM": 14,
+      "animalType": "птица"
+    },
+    {
+      "step": 118,
+      "id": "way_1314899581",
+      "nameBg": "Златен фазан",
+      "nameEn": "Golden Pheasant",
+      "lat": 42.6595313,
+      "lng": 23.3316504,
+      "legDistM": 2,
+      "animalType": "птица"
+    },
+    {
+      "step": 119,
+      "id": "way_1314899582",
+      "nameBg": "Седлат фазан",
+      "nameEn": "Swinhoe's Pheasant",
+      "lat": 42.6595284,
+      "lng": 23.3315914,
+      "legDistM": 0,
+      "animalType": "птица"
+    },
+    {
+      "step": 120,
+      "id": "way_1314899583",
+      "nameBg": "Индийски (син) паун",
+      "nameEn": "Indian Peafowl",
+      "lat": 42.6595256,
+      "lng": 23.3315324,
+      "legDistM": 15,
+      "animalType": "птица"
+    },
+    {
+      "step": 121,
+      "id": "way_1381695866",
+      "nameBg": "Африкански лъв",
+      "nameEn": "African Lion",
+      "lat": 42.6598551,
+      "lng": 23.3314406,
+      "legDistM": 11,
+      "animalType": "бозайник"
+    },
+    {
+      "step": 122,
+      "id": "vampirska_riba_001",
+      "nameBg": "Вампирска риба",
+      "nameEn": "Payara / Vampire Fish",
+      "lat": 42.659967,
+      "lng": 23.331247,
+      "legDistM": 53,
+      "animalType": "риба"
+    },
+    {
+      "step": 123,
+      "id": "way_1381692165",
+      "nameBg": "Персийски леопард",
+      "nameEn": "Persian Leopard",
+      "lat": 42.6599885,
+      "lng": 23.3310311,
+      "legDistM": 0,
+      "animalType": "бозайник"
+    },
+    {
+      "step": 124,
+      "id": "way_1382112702",
+      "nameBg": "Евроазиатски рис",
+      "nameEn": "Eurasian Lynx",
+      "lat": 42.6595836,
+      "lng": 23.3308439,
+      "legDistM": 47,
+      "animalType": "бозайник"
+    },
+    {
+      "step": 125,
+      "id": "way_1381692164",
+      "nameBg": "Снежен леопард",
+      "nameEn": "Snow Leopard",
+      "lat": 42.6597963,
+      "lng": 23.3306705,
+      "legDistM": 45,
+      "animalType": "бозайник"
+    },
+    {
+      "step": 126,
+      "id": "way_1313940074",
+      "nameBg": "Нутрия",
+      "nameEn": "Coypu",
+      "lat": 42.6594722,
+      "lng": 23.3305131,
+      "legDistM": 41,
+      "animalType": "бозайник"
+    },
+    {
+      "step": 127,
+      "id": "way_1313922727",
+      "nameBg": "Нутрия",
+      "nameEn": "Coypu",
+      "lat": 42.6594744,
+      "lng": 23.3306337,
+      "legDistM": 18,
+      "animalType": "бозайник"
+    },
+    {
+      "step": 128,
+      "id": "way_1313922725",
+      "nameBg": "Гарван гробар",
+      "nameEn": "Carrion Crow",
+      "lat": 42.6594082,
+      "lng": 23.330431,
+      "legDistM": 16,
+      "animalType": "птица"
+    },
+    {
+      "step": 129,
+      "id": "way_1313940075",
+      "nameBg": "Фретка",
+      "nameEn": "Ferret",
+      "lat": 42.659408,
+      "lng": 23.3302811,
+      "legDistM": 25,
+      "animalType": "бозайник"
+    },
+    {
+      "step": 130,
+      "id": "way_1381690081",
+      "nameBg": "Ягуар",
+      "nameEn": "Jaguar",
+      "lat": 42.6599095,
+      "lng": 23.3303888,
+      "legDistM": 109,
+      "animalType": "бозайник"
+    },
+    {
+      "step": 131,
+      "id": "way_1314702020",
+      "nameBg": "Планинска кралска змия",
+      "nameEn": "Mountain Kingsnake",
+      "lat": 42.6599576,
+      "lng": 23.3306412,
+      "legDistM": 54,
+      "animalType": "влечуго"
+    },
+    {
+      "step": 132,
+      "id": "way_1314702019",
+      "nameBg": "Царевичен смок",
+      "nameEn": "Corn Snake",
+      "lat": 42.659954,
+      "lng": 23.3306539,
+      "legDistM": 0,
+      "animalType": "влечуго"
+    },
+    {
+      "step": 133,
+      "id": "way_1314702011",
+      "nameBg": "Калифорнийска кралска змия",
+      "nameEn": "California Kingsnake",
+      "lat": 42.6599654,
+      "lng": 23.3306146,
+      "legDistM": 0,
+      "animalType": "влечуго"
+    },
+    {
+      "step": 134,
+      "id": "way_1314702010",
+      "nameBg": "Хондураска млечна змия",
+      "nameEn": "Honduran Milk Snake",
+      "lat": 42.6599613,
+      "lng": 23.3306285,
+      "legDistM": 0,
+      "animalType": "влечуго"
+    },
+    {
+      "step": 135,
+      "id": "way_1314611620",
+      "nameBg": "Обикновена боа",
+      "nameEn": "Common Boa",
+      "lat": 42.6600326,
+      "lng": 23.3305489,
+      "legDistM": 0,
+      "animalType": "влечуго"
+    },
+    {
+      "step": 136,
+      "id": "way_1314611619",
+      "nameBg": "Азиатска кутийчеста костенурка",
+      "nameEn": "Amboina Box Turtle",
+      "lat": 42.6600485,
+      "lng": 23.3305414,
+      "legDistM": 0,
+      "animalType": "влечуго"
+    },
+    {
+      "step": 137,
+      "id": "way_1314607626",
+      "nameBg": "Мисисипски алигатор",
+      "nameEn": "American Alligator",
+      "lat": 42.6600468,
+      "lng": 23.3306472,
+      "legDistM": 0,
+      "animalType": "влечуго"
+    },
+    {
+      "step": 138,
+      "id": "way_1314607625",
+      "nameBg": "Шипоопашата костенурка",
+      "nameEn": "Greek Tortoise",
+      "lat": 42.6602415,
+      "lng": 23.3304035,
+      "legDistM": 14,
+      "animalType": "влечуго"
+    },
+    {
+      "step": 139,
+      "id": "way_1314168821",
+      "nameBg": "Американска норка",
+      "nameEn": "American Mink",
+      "lat": 42.6602747,
+      "lng": 23.3305077,
+      "legDistM": 14,
+      "animalType": "бозайник"
+    },
+    {
+      "step": 140,
+      "id": "way_1313995551",
+      "nameBg": "Ивичест скункс",
+      "nameEn": "Striped Skunk",
+      "lat": 42.6601637,
+      "lng": 23.3305426,
+      "legDistM": 0,
+      "animalType": "бозайник"
+    },
+    {
+      "step": 141,
+      "id": "way_1314154182",
+      "nameBg": "Азиатска късоноктеста видра",
+      "nameEn": "Asian Small-clawed Otter",
+      "lat": 42.6603038,
+      "lng": 23.3306762,
+      "legDistM": 14,
+      "animalType": "бозайник"
+    },
+    {
+      "step": 142,
+      "id": "way_1314162645",
+      "nameBg": "Сурикат",
+      "nameEn": "Meerkat",
+      "lat": 42.660188,
+      "lng": 23.3307085,
+      "legDistM": 3,
+      "animalType": "бозайник"
+    },
+    {
+      "step": 143,
+      "id": "way_1314702044",
+      "nameBg": "Кубинска боа",
+      "nameEn": "Cuban Boa",
+      "lat": 42.660159,
+      "lng": 23.3308969,
+      "legDistM": 14,
+      "animalType": "влечуго"
+    },
+    {
+      "step": 144,
+      "id": "way_1314702045",
+      "nameBg": "Чинчила",
+      "nameEn": "Chinchilla",
+      "lat": 42.6601666,
+      "lng": 23.3309222,
+      "legDistM": 2,
+      "animalType": "бозайник"
+    },
+    {
+      "step": 145,
+      "id": "way_1314702046",
+      "nameBg": "Чинчила",
+      "nameEn": "Chinchilla",
+      "lat": 42.6601854,
+      "lng": 23.330966,
+      "legDistM": 0,
+      "animalType": "бозайник"
+    },
+    {
+      "step": 146,
+      "id": "way_1314702047",
+      "nameBg": "Аметистов питон",
+      "nameEn": "Amethystine Python",
+      "lat": 42.6602022,
+      "lng": 23.3310114,
+      "legDistM": 0,
+      "animalType": "влечуго"
+    },
+    {
+      "step": 147,
+      "id": "way_1314702048",
+      "nameBg": "Цейлонски тигров питон",
+      "nameEn": "Sri Lanka Python",
+      "lat": 42.6602174,
+      "lng": 23.3310574,
+      "legDistM": 0,
+      "animalType": "влечуго"
+    },
+    {
+      "step": 148,
+      "id": "way_1314702043",
+      "nameBg": "Императорска боа",
+      "nameEn": "Imperial Boa",
+      "lat": 42.6601515,
+      "lng": 23.3308834,
+      "legDistM": 20,
+      "animalType": "влечуго"
+    },
+    {
+      "step": 149,
+      "id": "way_1314702042",
+      "nameBg": "Дюмерилова боа",
+      "nameEn": "Dumeril's Boa",
+      "lat": 42.6601435,
+      "lng": 23.3308705,
+      "legDistM": 0,
+      "animalType": "влечуго"
+    },
+    {
+      "step": 150,
+      "id": "way_1314702041",
+      "nameBg": "Дъгова боа",
+      "nameEn": "Rainbow Boa",
+      "lat": 42.660135,
+      "lng": 23.3308579,
+      "legDistM": 0,
+      "animalType": "влечуго"
+    },
+    {
+      "step": 151,
+      "id": "way_1314702040",
+      "nameBg": "Виетнамски златен гекон",
+      "nameEn": "Vietnamese Golden Gecko",
+      "lat": 42.6601264,
+      "lng": 23.3308458,
+      "legDistM": 0,
+      "animalType": "влечуго"
+    },
+    {
+      "step": 152,
+      "id": "way_1314702039",
+      "nameBg": "Йеменски хамелеон",
+      "nameEn": "Veiled Chameleon",
+      "lat": 42.6601174,
+      "lng": 23.3308343,
+      "legDistM": 0,
+      "animalType": "влечуго"
+    },
+    {
+      "step": 153,
+      "id": "way_1314702036",
+      "nameBg": "Гекон токи",
+      "nameEn": "Tokay Gecko",
+      "lat": 42.6601124,
+      "lng": 23.3308223,
+      "legDistM": 0,
+      "animalType": "влечуго"
+    },
+    {
+      "step": 154,
+      "id": "way_1314702035",
+      "nameBg": "Мадагаскарски гекон",
+      "nameEn": "Madagascar Ground Gecko",
+      "lat": 42.6601048,
+      "lng": 23.3308132,
+      "legDistM": 8,
+      "animalType": "влечуго"
+    },
+    {
+      "step": 155,
+      "id": "way_1314702034",
+      "nameBg": "Йеменски хамелеон",
+      "nameEn": "Veiled Chameleon",
+      "lat": 42.6600961,
+      "lng": 23.3308029,
+      "legDistM": 0,
+      "animalType": "влечуго"
+    },
+    {
+      "step": 156,
+      "id": "way_1314702033",
+      "nameBg": "Кадифен ивичест гекон",
+      "nameEn": "Skunk Gecko",
+      "lat": 42.6600868,
+      "lng": 23.3307918,
+      "legDistM": 0,
+      "animalType": "влечуго"
+    },
+    {
+      "step": 157,
+      "id": "way_1314702032",
+      "nameBg": "Новокаледонски ресничест гекон",
+      "nameEn": "Crested Gecko",
+      "lat": 42.6600772,
+      "lng": 23.3307801,
+      "legDistM": 0,
+      "animalType": "влечуго"
+    },
+    {
+      "step": 158,
+      "id": "way_1314702024",
+      "nameBg": "Леопардова костенурка",
+      "nameEn": "Leopard Tortoise",
+      "lat": 42.660049,
+      "lng": 23.3308181,
+      "legDistM": 0,
+      "animalType": "влечуго"
+    },
+    {
+      "step": 159,
+      "id": "way_1314702023",
+      "nameBg": "Африкански мрежест охлюв",
+      "nameEn": "Giant African Land Snail",
+      "lat": 42.6600394,
+      "lng": 23.3307946,
+      "legDistM": 0,
+      "animalType": "безгръбначно"
+    },
+    {
+      "step": 160,
+      "id": "way_1314702022",
+      "nameBg": "Кралски питон",
+      "nameEn": "Ball Python",
+      "lat": 42.6600129,
+      "lng": 23.3307885,
+      "legDistM": 0,
+      "animalType": "влечуго"
+    },
+    {
+      "step": 161,
+      "id": "way_1314702016",
+      "nameBg": "Зелен дървесен питон",
+      "nameEn": "Green Tree Python",
+      "lat": 42.6599761,
+      "lng": 23.3307919,
+      "legDistM": 0,
+      "animalType": "влечуго"
+    },
+    {
+      "step": 162,
+      "id": "way_1314702015",
+      "nameBg": "Кубинска боа",
+      "nameEn": "Cuban Boa",
+      "lat": 42.6599882,
+      "lng": 23.3308014,
+      "legDistM": 0,
+      "animalType": "влечуго"
+    },
+    {
+      "step": 163,
+      "id": "way_1314702014",
+      "nameBg": "Новокаледонски ресничест гекон",
+      "nameEn": "Crested Gecko",
+      "lat": 42.6600035,
+      "lng": 23.3307956,
+      "legDistM": 0,
+      "animalType": "влечуго"
+    },
+    {
+      "step": 164,
+      "id": "way_1314702012",
+      "nameBg": "Зелен базилискус",
+      "nameEn": "Plumed Basilisk",
+      "lat": 42.6599724,
+      "lng": 23.3307757,
+      "legDistM": 0,
+      "animalType": "влечуго"
+    },
+    {
+      "step": 165,
+      "id": "way_1314611617",
+      "nameBg": "Сурикат",
+      "nameEn": "Meerkat",
+      "lat": 42.6601373,
+      "lng": 23.3307036,
+      "legDistM": 0,
+      "animalType": "бозайник"
+    },
+    {
+      "step": 166,
+      "id": "west-entrance",
+      "nameBg": "Западен вход",
+      "nameEn": "West Entrance",
+      "lat": 42.660139,
+      "lng": 23.3307871,
+      "legDistM": 0,
+      "animalType": "entrance"
+    }
+  ],
+  "fullPolyline": [
+    [
+      42.660139,
+      23.3307871
+    ],
+    [
+      42.6591567,
+      23.3296242
+    ],
+    [
+      42.6591289,
+      23.3296144
+    ],
+    [
+      42.6591254,
+      23.3296106
+    ],
+    [
+      42.659099,
+      23.3296426
+    ],
+    [
+      42.659063,
+      23.3296868
+    ],
+    [
+      42.6590005,
+      23.3295916
+    ],
+    [
+      42.65899,
+      23.329576
+    ],
+    [
+      42.6588942,
+      23.3296954
+    ],
+    [
+      42.6588197,
+      23.3295849
+    ],
+    [
+      42.6587016,
+      23.3297321
+    ],
+    [
+      42.6586598,
+      23.3296732
+    ],
+    [
+      42.6587016,
+      23.3297321
+    ],
+    [
+      42.6585721,
+      23.3298934
+    ],
+    [
+      42.6585504,
+      23.329861
+    ],
+    [
+      42.6584838,
+      23.329944
+    ],
+    [
+      42.6584709,
+      23.32996
+    ],
+    [
+      42.6584106,
+      23.3300351
+    ],
+    [
+      42.6584773,
+      23.330134
+    ],
+    [
+      42.6584659,
+      23.3301481
+    ],
+    [
+      42.6584093,
+      23.3302191
+    ],
+    [
+      42.6584427,
+      23.3302697
+    ],
+    [
+      42.6584703,
+      23.33031
+    ],
+    [
+      42.6584388,
+      23.3303405
+    ],
+    [
+      42.6584175,
+      23.3303736
+    ],
+    [
+      42.6584015,
+      23.3304113
+    ],
+    [
+      42.6583818,
+      23.3304563
+    ],
+    [
+      42.6583582,
+      23.3304974
+    ],
+    [
+      42.6583257,
+      23.3305257
+    ],
+    [
+      42.6582886,
+      23.3305359
+    ],
+    [
+      42.6581594,
+      23.3305317
+    ],
+    [
+      42.6580255,
+      23.3306907
+    ],
+    [
+      42.6579987,
+      23.3307318
+    ],
+    [
+      42.6579711,
+      23.3307837
+    ],
+    [
+      42.6579498,
+      23.3308417
+    ],
+    [
+      42.6579364,
+      23.330893
+    ],
+    [
+      42.6579301,
+      23.3309303
+    ],
+    [
+      42.6579261,
+      23.3309758
+    ],
+    [
+      42.6579254,
+      23.3310258
+    ],
+    [
+      42.6580395,
+      23.3310337
+    ],
+    [
+      42.6579254,
+      23.3310258
+    ],
+    [
+      42.6579252,
+      23.3310813
+    ],
+    [
+      42.6579274,
+      23.3313495
+    ],
+    [
+      42.6579634,
+      23.3313369
+    ],
+    [
+      42.6579954,
+      23.3313393
+    ],
+    [
+      42.6580218,
+      23.3313491
+    ],
+    [
+      42.6580395,
+      23.3313681
+    ],
+    [
+      42.6580515,
+      23.331386
+    ],
+    [
+      42.658079,
+      23.3314391
+    ],
+    [
+      42.6580961,
+      23.3314605
+    ],
+    [
+      42.6581215,
+      23.3314797
+    ],
+    [
+      42.6581579,
+      23.3314947
+    ],
+    [
+      42.658206,
+      23.3314984
+    ],
+    [
+      42.658255,
+      23.3314917
+    ],
+    [
+      42.6583073,
+      23.3314727
+    ],
+    [
+      42.6583418,
+      23.3314566
+    ],
+    [
+      42.6583862,
+      23.3314428
+    ],
+    [
+      42.6584112,
+      23.3314432
+    ],
+    [
+      42.6584324,
+      23.3314515
+    ],
+    [
+      42.6584691,
+      23.3314817
+    ],
+    [
+      42.6585006,
+      23.3315195
+    ],
+    [
+      42.6587174,
+      23.3318505
+    ],
+    [
+      42.6587428,
+      23.3318748
+    ],
+    [
+      42.658775,
+      23.3318914
+    ],
+    [
+      42.658804,
+      23.3318975
+    ],
+    [
+      42.658826,
+      23.3318966
+    ],
+    [
+      42.658996,
+      23.3318684
+    ],
+    [
+      42.6590406,
+      23.3318416
+    ],
+    [
+      42.6590724,
+      23.3318122
+    ],
+    [
+      42.6591218,
+      23.3317455
+    ],
+    [
+      42.6591513,
+      23.3316872
+    ],
+    [
+      42.6591709,
+      23.3316339
+    ],
+    [
+      42.6591806,
+      23.3315952
+    ],
+    [
+      42.659185,
+      23.3315545
+    ],
+    [
+      42.6591849,
+      23.3315158
+    ],
+    [
+      42.6592201,
+      23.3315109
+    ],
+    [
+      42.659281,
+      23.331504
+    ],
+    [
+      42.6593184,
+      23.3314508
+    ],
+    [
+      42.659281,
+      23.331504
+    ],
+    [
+      42.6593237,
+      23.3314992
+    ],
+    [
+      42.6593601,
+      23.3314511
+    ],
+    [
+      42.6593856,
+      23.3314114
+    ],
+    [
+      42.6594063,
+      23.3313511
+    ],
+    [
+      42.6594168,
+      23.3312932
+    ],
+    [
+      42.6594163,
+      23.3312338
+    ],
+    [
+      42.6594094,
+      23.3311734
+    ],
+    [
+      42.6593946,
+      23.3311144
+    ],
+    [
+      42.6593729,
+      23.3310715
+    ],
+    [
+      42.6593413,
+      23.3310313
+    ],
+    [
+      42.6593078,
+      23.3310018
+    ],
+    [
+      42.6592703,
+      23.3309857
+    ],
+    [
+      42.6592259,
+      23.3309723
+    ],
+    [
+      42.6591914,
+      23.3309723
+    ],
+    [
+      42.6591677,
+      23.3309776
+    ],
+    [
+      42.659148,
+      23.3309843
+    ],
+    [
+      42.6591056,
+      23.3310112
+    ],
+    [
+      42.6590881,
+      23.3310262
+    ],
+    [
+      42.6590626,
+      23.3310494
+    ],
+    [
+      42.6590406,
+      23.3310576
+    ],
+    [
+      42.6590217,
+      23.3310579
+    ],
+    [
+      42.6590049,
+      23.3310485
+    ],
+    [
+      42.6589932,
+      23.3310236
+    ],
+    [
+      42.6589882,
+      23.3309897
+    ],
+    [
+      42.6589863,
+      23.3309441
+    ],
+    [
+      42.6589685,
+      23.330873
+    ],
+    [
+      42.6589429,
+      23.3308194
+    ],
+    [
+      42.6589123,
+      23.3307778
+    ],
+    [
+      42.6588807,
+      23.3307496
+    ],
+    [
+      42.6588393,
+      23.3307309
+    ],
+    [
+      42.6587969,
+      23.3307228
+    ],
+    [
+      42.658767,
+      23.3307249
+    ],
+    [
+      42.6587368,
+      23.3307294
+    ],
+    [
+      42.6587165,
+      23.3307356
+    ],
+    [
+      42.6586925,
+      23.3307398
+    ],
+    [
+      42.6586571,
+      23.3307374
+    ],
+    [
+      42.6586258,
+      23.3307291
+    ],
+    [
+      42.6585799,
+      23.3307161
+    ],
+    [
+      42.6585424,
+      23.3307109
+    ],
+    [
+      42.6584276,
+      23.330704
+    ],
+    [
+      42.658399,
+      23.3307021
+    ],
+    [
+      42.6584352,
+      23.3308492
+    ],
+    [
+      42.6584596,
+      23.3309113
+    ],
+    [
+      42.6584844,
+      23.3309519
+    ],
+    [
+      42.6585167,
+      23.3309913
+    ],
+    [
+      42.6585469,
+      23.3310107
+    ],
+    [
+      42.6585813,
+      23.3310249
+    ],
+    [
+      42.6586227,
+      23.3310318
+    ],
+    [
+      42.6586516,
+      23.3310317
+    ],
+    [
+      42.658692,
+      23.3310288
+    ],
+    [
+      42.6587056,
+      23.3310231
+    ],
+    [
+      42.6587174,
+      23.3310151
+    ],
+    [
+      42.6587485,
+      23.3309869
+    ],
+    [
+      42.6587707,
+      23.3309682
+    ],
+    [
+      42.6587894,
+      23.3309535
+    ],
+    [
+      42.6588033,
+      23.3309461
+    ],
+    [
+      42.6588156,
+      23.3309447
+    ],
+    [
+      42.6588245,
+      23.3309534
+    ],
+    [
+      42.6588284,
+      23.3309655
+    ],
+    [
+      42.6588298,
+      23.3309937
+    ],
+    [
+      42.6588288,
+      23.3310185
+    ],
+    [
+      42.6588281,
+      23.331052
+    ],
+    [
+      42.6588299,
+      23.3310882
+    ],
+    [
+      42.6588347,
+      23.3311328
+    ],
+    [
+      42.6588444,
+      23.3311582
+    ],
+    [
+      42.6588616,
+      23.3311931
+    ],
+    [
+      42.6588873,
+      23.33123
+    ],
+    [
+      42.6589103,
+      23.3312564
+    ],
+    [
+      42.6589391,
+      23.3312812
+    ],
+    [
+      42.65896,
+      23.331291
+    ],
+    [
+      42.6589849,
+      23.3313012
+    ],
+    [
+      42.6590211,
+      23.3313083
+    ],
+    [
+      42.6590479,
+      23.3313107
+    ],
+    [
+      42.6590913,
+      23.3312992
+    ],
+    [
+      42.6591219,
+      23.331281
+    ],
+    [
+      42.6591677,
+      23.3312335
+    ],
+    [
+      42.6591219,
+      23.331281
+    ],
+    [
+      42.6590913,
+      23.3312992
+    ],
+    [
+      42.6590479,
+      23.3313107
+    ],
+    [
+      42.6591015,
+      23.3313278
+    ],
+    [
+      42.6591336,
+      23.3313547
+    ],
+    [
+      42.6591505,
+      23.3313812
+    ],
+    [
+      42.6591641,
+      23.3314165
+    ],
+    [
+      42.6591695,
+      23.3314415
+    ],
+    [
+      42.6591849,
+      23.3315158
+    ],
+    [
+      42.659185,
+      23.3315545
+    ],
+    [
+      42.6591806,
+      23.3315952
+    ],
+    [
+      42.6591709,
+      23.3316339
+    ],
+    [
+      42.6591513,
+      23.3316872
+    ],
+    [
+      42.6591218,
+      23.3317455
+    ],
+    [
+      42.6590724,
+      23.3318122
+    ],
+    [
+      42.6590406,
+      23.3318416
+    ],
+    [
+      42.658996,
+      23.3318684
+    ],
+    [
+      42.6590259,
+      23.3318731
+    ],
+    [
+      42.6590478,
+      23.3318866
+    ],
+    [
+      42.6590787,
+      23.33192
+    ],
+    [
+      42.659179,
+      23.332068
+    ],
+    [
+      42.6591681,
+      23.3320881
+    ],
+    [
+      42.659078,
+      23.3322707
+    ],
+    [
+      42.6590522,
+      23.332323
+    ],
+    [
+      42.6590136,
+      23.3324025
+    ],
+    [
+      42.6589406,
+      23.332553
+    ],
+    [
+      42.6586789,
+      23.3325361
+    ],
+    [
+      42.6586388,
+      23.3325588
+    ],
+    [
+      42.6586055,
+      23.3325829
+    ],
+    [
+      42.6585771,
+      23.3326083
+    ],
+    [
+      42.6585452,
+      23.3326468
+    ],
+    [
+      42.6583911,
+      23.3328518
+    ],
+    [
+      42.6585452,
+      23.3326468
+    ],
+    [
+      42.6585478,
+      23.3326172
+    ],
+    [
+      42.6585354,
+      23.3325515
+    ],
+    [
+      42.6585192,
+      23.3325237
+    ],
+    [
+      42.6581293,
+      23.3324941
+    ],
+    [
+      42.6580981,
+      23.3324964
+    ],
+    [
+      42.6580706,
+      23.3325034
+    ],
+    [
+      42.6580515,
+      23.3325147
+    ],
+    [
+      42.658031,
+      23.3325337
+    ],
+    [
+      42.6577297,
+      23.332882
+    ],
+    [
+      42.6575221,
+      23.3328938
+    ],
+    [
+      42.6574605,
+      23.3328971
+    ],
+    [
+      42.6574581,
+      23.3328703
+    ],
+    [
+      42.6573483,
+      23.3327173
+    ],
+    [
+      42.6573022,
+      23.3327164
+    ],
+    [
+      42.6572212,
+      23.3327175
+    ],
+    [
+      42.6571882,
+      23.332718
+    ],
+    [
+      42.6571893,
+      23.3326703
+    ],
+    [
+      42.6571302,
+      23.3325818
+    ],
+    [
+      42.6570325,
+      23.3325791
+    ],
+    [
+      42.6569729,
+      23.3326549
+    ],
+    [
+      42.656972,
+      23.3327192
+    ],
+    [
+      42.6569715,
+      23.3327845
+    ],
+    [
+      42.6570286,
+      23.3328644
+    ],
+    [
+      42.6571294,
+      23.3328591
+    ],
+    [
+      42.6571288,
+      23.3329427
+    ],
+    [
+      42.657186,
+      23.3330223
+    ],
+    [
+      42.6572515,
+      23.3330229
+    ],
+    [
+      42.6572811,
+      23.3330616
+    ],
+    [
+      42.657316,
+      23.3331072
+    ],
+    [
+      42.6573571,
+      23.3331033
+    ],
+    [
+      42.657373,
+      23.3331248
+    ],
+    [
+      42.6574168,
+      23.3331843
+    ],
+    [
+      42.6574446,
+      23.3332243
+    ],
+    [
+      42.6573679,
+      23.3333149
+    ],
+    [
+      42.6573473,
+      23.3333239
+    ],
+    [
+      42.6573202,
+      23.3333218
+    ],
+    [
+      42.6572961,
+      23.3333157
+    ],
+    [
+      42.6572629,
+      23.3333112
+    ],
+    [
+      42.6571798,
+      23.3333195
+    ],
+    [
+      42.6571868,
+      23.3334013
+    ],
+    [
+      42.6571907,
+      23.3334438
+    ],
+    [
+      42.6571855,
+      23.3334826
+    ],
+    [
+      42.6571694,
+      23.3335136
+    ],
+    [
+      42.6571524,
+      23.333536
+    ],
+    [
+      42.6571694,
+      23.3335136
+    ],
+    [
+      42.6571855,
+      23.3334826
+    ],
+    [
+      42.6571907,
+      23.3334438
+    ],
+    [
+      42.6571868,
+      23.3334013
+    ],
+    [
+      42.6571798,
+      23.3333195
+    ],
+    [
+      42.6572629,
+      23.3333112
+    ],
+    [
+      42.6572961,
+      23.3333157
+    ],
+    [
+      42.6573202,
+      23.3333218
+    ],
+    [
+      42.6573473,
+      23.3333239
+    ],
+    [
+      42.6573679,
+      23.3333149
+    ],
+    [
+      42.6574446,
+      23.3332243
+    ],
+    [
+      42.657564,
+      23.3333979
+    ],
+    [
+      42.6575881,
+      23.333388
+    ],
+    [
+      42.6576114,
+      23.3333825
+    ],
+    [
+      42.6576367,
+      23.3333877
+    ],
+    [
+      42.6578604,
+      23.3335254
+    ],
+    [
+      42.6577955,
+      23.3336361
+    ],
+    [
+      42.6578347,
+      23.3336984
+    ],
+    [
+      42.657781,
+      23.3337591
+    ],
+    [
+      42.6578347,
+      23.3336984
+    ],
+    [
+      42.6578589,
+      23.3336715
+    ],
+    [
+      42.6579636,
+      23.3335553
+    ],
+    [
+      42.658007,
+      23.333557
+    ],
+    [
+      42.6580214,
+      23.333566
+    ],
+    [
+      42.6580766,
+      23.3336117
+    ],
+    [
+      42.658117,
+      23.3336371
+    ],
+    [
+      42.6581054,
+      23.3337261
+    ],
+    [
+      42.6580954,
+      23.3337652
+    ],
+    [
+      42.6580792,
+      23.3338053
+    ],
+    [
+      42.6580786,
+      23.333829
+    ],
+    [
+      42.6580834,
+      23.3338468
+    ],
+    [
+      42.658112,
+      23.3338901
+    ],
+    [
+      42.6581297,
+      23.3338822
+    ],
+    [
+      42.6581475,
+      23.3338815
+    ],
+    [
+      42.6581873,
+      23.3338915
+    ],
+    [
+      42.6582119,
+      23.3338953
+    ],
+    [
+      42.6582365,
+      23.3338926
+    ],
+    [
+      42.6582606,
+      23.3338846
+    ],
+    [
+      42.65829,
+      23.3338692
+    ],
+    [
+      42.6583154,
+      23.3339102
+    ],
+    [
+      42.6583814,
+      23.3340171
+    ],
+    [
+      42.6583921,
+      23.3340343
+    ],
+    [
+      42.6583807,
+      23.3340468
+    ],
+    [
+      42.6583921,
+      23.3340343
+    ],
+    [
+      42.6584033,
+      23.3340525
+    ],
+    [
+      42.6584422,
+      23.3341154
+    ],
+    [
+      42.6584359,
+      23.3341538
+    ],
+    [
+      42.6584422,
+      23.3341154
+    ],
+    [
+      42.6584572,
+      23.3340241
+    ],
+    [
+      42.6584693,
+      23.33395
+    ],
+    [
+      42.6585695,
+      23.3338417
+    ],
+    [
+      42.6586407,
+      23.3339401
+    ],
+    [
+      42.6586897,
+      23.3339923
+    ],
+    [
+      42.6587126,
+      23.3340152
+    ],
+    [
+      42.6587349,
+      23.3340284
+    ],
+    [
+      42.6587632,
+      23.3340403
+    ],
+    [
+      42.658789,
+      23.3340445
+    ],
+    [
+      42.6588169,
+      23.3340419
+    ],
+    [
+      42.6588421,
+      23.334033
+    ],
+    [
+      42.6588682,
+      23.33402
+    ],
+    [
+      42.6588899,
+      23.3340017
+    ],
+    [
+      42.6589116,
+      23.3339767
+    ],
+    [
+      42.6589285,
+      23.3339488
+    ],
+    [
+      42.6589424,
+      23.3339168
+    ],
+    [
+      42.6589513,
+      23.3338876
+    ],
+    [
+      42.6589574,
+      23.3338466
+    ],
+    [
+      42.6589577,
+      23.3338128
+    ],
+    [
+      42.658955,
+      23.3337736
+    ],
+    [
+      42.6589418,
+      23.3337236
+    ],
+    [
+      42.658891,
+      23.3336179
+    ],
+    [
+      42.6588366,
+      23.3335267
+    ],
+    [
+      42.6587848,
+      23.3335894
+    ],
+    [
+      42.6588366,
+      23.3335267
+    ],
+    [
+      42.6587581,
+      23.333412
+    ],
+    [
+      42.658699,
+      23.3333474
+    ],
+    [
+      42.6586733,
+      23.333327
+    ],
+    [
+      42.658699,
+      23.3333474
+    ],
+    [
+      42.6587581,
+      23.333412
+    ],
+    [
+      42.6588366,
+      23.3335267
+    ],
+    [
+      42.658891,
+      23.3336179
+    ],
+    [
+      42.6589418,
+      23.3337236
+    ],
+    [
+      42.6590238,
+      23.3338506
+    ],
+    [
+      42.6590421,
+      23.3338734
+    ],
+    [
+      42.6590654,
+      23.3338968
+    ],
+    [
+      42.659093,
+      23.333914
+    ],
+    [
+      42.6591457,
+      23.3339156
+    ],
+    [
+      42.6593011,
+      23.3339197
+    ],
+    [
+      42.6593017,
+      23.333885
+    ],
+    [
+      42.6593011,
+      23.3339197
+    ],
+    [
+      42.6595861,
+      23.333564
+    ],
+    [
+      42.6595982,
+      23.3335564
+    ],
+    [
+      42.6596086,
+      23.3335578
+    ],
+    [
+      42.6596494,
+      23.3335813
+    ],
+    [
+      42.6596896,
+      23.3335917
+    ],
+    [
+      42.6597336,
+      23.3335902
+    ],
+    [
+      42.65976,
+      23.3335809
+    ],
+    [
+      42.6597848,
+      23.3335644
+    ],
+    [
+      42.6598037,
+      23.3335446
+    ],
+    [
+      42.6599092,
+      23.3334136
+    ],
+    [
+      42.6599385,
+      23.3333875
+    ],
+    [
+      42.6599613,
+      23.3333779
+    ],
+    [
+      42.6599729,
+      23.3333794
+    ],
+    [
+      42.6599855,
+      23.3333835
+    ],
+    [
+      42.6600057,
+      23.3333962
+    ],
+    [
+      42.6600485,
+      23.3334346
+    ],
+    [
+      42.660105,
+      23.3334864
+    ],
+    [
+      42.6600484,
+      23.3335431
+    ],
+    [
+      42.6599598,
+      23.3336442
+    ],
+    [
+      42.6599186,
+      23.3336989
+    ],
+    [
+      42.6598707,
+      23.3337659
+    ],
+    [
+      42.6598461,
+      23.3338044
+    ],
+    [
+      42.6598274,
+      23.3338368
+    ],
+    [
+      42.6598138,
+      23.3338696
+    ],
+    [
+      42.6598054,
+      23.3338968
+    ],
+    [
+      42.6597978,
+      23.333936
+    ],
+    [
+      42.6597951,
+      23.3339922
+    ],
+    [
+      42.6597941,
+      23.3340426
+    ],
+    [
+      42.6597398,
+      23.3340407
+    ],
+    [
+      42.6597191,
+      23.33404
+    ],
+    [
+      42.6597172,
+      23.3342548
+    ],
+    [
+      42.6597123,
+      23.3343278
+    ],
+    [
+      42.6597012,
+      23.3343753
+    ],
+    [
+      42.6596908,
+      23.3344021
+    ],
+    [
+      42.6596754,
+      23.3344309
+    ],
+    [
+      42.6596525,
+      23.3344571
+    ],
+    [
+      42.6596306,
+      23.3344715
+    ],
+    [
+      42.6596031,
+      23.3344786
+    ],
+    [
+      42.6592215,
+      23.3344538
+    ],
+    [
+      42.6596031,
+      23.3344786
+    ],
+    [
+      42.6596306,
+      23.3344715
+    ],
+    [
+      42.6596525,
+      23.3344571
+    ],
+    [
+      42.6596754,
+      23.3344309
+    ],
+    [
+      42.6596908,
+      23.3344021
+    ],
+    [
+      42.6597012,
+      23.3343753
+    ],
+    [
+      42.6597123,
+      23.3343278
+    ],
+    [
+      42.6597172,
+      23.3342548
+    ],
+    [
+      42.6597191,
+      23.33404
+    ],
+    [
+      42.6597398,
+      23.3340407
+    ],
+    [
+      42.6597941,
+      23.3340426
+    ],
+    [
+      42.6597951,
+      23.3339922
+    ],
+    [
+      42.6597978,
+      23.333936
+    ],
+    [
+      42.6598054,
+      23.3338968
+    ],
+    [
+      42.6598138,
+      23.3338696
+    ],
+    [
+      42.6598274,
+      23.3338368
+    ],
+    [
+      42.6598461,
+      23.3338044
+    ],
+    [
+      42.6598707,
+      23.3337659
+    ],
+    [
+      42.6599186,
+      23.3336989
+    ],
+    [
+      42.6599598,
+      23.3336442
+    ],
+    [
+      42.6600484,
+      23.3335431
+    ],
+    [
+      42.660105,
+      23.3334864
+    ],
+    [
+      42.6601541,
+      23.3334327
+    ],
+    [
+      42.6601892,
+      23.3333946
+    ],
+    [
+      42.6602808,
+      23.3332996
+    ],
+    [
+      42.6603075,
+      23.3332543
+    ],
+    [
+      42.6603263,
+      23.333203
+    ],
+    [
+      42.6603387,
+      23.3331435
+    ],
+    [
+      42.6603432,
+      23.333084
+    ],
+    [
+      42.6603374,
+      23.333026
+    ],
+    [
+      42.6603254,
+      23.3329706
+    ],
+    [
+      42.6602824,
+      23.3328789
+    ],
+    [
+      42.6601374,
+      23.3326426
+    ],
+    [
+      42.6600376,
+      23.3324828
+    ],
+    [
+      42.6599286,
+      23.3323016
+    ],
+    [
+      42.6598827,
+      23.332342
+    ],
+    [
+      42.6598355,
+      23.332356
+    ],
+    [
+      42.6595631,
+      23.3323445
+    ],
+    [
+      42.6598355,
+      23.332356
+    ],
+    [
+      42.6598827,
+      23.332342
+    ],
+    [
+      42.6599286,
+      23.3323016
+    ],
+    [
+      42.6602312,
+      23.3319518
+    ],
+    [
+      42.6601933,
+      23.331898
+    ],
+    [
+      42.6602312,
+      23.3319518
+    ],
+    [
+      42.6603622,
+      23.3318009
+    ],
+    [
+      42.6603834,
+      23.3317668
+    ],
+    [
+      42.6603969,
+      23.3317415
+    ],
+    [
+      42.6604083,
+      23.3317124
+    ],
+    [
+      42.6604143,
+      23.3316728
+    ],
+    [
+      42.6604153,
+      23.331633
+    ],
+    [
+      42.6604098,
+      23.3315911
+    ],
+    [
+      42.6604041,
+      23.3315629
+    ],
+    [
+      42.6603944,
+      23.3315306
+    ],
+    [
+      42.6603786,
+      23.331499
+    ],
+    [
+      42.6603596,
+      23.3314756
+    ],
+    [
+      42.6603411,
+      23.3314603
+    ],
+    [
+      42.6603254,
+      23.3314492
+    ],
+    [
+      42.6603159,
+      23.3314444
+    ],
+    [
+      42.6603009,
+      23.3314374
+    ],
+    [
+      42.6602336,
+      23.3314092
+    ],
+    [
+      42.6603009,
+      23.3314374
+    ],
+    [
+      42.6603159,
+      23.3314444
+    ],
+    [
+      42.6603254,
+      23.3314492
+    ],
+    [
+      42.6603313,
+      23.33143
+    ],
+    [
+      42.6603365,
+      23.3314095
+    ],
+    [
+      42.6603412,
+      23.3313927
+    ],
+    [
+      42.6603472,
+      23.3313594
+    ],
+    [
+      42.6603495,
+      23.3313335
+    ],
+    [
+      42.6603495,
+      23.3313014
+    ],
+    [
+      42.6603392,
+      23.3311837
+    ],
+    [
+      42.6603392,
+      23.3311716
+    ],
+    [
+      42.6603417,
+      23.3311604
+    ],
+    [
+      42.6603458,
+      23.3311528
+    ],
+    [
+      42.6603521,
+      23.3311488
+    ],
+    [
+      42.6603458,
+      23.3311528
+    ],
+    [
+      42.6603417,
+      23.3311604
+    ],
+    [
+      42.6603392,
+      23.3311716
+    ],
+    [
+      42.6603392,
+      23.3311837
+    ],
+    [
+      42.6603495,
+      23.3313014
+    ],
+    [
+      42.6603495,
+      23.3313335
+    ],
+    [
+      42.6603472,
+      23.3313594
+    ],
+    [
+      42.6603412,
+      23.3313927
+    ],
+    [
+      42.6603365,
+      23.3314095
+    ],
+    [
+      42.6603313,
+      23.33143
+    ],
+    [
+      42.6603254,
+      23.3314492
+    ],
+    [
+      42.6603411,
+      23.3314603
+    ],
+    [
+      42.6603596,
+      23.3314756
+    ],
+    [
+      42.6603786,
+      23.331499
+    ],
+    [
+      42.6603944,
+      23.3315306
+    ],
+    [
+      42.6604041,
+      23.3315629
+    ],
+    [
+      42.6604098,
+      23.3315911
+    ],
+    [
+      42.6604153,
+      23.331633
+    ],
+    [
+      42.6604143,
+      23.3316728
+    ],
+    [
+      42.6604083,
+      23.3317124
+    ],
+    [
+      42.6603969,
+      23.3317415
+    ],
+    [
+      42.6603834,
+      23.3317668
+    ],
+    [
+      42.6603622,
+      23.3318009
+    ],
+    [
+      42.6602312,
+      23.3319518
+    ],
+    [
+      42.6599286,
+      23.3323016
+    ],
+    [
+      42.6598165,
+      23.3320972
+    ],
+    [
+      42.6597543,
+      23.3319603
+    ],
+    [
+      42.65973,
+      23.3318987
+    ],
+    [
+      42.659707,
+      23.3318388
+    ],
+    [
+      42.6596815,
+      23.3318414
+    ],
+    [
+      42.6595743,
+      23.3318477
+    ],
+    [
+      42.6595667,
+      23.3316787
+    ],
+    [
+      42.6595577,
+      23.3316606
+    ],
+    [
+      42.6595477,
+      23.3314771
+    ],
+    [
+      42.6596173,
+      23.3314706
+    ],
+    [
+      42.6596391,
+      23.3314691
+    ],
+    [
+      42.6596385,
+      23.3314531
+    ],
+    [
+      42.6596399,
+      23.3313708
+    ],
+    [
+      42.6596477,
+      23.3313012
+    ],
+    [
+      42.6596578,
+      23.3312468
+    ],
+    [
+      42.6596696,
+      23.3312087
+    ],
+    [
+      42.6596884,
+      23.3311649
+    ],
+    [
+      42.6597434,
+      23.3310901
+    ],
+    [
+      42.6597698,
+      23.3310751
+    ],
+    [
+      42.65979,
+      23.3310576
+    ],
+    [
+      42.6598055,
+      23.3310322
+    ],
+    [
+      42.6598113,
+      23.3310142
+    ],
+    [
+      42.6598136,
+      23.3310045
+    ],
+    [
+      42.6598905,
+      23.3310215
+    ],
+    [
+      42.6598136,
+      23.3310045
+    ],
+    [
+      42.659815,
+      23.3309921
+    ],
+    [
+      42.6598147,
+      23.330974
+    ],
+    [
+      42.6598123,
+      23.3309491
+    ],
+    [
+      42.6598017,
+      23.3309235
+    ],
+    [
+      42.6597852,
+      23.3309051
+    ],
+    [
+      42.6597667,
+      23.3308917
+    ],
+    [
+      42.6597543,
+      23.3308895
+    ],
+    [
+      42.6597405,
+      23.3308939
+    ],
+    [
+      42.6595583,
+      23.3309576
+    ],
+    [
+      42.6595523,
+      23.3309263
+    ],
+    [
+      42.6595583,
+      23.3309576
+    ],
+    [
+      42.6597405,
+      23.3308939
+    ],
+    [
+      42.6597543,
+      23.3308895
+    ],
+    [
+      42.6597264,
+      23.3307327
+    ],
+    [
+      42.6597848,
+      23.330711
+    ],
+    [
+      42.6597264,
+      23.3307327
+    ],
+    [
+      42.6597195,
+      23.3307066
+    ],
+    [
+      42.6597144,
+      23.3306978
+    ],
+    [
+      42.6597056,
+      23.3306941
+    ],
+    [
+      42.659682,
+      23.3306992
+    ],
+    [
+      42.6596693,
+      23.3306981
+    ],
+    [
+      42.6596566,
+      23.3306883
+    ],
+    [
+      42.6596436,
+      23.3306778
+    ],
+    [
+      42.6596273,
+      23.3306755
+    ],
+    [
+      42.6596077,
+      23.3306809
+    ],
+    [
+      42.6595851,
+      23.3306742
+    ],
+    [
+      42.6595616,
+      23.3306562
+    ],
+    [
+      42.659545,
+      23.3306259
+    ],
+    [
+      42.6595341,
+      23.3305867
+    ],
+    [
+      42.6595318,
+      23.3305525
+    ],
+    [
+      42.6595169,
+      23.3305395
+    ],
+    [
+      42.6594995,
+      23.3305255
+    ],
+    [
+      42.6595169,
+      23.3305395
+    ],
+    [
+      42.6595318,
+      23.3305525
+    ],
+    [
+      42.6595172,
+      23.3305572
+    ],
+    [
+      42.6594147,
+      23.3305902
+    ],
+    [
+      42.6593964,
+      23.3305961
+    ],
+    [
+      42.6593747,
+      23.3305289
+    ],
+    [
+      42.6593639,
+      23.3304878
+    ],
+    [
+      42.6593586,
+      23.3304365
+    ],
+    [
+      42.6593589,
+      23.3301308
+    ],
+    [
+      42.6593498,
+      23.3300758
+    ],
+    [
+      42.659339,
+      23.3300451
+    ],
+    [
+      42.6593015,
+      23.3299927
+    ],
+    [
+      42.6593529,
+      23.3299265
+    ],
+    [
+      42.6593666,
+      23.329898
+    ],
+    [
+      42.6593713,
+      23.3298681
+    ],
+    [
+      42.6593682,
+      23.3298382
+    ],
+    [
+      42.6594904,
+      23.3298297
+    ],
+    [
+      42.6595209,
+      23.3298282
+    ],
+    [
+      42.6595565,
+      23.3298297
+    ],
+    [
+      42.6595938,
+      23.3298379
+    ],
+    [
+      42.6596382,
+      23.3298602
+    ],
+    [
+      42.6596921,
+      23.3298987
+    ],
+    [
+      42.659741,
+      23.3299464
+    ],
+    [
+      42.6597899,
+      23.3300071
+    ],
+    [
+      42.6598232,
+      23.3300591
+    ],
+    [
+      42.6598515,
+      23.3301048
+    ],
+    [
+      42.659857,
+      23.3301315
+    ],
+    [
+      42.6598585,
+      23.3301496
+    ],
+    [
+      42.6598575,
+      23.330163
+    ],
+    [
+      42.6598511,
+      23.3301865
+    ],
+    [
+      42.6598417,
+      23.3302214
+    ],
+    [
+      42.6598383,
+      23.3302509
+    ],
+    [
+      42.6598412,
+      23.3302656
+    ],
+    [
+      42.6598471,
+      23.3302743
+    ],
+    [
+      42.6598566,
+      23.3302784
+    ],
+    [
+      42.6598658,
+      23.3302779
+    ],
+    [
+      42.6598767,
+      23.3302723
+    ],
+    [
+      42.659891,
+      23.3302589
+    ],
+    [
+      42.6599122,
+      23.3302401
+    ],
+    [
+      42.659931,
+      23.3302274
+    ],
+    [
+      42.6599466,
+      23.3302231
+    ],
+    [
+      42.6599651,
+      23.33022
+    ],
+    [
+      42.6599867,
+      23.3302095
+    ],
+    [
+      42.6600045,
+      23.3302052
+    ],
+    [
+      42.6600276,
+      23.3302069
+    ],
+    [
+      42.6600587,
+      23.3302162
+    ],
+    [
+      42.6600862,
+      23.3302302
+    ],
+    [
+      42.660109,
+      23.3302524
+    ],
+    [
+      42.6601276,
+      23.3302896
+    ],
+    [
+      42.6601616,
+      23.3303752
+    ],
+    [
+      42.6600545,
+      23.3304626
+    ],
+    [
+      42.6601616,
+      23.3303752
+    ],
+    [
+      42.6602205,
+      23.3305237
+    ],
+    [
+      42.6602362,
+      23.3305628
+    ],
+    [
+      42.6602453,
+      23.3305985
+    ],
+    [
+      42.6602529,
+      23.3306417
+    ],
+    [
+      42.6602565,
+      23.3306888
+    ],
+    [
+      42.6602547,
+      23.3307313
+    ],
+    [
+      42.6602488,
+      23.3307605
+    ],
+    [
+      42.6602431,
+      23.3307808
+    ],
+    [
+      42.6602326,
+      23.3308021
+    ],
+    [
+      42.6602135,
+      23.3308448
+    ],
+    [
+      42.6602078,
+      23.3308629
+    ],
+    [
+      42.6602046,
+      23.3308744
+    ],
+    [
+      42.6602034,
+      23.330886
+    ],
+    [
+      42.6602037,
+      23.3309081
+    ],
+    [
+      42.6602034,
+      23.330886
+    ],
+    [
+      42.6602046,
+      23.3308744
+    ],
+    [
+      42.6602078,
+      23.3308629
+    ],
+    [
+      42.6602135,
+      23.3308448
+    ],
+    [
+      42.6602326,
+      23.3308021
+    ],
+    [
+      42.6602216,
+      23.3308137
+    ],
+    [
+      42.6602114,
+      23.3308189
+    ],
+    [
+      42.6602007,
+      23.3308219
+    ],
+    [
+      42.6601911,
+      23.3308215
+    ],
+    [
+      42.6601801,
+      23.330818
+    ],
+    [
+      42.6601734,
+      23.3308147
+    ],
+    [
+      42.6601613,
+      23.3308115
+    ],
+    [
+      42.6601544,
+      23.3308126
+    ],
+    [
+      42.6601496,
+      23.3308149
+    ],
+    [
+      42.6601455,
+      23.3308192
+    ],
+    [
+      42.6601496,
+      23.3308149
+    ],
+    [
+      42.6601544,
+      23.3308126
+    ],
+    [
+      42.6601613,
+      23.3308115
+    ],
+    [
+      42.6601734,
+      23.3308147
+    ],
+    [
+      42.660139,
+      23.3307871
+    ]
+  ]
+}

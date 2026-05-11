@@ -4,7 +4,17 @@ import { GoogleMap, Marker, Polyline } from '@react-google-maps/api'
 import { useData } from '../context/DataContext'
 import { useMaps } from '../context/MapsContext'
 import pathsData from '../data/paths.json'
-import routeData from '../data/route.json'
+import mainMainData from '../data/routes/main-main.json'
+import mainWestData from '../data/routes/main-west.json'
+import westWestData from '../data/routes/west-west.json'
+import westMainData from '../data/routes/west-main.json'
+
+const ROUTE_OPTIONS = [
+  { key: 'main-main', labelShort: 'Гл ↺',    labelLong: 'Главен (кръг)',    parking: '🅿 65',      data: mainMainData },
+  { key: 'main-west', labelShort: 'Гл → Зап', labelLong: 'Главен → Западен', parking: '🅿 65 → 32', data: mainWestData },
+  { key: 'west-west', labelShort: 'Зап ↺',   labelLong: 'Западен (кръг)',   parking: '🅿 32',      data: westWestData },
+  { key: 'west-main', labelShort: 'Зап → Гл', labelLong: 'Западен → Главен', parking: '🅿 32 → 65', data: westMainData },
+]
 
 const ZOO_CENTER = { lat: 42.6583263, lng: 23.3311395 }
 
@@ -157,12 +167,14 @@ export default function MapPage() {
   const { allAnimals, allPois } = useData()
   const [selected,     setSelected]     = useState(null)
   const [showRoute,    setShowRoute]    = useState(false)
+  const [activeRoute,  setActiveRoute]  = useState('main-main')
   const [activeFilter, setActiveFilter] = useState(null)
   const [userPos,      setUserPos]      = useState(null)
   const watchIdRef = useRef(null)
   const navigate = useNavigate()
 
-  const routePolyline = routeData.fullPolyline.map(([lat, lng]) => ({ lat, lng }))
+  const currentRoute  = ROUTE_OPTIONS.find(r => r.key === activeRoute).data
+  const routePolyline = currentRoute.fullPolyline.map(([lat, lng]) => ({ lat, lng }))
   const { isLoaded, loadError } = useMaps()
 
   useEffect(() => {
@@ -223,6 +235,33 @@ export default function MapPage() {
             <span>Маршрут</span>
           </button>
         </div>
+
+        {/* Route selector — visible when route is on */}
+        {showRoute && (
+          <div className="flex gap-2 overflow-x-auto scrollbar-none mb-2.5">
+            {ROUTE_OPTIONS.map(r => (
+              <button
+                key={r.key}
+                onClick={() => { setActiveRoute(r.key); setSelected(null) }}
+                className={`shrink-0 flex flex-col items-start px-3 py-1.5 rounded-xl border text-[10px] font-semibold transition-colors ${
+                  activeRoute === r.key
+                    ? 'bg-white text-zoo-green border-white'
+                    : 'text-white/80 border-white/30'
+                }`}
+              >
+                <span className="text-[11px] font-bold leading-tight">{r.labelShort}</span>
+                <span className="opacity-70 mt-0.5">{r.parking}</span>
+              </button>
+            ))}
+            {/* Distance badge for selected route */}
+            <div className="shrink-0 flex flex-col items-start px-3 py-1.5 rounded-xl border border-white/20 text-[10px] text-white/60">
+              <span className="font-bold leading-tight">
+                {(ROUTE_OPTIONS.find(r => r.key === activeRoute).data.totalDistanceM / 1000).toFixed(1)} км
+              </span>
+              <span className="opacity-70 mt-0.5">{ROUTE_OPTIONS.find(r => r.key === activeRoute).data.animalCount} спирки</span>
+            </div>
+          </div>
+        )}
 
         {/* Filter chips */}
         <div className="flex gap-2 overflow-x-auto scrollbar-none pb-0.5">
@@ -291,7 +330,7 @@ export default function MapPage() {
           {/* Animal markers */}
           {visibleAnimals.map(animal => {
             const routeStep = showRoute
-              ? routeData.steps.find(s => s.id === animal.id)
+              ? currentRoute.steps.find(s => s.id === animal.id)
               : null
             return (
               <Marker
