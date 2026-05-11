@@ -134,7 +134,7 @@ export default function SearchPage() {
     <div className="flex flex-col h-full">
 
       {/* ── Header ── */}
-      <div className="bg-zoo-primary px-4 pt-10 pb-4 space-y-3" style={{ position: 'relative', zIndex: 30 }}>
+      <div className="bg-zoo-primary px-4 pt-10 pb-4 space-y-3" style={{ position: 'relative' }}>
         <h1 className="text-xl font-bold text-white">Търсене</h1>
 
         {/* Search input */}
