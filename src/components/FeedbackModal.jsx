@@ -1,6 +1,7 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
+import { useForm } from '@formspree/react'
 
-const FEEDBACK_URL = '/api/feedback'
+const FORM_ID = 'xnjwlody'
 
 const TYPES = [
   { key: 'bug',     emoji: '🐛', label: 'Грешка' },
@@ -9,58 +10,34 @@ const TYPES = [
 ]
 
 const PLACEHOLDERS = {
-  bug:     { title: 'напр. Картата не се зарежда',         desc: 'Опишете проблема и как да бъде възпроизведен…' },
-  feature: { title: 'напр. Добавете функция за любими',    desc: 'Опишете идеята и защо ще бъде полезна…'        },
-  general: { title: 'напр. Мнение за приложението',        desc: 'Вашето мнение…'                                },
+  bug:     { title: 'напр. Картата не се зарежда',      desc: 'Опишете проблема и как да бъде възпроизведен…' },
+  feature: { title: 'напр. Добавете функция за любими', desc: 'Опишете идеята и защо ще бъде полезна…'        },
+  general: { title: 'напр. Мнение за приложението',     desc: 'Вашето мнение…'                                },
 }
 
 export default function FeedbackModal({ open, onClose }) {
-  const [type,        setType]        = useState('bug')
-  const [title,       setTitle]       = useState('')
-  const [description, setDescription] = useState('')
-  const [status,      setStatus]      = useState('idle') // idle | sending | success | error
+  const [state, handleSubmit] = useForm(FORM_ID)
+  const [type,         setType]         = useState('bug')
+  const [title,        setTitle]        = useState('')
+  const [description,  setDescription]  = useState('')
+  const [localSuccess, setLocalSuccess] = useState(false)
+
+  useEffect(() => {
+    if (state.succeeded) setLocalSuccess(true)
+  }, [state.succeeded])
 
   if (!open) return null
 
-  function reset() {
+  function handleClose() {
     setType('bug')
     setTitle('')
     setDescription('')
-    setStatus('idle')
-  }
-
-  function handleClose() {
-    reset()
+    setLocalSuccess(false)
     onClose()
   }
 
-  async function handleSubmit() {
-    if (!title.trim() || !description.trim()) return
-    setStatus('sending')
-    try {
-      const params = new URLSearchParams({
-        type,
-        title:       title.trim(),
-        description: description.trim(),
-        userAgent:   navigator.userAgent.slice(0, 300),
-        screen:      `${screen.width}×${screen.height}@${window.devicePixelRatio}x`,
-        appVersion:  typeof __APP_VERSION__ !== 'undefined' ? __APP_VERSION__ : 'dev',
-        page:        window.location.pathname,
-      })
-      const res  = await fetch(`${FEEDBACK_URL}?${params}`)
-      const data = await res.json()
-      if (data.ok) {
-        setStatus('success')
-      } else {
-        setStatus('error')
-      }
-    } catch {
-      setStatus('error')
-    }
-  }
-
-  const ph = PLACEHOLDERS[type]
-  const canSubmit = title.trim().length > 0 && description.trim().length > 0
+  const ph      = PLACEHOLDERS[type]
+  const hasError = state.errors?.length > 0
 
   return (
     <div className="absolute inset-0 z-50 flex flex-col" style={{ backgroundColor: 'var(--color-bg-base)' }}>
@@ -79,7 +56,7 @@ export default function FeedbackModal({ open, onClose }) {
 
       {/* Body */}
       <div className="flex-1 overflow-y-auto p-4">
-        {status === 'success' ? (
+        {localSuccess ? (
           <div className="flex flex-col items-center justify-center h-full gap-4 py-16 text-center">
             <span className="text-6xl">🎉</span>
             <p className="text-2xl font-bold text-zoo-green">Изпратено!</p>
@@ -94,7 +71,14 @@ export default function FeedbackModal({ open, onClose }) {
             </button>
           </div>
         ) : (
-          <div className="space-y-5">
+          <form onSubmit={handleSubmit} className="space-y-5">
+
+            {/* Auto-collected device fields — never shown to the user */}
+            <input type="hidden" name="type"       value={type} readOnly />
+            <input type="hidden" name="userAgent"  defaultValue={navigator.userAgent.slice(0, 300)} />
+            <input type="hidden" name="screen"     defaultValue={`${screen.width}×${screen.height}@${window.devicePixelRatio}x`} />
+            <input type="hidden" name="appVersion" defaultValue={typeof __APP_VERSION__ !== 'undefined' ? __APP_VERSION__ : 'dev'} />
+            <input type="hidden" name="page"       defaultValue={window.location.pathname} />
 
             {/* Type */}
             <div>
@@ -103,6 +87,7 @@ export default function FeedbackModal({ open, onClose }) {
                 {TYPES.map(t => (
                   <button
                     key={t.key}
+                    type="button"
                     onClick={() => setType(t.key)}
                     className={`flex-1 flex flex-col items-center gap-1 py-3 rounded-xl border text-xs font-semibold transition-colors ${
                       type === t.key
@@ -125,10 +110,12 @@ export default function FeedbackModal({ open, onClose }) {
               </label>
               <input
                 type="text"
+                name="title"
                 value={title}
                 onChange={e => setTitle(e.target.value)}
                 placeholder={ph.title}
                 maxLength={100}
+                required
                 className="mt-1 w-full rounded-xl border border-[--color-border] px-3 py-2.5 text-sm text-[--color-text-main] outline-none focus:border-zoo-green transition-colors"
                 style={{ backgroundColor: 'var(--color-bg-card)' }}
               />
@@ -140,11 +127,13 @@ export default function FeedbackModal({ open, onClose }) {
                 Описание *
               </label>
               <textarea
+                name="description"
                 value={description}
                 onChange={e => setDescription(e.target.value)}
                 placeholder={ph.desc}
                 rows={5}
                 maxLength={1000}
+                required
                 className="mt-1 w-full rounded-xl border border-[--color-border] px-3 py-2.5 text-sm text-[--color-text-main] outline-none focus:border-zoo-green transition-colors resize-none"
                 style={{ backgroundColor: 'var(--color-bg-card)' }}
               />
@@ -158,22 +147,21 @@ export default function FeedbackModal({ open, onClose }) {
               🔍 Устройство, браузър, резолюция и версия се добавят автоматично.
             </p>
 
-            {status === 'error' && (
+            {hasError && (
               <p className="text-xs text-red-500 text-center">
                 Грешка при изпращане. Проверете интернет връзката и опитайте отново.
               </p>
             )}
 
-            {/* Submit */}
             <button
-              onClick={handleSubmit}
-              disabled={!canSubmit || status === 'sending'}
+              type="submit"
+              disabled={state.submitting}
               className="w-full bg-zoo-green text-white py-3 rounded-2xl font-semibold text-sm disabled:opacity-40 transition-opacity active:opacity-80"
             >
-              {status === 'sending' ? 'Изпращане…' : 'Изпрати'}
+              {state.submitting ? 'Изпращане…' : 'Изпрати'}
             </button>
 
-          </div>
+          </form>
         )}
       </div>
     </div>
