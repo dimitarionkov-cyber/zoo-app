@@ -47,8 +47,13 @@ export default function FeedbackModal({ open, onClose }) {
         appVersion:  typeof __APP_VERSION__ !== 'undefined' ? __APP_VERSION__ : 'dev',
         page:        window.location.pathname,
       })
-      await fetch(`${SCRIPT_URL}?${params}`, { mode: 'no-cors' })
-      setStatus('success')
+      const res  = await fetch(`${SCRIPT_URL}?${params}`)
+      const data = await res.json()
+      if (data.ok) {
+        setStatus('success')
+      } else {
+        setStatus('error')
+      }
     } catch {
       setStatus('error')
     }
