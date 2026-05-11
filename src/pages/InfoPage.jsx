@@ -92,12 +92,11 @@ const ENTRANCES = [
 ]
 
 // ── Collapsible section ───────────────────────────────────────────────────────
-function Section({ icon, title, defaultOpen = false, children }) {
-  const [open, setOpen] = useState(defaultOpen)
+function Section({ icon, title, open, onToggle, children }) {
   return (
     <div className="bg-[--color-bg-card] rounded-2xl border border-[--color-border] overflow-hidden">
       <button
-        onClick={() => setOpen(o => !o)}
+        onClick={onToggle}
         className="w-full flex items-center gap-3 px-4 py-4 text-left"
       >
         <span className="text-2xl leading-none">{icon}</span>
@@ -131,6 +130,12 @@ function PriceRow({ label, price, free }) {
 
 // ── Page ─────────────────────────────────────────────────────────────────────
 export default function InfoPage() {
+  const [openSection, setOpenSection] = useState('hours')
+
+  function toggle(key) {
+    setOpenSection(s => s === key ? null : key)
+  }
+
   return (
     <div className="flex flex-col pb-8">
       {/* Header */}
@@ -142,7 +147,7 @@ export default function InfoPage() {
       <div className="flex flex-col gap-3 px-4 mt-4">
 
         {/* Working hours */}
-        <Section icon="🕘" title="Работно време" defaultOpen>
+        <Section icon="🕘" title="Работно време" open={openSection === 'hours'} onToggle={() => toggle('hours')}>
           <p className="text-xs text-zoo-brown opacity-60 mt-3 mb-1">
             Отворен всеки ден, включително официални празници.
           </p>
@@ -163,7 +168,7 @@ export default function InfoPage() {
         </Section>
 
         {/* Ticket prices */}
-        <Section icon="🎟️" title="Цени на билети">
+        <Section icon="🎟️" title="Цени на билети" open={openSection === 'tickets'} onToggle={() => toggle('tickets')}>
           <div className="mt-3">
             <p className="text-[10px] font-bold uppercase tracking-widest text-zoo-brown opacity-50 mb-1">Индивидуални</p>
             {PRICES.map(p => <PriceRow key={p.label} {...p} />)}
@@ -190,7 +195,7 @@ export default function InfoPage() {
         </Section>
 
         {/* Public transport */}
-        <Section icon="🚌" title="Обществен транспорт">
+        <Section icon="🚌" title="Обществен транспорт" open={openSection === 'transport'} onToggle={() => toggle('transport')}>
           <div className="space-y-5 mt-3">
             {TRANSPORT.map(t => (
               <div key={t.type}>
@@ -214,7 +219,7 @@ export default function InfoPage() {
         </Section>
 
         {/* Contact */}
-        <Section icon="📞" title="Контакти и адрес">
+        <Section icon="📞" title="Контакти и адрес" open={openSection === 'contact'} onToggle={() => toggle('contact')}>
           <div className="mt-3">
             {CONTACTS.map(c => (
               <div key={c.label} className="flex items-start gap-3 py-2.5 border-b border-[--color-border] last:border-0">
