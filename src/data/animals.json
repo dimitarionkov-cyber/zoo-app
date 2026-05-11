@@ -75,7 +75,8 @@
       "europe",
       "asia",
       "africa"
-    ]
+    ],
+    "group": "canids"
   },
   {
     "id": "12155929446",
@@ -90,7 +91,8 @@
     "description": "",
     "continents": [
       "australia"
-    ]
+    ],
+    "group": "ratites"
   },
   {
     "id": "12155929475",
@@ -105,7 +107,8 @@
     "description": "",
     "continents": [
       "asia"
-    ]
+    ],
+    "group": "waterbirds"
   },
   {
     "id": "12156208251",
@@ -120,7 +123,8 @@
     "description": "",
     "continents": [
       "australia"
-    ]
+    ],
+    "group": "parrots"
   },
   {
     "id": "12156208253",
@@ -137,7 +141,8 @@
       "europe",
       "asia",
       "north_america"
-    ]
+    ],
+    "group": "other_birds"
   },
   {
     "id": "12156208255",
@@ -153,7 +158,8 @@
     "continents": [
       "europe",
       "asia"
-    ]
+    ],
+    "group": "birds_of_prey"
   },
   {
     "id": "12156208256",
@@ -170,7 +176,8 @@
       "europe",
       "asia",
       "north_america"
-    ]
+    ],
+    "group": "birds_of_prey"
   },
   {
     "id": "12160409460",
@@ -186,7 +193,8 @@
     "continents": [
       "europe",
       "asia"
-    ]
+    ],
+    "group": "ungulates"
   },
   {
     "id": "12160421310",
@@ -202,7 +210,8 @@
     "continents": [
       "north_america",
       "south_america"
-    ]
+    ],
+    "group": "birds_of_prey"
   },
   {
     "id": "12160421312",
@@ -219,7 +228,8 @@
       "europe",
       "asia",
       "africa"
-    ]
+    ],
+    "group": "birds_of_prey"
   },
   {
     "id": "12170636005",
@@ -236,7 +246,8 @@
       "europe",
       "asia",
       "africa"
-    ]
+    ],
+    "group": "birds_of_prey"
   },
   {
     "id": "12160421324",
@@ -253,7 +264,8 @@
       "europe",
       "asia",
       "africa"
-    ]
+    ],
+    "group": "birds_of_prey"
   },
   {
     "id": "12160421326",
@@ -268,7 +280,8 @@
     "description": "",
     "continents": [
       "south_america"
-    ]
+    ],
+    "group": "parrots"
   },
   {
     "id": "12160421329",
@@ -283,7 +296,8 @@
     "description": "",
     "continents": [
       "south_america"
-    ]
+    ],
+    "group": "waterbirds"
   },
   {
     "id": "12160884131",
@@ -298,7 +312,8 @@
     "description": "",
     "continents": [
       "australia"
-    ]
+    ],
+    "group": "waterbirds"
   },
   {
     "id": "12170600564",
@@ -314,7 +329,8 @@
     "continents": [
       "europe",
       "asia"
-    ]
+    ],
+    "group": "waterbirds"
   },
   {
     "id": "12170600565",
@@ -330,7 +346,8 @@
     "continents": [
       "europe",
       "asia"
-    ]
+    ],
+    "group": "waterbirds"
   },
   {
     "id": "12170600566",
@@ -346,7 +363,8 @@
     "continents": [
       "europe",
       "asia"
-    ]
+    ],
+    "group": "waterbirds"
   },
   {
     "id": "12170600567",
@@ -363,7 +381,8 @@
       "europe",
       "asia",
       "africa"
-    ]
+    ],
+    "group": "waterbirds"
   },
   {
     "id": "12170600568",
@@ -379,7 +398,8 @@
     "continents": [
       "europe",
       "north_america"
-    ]
+    ],
+    "group": "waterbirds"
   },
   {
     "id": "12170613238",
@@ -394,7 +414,8 @@
     "description": "",
     "continents": [
       "south_america"
-    ]
+    ],
+    "group": "waterbirds"
   },
   {
     "id": "12170613240",
@@ -410,7 +431,8 @@
     "continents": [
       "europe",
       "africa"
-    ]
+    ],
+    "group": "ungulates"
   },
   {
     "id": "12170636004",
@@ -426,7 +448,8 @@
     "continents": [
       "europe",
       "asia"
-    ]
+    ],
+    "group": "birds_of_prey"
   },
   {
     "id": "12170636005",
@@ -443,7 +466,8 @@
       "europe",
       "asia",
       "africa"
-    ]
+    ],
+    "group": "birds_of_prey"
   },
   {
     "id": "12170636006",
@@ -460,7 +484,8 @@
       "europe",
       "asia",
       "north_america"
-    ]
+    ],
+    "group": "birds_of_prey"
   },
   {
     "id": "12173320223",
@@ -477,7 +502,8 @@
       "europe",
       "asia",
       "north_america"
-    ]
+    ],
+    "group": "waterbirds"
   },
   {
     "id": "12173320277",
@@ -492,7 +518,8 @@
     "description": "",
     "continents": [
       "australia"
-    ]
+    ],
+    "group": "other_birds"
   },
   {
     "id": "12173320278",
@@ -507,7 +534,8 @@
     "description": "",
     "continents": [
       "africa"
-    ]
+    ],
+    "group": "parrots"
   },
   {
     "id": "12173320279",
@@ -522,7 +550,8 @@
     "description": "",
     "continents": [
       "australia"
-    ]
+    ],
+    "group": "parrots"
   },
   {
     "id": "12173320280",
@@ -539,7 +568,8 @@
       "europe",
       "asia",
       "africa"
-    ]
+    ],
+    "group": "birds_of_prey"
   },
   {
     "id": "12173320281",
@@ -554,7 +584,8 @@
     "description": "",
     "continents": [
       "south_america"
-    ]
+    ],
+    "group": "other_birds"
   },
   {
     "id": "12173320283",
@@ -569,7 +600,8 @@
     "description": "",
     "continents": [
       "south_america"
-    ]
+    ],
+    "group": "waterbirds"
   },
   {
     "id": "12173320284",
@@ -584,7 +616,8 @@
     "description": "",
     "continents": [
       "south_america"
-    ]
+    ],
+    "group": "waterbirds"
   },
   {
     "id": "12173320285",
@@ -600,7 +633,8 @@
     "continents": [
       "europe",
       "asia"
-    ]
+    ],
+    "group": "birds_of_prey"
   },
   {
     "id": "12173320286",
@@ -617,7 +651,8 @@
       "europe",
       "asia",
       "north_america"
-    ]
+    ],
+    "group": "birds_of_prey"
   },
   {
     "id": "12173320288",
@@ -634,7 +669,8 @@
       "europe",
       "asia",
       "africa"
-    ]
+    ],
+    "group": "waterbirds"
   },
   {
     "id": "12173320289",
@@ -649,7 +685,8 @@
     "description": "",
     "continents": [
       "africa"
-    ]
+    ],
+    "group": "other_birds"
   },
   {
     "id": "12173320299",
@@ -664,7 +701,8 @@
     "description": "",
     "continents": [
       "africa"
-    ]
+    ],
+    "group": "hornbills"
   },
   {
     "id": "12173320300",
@@ -679,7 +717,8 @@
     "description": "",
     "continents": [
       "south_america"
-    ]
+    ],
+    "group": "waterbirds"
   },
   {
     "id": "12173321414",
@@ -694,7 +733,8 @@
     "description": "",
     "continents": [
       "africa"
-    ]
+    ],
+    "group": "hornbills"
   },
   {
     "id": "12210523130",
@@ -709,7 +749,8 @@
     "description": "",
     "continents": [
       "north_america"
-    ]
+    ],
+    "group": "tortoises"
   },
   {
     "id": "vampirska_riba_001",
@@ -750,7 +791,8 @@
     "description": "",
     "continents": [
       "south_america"
-    ]
+    ],
+    "group": "fish"
   },
   {
     "id": "way_1073541664",
@@ -765,7 +807,8 @@
     "description": "",
     "continents": [
       "africa"
-    ]
+    ],
+    "group": "ungulates"
   },
   {
     "id": "way_1073541665",
@@ -780,7 +823,8 @@
     "description": "",
     "continents": [
       "australia"
-    ]
+    ],
+    "group": "ungulates"
   },
   {
     "id": "way_1073541666",
@@ -795,7 +839,8 @@
     "description": "",
     "continents": [
       "africa"
-    ]
+    ],
+    "group": "ungulates"
   },
   {
     "id": "way_1313327309",
@@ -810,7 +855,8 @@
     "description": "",
     "continents": [
       "asia"
-    ]
+    ],
+    "group": "primates"
   },
   {
     "id": "way_1313338294",
@@ -826,7 +872,8 @@
     "continents": [
       "africa",
       "asia"
-    ]
+    ],
+    "group": "small_carnivores"
   },
   {
     "id": "way_1313798144",
@@ -841,7 +888,8 @@
     "description": "",
     "continents": [
       "south_america"
-    ]
+    ],
+    "group": "ungulates"
   },
   {
     "id": "way_1313822057",
@@ -856,7 +904,8 @@
     "description": "",
     "continents": [
       "australia"
-    ]
+    ],
+    "group": "ungulates"
   },
   {
     "id": "way_1313822059",
@@ -871,7 +920,8 @@
     "description": "",
     "continents": [
       "africa"
-    ]
+    ],
+    "group": "ungulates"
   },
   {
     "id": "way_1313827371",
@@ -886,7 +936,8 @@
     "description": "",
     "continents": [
       "asia"
-    ]
+    ],
+    "group": "ungulates"
   },
   {
     "id": "way_1313847178",
@@ -901,7 +952,8 @@
     "description": "",
     "continents": [
       "asia"
-    ]
+    ],
+    "group": "big_cats"
   },
   {
     "id": "way_1313922725",
@@ -917,7 +969,8 @@
     "continents": [
       "europe",
       "asia"
-    ]
+    ],
+    "group": "other_birds"
   },
   {
     "id": "way_1313922727",
@@ -932,7 +985,8 @@
     "description": "",
     "continents": [
       "south_america"
-    ]
+    ],
+    "group": "rodents"
   },
   {
     "id": "way_1313935828",
@@ -949,7 +1003,8 @@
       "europe",
       "asia",
       "north_america"
-    ]
+    ],
+    "group": "canids"
   },
   {
     "id": "way_1313935830",
@@ -965,7 +1020,8 @@
     "continents": [
       "europe",
       "asia"
-    ]
+    ],
+    "group": "small_carnivores"
   },
   {
     "id": "way_1313935831",
@@ -980,7 +1036,8 @@
     "description": "",
     "continents": [
       "africa"
-    ]
+    ],
+    "group": "small_cats"
   },
   {
     "id": "way_1313935832",
@@ -995,7 +1052,8 @@
     "description": "",
     "continents": [
       "africa"
-    ]
+    ],
+    "group": "small_cats"
   },
   {
     "id": "way_1313935833",
@@ -1010,7 +1068,8 @@
     "description": "",
     "continents": [
       "north_america"
-    ]
+    ],
+    "group": "small_cats"
   },
   {
     "id": "way_1313935835",
@@ -1025,7 +1084,8 @@
     "description": "",
     "continents": [
       "north_america"
-    ]
+    ],
+    "group": "small_carnivores"
   },
   {
     "id": "way_1313935836",
@@ -1040,7 +1100,8 @@
     "description": "",
     "continents": [
       "south_america"
-    ]
+    ],
+    "group": "small_carnivores"
   },
   {
     "id": "way_1313935837",
@@ -1055,7 +1116,8 @@
     "description": "",
     "continents": [
       "africa"
-    ]
+    ],
+    "group": "small_carnivores"
   },
   {
     "id": "way_1313935839",
@@ -1070,7 +1132,8 @@
     "description": "",
     "continents": [
       "africa"
-    ]
+    ],
+    "group": "small_carnivores"
   },
   {
     "id": "way_1313940073",
@@ -1085,7 +1148,8 @@
     "description": "",
     "continents": [
       "africa"
-    ]
+    ],
+    "group": "rodents"
   },
   {
     "id": "way_1313940074",
@@ -1100,7 +1164,8 @@
     "description": "",
     "continents": [
       "south_america"
-    ]
+    ],
+    "group": "rodents"
   },
   {
     "id": "way_1313940075",
@@ -1115,7 +1180,8 @@
     "description": "",
     "continents": [
       "europe"
-    ]
+    ],
+    "group": "small_carnivores"
   },
   {
     "id": "way_1313940076",
@@ -1132,7 +1198,8 @@
       "europe",
       "asia",
       "north_america"
-    ]
+    ],
+    "group": "canids"
   },
   {
     "id": "way_1313951936",
@@ -1147,7 +1214,8 @@
     "description": "",
     "continents": [
       "asia"
-    ]
+    ],
+    "group": "bears"
   },
   {
     "id": "way_1313951942",
@@ -1163,7 +1231,8 @@
     "continents": [
       "europe",
       "asia"
-    ]
+    ],
+    "group": "bears"
   },
   {
     "id": "way_1313951943",
@@ -1178,7 +1247,8 @@
     "description": "",
     "continents": [
       "north_america"
-    ]
+    ],
+    "group": "bears"
   },
   {
     "id": "way_1313995551",
@@ -1193,7 +1263,8 @@
     "description": "",
     "continents": [
       "north_america"
-    ]
+    ],
+    "group": "small_carnivores"
   },
   {
     "id": "way_1314154182",
@@ -1208,7 +1279,8 @@
     "description": "",
     "continents": [
       "asia"
-    ]
+    ],
+    "group": "small_carnivores"
   },
   {
     "id": "way_1314162645",
@@ -1223,7 +1295,8 @@
     "description": "",
     "continents": [
       "africa"
-    ]
+    ],
+    "group": "small_carnivores"
   },
   {
     "id": "way_1314168821",
@@ -1238,7 +1311,8 @@
     "description": "",
     "continents": [
       "north_america"
-    ]
+    ],
+    "group": "small_carnivores"
   },
   {
     "id": "way_1314247560",
@@ -1253,7 +1327,8 @@
     "description": "",
     "continents": [
       "africa"
-    ]
+    ],
+    "group": "ungulates"
   },
   {
     "id": "way_1314249087",
@@ -1269,7 +1344,8 @@
     "continents": [
       "europe",
       "asia"
-    ]
+    ],
+    "group": "ungulates"
   },
   {
     "id": "way_1314607625",
@@ -1286,7 +1362,8 @@
       "europe",
       "asia",
       "africa"
-    ]
+    ],
+    "group": "tortoises"
   },
   {
     "id": "way_1314607626",
@@ -1301,7 +1378,8 @@
     "description": "",
     "continents": [
       "north_america"
-    ]
+    ],
+    "group": "crocodilians"
   },
   {
     "id": "way_1314607627",
@@ -1316,7 +1394,8 @@
     "description": "",
     "continents": [
       "south_america"
-    ]
+    ],
+    "group": "tortoises"
   },
   {
     "id": "way_1314611617",
@@ -1331,7 +1410,8 @@
     "description": "",
     "continents": [
       "africa"
-    ]
+    ],
+    "group": "small_carnivores"
   },
   {
     "id": "way_1314611619",
@@ -1346,7 +1426,8 @@
     "description": "",
     "continents": [
       "asia"
-    ]
+    ],
+    "group": "tortoises"
   },
   {
     "id": "way_1314611620",
@@ -1361,7 +1442,8 @@
     "description": "",
     "continents": [
       "south_america"
-    ]
+    ],
+    "group": "snakes"
   },
   {
     "id": "way_1314702010",
@@ -1377,7 +1459,8 @@
     "continents": [
       "north_america",
       "south_america"
-    ]
+    ],
+    "group": "snakes"
   },
   {
     "id": "way_1314702011",
@@ -1392,7 +1475,8 @@
     "description": "",
     "continents": [
       "north_america"
-    ]
+    ],
+    "group": "snakes"
   },
   {
     "id": "way_1314702012",
@@ -1408,7 +1492,8 @@
     "continents": [
       "north_america",
       "south_america"
-    ]
+    ],
+    "group": "lizards"
   },
   {
     "id": "way_1314702014",
@@ -1423,7 +1508,8 @@
     "description": "",
     "continents": [
       "australia"
-    ]
+    ],
+    "group": "lizards"
   },
   {
     "id": "way_1314702015",
@@ -1438,7 +1524,8 @@
     "description": "",
     "continents": [
       "north_america"
-    ]
+    ],
+    "group": "snakes"
   },
   {
     "id": "way_1314702016",
@@ -1454,7 +1541,8 @@
     "continents": [
       "australia",
       "asia"
-    ]
+    ],
+    "group": "snakes"
   },
   {
     "id": "way_1314702019",
@@ -1469,7 +1557,8 @@
     "description": "",
     "continents": [
       "north_america"
-    ]
+    ],
+    "group": "snakes"
   },
   {
     "id": "way_1314702020",
@@ -1484,7 +1573,8 @@
     "description": "",
     "continents": [
       "north_america"
-    ]
+    ],
+    "group": "snakes"
   },
   {
     "id": "way_1314702022",
@@ -1499,7 +1589,8 @@
     "description": "",
     "continents": [
       "africa"
-    ]
+    ],
+    "group": "snakes"
   },
   {
     "id": "way_1314702023",
@@ -1514,7 +1605,8 @@
     "description": "",
     "continents": [
       "africa"
-    ]
+    ],
+    "group": "other"
   },
   {
     "id": "way_1314702024",
@@ -1529,7 +1621,8 @@
     "description": "",
     "continents": [
       "africa"
-    ]
+    ],
+    "group": "tortoises"
   },
   {
     "id": "way_1314702032",
@@ -1544,7 +1637,8 @@
     "description": "",
     "continents": [
       "australia"
-    ]
+    ],
+    "group": "lizards"
   },
   {
     "id": "way_1314702033",
@@ -1559,7 +1653,8 @@
     "description": "",
     "continents": [
       "asia"
-    ]
+    ],
+    "group": "lizards"
   },
   {
     "id": "way_1314702034",
@@ -1574,7 +1669,8 @@
     "description": "",
     "continents": [
       "asia"
-    ]
+    ],
+    "group": "lizards"
   },
   {
     "id": "way_1314702035",
@@ -1589,7 +1685,8 @@
     "description": "",
     "continents": [
       "africa"
-    ]
+    ],
+    "group": "lizards"
   },
   {
     "id": "way_1314702036",
@@ -1604,7 +1701,8 @@
     "description": "",
     "continents": [
       "asia"
-    ]
+    ],
+    "group": "lizards"
   },
   {
     "id": "way_1314702039",
@@ -1619,7 +1717,8 @@
     "description": "",
     "continents": [
       "asia"
-    ]
+    ],
+    "group": "lizards"
   },
   {
     "id": "way_1314702040",
@@ -1634,7 +1733,8 @@
     "description": "",
     "continents": [
       "asia"
-    ]
+    ],
+    "group": "lizards"
   },
   {
     "id": "way_1314702041",
@@ -1649,7 +1749,8 @@
     "description": "",
     "continents": [
       "south_america"
-    ]
+    ],
+    "group": "snakes"
   },
   {
     "id": "way_1314702042",
@@ -1664,7 +1765,8 @@
     "description": "",
     "continents": [
       "africa"
-    ]
+    ],
+    "group": "snakes"
   },
   {
     "id": "way_1314702043",
@@ -1680,7 +1782,8 @@
     "continents": [
       "north_america",
       "south_america"
-    ]
+    ],
+    "group": "snakes"
   },
   {
     "id": "way_1314702044",
@@ -1695,7 +1798,8 @@
     "description": "",
     "continents": [
       "north_america"
-    ]
+    ],
+    "group": "snakes"
   },
   {
     "id": "way_1314702045",
@@ -1710,7 +1814,8 @@
     "description": "",
     "continents": [
       "south_america"
-    ]
+    ],
+    "group": "rodents"
   },
   {
     "id": "way_1314702046",
@@ -1725,7 +1830,8 @@
     "description": "",
     "continents": [
       "south_america"
-    ]
+    ],
+    "group": "rodents"
   },
   {
     "id": "way_1314702047",
@@ -1741,7 +1847,8 @@
     "continents": [
       "australia",
       "asia"
-    ]
+    ],
+    "group": "snakes"
   },
   {
     "id": "way_1314702048",
@@ -1756,7 +1863,8 @@
     "description": "",
     "continents": [
       "asia"
-    ]
+    ],
+    "group": "snakes"
   },
   {
     "id": "way_1314702049",
@@ -1771,7 +1879,8 @@
     "description": "",
     "continents": [
       "asia"
-    ]
+    ],
+    "group": "snakes"
   },
   {
     "id": "way_1314702050",
@@ -1786,7 +1895,8 @@
     "description": "",
     "continents": [
       "asia"
-    ]
+    ],
+    "group": "snakes"
   },
   {
     "id": "way_1314702051",
@@ -1802,7 +1912,8 @@
     "continents": [
       "south_america",
       "north_america"
-    ]
+    ],
+    "group": "lizards"
   },
   {
     "id": "way_1314702052",
@@ -1817,7 +1928,8 @@
     "description": "",
     "continents": [
       "asia"
-    ]
+    ],
+    "group": "lizards"
   },
   {
     "id": "way_1314702053",
@@ -1833,7 +1945,8 @@
     "continents": [
       "south_america",
       "north_america"
-    ]
+    ],
+    "group": "ungulates"
   },
   {
     "id": "way_1314702055",
@@ -1849,7 +1962,8 @@
     "continents": [
       "south_america",
       "north_america"
-    ]
+    ],
+    "group": "small_carnivores"
   },
   {
     "id": "way_1314702057",
@@ -1865,7 +1979,8 @@
     "continents": [
       "south_america",
       "asia"
-    ]
+    ],
+    "group": "fish"
   },
   {
     "id": "way_1314702060",
@@ -1880,7 +1995,8 @@
     "description": "",
     "continents": [
       "south_america"
-    ]
+    ],
+    "group": "fish"
   },
   {
     "id": "way_1314702068",
@@ -1895,7 +2011,8 @@
     "description": "",
     "continents": [
       "africa"
-    ]
+    ],
+    "group": "lizards"
   },
   {
     "id": "way_1314702069",
@@ -1910,7 +2027,8 @@
     "description": "",
     "continents": [
       "australia"
-    ]
+    ],
+    "group": "lizards"
   },
   {
     "id": "way_1314702072",
@@ -1930,7 +2048,8 @@
       "north_america",
       "south_america",
       "australia"
-    ]
+    ],
+    "group": "tortoises"
   },
   {
     "id": "way_1314702074",
@@ -1946,7 +2065,8 @@
     "continents": [
       "africa",
       "south_america"
-    ]
+    ],
+    "group": "fish"
   },
   {
     "id": "way_1314702075",
@@ -1961,7 +2081,8 @@
     "description": "",
     "continents": [
       "south_america"
-    ]
+    ],
+    "group": "fish"
   },
   {
     "id": "way_1314702076",
@@ -1976,7 +2097,8 @@
     "description": "",
     "continents": [
       "south_america"
-    ]
+    ],
+    "group": "fish"
   },
   {
     "id": "way_1314702077",
@@ -1991,7 +2113,8 @@
     "description": "",
     "continents": [
       "south_america"
-    ]
+    ],
+    "group": "fish"
   },
   {
     "id": "way_1314702078",
@@ -2006,7 +2129,8 @@
     "description": "",
     "continents": [
       "south_america"
-    ]
+    ],
+    "group": "fish"
   },
   {
     "id": "way_1314702079",
@@ -2021,7 +2145,8 @@
     "description": "",
     "continents": [
       "africa"
-    ]
+    ],
+    "group": "fish"
   },
   {
     "id": "way_1314702080",
@@ -2036,7 +2161,8 @@
     "description": "",
     "continents": [
       "asia"
-    ]
+    ],
+    "group": "fish"
   },
   {
     "id": "way_1314702081",
@@ -2052,7 +2178,8 @@
     "continents": [
       "south_america",
       "north_america"
-    ]
+    ],
+    "group": "fish"
   },
   {
     "id": "way_1314702082",
@@ -2068,7 +2195,8 @@
     "continents": [
       "north_america",
       "south_america"
-    ]
+    ],
+    "group": "fish"
   },
   {
     "id": "way_1314702083",
@@ -2083,7 +2211,8 @@
     "description": "",
     "continents": [
       "asia"
-    ]
+    ],
+    "group": "fish"
   },
   {
     "id": "way_1314702084",
@@ -2099,7 +2228,8 @@
     "continents": [
       "north_america",
       "asia"
-    ]
+    ],
+    "group": "fish"
   },
   {
     "id": "way_1314702085",
@@ -2115,7 +2245,8 @@
     "continents": [
       "europe",
       "south_america"
-    ]
+    ],
+    "group": "fish"
   },
   {
     "id": "way_1314702086",
@@ -2130,7 +2261,8 @@
     "description": "",
     "continents": [
       "south_america"
-    ]
+    ],
+    "group": "fish"
   },
   {
     "id": "way_1314702087",
@@ -2145,7 +2277,8 @@
     "description": "",
     "continents": [
       "south_america"
-    ]
+    ],
+    "group": "fish"
   },
   {
     "id": "way_1314702088",
@@ -2160,7 +2293,8 @@
     "description": "",
     "continents": [
       "africa"
-    ]
+    ],
+    "group": "fish"
   },
   {
     "id": "way_1314702089",
@@ -2175,7 +2309,8 @@
     "description": "",
     "continents": [
       "africa"
-    ]
+    ],
+    "group": "fish"
   },
   {
     "id": "way_1314702090",
@@ -2190,7 +2325,8 @@
     "description": "",
     "continents": [
       "south_america"
-    ]
+    ],
+    "group": "fish"
   },
   {
     "id": "way_1314702091",
@@ -2206,7 +2342,8 @@
     "continents": [
       "south_america",
       "asia"
-    ]
+    ],
+    "group": "fish"
   },
   {
     "id": "way_1314899579",
@@ -2221,7 +2358,8 @@
     "description": "",
     "continents": [
       "asia"
-    ]
+    ],
+    "group": "other_birds"
   },
   {
     "id": "way_1314899580",
@@ -2238,7 +2376,8 @@
       "europe",
       "asia",
       "africa"
-    ]
+    ],
+    "group": "other_birds"
   },
   {
     "id": "way_1314899581",
@@ -2253,7 +2392,8 @@
     "description": "",
     "continents": [
       "asia"
-    ]
+    ],
+    "group": "other_birds"
   },
   {
     "id": "way_1314899582",
@@ -2268,7 +2408,8 @@
     "description": "",
     "continents": [
       "asia"
-    ]
+    ],
+    "group": "other_birds"
   },
   {
     "id": "way_1314899583",
@@ -2283,7 +2424,8 @@
     "description": "",
     "continents": [
       "asia"
-    ]
+    ],
+    "group": "birds_of_prey"
   },
   {
     "id": "way_1314928272",
@@ -2298,7 +2440,8 @@
     "description": "",
     "continents": [
       "south_america"
-    ]
+    ],
+    "group": "small_carnivores"
   },
   {
     "id": "way_1381690081",
@@ -2314,7 +2457,8 @@
     "continents": [
       "south_america",
       "north_america"
-    ]
+    ],
+    "group": "big_cats"
   },
   {
     "id": "way_1381692164",
@@ -2329,7 +2473,8 @@
     "description": "",
     "continents": [
       "asia"
-    ]
+    ],
+    "group": "big_cats"
   },
   {
     "id": "way_1381692165",
@@ -2345,7 +2490,8 @@
     "continents": [
       "asia",
       "africa"
-    ]
+    ],
+    "group": "big_cats"
   },
   {
     "id": "way_1381695866",
@@ -2360,7 +2506,8 @@
     "description": "",
     "continents": [
       "africa"
-    ]
+    ],
+    "group": "big_cats"
   },
   {
     "id": "way_1381695867",
@@ -2375,7 +2522,8 @@
     "description": "",
     "continents": [
       "asia"
-    ]
+    ],
+    "group": "big_cats"
   },
   {
     "id": "way_1381812198",
@@ -2390,7 +2538,8 @@
     "description": "",
     "continents": [
       "europe"
-    ]
+    ],
+    "group": "ungulates"
   },
   {
     "id": "way_1382112702",
@@ -2406,7 +2555,8 @@
     "continents": [
       "europe",
       "asia"
-    ]
+    ],
+    "group": "small_cats"
   },
   {
     "id": "slon_001",
@@ -2418,11 +2568,26 @@
     "lat": 42.6565949,
     "lng": 23.3327233,
     "photo": null,
-    "classification": { "class": "Бозайници", "order": "Хоботни", "family": "Слонове" },
-    "iucn": { "code": "EN", "labelBg": "Застрашен", "labelEn": "Endangered" },
-    "stats": { "lifespan": "60–70 г.", "weight": "до 5 000 кг", "height": "до 3.5 м" },
+    "classification": {
+      "class": "Бозайници",
+      "order": "Хоботни",
+      "family": "Слонове"
+    },
+    "iucn": {
+      "code": "EN",
+      "labelBg": "Застрашен",
+      "labelEn": "Endangered"
+    },
+    "stats": {
+      "lifespan": "60–70 г.",
+      "weight": "до 5 000 кг",
+      "height": "до 3.5 м"
+    },
     "habitat": "Тропически гори, савани и ливади в Южна и Югоизточна Азия.",
-    "continents": ["asia"]
+    "continents": [
+      "asia"
+    ],
+    "group": "ungulates"
   },
   {
     "id": "nosorog_001",
@@ -2434,11 +2599,26 @@
     "lat": 42.6565949,
     "lng": 23.3327233,
     "photo": null,
-    "classification": { "class": "Бозайници", "order": "Нечифтокопитни", "family": "Носорогови" },
-    "iucn": { "code": "NT", "labelBg": "Почти застрашен", "labelEn": "Near Threatened" },
-    "stats": { "lifespan": "40–50 г.", "weight": "до 2 300 кг", "height": "до 1.8 м" },
+    "classification": {
+      "class": "Бозайници",
+      "order": "Нечифтокопитни",
+      "family": "Носорогови"
+    },
+    "iucn": {
+      "code": "NT",
+      "labelBg": "Почти застрашен",
+      "labelEn": "Near Threatened"
+    },
+    "stats": {
+      "lifespan": "40–50 г.",
+      "weight": "до 2 300 кг",
+      "height": "до 1.8 м"
+    },
     "habitat": "Савани и пасища в Субсахарска Африка.",
-    "continents": ["africa"]
+    "continents": [
+      "africa"
+    ],
+    "group": "ungulates"
   },
   {
     "id": "hipopotam_001",
@@ -2450,11 +2630,26 @@
     "lat": 42.6565949,
     "lng": 23.3327233,
     "photo": null,
-    "classification": { "class": "Бозайници", "order": "Чифтокопитни", "family": "Хипопотамови" },
-    "iucn": { "code": "VU", "labelBg": "Уязвим", "labelEn": "Vulnerable" },
-    "stats": { "lifespan": "40–50 г.", "weight": "до 3 000 кг", "height": "до 1.5 м" },
+    "classification": {
+      "class": "Бозайници",
+      "order": "Чифтокопитни",
+      "family": "Хипопотамови"
+    },
+    "iucn": {
+      "code": "VU",
+      "labelBg": "Уязвим",
+      "labelEn": "Vulnerable"
+    },
+    "stats": {
+      "lifespan": "40–50 г.",
+      "weight": "до 3 000 кг",
+      "height": "до 1.5 м"
+    },
     "habitat": "Реки, езера и влажни зони в Субсахарска Африка.",
-    "continents": ["africa"]
+    "continents": [
+      "africa"
+    ],
+    "group": "ungulates"
   },
   {
     "id": "hipopotam_002",
@@ -2466,11 +2661,26 @@
     "lat": 42.6565949,
     "lng": 23.3327233,
     "photo": null,
-    "classification": { "class": "Бозайници", "order": "Чифтокопитни", "family": "Хипопотамови" },
-    "iucn": { "code": "EN", "labelBg": "Застрашен", "labelEn": "Endangered" },
-    "stats": { "lifespan": "30–40 г.", "weight": "до 275 кг", "height": "до 0.85 м" },
+    "classification": {
+      "class": "Бозайници",
+      "order": "Чифтокопитни",
+      "family": "Хипопотамови"
+    },
+    "iucn": {
+      "code": "EN",
+      "labelBg": "Застрашен",
+      "labelEn": "Endangered"
+    },
+    "stats": {
+      "lifespan": "30–40 г.",
+      "weight": "до 275 кг",
+      "height": "до 0.85 м"
+    },
     "habitat": "Тропически гори и блата в Западна Африка.",
-    "continents": ["africa"]
+    "continents": [
+      "africa"
+    ],
+    "group": "ungulates"
   },
   {
     "id": "kapucin_001",
@@ -2482,11 +2692,25 @@
     "lat": 42.6572609,
     "lng": 23.3336819,
     "photo": null,
-    "classification": { "class": "Бозайници", "order": "Примати", "family": "Цепконокти маймуни" },
-    "iucn": { "code": "LC", "labelBg": "Слабо засегнат", "labelEn": "Least Concern" },
-    "stats": { "lifespan": "до 45 г.", "weight": "2.5–4.8 кг" },
+    "classification": {
+      "class": "Бозайници",
+      "order": "Примати",
+      "family": "Цепконокти маймуни"
+    },
+    "iucn": {
+      "code": "LC",
+      "labelBg": "Слабо засегнат",
+      "labelEn": "Least Concern"
+    },
+    "stats": {
+      "lifespan": "до 45 г.",
+      "weight": "2.5–4.8 кг"
+    },
     "habitat": "Тропически гори в Южна Америка.",
-    "continents": ["americas"]
+    "continents": [
+      "americas"
+    ],
+    "group": "primates"
   },
   {
     "id": "lapunder_001",
@@ -2498,11 +2722,25 @@
     "lat": 42.6572609,
     "lng": 23.3336819,
     "photo": null,
-    "classification": { "class": "Бозайници", "order": "Примати", "family": "Маймунови" },
-    "iucn": { "code": "EN", "labelBg": "Застрашен", "labelEn": "Endangered" },
-    "stats": { "lifespan": "до 26 г.", "weight": "5–15 кг" },
+    "classification": {
+      "class": "Бозайници",
+      "order": "Примати",
+      "family": "Маймунови"
+    },
+    "iucn": {
+      "code": "EN",
+      "labelBg": "Застрашен",
+      "labelEn": "Endangered"
+    },
+    "stats": {
+      "lifespan": "до 26 г.",
+      "weight": "5–15 кг"
+    },
     "habitat": "Тропически гори в Югоизточна Азия.",
-    "continents": ["asia"]
+    "continents": [
+      "asia"
+    ],
+    "group": "primates"
   },
   {
     "id": "marmozet_001",
@@ -2514,11 +2752,25 @@
     "lat": 42.6572609,
     "lng": 23.3336819,
     "photo": null,
-    "classification": { "class": "Бозайници", "order": "Примати", "family": "Мармозетови" },
-    "iucn": { "code": "LC", "labelBg": "Слабо засегнат", "labelEn": "Least Concern" },
-    "stats": { "lifespan": "до 12 г.", "weight": "190–250 г" },
+    "classification": {
+      "class": "Бозайници",
+      "order": "Примати",
+      "family": "Мармозетови"
+    },
+    "iucn": {
+      "code": "LC",
+      "labelBg": "Слабо засегнат",
+      "labelEn": "Least Concern"
+    },
+    "stats": {
+      "lifespan": "до 12 г.",
+      "weight": "190–250 г"
+    },
     "habitat": "Атлантически гори в Бразилия.",
-    "continents": ["americas"]
+    "continents": [
+      "americas"
+    ],
+    "group": "primates"
   },
   {
     "id": "lemur_001",
@@ -2530,11 +2782,25 @@
     "lat": 42.6572609,
     "lng": 23.3336819,
     "photo": null,
-    "classification": { "class": "Бозайници", "order": "Примати", "family": "Лемурови" },
-    "iucn": { "code": "EN", "labelBg": "Застрашен", "labelEn": "Endangered" },
-    "stats": { "lifespan": "до 18 г.", "weight": "2.2–3.5 кг" },
+    "classification": {
+      "class": "Бозайници",
+      "order": "Примати",
+      "family": "Лемурови"
+    },
+    "iucn": {
+      "code": "EN",
+      "labelBg": "Застрашен",
+      "labelEn": "Endangered"
+    },
+    "stats": {
+      "lifespan": "до 18 г.",
+      "weight": "2.2–3.5 кг"
+    },
     "habitat": "Сухи гори и храсталаци на Мадагаскар.",
-    "continents": ["africa"]
+    "continents": [
+      "africa"
+    ],
+    "group": "primates"
   },
   {
     "id": "lvski_makak_001",
@@ -2546,11 +2812,25 @@
     "lat": 42.6577454,
     "lng": 23.3338227,
     "photo": null,
-    "classification": { "class": "Бозайници", "order": "Примати", "family": "Маймунови" },
-    "iucn": { "code": "EN", "labelBg": "Застрашен", "labelEn": "Endangered" },
-    "stats": { "lifespan": "до 30 г.", "weight": "3–10 кг" },
+    "classification": {
+      "class": "Бозайници",
+      "order": "Примати",
+      "family": "Маймунови"
+    },
+    "iucn": {
+      "code": "EN",
+      "labelBg": "Застрашен",
+      "labelEn": "Endangered"
+    },
+    "stats": {
+      "lifespan": "до 30 г.",
+      "weight": "3–10 кг"
+    },
     "habitat": "Тропически гори на Западни Гати, Индия.",
-    "continents": ["asia"]
+    "continents": [
+      "asia"
+    ],
+    "group": "primates"
   },
   {
     "id": "rezus_001",
@@ -2562,11 +2842,25 @@
     "lat": 42.6577454,
     "lng": 23.3338227,
     "photo": null,
-    "classification": { "class": "Бозайници", "order": "Примати", "family": "Маймунови" },
-    "iucn": { "code": "LC", "labelBg": "Слабо засегнат", "labelEn": "Least Concern" },
-    "stats": { "lifespan": "до 25 г.", "weight": "5–12 кг" },
+    "classification": {
+      "class": "Бозайници",
+      "order": "Примати",
+      "family": "Маймунови"
+    },
+    "iucn": {
+      "code": "LC",
+      "labelBg": "Слабо засегнат",
+      "labelEn": "Least Concern"
+    },
+    "stats": {
+      "lifespan": "до 25 г.",
+      "weight": "5–12 кг"
+    },
     "habitat": "Гори, ливади и урбанизирани райони в Южна и Централна Азия.",
-    "continents": ["asia"]
+    "continents": [
+      "asia"
+    ],
+    "group": "primates"
   },
   {
     "id": "pavian_001",
@@ -2578,11 +2872,26 @@
     "lat": 42.6577454,
     "lng": 23.3338227,
     "photo": null,
-    "classification": { "class": "Бозайници", "order": "Примати", "family": "Маймунови" },
-    "iucn": { "code": "LC", "labelBg": "Слабо засегнат", "labelEn": "Least Concern" },
-    "stats": { "lifespan": "до 30 г.", "weight": "10–30 кг" },
+    "classification": {
+      "class": "Бозайници",
+      "order": "Примати",
+      "family": "Маймунови"
+    },
+    "iucn": {
+      "code": "LC",
+      "labelBg": "Слабо засегнат",
+      "labelEn": "Least Concern"
+    },
+    "stats": {
+      "lifespan": "до 30 г.",
+      "weight": "10–30 кг"
+    },
     "habitat": "Полусухи скалисти терени в Африканския рог и Арабия.",
-    "continents": ["africa", "asia"]
+    "continents": [
+      "africa",
+      "asia"
+    ],
+    "group": "primates"
   },
   {
     "id": "langur_001",
@@ -2594,11 +2903,25 @@
     "lat": 42.6577454,
     "lng": 23.3338227,
     "photo": null,
-    "classification": { "class": "Бозайници", "order": "Примати", "family": "Маймунови" },
-    "iucn": { "code": "LC", "labelBg": "Слабо засегнат", "labelEn": "Least Concern" },
-    "stats": { "lifespan": "до 20 г.", "weight": "11–18 кг" },
+    "classification": {
+      "class": "Бозайници",
+      "order": "Примати",
+      "family": "Маймунови"
+    },
+    "iucn": {
+      "code": "LC",
+      "labelBg": "Слабо засегнат",
+      "labelEn": "Least Concern"
+    },
+    "stats": {
+      "lifespan": "до 20 г.",
+      "weight": "11–18 кг"
+    },
     "habitat": "Гори и градове в Южна Азия.",
-    "continents": ["asia"]
+    "continents": [
+      "asia"
+    ],
+    "group": "primates"
   },
   {
     "id": "kolobus_001",
@@ -2610,11 +2933,25 @@
     "lat": 42.6582398,
     "lng": 23.3341374,
     "photo": null,
-    "classification": { "class": "Бозайници", "order": "Примати", "family": "Маймунови" },
-    "iucn": { "code": "VU", "labelBg": "Уязвим", "labelEn": "Vulnerable" },
-    "stats": { "lifespan": "до 20 г.", "weight": "9–14 кг" },
+    "classification": {
+      "class": "Бозайници",
+      "order": "Примати",
+      "family": "Маймунови"
+    },
+    "iucn": {
+      "code": "VU",
+      "labelBg": "Уязвим",
+      "labelEn": "Vulnerable"
+    },
+    "stats": {
+      "lifespan": "до 20 г.",
+      "weight": "9–14 кг"
+    },
     "habitat": "Тропически гори в Централна и Западна Африка.",
-    "continents": ["africa"]
+    "continents": [
+      "africa"
+    ],
+    "group": "primates"
   },
   {
     "id": "gibon_001",
@@ -2626,11 +2963,25 @@
     "lat": 42.6582398,
     "lng": 23.3341374,
     "photo": null,
-    "classification": { "class": "Бозайници", "order": "Примати", "family": "Гибонови" },
-    "iucn": { "code": "EN", "labelBg": "Застрашен", "labelEn": "Endangered" },
-    "stats": { "lifespan": "до 44 г.", "weight": "4–8 кг" },
+    "classification": {
+      "class": "Бозайници",
+      "order": "Примати",
+      "family": "Гибонови"
+    },
+    "iucn": {
+      "code": "EN",
+      "labelBg": "Застрашен",
+      "labelEn": "Endangered"
+    },
+    "stats": {
+      "lifespan": "до 44 г.",
+      "weight": "4–8 кг"
+    },
     "habitat": "Тропически и субтропически гори в Южна и Югоизточна Азия.",
-    "continents": ["asia"]
+    "continents": [
+      "asia"
+    ],
+    "group": "primates"
   },
   {
     "id": "tamarin_001",
@@ -2642,10 +2993,24 @@
     "lat": 42.6582398,
     "lng": 23.3341374,
     "photo": null,
-    "classification": { "class": "Бозайници", "order": "Примати", "family": "Мармозетови" },
-    "iucn": { "code": "EN", "labelBg": "Застрашен", "labelEn": "Endangered" },
-    "stats": { "lifespan": "до 15 г.", "weight": "550–700 г" },
+    "classification": {
+      "class": "Бозайници",
+      "order": "Примати",
+      "family": "Мармозетови"
+    },
+    "iucn": {
+      "code": "EN",
+      "labelBg": "Застрашен",
+      "labelEn": "Endangered"
+    },
+    "stats": {
+      "lifespan": "до 15 г.",
+      "weight": "550–700 г"
+    },
     "habitat": "Атлантически крайбрежни гори в Бразилия.",
-    "continents": ["americas"]
+    "continents": [
+      "americas"
+    ],
+    "group": "primates"
   }
 ]
