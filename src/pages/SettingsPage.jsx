@@ -7,6 +7,7 @@ const DIETS        = ['месояден', 'тревопасен', 'всеяде�
 const POI_CAT_LABELS = {
   food: 'Хранене', attraction: 'Атракция', medical: 'Медицински',
   ticket: 'Каса', shop: 'Магазин', wc: 'Тоалетна',
+  parking: 'Паркинг', bus_stop: 'Спирка',
 }
 
 const EMPTY_ANIMAL = { nameBg: '', nameEn: '', species: '', animalType: 'бозайник', diet: 'всеяден', lat: '', lng: '' }
@@ -254,7 +255,7 @@ export default function SettingsPage() {
                 onChange={e => setPoiForm(p => ({ ...p, nameBg: e.target.value }))} placeholder="Тоалетна" />
               <Select label="Категория" value={poiForm.category}
                 onChange={e => setPoiForm(p => ({ ...p, category: e.target.value }))}
-                options={['wc', 'medical', 'entrance'].map(c => [c, POI_CAT_LABELS[c]])} />
+                options={['wc', 'medical', 'entrance', 'parking', 'bus_stop'].map(c => [c, POI_CAT_LABELS[c]])} />
               <CoordFields
                 lat={poiForm.lat} lng={poiForm.lng}
                 onLatChange={v => setPoiForm(p => ({ ...p, lat: v }))}

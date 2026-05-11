@@ -63,11 +63,13 @@ const TYPE_EMOJI = {
 const POI_EMOJI = {
   food: '🍔', medical: '🏥', entrance: '🚪',
   ticket: '🎟️', shop: '🛍️', attraction: '🎠',
+  parking: '🅿️', bus_stop: '🚌',
 }
 
 const POI_LABEL = {
   food: 'Хранене', medical: 'Медицински', entrance: 'Вход',
   ticket: 'Каса', shop: 'Магазин', attraction: 'Атракция',
+  parking: 'Паркинг', bus_stop: 'Спирка',
 }
 
 const FILTERS = [
@@ -82,7 +84,7 @@ const FILTERS = [
 ]
 
 const CONTINENT_FILTERS = new Set(['europe', 'africa', 'asia', 'americas', 'australia'])
-const SERVICE_CATEGORIES = new Set(['medical', 'entrance', 'ticket', 'shop', 'attraction'])
+const SERVICE_CATEGORIES = new Set(['medical', 'entrance', 'ticket', 'shop', 'attraction', 'parking', 'bus_stop'])
 
 function animalIcon(diet) {
   return {

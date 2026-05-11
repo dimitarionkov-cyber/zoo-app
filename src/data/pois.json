@@ -104,5 +104,37 @@
     "category": "attraction",
     "lat": 42.6575441,
     "lng": 23.3332326
+  },
+  {
+    "id": "parking-main",
+    "nameBg": "Паркинг (Главен вход)",
+    "nameEn": "Parking (Main Gate)",
+    "category": "parking",
+    "lat": 42.659758393860756,
+    "lng": 23.33460633652154
+  },
+  {
+    "id": "parking-west",
+    "nameBg": "Паркинг (Западен вход)",
+    "nameEn": "Parking (West Gate)",
+    "category": "parking",
+    "lat": 42.65829331324129,
+    "lng": 23.328264019199125
+  },
+  {
+    "id": "bus-stop-main",
+    "nameBg": "Спирка (Главен вход)",
+    "nameEn": "Bus Stop (Main Gate)",
+    "category": "bus_stop",
+    "lat": 42.657180806037076,
+    "lng": 23.33625977710392
+  },
+  {
+    "id": "bus-stop-west",
+    "nameBg": "Спирка (Западен вход)",
+    "nameEn": "Bus Stop (West Gate)",
+    "category": "bus_stop",
+    "lat": 42.65801371980559,
+    "lng": 23.328484435984485
   }
 ]
