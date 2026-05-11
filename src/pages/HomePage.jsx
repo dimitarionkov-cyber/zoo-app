@@ -1,45 +1,6 @@
 import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
-
-// ── Quick-access tiles ────────────────────────────────────────────────────────
-const sections = [
-  {
-    to: '/map',
-    label: 'Карта',
-    icon: '🗺️',
-    desc: 'Разгледай зоопарка',
-    bg: 'bg-zoo-green/10',
-    border: 'border-zoo-green/20',
-    text: 'text-zoo-green',
-  },
-  {
-    to: '/animals',
-    label: 'Животните',
-    icon: '🦁',
-    desc: 'Всички 150 вида',
-    bg: 'bg-amber-50 dark:bg-amber-900/20',
-    border: 'border-amber-200 dark:border-amber-800',
-    text: 'text-amber-700 dark:text-amber-300',
-  },
-  {
-    to: '/search',
-    label: 'Търсене',
-    icon: '🔍',
-    desc: 'По вид и произход',
-    bg: 'bg-sky-50 dark:bg-sky-900/20',
-    border: 'border-sky-200 dark:border-sky-800',
-    text: 'text-sky-700 dark:text-sky-300',
-  },
-  {
-    to: '/info',
-    label: 'Информация',
-    icon: 'ℹ️',
-    desc: 'Часове, цени, транспорт',
-    bg: 'bg-purple-50 dark:bg-purple-900/20',
-    border: 'border-purple-200 dark:border-purple-800',
-    text: 'text-purple-700 dark:text-purple-300',
-  },
-]
+import { useData } from '../context/DataContext'
 
 // ── RSS helpers ───────────────────────────────────────────────────────────────
 const BG_MONTHS = [
@@ -112,7 +73,15 @@ function useZooNews() {
 
 // ── Component ─────────────────────────────────────────────────────────────────
 export default function HomePage() {
+  const { allAnimals } = useData()
   const { news, loading, error } = useZooNews()
+
+  const SECTIONS = [
+    { to: '/map',     label: 'Карта',        icon: '🗺️', desc: 'Разгледай зоопарка'             },
+    { to: '/animals', label: 'Животните',    icon: '🦁', desc: `Всички ${allAnimals.length} вида` },
+    { to: '/search',  label: 'Търсене',      icon: '🔍', desc: 'По вид и произход'               },
+    { to: '/info',    label: 'Информация',   icon: 'ℹ️', desc: 'Часове, цени, транспорт'         },
+  ]
 
   return (
     <div className="flex flex-col pb-6">
@@ -123,17 +92,17 @@ export default function HomePage() {
         <p className="text-white/70 text-sm mt-1">Неофициален наръчник на посетителя</p>
       </div>
 
-      {/* Quick-access grid — compact */}
+      {/* Quick-access grid */}
       <div className="grid grid-cols-2 gap-3 px-4 pt-4">
-        {sections.map(({ to, label, icon, desc, bg, border, text }) => (
+        {SECTIONS.map(({ to, label, icon, desc }) => (
           <Link
             key={to}
             to={to}
-            className={`${bg} border ${border} rounded-2xl px-4 py-3.5 flex flex-col items-center gap-1.5 active:scale-95 transition-transform`}
+            className="bg-[--color-bg-card] border border-[--color-border] rounded-2xl px-4 py-3.5 flex flex-col items-center gap-1.5 active:scale-95 transition-transform"
           >
             <span className="text-3xl leading-none">{icon}</span>
-            <span className={`font-bold text-sm ${text}`}>{label}</span>
-            <span className="text-[11px] text-zoo-brown opacity-70 text-center leading-tight">{desc}</span>
+            <span className="font-bold text-sm text-zoo-green">{label}</span>
+            <span className="text-[11px] text-[--color-text-main] opacity-60 text-center leading-tight">{desc}</span>
           </Link>
         ))}
       </div>

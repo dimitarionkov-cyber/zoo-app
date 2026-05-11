@@ -101,7 +101,6 @@ export default function AnimalsHubPage() {
                 <span className="text-4xl leading-none">{tile.emoji}</span>
                 <div className="flex-1 min-w-0">
                   <p className={`text-lg font-bold leading-tight ${tile.text}`}>{tile.label}</p>
-                  <p className="text-xs opacity-80 text-zoo-brown mt-0.5">{tile.labelEn}</p>
                 </div>
                 <span className={`text-2xl font-bold tabular-nums ${tile.text} opacity-80`}>{count}</span>
               </button>
@@ -119,7 +118,6 @@ export default function AnimalsHubPage() {
                 <span className="text-4xl leading-none">{tile.emoji}</span>
                 <div className="flex-1 min-w-0">
                   <p className="text-lg font-bold leading-tight text-zoo-green">{tile.label}</p>
-                  <p className="text-xs opacity-80 text-zoo-brown mt-0.5">{tile.labelEn}</p>
                 </div>
                 <span className="text-2xl font-bold tabular-nums text-zoo-green opacity-80">{count}</span>
               </button>
