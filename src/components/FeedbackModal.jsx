@@ -42,18 +42,20 @@ export default function FeedbackModal({ open, onClose }) {
         type,
         title:       title.trim(),
         description: description.trim(),
-        userAgent:   navigator.userAgent,
+        userAgent:   navigator.userAgent.slice(0, 300),
         screen:      `${screen.width}×${screen.height}@${window.devicePixelRatio}x`,
         appVersion:  typeof __APP_VERSION__ !== 'undefined' ? __APP_VERSION__ : 'dev',
         page:        window.location.pathname,
       })
-      const res  = await fetch(`${SCRIPT_URL}?${params}`)
-      const data = await res.json()
-      if (data.ok) {
-        setStatus('success')
-      } else {
-        setStatus('error')
-      }
+      // Image beacon bypasses CORS + follows the Apps Script redirect
+      await new Promise(resolve => {
+        const img = new Image()
+        img.onload = resolve
+        img.onerror = resolve   // fires because response is JSON, not an image — but the request was sent
+        setTimeout(resolve, 8000)
+        img.src = `${SCRIPT_URL}?${params}`
+      })
+      setStatus('success')
     } catch {
       setStatus('error')
     }
