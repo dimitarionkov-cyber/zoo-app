@@ -38,19 +38,16 @@ export default function FeedbackModal({ open, onClose }) {
     if (!title.trim() || !description.trim()) return
     setStatus('sending')
     try {
-      await fetch(SCRIPT_URL, {
-        method: 'POST',
-        mode:   'no-cors',
-        body:   JSON.stringify({
-          type,
-          title:       title.trim(),
-          description: description.trim(),
-          userAgent:   navigator.userAgent,
-          screen:      `${screen.width}×${screen.height}@${window.devicePixelRatio}x`,
-          appVersion:  typeof __APP_VERSION__ !== 'undefined' ? __APP_VERSION__ : 'dev',
-          page:        window.location.pathname,
-        }),
+      const params = new URLSearchParams({
+        type,
+        title:       title.trim(),
+        description: description.trim(),
+        userAgent:   navigator.userAgent,
+        screen:      `${screen.width}×${screen.height}@${window.devicePixelRatio}x`,
+        appVersion:  typeof __APP_VERSION__ !== 'undefined' ? __APP_VERSION__ : 'dev',
+        page:        window.location.pathname,
       })
+      await fetch(`${SCRIPT_URL}?${params}`, { mode: 'no-cors' })
       setStatus('success')
     } catch {
       setStatus('error')
