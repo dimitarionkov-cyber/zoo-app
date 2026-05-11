@@ -139,7 +139,7 @@ export default function InfoPage() {
   return (
     <div className="flex flex-col pb-8">
       {/* Header */}
-      <div className="bg-zoo-green px-4 pt-10 pb-5">
+      <div className="bg-zoo-primary px-4 pt-10 pb-5">
         <h1 className="text-2xl font-bold text-white">Информация</h1>
         <p className="text-white/70 text-sm mt-0.5">Зоопарк София · zoosofia.eu</p>
       </div>
@@ -252,7 +252,7 @@ export default function InfoPage() {
                 href={`https://www.google.com/maps/dir/?api=1&destination=${e.lat},${e.lng}&travelmode=transit`}
                 target="_blank"
                 rel="noreferrer"
-                className="flex flex-col items-center gap-1.5 bg-zoo-green rounded-2xl px-3 py-4 active:opacity-80 transition-opacity"
+                className="flex flex-col items-center gap-1.5 bg-zoo-primary rounded-2xl px-3 py-4 active:opacity-80 transition-opacity"
               >
                 <span className="text-2xl leading-none">🗺️</span>
                 <p className="font-bold text-sm text-white text-center leading-tight">{e.label}</p>

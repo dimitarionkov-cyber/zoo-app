@@ -15,7 +15,7 @@ export default function Layout() {
       {/* Floating feedback button — above nav bar */}
       <button
         onClick={() => setFeedbackOpen(true)}
-        className="absolute bottom-20 right-4 z-40 bg-zoo-green text-white w-11 h-11 rounded-full shadow-lg flex items-center justify-center text-lg active:scale-95 transition-transform"
+        className="absolute bottom-20 right-4 z-40 bg-zoo-primary text-white w-11 h-11 rounded-full shadow-lg flex items-center justify-center text-lg active:scale-95 transition-transform"
         aria-label="Обратна връзка"
       >
         💬

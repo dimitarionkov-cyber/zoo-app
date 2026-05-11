@@ -117,7 +117,7 @@ export default function HomePage() {
   return (
     <div className="flex flex-col pb-6">
       {/* Hero */}
-      <div className="bg-zoo-green px-6 pt-14 pb-6 text-center">
+      <div className="bg-zoo-primary px-6 pt-14 pb-6 text-center">
         <p className="text-5xl mb-2">🐾</p>
         <h1 className="text-3xl font-bold text-white tracking-wide">Зоопарк София</h1>
         <p className="text-white/70 text-sm mt-1">Неофициален наръчник на посетителя</p>

@@ -56,7 +56,7 @@ export default function AnimalDetailPage() {
     <div className="flex flex-col pb-6">
 
       {/* Green header */}
-      <div className="bg-zoo-green px-4 pt-12 pb-4 relative">
+      <div className="bg-zoo-primary px-4 pt-12 pb-4 relative">
         <button
           onClick={() => navigate(-1)}
           className="absolute top-4 left-4 text-white/80 text-2xl leading-none"

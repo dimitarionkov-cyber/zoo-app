@@ -43,7 +43,7 @@ export default function FeedbackModal({ open, onClose }) {
     <div className="absolute inset-0 z-50 flex flex-col" style={{ backgroundColor: 'var(--color-bg-base)' }}>
 
       {/* Header */}
-      <div className="bg-zoo-green px-4 pt-10 pb-4 flex items-center gap-3 shrink-0">
+      <div className="bg-zoo-primary px-4 pt-10 pb-4 flex items-center gap-3 shrink-0">
         <h1 className="flex-1 text-xl font-bold text-white">Обратна връзка</h1>
         <button
           onClick={handleClose}
@@ -65,7 +65,7 @@ export default function FeedbackModal({ open, onClose }) {
             </p>
             <button
               onClick={handleClose}
-              className="mt-4 bg-zoo-green text-white px-10 py-3 rounded-2xl font-semibold text-sm"
+              className="mt-4 bg-zoo-primary text-white px-10 py-3 rounded-2xl font-semibold text-sm"
             >
               Затвори
             </button>
@@ -91,7 +91,7 @@ export default function FeedbackModal({ open, onClose }) {
                     onClick={() => setType(t.key)}
                     className={`flex-1 flex flex-col items-center gap-1 py-3 rounded-xl border text-xs font-semibold transition-colors ${
                       type === t.key
-                        ? 'bg-zoo-green text-white border-zoo-green'
+                        ? 'bg-zoo-primary text-white border-zoo-primary'
                         : 'text-[--color-text-main] border-[--color-border]'
                     }`}
                     style={type !== t.key ? { backgroundColor: 'var(--color-bg-card)' } : {}}
@@ -156,7 +156,7 @@ export default function FeedbackModal({ open, onClose }) {
             <button
               type="submit"
               disabled={state.submitting}
-              className="w-full bg-zoo-green text-white py-3 rounded-2xl font-semibold text-sm disabled:opacity-40 transition-opacity active:opacity-80"
+              className="w-full bg-zoo-primary text-white py-3 rounded-2xl font-semibold text-sm disabled:opacity-40 transition-opacity active:opacity-80"
             >
               {state.submitting ? 'Изпращане…' : 'Изпрати'}
             </button>

@@ -138,7 +138,7 @@ function AnimalSheet({ animal, onViewDetail, dist }) {
 
       <button
         onClick={onViewDetail}
-        className="mt-3 w-full py-2.5 bg-zoo-green text-white text-sm font-semibold rounded-xl active:opacity-80 transition-opacity"
+        className="mt-3 w-full py-2.5 bg-zoo-primary text-white text-sm font-semibold rounded-xl active:opacity-80 transition-opacity"
       >
         Виж профила →
       </button>
@@ -218,7 +218,7 @@ export default function MapPage() {
     <div className="flex flex-col w-full h-full">
 
       {/* ── Header ── */}
-      <div className="bg-zoo-green px-4 pt-10 pb-3 z-20">
+      <div className="bg-zoo-primary px-4 pt-10 pb-3 z-20">
 
         {/* Title row + route toggle */}
         <div className="flex items-center gap-3 mb-3">

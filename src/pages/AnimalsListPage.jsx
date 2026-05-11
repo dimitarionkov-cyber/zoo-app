@@ -256,7 +256,7 @@ export default function AnimalsListPage() {
     <div className="flex flex-col h-full">
 
       {/* Sticky header */}
-      <div className="sticky top-0 bg-zoo-green px-4 pt-10 pb-3 z-10">
+      <div className="sticky top-0 bg-zoo-primary px-4 pt-10 pb-3 z-10">
         <div className="flex items-center gap-3 mb-3">
           <button
             onClick={() => navigate(-1)}

@@ -55,7 +55,7 @@ export default function AnimalsHubPage() {
   return (
     <div className="flex flex-col pb-6">
       {/* Header */}
-      <div className="bg-zoo-green px-4 pt-10 pb-5">
+      <div className="bg-zoo-primary px-4 pt-10 pb-5">
         <h1 className="text-2xl font-bold text-white tracking-wide">Животните</h1>
         <p className="text-white/70 text-sm mt-0.5">
           {allAnimals.length} вида в Зоопарк София
@@ -68,7 +68,7 @@ export default function AnimalsHubPage() {
           onClick={() => setActiveTab('type')}
           className={`flex-1 py-2 rounded-xl text-sm font-semibold transition-colors ${
             activeTab === 'type'
-              ? 'bg-zoo-green text-white shadow-sm'
+              ? 'bg-zoo-primary text-white shadow-sm'
               : 'text-zoo-brown opacity-60'
           }`}
         >
@@ -78,7 +78,7 @@ export default function AnimalsHubPage() {
           onClick={() => setActiveTab('origin')}
           className={`flex-1 py-2 rounded-xl text-sm font-semibold transition-colors ${
             activeTab === 'origin'
-              ? 'bg-zoo-green text-white shadow-sm'
+              ? 'bg-zoo-primary text-white shadow-sm'
               : 'text-zoo-brown opacity-60'
           }`}
         >
@@ -101,7 +101,7 @@ export default function AnimalsHubPage() {
                 <span className="text-4xl leading-none">{tile.emoji}</span>
                 <div className="flex-1 min-w-0">
                   <p className={`text-lg font-bold leading-tight ${tile.text}`}>{tile.label}</p>
-                  <p className="text-xs opacity-60 text-zoo-brown mt-0.5">{tile.labelEn}</p>
+                  <p className="text-xs opacity-80 text-zoo-brown mt-0.5">{tile.labelEn}</p>
                 </div>
                 <span className={`text-2xl font-bold tabular-nums ${tile.text} opacity-80`}>{count}</span>
               </button>
@@ -119,7 +119,7 @@ export default function AnimalsHubPage() {
                 <span className="text-4xl leading-none">{tile.emoji}</span>
                 <div className="flex-1 min-w-0">
                   <p className="text-lg font-bold leading-tight text-zoo-green">{tile.label}</p>
-                  <p className="text-xs opacity-60 text-zoo-brown mt-0.5">{tile.labelEn}</p>
+                  <p className="text-xs opacity-80 text-zoo-brown mt-0.5">{tile.labelEn}</p>
                 </div>
                 <span className="text-2xl font-bold tabular-nums text-zoo-green opacity-80">{count}</span>
               </button>

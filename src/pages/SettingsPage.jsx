@@ -95,7 +95,7 @@ function AddForm({ title, children, onSubmit, onClose }) {
       <h3 className="font-bold text-zoo-green">{title}</h3>
       {children}
       <div className="flex gap-2 pt-1">
-        <button onClick={onSubmit} className="flex-1 bg-zoo-green text-white rounded-xl py-2 text-sm font-semibold">
+        <button onClick={onSubmit} className="flex-1 bg-zoo-primary text-white rounded-xl py-2 text-sm font-semibold">
           Запази
         </button>
         <button onClick={onClose} className="flex-1 border border-[--color-border] rounded-xl py-2 text-sm text-zoo-brown">
@@ -174,8 +174,11 @@ export default function SettingsPage() {
   }
 
   return (
-    <div className="p-4 space-y-6 pb-8">
-      <h1 className="text-xl font-bold text-zoo-green">Настройки</h1>
+    <div className="flex flex-col pb-8">
+      <div className="bg-zoo-primary px-4 pt-10 pb-5">
+        <h1 className="text-xl font-bold text-white">Настройки</h1>
+      </div>
+      <div className="p-4 space-y-6">
 
       {/* Dark mode */}
       <section>
@@ -312,6 +315,7 @@ export default function SettingsPage() {
         <p className="text-[10px] text-zoo-brown opacity-30 text-center">
           Неофициално приложение. Не е свързано официално със Зоопарк София.
         </p>
+      </div>
       </div>
     </div>
   )

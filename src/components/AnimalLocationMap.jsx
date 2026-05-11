@@ -98,7 +98,7 @@ export default function AnimalLocationMap({ animal }) {
           href={mapsUrl}
           target="_blank"
           rel="noreferrer"
-          className="flex-1 flex items-center justify-center gap-2 bg-zoo-green text-white rounded-xl py-2.5 font-semibold text-sm active:opacity-80 transition-opacity"
+          className="flex-1 flex items-center justify-center gap-2 bg-zoo-primary text-white rounded-xl py-2.5 font-semibold text-sm active:opacity-80 transition-opacity"
         >
           🗺️ Упътване до клетката
         </a>

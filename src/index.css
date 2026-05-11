@@ -4,6 +4,7 @@
 @variant dark (&:where(.dark, .dark *));
 
 @theme {
+  --color-zoo-primary:     #3a6b35;  /* fixed brand green — never changes, always carries white text */
   --color-zoo-green:       #3a6b35;
   --color-zoo-green-light: #5a9e52;
   --color-zoo-brown:       #8b5e3c;

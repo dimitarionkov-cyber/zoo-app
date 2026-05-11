@@ -70,7 +70,7 @@ export default function AnimalsPage() {
           <button
             onClick={() => { setEditMode(e => !e); setEditing(null) }}
             className={`text-xs font-semibold px-3 py-1.5 rounded-full border transition-colors ${
-              editMode ? 'bg-zoo-green text-white border-zoo-green' : 'border-[--color-border] text-zoo-brown'
+              editMode ? 'bg-zoo-primary text-white border-zoo-primary' : 'border-[--color-border] text-zoo-brown'
             }`}
           >
             {editMode ? '✓ Готово' : '📍 Редактирай'}
@@ -189,7 +189,7 @@ function AnimalList({ animals, editMode, editing, setEditing, onSave }) {
                     </div>
                     <button
                       onClick={() => onSave(animal.id, editing.lat, editing.lng)}
-                      className="w-full bg-zoo-green text-white rounded-lg py-2 text-sm font-semibold"
+                      className="w-full bg-zoo-primary text-white rounded-lg py-2 text-sm font-semibold"
                     >
                       Запази координатите
                     </button>
