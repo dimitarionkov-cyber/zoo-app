@@ -127,6 +127,17 @@ export default function SettingsPage() {
   const [saved,         setSaved]         = useState(null)
   const [exported,      setExported]      = useState(false)
   const [feedbackOpen,  setFeedbackOpen]  = useState(false)
+  const [betaTaps,      setBetaTaps]      = useState(0)
+  const [adminUnlocked, setAdminUnlocked] = useState(false)
+
+  function handleBetaTap() {
+    const next = betaTaps + 1
+    setBetaTaps(next)
+    if (next >= 2) {
+      setAdminUnlocked(true)
+      flash('🔓 Админ режим')
+    }
+  }
 
   function flash(msg) { setSaved(msg); setTimeout(() => setSaved(null), 2500) }
 
@@ -180,8 +191,8 @@ export default function SettingsPage() {
         </div>
       </section>
 
-      {/* Add data */}
-      <section>
+      {/* Admin: Add data + Export — hidden until BETA tapped twice */}
+      {adminUnlocked && <section>
         <h2 className="text-xs font-bold uppercase tracking-widest text-zoo-brown mb-3">Добави</h2>
         <div className="space-y-2">
 
@@ -250,11 +261,9 @@ export default function SettingsPage() {
           )}
         </div>
 
-        {saved && <p className="mt-3 text-center text-sm text-zoo-green font-semibold">{saved}</p>}
-      </section>
+      </section>}
 
-      {/* Export */}
-      <section>
+      {adminUnlocked && <section>
         <h2 className="text-xs font-bold uppercase tracking-widest text-zoo-brown mb-3">Данни</h2>
         <button
           onClick={handleExport}
@@ -265,7 +274,7 @@ export default function SettingsPage() {
         <p className="text-xs text-zoo-brown opacity-60 mt-2 px-1">
           Копира пълния JSON с всички добавени животни и координати, готов за поставяне в animals.json.
         </p>
-      </section>
+      </section>}
 
       {/* Feedback */}
       <section>
@@ -284,13 +293,18 @@ export default function SettingsPage() {
         <FeedbackModal open={feedbackOpen} onClose={() => setFeedbackOpen(false)} />
       </section>
 
+      {saved && <p className="text-center text-sm text-zoo-green font-semibold">{saved}</p>}
+
       {/* Build info */}
       <div className="pt-4 flex flex-col items-center gap-1.5">
         <div className="flex items-center gap-2">
           <span className="text-sm font-bold text-zoo-green">Зоопарк София</span>
-          <span className="text-[10px] font-bold uppercase tracking-wider bg-zoo-green/15 text-zoo-green px-2 py-0.5 rounded-full">
+          <button
+            onClick={handleBetaTap}
+            className="text-[10px] font-bold uppercase tracking-wider bg-zoo-green/15 text-zoo-green px-2 py-0.5 rounded-full active:bg-zoo-green/30 transition-colors"
+          >
             Beta
-          </span>
+          </button>
         </div>
         <p className="text-xs text-zoo-brown opacity-50">
           v{__APP_VERSION__} · {__BUILD_DATE__}
