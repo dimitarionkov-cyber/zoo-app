@@ -7,9 +7,10 @@ export default async function handler(req, res) {
 
   try {
     const params = new URLSearchParams(req.query)
-    const response = await fetch(`${SCRIPT_URL}?${params}`)
-    const data = await response.json()
-    return res.status(200).json(data)
+    await fetch(`${SCRIPT_URL}?${params}`)
+    // Don't parse the Apps Script response — content-type after the redirect
+    // chain is unreliable. If fetch didn't throw, the request reached the script.
+    return res.status(200).json({ ok: true })
   } catch (err) {
     return res.status(500).json({ ok: false, error: err.message })
   }
