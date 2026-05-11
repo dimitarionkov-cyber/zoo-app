@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { useData } from '../context/DataContext'
+import FeedbackModal from '../components/FeedbackModal'
 
 const ANIMAL_TYPES = ['птица', 'бозайник', 'влечуго', 'риба', 'земноводно']
 const DIETS        = ['месояден', 'тревопасен', 'всеяден']
@@ -120,11 +121,12 @@ function SectionButton({ open, onClick, children }) {
 export default function SettingsPage() {
   const { darkMode, setDarkMode, addAnimal, addPoi, exportAnimalsJSON } = useData()
 
-  const [openForm,   setOpenForm]   = useState(null)
-  const [animalForm, setAnimalForm] = useState(EMPTY_ANIMAL)
-  const [poiForm,    setPoiForm]    = useState(EMPTY_POI)
-  const [saved,      setSaved]      = useState(null)
-  const [exported,   setExported]   = useState(false)
+  const [openForm,      setOpenForm]      = useState(null)
+  const [animalForm,    setAnimalForm]    = useState(EMPTY_ANIMAL)
+  const [poiForm,       setPoiForm]       = useState(EMPTY_POI)
+  const [saved,         setSaved]         = useState(null)
+  const [exported,      setExported]      = useState(false)
+  const [feedbackOpen,  setFeedbackOpen]  = useState(false)
 
   function flash(msg) { setSaved(msg); setTimeout(() => setSaved(null), 2500) }
 
@@ -263,6 +265,23 @@ export default function SettingsPage() {
         <p className="text-xs text-zoo-brown opacity-60 mt-2 px-1">
           Копира пълния JSON с всички добавени животни и координати, готов за поставяне в animals.json.
         </p>
+      </section>
+
+      {/* Feedback */}
+      <section>
+        <h2 className="text-xs font-bold uppercase tracking-widest text-zoo-brown mb-3">Обратна връзка</h2>
+        <button
+          onClick={() => setFeedbackOpen(true)}
+          className="w-full bg-[--color-bg-card] border border-[--color-border] rounded-2xl px-4 py-3 text-left flex items-center gap-3"
+        >
+          <span className="text-xl">💬</span>
+          <div className="flex-1">
+            <p className="text-sm font-semibold text-[--color-text-main]">Изпрати обратна връзка</p>
+            <p className="text-xs text-zoo-brown opacity-60">Грешки, идеи или общо мнение</p>
+          </div>
+          <span className="text-zoo-brown opacity-40 text-lg">›</span>
+        </button>
+        <FeedbackModal open={feedbackOpen} onClose={() => setFeedbackOpen(false)} />
       </section>
 
       {/* Build info */}
