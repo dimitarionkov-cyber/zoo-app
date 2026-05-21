@@ -5,6 +5,30 @@ import { Link } from 'react-router-dom'
 const BG_DAYS   = ['Неделя','Понеделник','Вторник','Сряда','Четвъртък','Петък','Събота']
 const BG_MONTHS = ['яну','фев','мар','апр','май','юни','юли','авг','сеп','окт','ное','дек']
 
+const WMO_BG = {
+  0: 'слънчево', 1: 'предимно слънчево', 2: 'частично облачно', 3: 'облачно',
+  45: 'мъгла', 48: 'мъгла', 51: 'ситен дъжд', 53: 'дъжд', 55: 'силен дъжд',
+  61: 'дъжд', 63: 'дъжд', 65: 'силен дъжд', 71: 'сняг', 73: 'сняг', 75: 'силен сняг',
+  80: 'превалявания', 81: 'превалявания', 82: 'силни превалявания',
+  95: 'гръмотевица', 99: 'гръмотевица',
+}
+function windLabel(kmh) {
+  return kmh < 10 ? 'спокойно' : kmh < 30 ? 'ветровито' : 'силен вятър'
+}
+function useWeather() {
+  const [wx, setWx] = useState(null)
+  useEffect(() => {
+    fetch('https://api.open-meteo.com/v1/forecast?latitude=42.6583&longitude=23.3311&current=temperature_2m,weathercode,windspeed_10m&timezone=Europe/Sofia')
+      .then(r => r.json())
+      .then(d => {
+        const c = d.current
+        setWx({ temp: Math.round(c.temperature_2m), condition: WMO_BG[c.weathercode] ?? 'ясно', wind: windLabel(c.windspeed_10m) })
+      })
+      .catch(() => {})
+  }, [])
+  return wx
+}
+
 const SUMMER_HOURS = [
   { label: 'Каса',              time: '9:30 – 18:00' },
   { label: 'Достъп до парка',   time: 'до 19:00'     },
@@ -97,6 +121,7 @@ export default function TodayPage() {
   const feedings  = FEEDINGS[now.getDay()]
   const { isOpen, hoursStr, rows, season } = getZooStatus()
   const { news, loading } = useZooNews()
+  const wx = useWeather()
 
   return (
     <div className="flex flex-col pb-8">
@@ -122,7 +147,12 @@ export default function TodayPage() {
           <p className={`text-sm font-semibold ${isOpen ? 'text-zoo-green' : 'text-red-500'}`}>
             {hoursStr}
           </p>
-          <p className="font-mono text-[10px] uppercase tracking-[0.1em] text-zoo-brown opacity-50 mt-1">
+          {wx && (
+            <p className="text-[12px] text-zoo-brown opacity-60 mt-1">
+              {wx.condition} · {wx.temp}° · {wx.wind}
+            </p>
+          )}
+          <p className="font-mono text-[10px] uppercase tracking-[0.1em] text-zoo-brown opacity-40 mt-1">
             {season}
           </p>
         </div>
