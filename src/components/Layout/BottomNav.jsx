@@ -1,107 +1,92 @@
 import { NavLink } from 'react-router-dom'
+import { useData } from '../../context/DataContext'
 
-// ── SVG tab icons — outline style ─────────────────────────────────────────────
-function HomeIcon({ active }) {
-  return (
-    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" strokeWidth="1.8"
-      stroke={active ? 'currentColor' : 'currentColor'}
-      strokeLinecap="round" strokeLinejoin="round"
-    >
-      {active
-        ? <path d="M3 9.5L12 3l9 6.5V20a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V9.5Z" fill="currentColor" fillOpacity="0.15" />
-        : null
-      }
-      <path d="M3 9.5L12 3l9 6.5V20a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V9.5Z" />
-      <path d="M9 21V12h6v9" />
+// Font & colour constants (from Zoo App Dashboard.html)
+const F = {
+  body: "'Manrope', system-ui, sans-serif",
+}
+const LIGHT = { paper:'#f4efe3', ink:'#1a1d14', ink3:'#847f6e', green:'#2f6b3d', rule:'#d5cdb6' }
+const DARK  = { paper:'#15170e', ink:'#ece5d0', ink3:'#75725f', green:'#7eb888', rule:'#2f3122' }
+
+// ── SVG icons — exact viewBox + paths from Zoo App Dashboard.html ─────────────
+const ICONS = {
+  home: (
+    <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M3.5 11.2 12 4l8.5 7.2"/>
+      <path d="M5.5 10v9h13v-9"/>
+      <path d="M10 19v-5h4v5"/>
     </svg>
-  )
+  ),
+  map: (
+    <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M3 6.5 9 4l6 2.5 6-2.5v13l-6 2.5-6-2.5L3 19.5z"/>
+      <path d="M9 4v15.5M15 6.5V22"/>
+    </svg>
+  ),
+  paw: (
+    <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+      <ellipse cx="7"  cy="9"   rx="1.6" ry="2.2"/>
+      <ellipse cx="12" cy="6.5" rx="1.6" ry="2.2"/>
+      <ellipse cx="17" cy="9"   rx="1.6" ry="2.2"/>
+      <ellipse cx="5"  cy="14"  rx="1.4" ry="1.8"/>
+      <ellipse cx="19" cy="14"  rx="1.4" ry="1.8"/>
+      <path d="M8 17.5c0-2.5 1.8-4 4-4s4 1.5 4 4-1.8 3.5-4 3.5-4-1-4-3.5z"/>
+    </svg>
+  ),
+  calendar: (
+    <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+      <rect x="4" y="5" width="16" height="15" rx="2"/>
+      <path d="M4 9h16M8 3v4M16 3v4"/>
+    </svg>
+  ),
+  gear: (
+    <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+      <circle cx="12" cy="12" r="3"/>
+      <path d="M12 3v2.5M12 18.5V21M3 12h2.5M18.5 12H21M5.5 5.5l1.8 1.8M16.7 16.7l1.8 1.8M5.5 18.5l1.8-1.8M16.7 7.3l1.8-1.8"/>
+    </svg>
+  ),
 }
 
-function MapIcon({ active }) {
-  return (
-    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" strokeWidth="1.8"
-      stroke="currentColor" strokeLinecap="round" strokeLinejoin="round"
-    >
-      {active && <path d="M9 3L3 6.5v14L9 17l6 3.5 6-3.5V3l-6 3.5L9 3z" fill="currentColor" fillOpacity="0.12" />}
-      <path d="M9 3L3 6.5v14L9 17l6 3.5 6-3.5V3l-6 3.5L9 3z" />
-      <line x1="9" y1="3" x2="9" y2="17" />
-      <line x1="15" y1="6.5" x2="15" y2="20.5" />
-    </svg>
-  )
-}
-
-function PawIcon({ active }) {
-  return (
-    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" strokeWidth="1.8"
-      stroke="currentColor" strokeLinecap="round" strokeLinejoin="round"
-    >
-      {/* Body pad */}
-      <ellipse cx="12" cy="14.5" rx="4.5" ry="3.5" fill={active ? 'currentColor' : 'none'} fillOpacity="0.15" />
-      <ellipse cx="12" cy="14.5" rx="4.5" ry="3.5" />
-      {/* Toe pads */}
-      <ellipse cx="7.5" cy="11"  rx="1.5" ry="2" />
-      <ellipse cx="10"  cy="8.5" rx="1.5" ry="2" />
-      <ellipse cx="14"  cy="8.5" rx="1.5" ry="2" />
-      <ellipse cx="16.5" cy="11" rx="1.5" ry="2" />
-    </svg>
-  )
-}
-
-function CalendarIcon({ active }) {
-  return (
-    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" strokeWidth="1.8"
-      stroke="currentColor" strokeLinecap="round" strokeLinejoin="round"
-    >
-      <rect x="3" y="4" width="18" height="18" rx="2" fill={active ? 'currentColor' : 'none'} fillOpacity="0.12" />
-      <rect x="3" y="4" width="18" height="18" rx="2" />
-      <line x1="16" y1="2" x2="16" y2="6" />
-      <line x1="8"  y1="2" x2="8"  y2="6" />
-      <line x1="3"  y1="10" x2="21" y2="10" />
-      {active && <circle cx="12" cy="16" r="2" fill="currentColor" />}
-    </svg>
-  )
-}
-
-function MoreIcon({ active }) {
-  return (
-    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" strokeWidth="1.8"
-      stroke="currentColor" strokeLinecap="round" strokeLinejoin="round"
-    >
-      <circle cx="12" cy="12" r="9" fill={active ? 'currentColor' : 'none'} fillOpacity="0.1" />
-      <circle cx="12" cy="12" r="9" />
-      <line x1="12" y1="8"  x2="12" y2="8.01" strokeWidth="2.5" strokeLinecap="round" />
-      <line x1="12" y1="12" x2="12" y2="16" />
-    </svg>
-  )
-}
-
-// ── Tab config ────────────────────────────────────────────────────────────────
 const TABS = [
-  { to: '/',         label: 'Начало',   Icon: HomeIcon     },
-  { to: '/map',      label: 'Карта',    Icon: MapIcon      },
-  { to: '/animals',  label: 'Животни',  Icon: PawIcon      },
-  { to: '/today',    label: 'Днес',     Icon: CalendarIcon },
-  { to: '/settings', label: 'Още',      Icon: MoreIcon     },
+  { to:'/',         label:'Начало',  icon:'home'     },
+  { to:'/map',      label:'Карта',   icon:'map'      },
+  { to:'/animals',  label:'Животни', icon:'paw'      },
+  { to:'/today',    label:'Днес',    icon:'calendar' },
+  { to:'/settings', label:'Още',     icon:'gear'     },
 ]
 
 export default function BottomNav() {
+  const { darkMode } = useData()
+  const c = darkMode ? DARK : LIGHT
+
   return (
-    <nav className="bg-[--color-bg-card] border-t border-[--color-border] flex shrink-0 z-50">
-      {TABS.map(({ to, label, Icon }) => (
+    <nav style={{
+      flexShrink: 0,
+      height: 78,
+      background: darkMode ? 'rgba(21,23,14,0.92)' : 'rgba(244,239,227,0.92)',
+      backdropFilter: 'blur(12px)',
+      WebkitBackdropFilter: 'blur(12px)',
+      borderTop: `1px solid ${c.rule}`,
+      display: 'flex',
+      justifyContent: 'space-around',
+      alignItems: 'flex-start',
+      padding: '10px 8px 0',
+    }}>
+      {TABS.map(({ to, label, icon }) => (
         <NavLink
           key={to}
           to={to}
           end={to === '/'}
-          className={({ isActive }) =>
-            `flex-1 flex flex-col items-center py-2 text-[10px] font-semibold gap-0.5 transition-colors ${
-              isActive ? 'text-zoo-green' : 'text-zoo-brown opacity-50'
-            }`
-          }
+          style={{ display:'flex', flexDirection:'column', alignItems:'center', gap:4, flex:1, textDecoration:'none' }}
         >
           {({ isActive }) => (
             <>
-              <Icon active={isActive} />
-              {label}
+              <span style={{ color: isActive ? c.green : c.ink3, lineHeight:1 }}>
+                {ICONS[icon]}
+              </span>
+              <span style={{ fontSize:10, fontWeight:600, letterSpacing:'0.02em', fontFamily:F.body, color: isActive ? c.ink : c.ink3, lineHeight:1 }}>
+                {label}
+              </span>
             </>
           )}
         </NavLink>
