@@ -42,16 +42,34 @@ function dayEmoji(d) {
   return DAY_EMOJIS[seed % DAY_EMOJIS.length]
 }
 
-// ── Zoo status ────────────────────────────────────────────────────────────────
+// ── Zoo status — 3 states ─────────────────────────────────────────────────────
 function getZooStatus() {
   const now    = new Date()
   const month  = now.getMonth()
   const t      = now.getHours() * 60 + now.getMinutes()
-  const winter = month >= 10 || month <= 2
-  return {
-    isOpen:   t >= (winter ? 8*60+30 : 9*60+30) && t < (winter ? 17*60 : 19*60),
-    hoursStr: winter ? '8:30 — 17:00' : '9:00 — 19:00',
-  }
+  const winter  = month >= 10 || month <= 2
+  const openMin  = winter ? 8*60+30 : 9*60+30
+  const closeMin = winter ? 17*60   : 19*60
+  const openHr   = winter ? '8:30'  : '9:30'
+  const closeHr  = winter ? '17:00' : '19:00'
+  const hoursStr = winter ? '8:30 — 17:00' : '9:30 — 19:00'
+
+  let state
+  if (t < openMin || t >= closeMin) state = 'closed'
+  else if (t >= closeMin - 60)      state = 'closing'
+  else                               state = 'open'
+
+  return { state, hoursStr, openHr, closeHr }
+}
+
+// ── Pulse keyframe — injected once ────────────────────────────────────────────
+let _pulseInjected = false
+function ensurePulse() {
+  if (_pulseInjected) return
+  _pulseInjected = true
+  const s = document.createElement('style')
+  s.textContent = '@keyframes zoo-amber-pulse{0%,100%{box-shadow:0 0 0 0 rgba(217,164,65,0.55)}65%{box-shadow:0 0 0 5px rgba(217,164,65,0)}}'
+  document.head.appendChild(s)
 }
 
 // ── Weather (Open-Meteo) ──────────────────────────────────────────────────────
@@ -75,7 +93,7 @@ function useWeather() {
   return wx
 }
 
-// ── Feeding chips — exactly 3, per day of week ────────────────────────────────
+// ── Feeding chips — per day of week ──────────────────────────────────────────
 const FEEDINGS = [
   [{e:'🐧',t:'пингвини',time:'11:00'},{e:'🦭',t:'тюлени',time:'14:00'},{e:'🦁',t:'лъвове',time:'16:00'}],
   [{e:'🐧',t:'пингвини',time:'11:00'},{e:'🦦',t:'видри', time:'14:30'},{e:'🦁',t:'лъвове',time:'16:00'}],
@@ -86,7 +104,7 @@ const FEEDINGS = [
   [{e:'🐧',t:'пингвини',time:'11:00'},{e:'🦦',t:'видри', time:'14:30'},{e:'🐻',t:'мечки', time:'16:00'}],
 ]
 
-// ── News gradient palettes (tinted placeholders, no real photos per spec) ─────
+// ── News gradient palettes ────────────────────────────────────────────────────
 const GRADS = [
   { a:'#a8987a', b:'#5b4c2e' },
   { a:'#8b6a4a', b:'#3b2a1d' },
@@ -95,6 +113,12 @@ const GRADS = [
   { a:'#8b9a76', b:'#4d5a3c' },
   { a:'#c98c4a', b:'#6b3d1e' },
 ]
+
+const RSS_PREFIX = /^(ВАЖНИ НОВИНИ|НОВО|АКТУАЛНО|АКТУАЛО)[:·\s\-]+/i
+function cleanTitle(raw) {
+  const t = (raw ?? '').replace(RSS_PREFIX, '').trim()
+  return t.length > 90 ? t.slice(0, 90) + '…' : t
+}
 
 function newsDate(str) {
   if (!str) return ''
@@ -114,7 +138,7 @@ function useZooNews() {
           const get = tag => item.querySelector(tag)?.textContent?.trim() ?? ''
           const cat = get('category')
           return {
-            title:   get('title'),
+            title:   cleanTitle(get('title')),
             link:    get('guid') || get('link'),
             pubDate: get('pubDate'),
             cat:     cat ? cat.slice(0, 18) : null,
@@ -129,7 +153,7 @@ function useZooNews() {
   return { news, loading }
 }
 
-// ── SVG icons — exact paths from Zoo App Dashboard.html ───────────────────────
+// ── SVG icons ─────────────────────────────────────────────────────────────────
 function MapSvg() {
   return (
     <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round">
@@ -141,11 +165,11 @@ function MapSvg() {
 function PawSvg() {
   return (
     <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round">
-      <ellipse cx="7"  cy="9"  rx="1.6" ry="2.2"/>
+      <ellipse cx="7"  cy="9"   rx="1.6" ry="2.2"/>
       <ellipse cx="12" cy="6.5" rx="1.6" ry="2.2"/>
-      <ellipse cx="17" cy="9"  rx="1.6" ry="2.2"/>
-      <ellipse cx="5"  cy="14" rx="1.4" ry="1.8"/>
-      <ellipse cx="19" cy="14" rx="1.4" ry="1.8"/>
+      <ellipse cx="17" cy="9"   rx="1.6" ry="2.2"/>
+      <ellipse cx="5"  cy="14"  rx="1.4" ry="1.8"/>
+      <ellipse cx="19" cy="14"  rx="1.4" ry="1.8"/>
       <path d="M8 17.5c0-2.5 1.8-4 4-4s4 1.5 4 4-1.8 3.5-4 3.5-4-1-4-3.5z"/>
     </svg>
   )
@@ -187,24 +211,68 @@ export default function HomePage() {
   const { darkMode } = useData()
   const c = darkMode ? DARK : LIGHT
 
-  const now      = new Date()
-  const dayLbl   = BG_DAYS[now.getDay()]
-  const dateLbl  = `${now.getDate()} ${BG_MONTHS[now.getMonth()]}`
-  const emoji    = dayEmoji(now)
+  ensurePulse()
 
-  const { isOpen, hoursStr } = getZooStatus()
+  const now     = new Date()
+  const dayLbl  = BG_DAYS[now.getDay()]
+  const dateLbl = `${now.getDate()} ${BG_MONTHS[now.getMonth()]}`
+  const emoji   = dayEmoji(now)
+
+  const { state, hoursStr, openHr, closeHr } = getZooStatus()
   const feedings = FEEDINGS[now.getDay()]
   const wx       = useWeather()
   const { news, loading } = useZooNews()
 
-  // Today card colours
-  const todayBg     = darkMode
-    ? 'linear-gradient(160deg, #1f2c1f, #15201a)'
-    : 'linear-gradient(160deg, #e4ecdc, #d9e6cf)'
-  const todayBorder = darkMode ? '#2c3d2e' : '#b9cdaa'
-  const pillBg      = darkMode ? 'rgba(20,28,20,0.6)'       : 'rgba(255,255,255,0.6)'
-  const pillBorder  = darkMode ? 'rgba(126,184,136,0.25)'   : 'rgba(31,74,42,0.18)'
-  const dotShadow   = darkMode ? 'rgba(126,184,136,0.2)'    : 'rgba(47,107,61,0.18)'
+  const wxLine = wx ? `${wx.cond} · ${wx.temp}° · ${wx.wind}` : ' '
+
+  // ── Today card — 3-state visual tokens ───────────────────────────────────
+  const card = (() => {
+    if (state === 'closing') return {
+      bg:         darkMode ? 'linear-gradient(160deg, #2a2210, #1e1a0a)' : 'linear-gradient(160deg, #f7e8c8, #f1dec3)',
+      border:     darkMode ? '#3d2f10' : '#e0c070',
+      dotColor:   '#d9a441',
+      dotPulse:   true,
+      eyeColor:   darkMode ? '#c4a84a' : '#7a5807',
+      statusLine: `Скоро затваря · до ${closeHr}`,
+      subLine:    'последни 60 минути за вход',
+      pillBg:     darkMode ? 'rgba(60,44,8,0.65)' : 'rgba(255,255,255,0.58)',
+      pillBorder: darkMode ? 'rgba(217,164,65,0.3)' : 'rgba(122,88,7,0.2)',
+      pillText:   darkMode ? '#d9a441' : '#7a5807',
+      chips: [
+        { e:'🕔', label:`скоро затваря · ${closeHr}` },
+        { e:'🌅', label:`утре в ${openHr}` },
+      ],
+    }
+    if (state === 'closed') return {
+      bg:         darkMode ? 'linear-gradient(160deg, #1e1c18, #181614)' : 'linear-gradient(160deg, #f1ece0, #e8e1d1)',
+      border:     darkMode ? '#2e2b24' : '#cfc7b4',
+      dotColor:   '#c0747a',
+      dotPulse:   false,
+      eyeColor:   darkMode ? '#c07880' : '#8b4a50',
+      statusLine: `Затворено · отваря утре в ${openHr}`,
+      subLine:    wxLine,
+      pillBg:     darkMode ? 'rgba(40,36,32,0.7)' : 'rgba(255,255,255,0.55)',
+      pillBorder: darkMode ? 'rgba(192,116,122,0.25)' : 'rgba(139,74,80,0.18)',
+      pillText:   darkMode ? '#c07880' : '#8b4a50',
+      chips: [
+        { e:'⏰', label:`утре в ${openHr}` },
+        { e:'🌤', label: wx?.cond ?? 'прогноза' },
+      ],
+    }
+    return {
+      bg:         darkMode ? 'linear-gradient(160deg, #1f2c1f, #15201a)' : 'linear-gradient(160deg, #e4ecdc, #d9e6cf)',
+      border:     darkMode ? '#2c3d2e' : '#b9cdaa',
+      dotColor:   darkMode ? '#7eb888' : '#2f6b3d',
+      dotPulse:   false,
+      eyeColor:   darkMode ? '#c4ddc9' : '#1f4a2a',
+      statusLine: `Отворено · ${hoursStr}`,
+      subLine:    wxLine,
+      pillBg:     darkMode ? 'rgba(20,28,20,0.6)' : 'rgba(255,255,255,0.6)',
+      pillBorder: darkMode ? 'rgba(126,184,136,0.25)' : 'rgba(31,74,42,0.18)',
+      pillText:   darkMode ? '#c4ddc9' : '#1f4a2a',
+      chips:      null,
+    }
+  })()
 
   return (
     <div style={{ background: c.paper, minHeight: '100%', paddingBottom: 28, fontFamily: F.body }}>
@@ -213,13 +281,12 @@ export default function HomePage() {
       <div style={{ display:'flex', alignItems:'center', justifyContent:'space-between', padding:'8px 18px 14px' }}>
         <div>
           <p style={{ fontFamily:F.mono, fontSize:10, color:c.ink3, textTransform:'uppercase', letterSpacing:'0.16em', fontWeight:500, margin:0 }}>
-            {dayLbl} · {dateLbl}
+            {dayLbl} &middot; {dateLbl}
           </p>
-          <p style={{ fontFamily:F.display, fontSize:30, fontWeight:500, letterSpacing:'-0.015em', lineHeight:1, marginTop:4, fontStyle:'italic', color:c.ink, margin:'4px 0 0' }}>
-            Здравей<span style={{ fontStyle:'normal', fontFamily:F.body, marginLeft:3 }}>, {emoji}</span>
+          <p style={{ fontFamily:F.display, fontSize:30, fontWeight:500, letterSpacing:'-0.015em', lineHeight:1, fontStyle:'italic', color:c.ink, margin:'4px 0 0' }}>
+            {'Здравей'}<span style={{ fontStyle:'normal', fontFamily:F.body, marginLeft:3 }}>, {emoji}</span>
           </p>
         </div>
-
         <Link
           to="/settings"
           style={{ width:36, height:36, borderRadius:'50%', background:c.card, border:`1px solid ${c.rule}`, display:'inline-flex', alignItems:'center', justifyContent:'center', color:c.ink, textDecoration:'none', flexShrink:0 }}
@@ -229,53 +296,67 @@ export default function HomePage() {
       </div>
 
       {/* ── Today card ────────────────────────────────────────────────────── */}
-      <div style={{ margin:'0 18px 16px', padding:'14px 16px', borderRadius:16, background:todayBg, border:`1px solid ${todayBorder}`, position:'relative', overflow:'hidden' }}>
-        {/* Amber radial glow top-right */}
-        <div style={{ position:'absolute', right:-20, top:-20, width:80, height:80, borderRadius:'50%', background:'radial-gradient(circle, rgba(217,164,65,0.4), transparent 70%)', pointerEvents:'none' }} />
+      <div style={{ margin:'0 18px 16px', padding:'14px 16px', borderRadius:16, background:card.bg, border:`1px solid ${card.border}`, position:'relative', overflow:'hidden' }}>
+        {/* Ambient glow */}
+        <div style={{ position:'absolute', right:-20, top:-20, width:80, height:80, borderRadius:'50%', background:'radial-gradient(circle, rgba(217,164,65,0.35), transparent 70%)', pointerEvents:'none' }} />
 
-        {/* Eyebrow + live dot */}
+        {/* Eyebrow + dot */}
         <div style={{ display:'flex', alignItems:'center', justifyContent:'space-between' }}>
-          <span style={{ fontFamily:F.mono, fontSize:10, color:c.greenDeep, textTransform:'uppercase', letterSpacing:'0.16em', fontWeight:500 }}>
-            ДНЕС В ЗООПАРКА
+          <span style={{ fontFamily:F.mono, fontSize:10, color:card.eyeColor, textTransform:'uppercase', letterSpacing:'0.16em', fontWeight:500 }}>
+            {'ДНЕС В ЗООПАРКА'}
           </span>
-          <span style={{ width:8, height:8, borderRadius:'50%', background:c.green, boxShadow:`0 0 0 3px ${dotShadow}`, display:'inline-block', flexShrink:0 }} />
+          <span style={{
+            width:8, height:8, borderRadius:'50%', background:card.dotColor,
+            display:'inline-block', flexShrink:0,
+            animation: card.dotPulse ? 'zoo-amber-pulse 1.4s ease-out infinite' : 'none',
+          }} />
         </div>
 
-        {/* Open status — Newsreader serif */}
-        <p style={{ fontFamily:F.display, fontWeight:500, fontSize:18, letterSpacing:'-0.01em', color:c.greenDeep, marginTop:6, marginBottom:0 }}>
-          {isOpen ? 'Отворено' : 'Затворено'} · {hoursStr}
+        {/* Status line — Newsreader */}
+        <p style={{ fontFamily:F.display, fontWeight:500, fontSize:18, letterSpacing:'-0.01em', color:card.eyeColor, marginTop:6, marginBottom:0 }}>
+          {card.statusLine}
         </p>
 
-        {/* Weather subline — JetBrains Mono */}
+        {/* Subline — JetBrains Mono */}
         <p style={{ fontFamily:F.mono, fontSize:11, color:c.ink2, marginTop:2, marginBottom:0 }}>
-          {wx ? `${wx.cond} · ${wx.temp}° · ${wx.wind}` : ' '}
+          {card.subLine}
         </p>
 
-        {/* Feeding chips */}
+        {/* Chips */}
         <div style={{ display:'flex', gap:6, marginTop:12, flexWrap:'wrap' }}>
-          {feedings.map((f, i) => (
-            <Link
-              key={i}
-              to="/today"
-              style={{ display:'inline-flex', alignItems:'center', gap:6, padding:'5px 10px', borderRadius:999, background:pillBg, border:`1px solid ${pillBorder}`, fontSize:11, fontWeight:600, color:c.ink, fontFamily:F.body, whiteSpace:'nowrap', textDecoration:'none' }}
-            >
-              {f.e}{' '}
-              <span style={{ fontFamily:F.mono, fontWeight:500, color:c.greenDeep }}>{f.t}</span>
-              {' '}{f.time}
-            </Link>
-          ))}
+          {state === 'open'
+            ? feedings.map((f, i) => (
+                <Link
+                  key={i}
+                  to="/today"
+                  style={{ display:'inline-flex', alignItems:'center', gap:6, padding:'5px 10px', borderRadius:999, background:card.pillBg, border:`1px solid ${card.pillBorder}`, fontSize:11, fontWeight:600, color:c.ink, fontFamily:F.body, whiteSpace:'nowrap', textDecoration:'none' }}
+                >
+                  {f.e}{' '}
+                  <span style={{ fontFamily:F.mono, fontWeight:500, color:card.pillText }}>{f.t}</span>
+                  {' '}{f.time}
+                </Link>
+              ))
+            : card.chips.map((ch, i) => (
+                <span
+                  key={i}
+                  style={{ display:'inline-flex', alignItems:'center', gap:5, padding:'5px 10px', borderRadius:999, background:card.pillBg, border:`1px solid ${card.pillBorder}`, fontSize:11, fontFamily:F.body, fontWeight:600, color:card.pillText, whiteSpace:'nowrap' }}
+                >
+                  {ch.e}{' '}{ch.label}
+                </span>
+              ))
+          }
         </div>
       </div>
 
-      {/* ── Quick actions 2×2 ─────────────────────────────────────────────── */}
+      {/* ── Quick actions 2x2 ─────────────────────────────────────────────── */}
       <div style={{ display:'grid', gridTemplateColumns:'1fr 1fr', gap:10, margin:'0 18px 18px' }}>
         {ACTIONS.map(({ to, Svg, label, sub, featured }) => {
-          const bg      = featured ? c.ink  : c.card
-          const border  = featured ? c.ink  : c.rule
-          const fg      = featured ? c.paper : c.ink
-          const iconBg  = featured ? 'rgba(244,239,227,0.12)' : c.greenTint
-          const iconFg  = featured ? c.paper : c.greenDeep
-          const subFg   = featured ? 'rgba(244,239,227,0.55)' : c.ink3
+          const bg     = featured ? c.ink   : c.card
+          const border = featured ? c.ink   : c.rule
+          const fg     = featured ? c.paper : c.ink
+          const iconBg = featured ? 'rgba(244,239,227,0.12)' : c.greenTint
+          const iconFg = featured ? c.paper : c.greenDeep
+          const subFg  = featured ? 'rgba(244,239,227,0.55)' : c.ink3
           return (
             <Link
               key={to}
@@ -301,7 +382,7 @@ export default function HomePage() {
       {/* ── Section head ──────────────────────────────────────────────────── */}
       <div style={{ display:'flex', justifyContent:'space-between', alignItems:'baseline', margin:'4px 18px 10px' }}>
         <span style={{ fontFamily:F.mono, fontSize:10, color:c.ink3, textTransform:'uppercase', letterSpacing:'0.16em', fontWeight:500 }}>
-          НОВИНИ И СЪБИТИЯ
+          {'НОВИНИ И СЪБИТИЯ'}
         </span>
         <a
           href="https://zoosofia.eu/новини/"
@@ -309,20 +390,20 @@ export default function HomePage() {
           rel="noreferrer"
           style={{ fontFamily:F.mono, fontSize:11, color:c.green, letterSpacing:'0.06em', textDecoration:'none' }}
         >
-          всички →
+          {'всички →'}
         </a>
       </div>
 
       {/* ── News strip ────────────────────────────────────────────────────── */}
       <div style={{ display:'flex', gap:10, padding:'0 18px 4px', overflowX:'auto', scrollbarWidth:'none' }}>
 
-        {loading && GRADS.slice(0,3).map((g, i) => (
+        {loading && GRADS.slice(0, 3).map((g, i) => (
           <div key={i} style={{ flex:'0 0 152px', borderRadius:12, overflow:'hidden', background:c.card, border:`1px solid ${c.rule}`, opacity:0.55 }}>
             <div style={{ height:86, background:`linear-gradient(150deg, ${g.a}, ${g.b})` }} />
             <div style={{ padding:'8px 10px 10px' }}>
               <div style={{ height:7, borderRadius:3, background:c.rule, width:'38%', marginBottom:6 }} />
-              <div style={{ height:9,  borderRadius:3, background:c.rule, marginBottom:4 }} />
-              <div style={{ height:9,  borderRadius:3, background:c.rule, width:'72%' }} />
+              <div style={{ height:9, borderRadius:3, background:c.rule, marginBottom:4 }} />
+              <div style={{ height:9, borderRadius:3, background:c.rule, width:'72%' }} />
             </div>
           </div>
         ))}
@@ -335,10 +416,11 @@ export default function HomePage() {
             rel="noreferrer"
             style={{ flex:'0 0 152px', borderRadius:12, overflow:'hidden', background:c.card, border:`1px solid ${c.rule}`, display:'flex', flexDirection:'column', textDecoration:'none', color:'inherit' }}
           >
-            {/* Gradient photo placeholder — radial highlight + diagonal texture via gradient */}
-            <div style={{ height:86, position:'relative', background:`radial-gradient(ellipse at 30% 25%, rgba(255,255,255,0.18), transparent 55%), linear-gradient(150deg, ${item.grad.a} 0%, ${item.grad.b} 100%)` }}>
+            {/* Gradient placeholder + bottom-fade veil */}
+            <div style={{ height:86, position:'relative', flexShrink:0, background:`radial-gradient(ellipse at 30% 25%, rgba(255,255,255,0.18), transparent 55%), linear-gradient(150deg, ${item.grad.a} 0%, ${item.grad.b} 100%)` }}>
+              <div style={{ position:'absolute', inset:0, background:'linear-gradient(180deg, transparent 30%, rgba(0,0,0,0.55) 100%)', pointerEvents:'none' }} />
               {item.cat && (
-                <span style={{ position:'absolute', left:8, bottom:8, fontFamily:F.mono, fontSize:8, letterSpacing:'0.14em', textTransform:'uppercase', color:'rgba(255,255,255,0.78)', background:'rgba(0,0,0,0.28)', padding:'3px 6px', borderRadius:4 }}>
+                <span style={{ position:'absolute', left:8, bottom:7, fontFamily:F.mono, fontSize:8, letterSpacing:'0.18em', textTransform:'uppercase', color:'rgba(255,255,255,0.82)', zIndex:1 }}>
                   {item.cat}
                 </span>
               )}

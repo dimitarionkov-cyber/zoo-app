@@ -46,6 +46,8 @@ function applyTheme(dark) {
   }
   const decls = Object.entries(vars).map(([k, v]) => `  ${k}: ${v};`).join('\n')
   el.textContent = `:root {\n${decls}\n}`
+  // data-theme attribute for CSS selector-based theming
+  document.documentElement.setAttribute('data-theme', dark ? 'dark' : 'light')
 }
 
 export function DataProvider({ children }) {
