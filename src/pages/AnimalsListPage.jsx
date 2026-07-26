@@ -1,67 +1,55 @@
-import { useMemo, useState, useEffect, useRef } from 'react'
-import { Link, useSearchParams, useNavigate } from 'react-router-dom'
+import { useState, useMemo, useEffect, useRef } from 'react'
+import { Link, useSearchParams } from 'react-router-dom'
 import { useData } from '../context/DataContext'
 
-// ── Constants ─────────────────────────────────────────────────────────────────
-
-const DIET_STYLE = {
-  месояден:   { chip: 'bg-red-100 text-red-700' },
-  тревопасен: { chip: 'bg-green-100 text-green-700' },
-  всеяден:    { chip: 'bg-orange-100 text-orange-700' },
+// ── Font & colour tokens (from Zoo App Dashboard Hi-Fi spec) ──────────────────
+const F = {
+  display: "'Newsreader', Georgia, serif",
+  body:    "'Manrope', system-ui, sans-serif",
+  mono:    "'JetBrains Mono', 'Courier New', monospace",
+}
+const LIGHT = {
+  paper: '#f4efe3', paper2: '#ebe4d1', surface: '#fbf8ee',
+  ink: '#1a1d14', ink2: '#44473c', ink3: '#847f6e', rule: '#d5cdb6',
+  green: '#2f6b3d', greenDeep: '#1f4a2a', greenTint: '#e4ecdc',
+}
+const DARK = {
+  paper: '#15170e', paper2: '#1e2014', surface: '#1c1e13',
+  ink: '#ece5d0', ink2: '#b3ad99', ink3: '#75725f', rule: '#2f3122',
+  green: '#7eb888', greenDeep: '#c4ddc9', greenTint: '#1d2a1e',
 }
 
-const TYPE_META = {
-  птица:        { emoji: '🐦', label: 'Птици' },
-  бозайник:     { emoji: '🦁', label: 'Бозайници' },
-  влечуго:      { emoji: '🦎', label: 'Влечуги' },
-  риба:         { emoji: '🐟', label: 'Риби' },
-  земноводно:   { emoji: '🐸', label: 'Земноводни' },
-  безгръбначно: { emoji: '🐌', label: 'Безгръбначни' },
-}
+const TYPE_CHIPS = [
+  { value: null,            label: 'Всички' },
+  { value: 'бозайник',      label: 'Бозайници' },
+  { value: 'птица',         label: 'Птици' },
+  { value: 'влечуго',       label: 'Влечуги' },
+  { value: 'риба',          label: 'Риби' },
+  { value: 'земноводно',    label: 'Земноводни' },
+  { value: 'безгръбначно',  label: 'Безгръбначни' },
+]
 
 const CONTINENT_LABELS = {
-  africa:        { label: 'Африка',          emoji: '🌍' },
-  asia:          { label: 'Азия',            emoji: '🌏' },
-  australia:     { label: 'Австралия',       emoji: '🐨' },
-  europe:        { label: 'Европа',          emoji: '🏰' },
-  north_america: { label: 'Северна Америка', emoji: '🦅' },
-  south_america: { label: 'Южна Америка',    emoji: '🌎' },
+  africa: 'Африка', asia: 'Азия', australia: 'Австралия',
+  europe: 'Европа', north_america: 'С. Америка', south_america: 'Ю. Америка',
 }
 
-const TAXONOMY_GROUPS = [
-  { key: 'big_cats',         label: 'Едри котки',               emoji: '🐆' },
-  { key: 'small_cats',       label: 'Малки котки',              emoji: '🐱' },
-  { key: 'primates',         label: 'Примати',                  emoji: '🐒' },
-  { key: 'bears',            label: 'Мечки',                    emoji: '🐻' },
-  { key: 'small_carnivores', label: 'Малки хищници',            emoji: '🦡' },
-  { key: 'canids',           label: 'Кучеви',                   emoji: '🐺' },
-  { key: 'ungulates',        label: 'Копитни и едри тревопасни',emoji: '🦛' },
-  { key: 'rodents',          label: 'Гризачи',                  emoji: '🐹' },
-  { key: 'birds_of_prey',    label: 'Хищни птици',              emoji: '🦅' },
-  { key: 'ratites',          label: 'Щраусови',                 emoji: '🦤' },
-  { key: 'parrots',          label: 'Папагали',                 emoji: '🦜' },
-  { key: 'hornbills',        label: 'Птици носорог',            emoji: '🐦' },
-  { key: 'waterbirds',       label: 'Водни птици',              emoji: '🦢' },
-  { key: 'other_birds',      label: 'Други птици',              emoji: '🐦' },
-  { key: 'snakes',           label: 'Змии',                     emoji: '🐍' },
-  { key: 'crocodilians',     label: 'Крокодили',                emoji: '🐊' },
-  { key: 'tortoises',        label: 'Костенурки',               emoji: '🐢' },
-  { key: 'lizards',          label: 'Гущери и варани',          emoji: '🦎' },
-  { key: 'fish',             label: 'Риби',                     emoji: '🐟' },
-  { key: 'amphibians',       label: 'Земноводни',               emoji: '🐸' },
-  { key: 'other',            label: 'Други',                    emoji: '🐾' },
+// ── Gradient placeholders (deterministic per animal id) ───────────────────────
+const GRADS = [
+  { a: '#c98c4a', b: '#6b3d1e' },
+  { a: '#8b6a4a', b: '#3b2a1d' },
+  { a: '#7a9aa1', b: '#3b5b62' },
+  { a: '#b5604a', b: '#5a2918' },
+  { a: '#8b9a76', b: '#4d5a3c' },
+  { a: '#d4a85f', b: '#7a5e2a' },
 ]
+function gradFor(id) {
+  let hash = 0
+  for (let i = 0; i < id.length; i++) hash = (hash * 31 + id.charCodeAt(i)) >>> 0
+  return GRADS[hash % GRADS.length]
+}
 
-const DIET_GROUPS = [
-  { key: 'месояден',   label: 'Месоядни',   emoji: '🥩' },
-  { key: 'тревопасен', label: 'Тревопасни', emoji: '🌿' },
-  { key: 'всеяден',    label: 'Всеядни',    emoji: '🍽️' },
-]
-
-// Types where sub-grouping adds no value
-const FLAT_TYPES = new Set(['риба', 'земноводно', 'безгръбначно'])
-
-// ── Haversine distance (metres) ───────────────────────────────────────────────
+// ── Distance ──────────────────────────────────────────────────────────────────
 function haversine(lat1, lng1, lat2, lng2) {
   const R = 6371000
   const dLat = (lat2 - lat1) * Math.PI / 180
@@ -71,302 +59,238 @@ function haversine(lat1, lng1, lat2, lng2) {
     Math.sin(dLng / 2) ** 2
   return R * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a))
 }
-
-function formatDist(m) {
-  if (m == null) return null
-  return m < 1000 ? `${Math.round(m)} м` : `${(m / 1000).toFixed(1)} км`
+function walkMinutes(m) {
+  return Math.max(1, Math.round(m / 80)) // ~80 m/min walking pace
 }
 
-// ── Sub-components ────────────────────────────────────────────────────────────
-
-function CollapsibleGroup({ meta, animals, defaultOpen = true }) {
-  const [open, setOpen] = useState(defaultOpen)
+// ── SVG icons ─────────────────────────────────────────────────────────────────
+function SearchSvg() {
   return (
-    <div className="mb-4">
-      <button
-        onClick={() => setOpen(o => !o)}
-        className="w-full flex items-center gap-2 mb-2 text-left"
-      >
-        <span className="text-lg leading-none">{meta.emoji}</span>
-        <h2 className="text-sm font-bold uppercase tracking-widest text-zoo-green flex-1">
-          {meta.label}
-        </h2>
-        <span className="text-xs text-zoo-brown opacity-50">({animals.length})</span>
-        <span className="text-zoo-brown opacity-40 text-xs ml-1">{open ? '▲' : '▼'}</span>
-      </button>
-      {open && <AnimalList animals={animals} />}
-    </div>
+    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+      <circle cx="11" cy="11" r="6"/>
+      <path d="m20 20-4.5-4.5"/>
+    </svg>
   )
 }
 
-function AnimalList({ animals }) {
-  const { isFavorite, toggleFavorite, isVisited } = useData()
+// ── Row ───────────────────────────────────────────────────────────────────────
+function AnimalRow({ animal, c, dist, isFav, isVis, onToggleFav }) {
+  const grad = gradFor(animal.id)
+  const region = CONTINENT_LABELS[(animal.continents || [])[0]] ?? null
+
   return (
-    <ul className="space-y-2">
-      {animals.map(animal => (
-        <li key={animal.id}>
-          <Link
-            to={`/animals/${animal.id}`}
-            className="flex items-center gap-3 bg-[--color-bg-card] rounded-2xl px-4 py-3 border border-[--color-border] shadow-sm active:scale-[0.98] transition-transform"
+    <Link
+      to={`/animals/${animal.id}`}
+      style={{ display: 'flex', alignItems: 'center', gap: 12, background: c.surface, border: `1px solid ${c.rule}`, borderRadius: 14, padding: 10, textDecoration: 'none' }}
+    >
+      <div style={{
+        width: 56, height: 56, borderRadius: 12, flexShrink: 0, position: 'relative', overflow: 'hidden',
+        background: animal.photo ? c.paper2 : `radial-gradient(ellipse at 30% 25%, rgba(255,255,255,0.18), transparent 55%), linear-gradient(150deg, ${grad.a} 0%, ${grad.b} 100%)`,
+      }}>
+        {animal.photo && (
+          <img src={animal.photo} alt="" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+        )}
+      </div>
+
+      <div style={{ flex: 1, minWidth: 0 }}>
+        <p style={{ fontFamily: F.display, fontSize: 17, fontWeight: 500, letterSpacing: '-0.01em', color: c.ink, lineHeight: 1.15, margin: 0, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
+          {animal.nameBg}
+        </p>
+        <p style={{ fontFamily: F.display, fontSize: 11, fontStyle: 'italic', color: c.ink3, margin: '2px 0 0', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
+          {animal.species}
+        </p>
+      </div>
+
+      <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end', gap: 4, flexShrink: 0 }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 5 }}>
+          {isVis && <span style={{ fontSize: 11, lineHeight: 1 }} title="Видяно">✅</span>}
+          <button
+            onClick={e => { e.preventDefault(); e.stopPropagation(); onToggleFav() }}
+            aria-label={isFav ? 'Премахни от любими' : 'Добави в любими'}
+            style={{ fontSize: 14, lineHeight: 1, background: 'none', border: 'none', padding: 0, cursor: 'pointer' }}
           >
-            <span className="text-2xl w-8 text-center shrink-0">
-              {TYPE_META[animal.animalType]?.emoji ?? '🐾'}
-            </span>
-            <div className="flex-1 min-w-0">
-              <p className="font-semibold text-zoo-green truncate">{animal.nameBg}</p>
-              <p className="text-xs text-zoo-brown opacity-70 italic truncate">{animal.species}</p>
-            </div>
-            <div className="flex flex-col items-end gap-1 shrink-0">
-              <div className="flex items-center gap-1.5">
-                {isVisited(animal.id) && <span className="text-xs leading-none" title="Видяно">✅</span>}
-                <button
-                  onClick={e => { e.preventDefault(); e.stopPropagation(); toggleFavorite(animal.id) }}
-                  aria-label={isFavorite(animal.id) ? 'Премахни от любими' : 'Добави в любими'}
-                  className="text-base leading-none active:scale-90 transition-transform"
-                >
-                  {isFavorite(animal.id) ? '❤️' : '🤍'}
-                </button>
-              </div>
-              <span className={`text-xs font-medium px-2 py-0.5 rounded-full ${DIET_STYLE[animal.diet]?.chip ?? 'bg-gray-100 text-gray-600'}`}>
-                {animal.diet}
-              </span>
-              {animal._dist != null && (
-                <span className="text-[10px] font-semibold text-zoo-brown opacity-60">
-                  📍 {formatDist(animal._dist)}
-                </span>
-              )}
-            </div>
-          </Link>
-        </li>
-      ))}
-    </ul>
+            {isFav ? '❤️' : '🤍'}
+          </button>
+        </div>
+        {region && (
+          <span style={{ fontFamily: F.mono, fontSize: 9, letterSpacing: '0.14em', textTransform: 'uppercase', padding: '3px 7px', borderRadius: 999, background: c.paper2, color: c.ink2 }}>
+            {region}
+          </span>
+        )}
+        {dist != null && (
+          <span style={{ fontFamily: F.mono, fontSize: 10, color: c.ink3 }}>{dist} мин</span>
+        )}
+      </div>
+    </Link>
   )
 }
 
 // ── Main page ─────────────────────────────────────────────────────────────────
-
 export default function AnimalsListPage() {
   const [searchParams] = useSearchParams()
-  const navigate = useNavigate()
-  const { allAnimals, favoriteIds } = useData()
+  const { allAnimals, darkMode, isFavorite, toggleFavorite, isVisited } = useData()
+  const c = darkMode ? DARK : LIGHT
 
-  const activeType      = searchParams.get('type')
-  const activeContinent = searchParams.get('continent')
-  const activeFavorites = searchParams.get('favorites') === '1'
-  const query           = searchParams.get('q') || ''
+  const [query,         setQuery]         = useState(searchParams.get('q') || '')
+  const [activeType,    setActiveType]    = useState(searchParams.get('type') || null)
+  const [favoritesOnly, setFavoritesOnly] = useState(searchParams.get('favorites') === '1')
 
-  const showGroupToggle = !!activeType && !FLAT_TYPES.has(activeType)
-  const [groupMode, setGroupMode] = useState('taxonomy') // 'taxonomy' | 'diet'
-
-  // ── Distance / geolocation ────────────────────────────────────────────────
-  const [sortByDist,   setSortByDist]   = useState(false)
-  const [userPos,      setUserPos]      = useState(null)   // { lat, lng }
-  const [gpsState,     setGpsState]     = useState('idle') // 'idle'|'loading'|'ok'|'error'
+  const [sortByDist, setSortByDist] = useState(false)
+  const [userPos,    setUserPos]    = useState(null)
+  const [gpsState,   setGpsState]   = useState('idle') // idle|loading|ok|error
   const watchIdRef = useRef(null)
 
-  // Start/stop watchPosition based on sortByDist toggle
   useEffect(() => {
     if (!sortByDist) {
-      if (watchIdRef.current != null) {
-        navigator.geolocation.clearWatch(watchIdRef.current)
-        watchIdRef.current = null
-      }
+      if (watchIdRef.current != null) { navigator.geolocation.clearWatch(watchIdRef.current); watchIdRef.current = null }
       return
     }
-    if (!navigator.geolocation) {
-      setGpsState('error')
-      setSortByDist(false)
-      return
-    }
+    if (!navigator.geolocation) { setGpsState('error'); setSortByDist(false); return }
     setGpsState('loading')
     watchIdRef.current = navigator.geolocation.watchPosition(
-      pos => {
-        setUserPos({ lat: pos.coords.latitude, lng: pos.coords.longitude })
-        setGpsState('ok')
-      },
-      () => {
-        setGpsState('error')
-        setSortByDist(false)
-      },
+      pos => { setUserPos({ lat: pos.coords.latitude, lng: pos.coords.longitude }); setGpsState('ok') },
+      () => { setGpsState('error'); setSortByDist(false) },
       { enableHighAccuracy: true, timeout: 10000, maximumAge: 5000 }
     )
-    return () => {
-      if (watchIdRef.current != null) {
-        navigator.geolocation.clearWatch(watchIdRef.current)
-        watchIdRef.current = null
-      }
-    }
+    return () => { if (watchIdRef.current != null) { navigator.geolocation.clearWatch(watchIdRef.current); watchIdRef.current = null } }
   }, [sortByDist])
 
-  const handleDistToggle = () => {
-    if (gpsState === 'error') return
-    setSortByDist(v => !v)
-  }
+  const typeCounts = useMemo(() => {
+    const counts = {}
+    allAnimals.forEach(a => { counts[a.animalType] = (counts[a.animalType] || 0) + 1 })
+    return counts
+  }, [allAnimals])
 
-  // ── Filter ────────────────────────────────────────────────────────────────
   const filtered = useMemo(() => {
+    const q = query.toLowerCase()
     return allAnimals.filter(a => {
-      const matchesType      = !activeType      || a.animalType === activeType
-      const matchesContinent = !activeContinent || (a.continents || []).includes(activeContinent)
-      const matchesFavorites = !activeFavorites || favoriteIds.includes(a.id)
-      const q = query.toLowerCase()
+      const matchesType      = !activeType || a.animalType === activeType
+      const matchesFavorites = !favoritesOnly || isFavorite(a.id)
       const matchesQuery     = !q ||
         a.nameBg.toLowerCase().includes(q) ||
         a.nameEn.toLowerCase().includes(q) ||
         (a.species || '').toLowerCase().includes(q)
-      return matchesType && matchesContinent && matchesFavorites && matchesQuery
+      return matchesType && matchesFavorites && matchesQuery
     })
-  }, [allAnimals, activeType, activeContinent, activeFavorites, favoriteIds, query])
+  }, [allAnimals, activeType, favoritesOnly, query, isFavorite])
 
-  // Attach live distance and sort
-  const withDist = useMemo(() => {
-    return filtered.map(a => ({
+  const sorted = useMemo(() => {
+    const withDist = filtered.map(a => ({
       ...a,
       _dist: userPos ? haversine(userPos.lat, userPos.lng, a.lat, a.lng) : null,
     }))
-  }, [filtered, userPos])
-
-  const sorted = useMemo(() => {
-    return [...withDist].sort((a, b) => {
+    return withDist.sort((a, b) => {
       if (sortByDist && a._dist != null && b._dist != null) return a._dist - b._dist
       return a.nameBg.localeCompare(b.nameBg, 'bg')
     })
-  }, [withDist, sortByDist])
+  }, [filtered, userPos, sortByDist])
 
-  // Group helpers
-  const groupedByType = useMemo(() => {
-    if (activeType) return null
-    const map = {}
-    sorted.forEach(a => {
-      if (!map[a.animalType]) map[a.animalType] = []
-      map[a.animalType].push(a)
-    })
-    return map
-  }, [sorted, activeType])
-
-  const taxonomyGroups = useMemo(() => {
-    if (!activeType) return null
-    const map = {}
-    sorted.forEach(a => { const g = a.group || 'other'; (map[g] ??= []).push(a) })
-    return TAXONOMY_GROUPS.filter(g => map[g.key]?.length).map(g => ({ ...g, animals: map[g.key] }))
-  }, [sorted, activeType])
-
-  const dietGroups = useMemo(() => {
-    if (!activeType) return null
-    const map = {}
-    sorted.forEach(a => { (map[a.diet] ??= []).push(a) })
-    return DIET_GROUPS.filter(g => map[g.key]?.length).map(g => ({ ...g, animals: map[g.key] }))
-  }, [sorted, activeType])
-
-  const headerMeta = activeFavorites
-    ? { label: 'Любими', emoji: '❤️' }
-    : activeType
-    ? TYPE_META[activeType]
-    : activeContinent
-    ? CONTINENT_LABELS[activeContinent]
-    : { label: 'Животните', emoji: '🐾' }
-
-  // ── Render ────────────────────────────────────────────────────────────────
   return (
-    <div className="flex flex-col h-full">
+    <div style={{ background: c.paper, minHeight: '100%', paddingBottom: 90, fontFamily: F.body }}>
+      <div style={{ padding: '6px 18px 14px' }}>
 
-      {/* Sticky header */}
-      <div className="sticky top-0 bg-zoo-primary px-4 pt-10 pb-5 z-10">
-        <div className="flex items-center gap-3 mb-3">
-          <button
-            onClick={() => navigate(-1)}
-            className="text-white/80 text-2xl leading-none shrink-0"
-            aria-label="Назад"
-          >
-            ‹
-          </button>
-          <span className="text-2xl leading-none">{headerMeta?.emoji}</span>
+        {/* Title row */}
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '8px 0 12px' }}>
           <div>
-            <h1 className="text-xl font-bold text-white leading-tight">{headerMeta?.label}</h1>
-            <p className="text-white/60 text-xs">{sorted.length} животни</p>
+            <p style={{ fontFamily: F.mono, fontSize: 10, color: c.ink3, textTransform: 'uppercase', letterSpacing: '0.16em', fontWeight: 500, margin: 0 }}>
+              обитатели
+            </p>
+            <p style={{ fontFamily: F.display, fontSize: 30, fontWeight: 500, letterSpacing: '-0.015em', lineHeight: 1, fontStyle: 'italic', color: c.ink, margin: '4px 0 0' }}>
+              Животните
+            </p>
           </div>
+          <p style={{ fontFamily: F.mono, fontSize: 10, color: c.ink3, letterSpacing: '0.14em', textTransform: 'uppercase', margin: 0 }}>
+            {allAnimals.length} вида
+          </p>
         </div>
 
-        {/* Sort controls — only when browsing by type */}
-        {showGroupToggle && (
-          <div>
-            <p className="text-white/50 text-[10px] font-semibold uppercase tracking-widest mb-1.5">
-              Сортирай по:
-            </p>
-            <div className="flex gap-1.5">
-              {/* Вид */}
-              <button
-                onClick={() => setGroupMode('taxonomy')}
-                className={`flex-1 py-1.5 rounded-xl text-xs font-semibold transition-colors border ${
-                  groupMode === 'taxonomy'
-                    ? 'bg-white text-zoo-green border-white'
-                    : 'text-white/80 border-white/30'
-                }`}
-              >
-                Вид
-              </button>
-
-              {/* Диета */}
-              <button
-                onClick={() => setGroupMode('diet')}
-                className={`flex-1 py-1.5 rounded-xl text-xs font-semibold transition-colors border ${
-                  groupMode === 'diet'
-                    ? 'bg-white text-zoo-green border-white'
-                    : 'text-white/80 border-white/30'
-                }`}
-              >
-                Диета
-              </button>
-
-              {/* Разстояние */}
-              <button
-                onClick={handleDistToggle}
-                disabled={gpsState === 'error'}
-                className={`flex-1 py-1.5 rounded-xl text-xs font-semibold transition-colors border ${
-                  gpsState === 'error'
-                    ? 'text-white/30 border-white/20 cursor-not-allowed'
-                    : sortByDist
-                    ? 'bg-white text-zoo-green border-white'
-                    : 'text-white/80 border-white/30'
-                }`}
-              >
-                {gpsState === 'loading' ? '⏳' : gpsState === 'error' ? '📍✕' : '📍 Разст.'}
-              </button>
-            </div>
-
-            {gpsState === 'error' && (
-              <p className="text-white/50 text-[10px] mt-1.5 text-center">
-                Локацията не е налична
-              </p>
-            )}
-          </div>
-        )}
-      </div>
-
-      {/* List */}
-      <div className="flex-1 overflow-y-auto px-4 pb-4 pt-3">
-        {sorted.length === 0 ? (
-          <p className="text-center text-zoo-brown opacity-60 mt-12 text-sm">
-            {activeFavorites ? 'Все още нямате любими животни' : 'Няма намерени животни'}
-          </p>
-        ) : groupedByType ? (
-          Object.entries(groupedByType).map(([type, list]) => (
-            <CollapsibleGroup
-              key={type}
-              meta={{ emoji: TYPE_META[type]?.emoji ?? '🐾', label: TYPE_META[type]?.label ?? type }}
-              animals={list}
+        {/* Search + favorites + GPS row */}
+        <div style={{ display: 'flex', gap: 8, marginBottom: 12 }}>
+          <div style={{ flex: 1, display: 'flex', alignItems: 'center', gap: 10, background: c.surface, border: `1px solid ${c.rule}`, borderRadius: 12, padding: '11px 14px' }}>
+            <span style={{ color: c.ink3, display: 'inline-flex', flexShrink: 0 }}><SearchSvg /></span>
+            <input
+              type="search"
+              value={query}
+              onChange={e => setQuery(e.target.value)}
+              placeholder="Търси по вид или род…"
+              style={{ flex: 1, minWidth: 0, border: 'none', outline: 'none', background: 'transparent', fontFamily: F.body, fontSize: 14, color: c.ink }}
             />
-          ))
-        ) : FLAT_TYPES.has(activeType) ? (
-          <AnimalList animals={sorted} />
-        ) : groupMode === 'taxonomy' ? (
-          taxonomyGroups.map(g => (
-            <CollapsibleGroup key={g.key} meta={g} animals={g.animals} />
-          ))
+          </div>
+
+          <button
+            onClick={() => setFavoritesOnly(v => !v)}
+            aria-pressed={favoritesOnly}
+            aria-label="Само любими"
+            style={{
+              width: 44, height: 44, borderRadius: '50%', flexShrink: 0,
+              background: favoritesOnly ? c.ink : c.surface,
+              border: `1px solid ${favoritesOnly ? c.ink : c.rule}`,
+              display: 'inline-flex', alignItems: 'center', justifyContent: 'center', fontSize: 16,
+            }}
+          >
+            {favoritesOnly ? '❤️' : '🤍'}
+          </button>
+
+          <button
+            onClick={() => gpsState !== 'error' && setSortByDist(v => !v)}
+            disabled={gpsState === 'error'}
+            aria-pressed={sortByDist}
+            aria-label="Сортирай по разстояние"
+            style={{
+              width: 44, height: 44, borderRadius: '50%', flexShrink: 0,
+              background: sortByDist ? c.ink : c.surface,
+              color: sortByDist ? c.paper : c.ink,
+              border: `1px solid ${sortByDist ? c.ink : c.rule}`,
+              display: 'inline-flex', alignItems: 'center', justifyContent: 'center', fontSize: 14,
+              opacity: gpsState === 'error' ? 0.4 : 1,
+            }}
+          >
+            {gpsState === 'loading' ? '⏳' : '📍'}
+          </button>
+        </div>
+
+        {/* Filter chip strip */}
+        <div style={{ display: 'flex', gap: 6, margin: '0 -18px 12px', padding: '0 18px 2px', overflowX: 'auto', scrollbarWidth: 'none' }}>
+          {TYPE_CHIPS.map(chip => {
+            const count = chip.value ? (typeCounts[chip.value] || 0) : allAnimals.length
+            if (chip.value && count === 0) return null
+            const on = activeType === chip.value
+            return (
+              <button
+                key={chip.label}
+                onClick={() => setActiveType(chip.value)}
+                style={{
+                  display: 'inline-flex', alignItems: 'center', gap: 5, padding: '6px 11px', borderRadius: 999,
+                  border: `1px solid ${on ? c.ink : c.rule}`, background: on ? c.ink : c.surface,
+                  fontSize: 12, fontWeight: 600, color: on ? c.paper : c.ink2, whiteSpace: 'nowrap', fontFamily: F.body,
+                }}
+              >
+                {chip.label}
+                <span style={{ fontFamily: F.mono, fontWeight: 500, opacity: 0.65, fontSize: 10 }}>{count}</span>
+              </button>
+            )
+          })}
+        </div>
+
+        {/* List */}
+        {sorted.length === 0 ? (
+          <p style={{ textAlign: 'center', color: c.ink3, marginTop: 48, fontSize: 14 }}>
+            {favoritesOnly ? 'Все още нямате любими животни' : 'Няма намерени животни'}
+          </p>
         ) : (
-          dietGroups.map(g => (
-            <CollapsibleGroup key={g.key} meta={g} animals={g.animals} />
-          ))
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 8, paddingBottom: 6 }}>
+            {sorted.map((animal, i) => (
+              <AnimalRow
+                key={`${animal.id}_${i}`}
+                animal={animal}
+                c={c}
+                dist={animal._dist != null ? walkMinutes(animal._dist) : null}
+                isFav={isFavorite(animal.id)}
+                isVis={isVisited(animal.id)}
+                onToggleFav={() => toggleFavorite(animal.id)}
+              />
+            ))}
+          </div>
         )}
       </div>
     </div>

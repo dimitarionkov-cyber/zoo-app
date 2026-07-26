@@ -202,7 +202,7 @@ function GearSvg() {
 const ACTIONS = [
   { to:'/map',     Svg:MapSvg,    label:'Карта',   sub:'4 мин до пингвини', featured:true  },
   { to:'/animals', Svg:PawSvg,    label:'Животни', sub:'150 вида',           featured:false },
-  { to:'/search',  Svg:SearchSvg, label:'Търсене', sub:'по вид',             featured:false },
+  { to:'/animals', Svg:SearchSvg, label:'Търсене', sub:'по вид',             featured:false },
   { to:'/info',    Svg:TicketSvg, label:'Билети',  sub:'8 / 4 лв.',          featured:false },
 ]
 
@@ -359,7 +359,7 @@ export default function HomePage() {
           const subFg  = featured ? 'rgba(244,239,227,0.55)' : c.ink3
           return (
             <Link
-              key={to}
+              key={label}
               to={to}
               style={{ display:'flex', flexDirection:'column', justifyContent:'space-between', background:bg, border:`1px solid ${border}`, borderRadius:14, padding:'12px 12px 11px', minHeight:82, textDecoration:'none' }}
             >
