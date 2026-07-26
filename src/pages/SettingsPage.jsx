@@ -121,8 +121,26 @@ function SectionButton({ open, onClick, children }) {
 }
 
 export default function SettingsPage() {
-  const { darkMode, setDarkMode, addAnimal, addPoi, exportAnimalsJSON, allAnimals, visited } = useData()
+  const {
+    darkMode, setDarkMode, addAnimal, addPoi, exportAnimalsJSON, allAnimals, visited,
+    isLinked, userEmail, syncStatus, saveProgress,
+  } = useData()
   const seenCount = Object.keys(visited).length
+
+  const [progressEmail,  setProgressEmail]  = useState('')
+  const [progressStatus, setProgressStatus] = useState('idle') // idle | sending | sent | error
+
+  async function handleSaveProgress(e) {
+    e.preventDefault()
+    if (!progressEmail) return
+    setProgressStatus('sending')
+    try {
+      await saveProgress(progressEmail)
+      setProgressStatus('sent')
+    } catch {
+      setProgressStatus('error')
+    }
+  }
 
   const [openForm,      setOpenForm]      = useState(null)
   const [animalForm,    setAnimalForm]    = useState(EMPTY_ANIMAL)
@@ -296,6 +314,53 @@ export default function SettingsPage() {
           </div>
           <span className="text-zoo-brown opacity-40 text-lg">›</span>
         </Link>
+      </section>
+
+      {/* Save / restore progress */}
+      <section>
+        <h2 className="text-xs font-bold uppercase tracking-widest text-zoo-brown mb-3">Запази прогреса си</h2>
+        {isLinked ? (
+          <div className="bg-[--color-bg-card] border border-[--color-border] rounded-2xl px-4 py-3 flex items-center gap-3">
+            <span className="text-xl">✅</span>
+            <div className="flex-1 min-w-0">
+              <p className="text-sm font-semibold text-[--color-text-main]">Синхронизирано</p>
+              <p className="text-xs text-zoo-brown opacity-60 truncate">{userEmail}</p>
+            </div>
+          </div>
+        ) : (
+          <div className="bg-[--color-bg-card] border border-[--color-border] rounded-2xl px-4 py-3">
+            <p className="text-xs text-zoo-brown opacity-70 mb-2">
+              Любимите и видяните животни се пазят на това устройство. Въведете имейл, за да ги възстановите, ако смените телефона или изчистите данните на браузъра.
+            </p>
+            {progressStatus === 'sent' ? (
+              <p className="text-sm font-semibold text-zoo-green">📩 Проверете имейла си за линк за потвърждение.</p>
+            ) : (
+              <form onSubmit={handleSaveProgress} className="flex gap-2">
+                <input
+                  type="email"
+                  required
+                  placeholder="имейл"
+                  value={progressEmail}
+                  onChange={e => setProgressEmail(e.target.value)}
+                  className="flex-1 min-w-0 rounded-xl border border-[--color-border] bg-[--color-bg-base] px-3 py-2 text-sm text-[--color-text-main] outline-none focus:border-zoo-green transition-colors"
+                />
+                <button
+                  type="submit"
+                  disabled={progressStatus === 'sending'}
+                  className="shrink-0 bg-zoo-primary text-white rounded-xl px-4 py-2 text-sm font-semibold disabled:opacity-50"
+                >
+                  {progressStatus === 'sending' ? '…' : 'Изпрати'}
+                </button>
+              </form>
+            )}
+            {progressStatus === 'error' && (
+              <p className="text-xs text-red-500 mt-2">Нещо се обърка. Опитайте отново.</p>
+            )}
+          </div>
+        )}
+        {syncStatus === 'error' && (
+          <p className="text-[10px] text-red-500 mt-1.5 px-1">Синхронизацията в момента не работи — данните остават запазени на устройството.</p>
+        )}
       </section>
 
       {/* Feedback */}

@@ -27,6 +27,7 @@
 | Images | Remotely hosted (Super Hosting) — not bundled |
 | Deployment | GitHub → Vercel. `master` = production (auto-deploy). `staging` = pre-production branch, auto-previewed by Vercel, promoted to `master` only after manual approval |
 | Feedback | Formspree (`xnjwlody`) |
+| Cloud sync | Supabase (Postgres + Auth) — anonymous sign-in by default, upgradeable to an email-linked account so progress survives a cleared cache / new device. See `supabase/schema.sql` |
 
 ---
 
@@ -82,6 +83,8 @@
 - **`react-simple-maps` incompatible with React 19**: `ComposableMap` threw "A React Element from an older version of React was rendered" on every render (peer dep only supports React ≤18). Replaced with a direct `d3-geo` + `topojson-client` SVG render — same props/CSS-var theming, ~30 kB smaller gzipped bundle.
 - **Duplicate animal `id` corrupts list rendering**: two identical records sharing one `id` (a data-import duplicate) caused React's key-based reconciliation to duplicate/ghost rows once favoriting started toggling items in and out of a filtered list. Fixed by deduping the data; also worth keying dynamic lists as `` `${id}_${index}` `` defensively if this class of bug resurfaces elsewhere.
 - **Geolocation requested once per page, not per component**: `AnimalDetailPage` now owns the single `getCurrentPosition` call and passes `distance`/`geoError` down as props, so the location card and the directions CTA share one browser permission prompt instead of two.
+- **Cloud sync via anonymous Supabase auth**: every device signs in anonymously on first load (no signup friction); favorites/visited/visit-session state syncs to a `zoo_progress` row keyed by that auth uid, gated by row-level security. Optionally linking an email (Settings → "Запази прогреса си") upgrades the *same* anonymous user to a permanent one — same uid, same row — so signing in with that email on a new device (or after clearing storage) restores everything via Supabase's magic-link flow, no separate account/migration step needed.
+- **Merge-completion flag must be React state, not a ref**: the "pull remote, merge into local" effect flips a flag when done so the "push local up" effect can react to it. Using a plain `useRef` for that flag doesn't retrigger the push effect when nothing else changed (e.g. connecting to a brand-new empty remote row) — it has to be `useState` so React actually re-runs the dependent effect.
 
 ---
 

@@ -1,6 +1,7 @@
-import { createContext, useContext, useState, useEffect, useMemo } from 'react'
+import { createContext, useContext, useState, useEffect, useMemo, useRef } from 'react'
 import staticAnimals from '../data/animals.json'
 import staticPois from '../data/pois.json'
+import { supabase } from '../lib/supabase'
 
 const DataContext = createContext(null)
 
@@ -74,6 +75,116 @@ export function DataProvider({ children }) {
     localStorage.setItem('zoo_dark_mode', JSON.stringify(darkMode))
     applyTheme(darkMode)
   }, [darkMode])
+
+  // ── Cloud sync (Supabase) — no forced account, just an anonymous device ──
+  // session by default, upgradeable to an email so progress survives a
+  // cleared cache / new device. See supabase/schema.sql for the table.
+  const [session,    setSession]    = useState(null)
+  const [syncStatus, setSyncStatus] = useState('idle') // idle | syncing | error
+  // Real state, not a ref — flipping it must re-trigger the push-effect below
+  // even if favorites/visited didn't themselves change during the merge
+  // (e.g. connecting to a brand-new empty remote row with existing local data).
+  const [hasMerged, setHasMerged] = useState(false)
+  const prevUserIdRef = useRef(null)
+
+  // Establish a session — reuse an existing one, or sign in anonymously.
+  useEffect(() => {
+    let cancelled = false
+
+    supabase.auth.getSession().then(({ data: { session: existing } }) => {
+      if (cancelled) return
+      if (existing) { setSession(existing); return }
+      supabase.auth.signInAnonymously().then(({ error }) => {
+        if (error) console.error('Supabase anonymous sign-in failed', error)
+      })
+    })
+
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, newSession) => {
+      if (cancelled) return
+      const newId = newSession?.user?.id ?? null
+      // A different user just signed in (e.g. clicked a magic link) — the
+      // next merge should pull their remote data in fresh. A same-user
+      // event (like a periodic token refresh) shouldn't re-trigger it.
+      if (newId !== prevUserIdRef.current) {
+        setHasMerged(false)
+        prevUserIdRef.current = newId
+      }
+      setSession(newSession)
+    })
+
+    return () => { cancelled = true; subscription.unsubscribe() }
+  }, [])
+
+  // Pull remote progress in and merge it with whatever's already local,
+  // once per signed-in user (anonymous or linked).
+  useEffect(() => {
+    if (!session?.user || hasMerged) return
+    let cancelled = false
+
+    setSyncStatus('syncing')
+    supabase
+      .from('zoo_progress')
+      .select('favorites, visited, active_visit, last_visit')
+      .eq('id', session.user.id)
+      .maybeSingle()
+      .then(({ data, error }) => {
+        if (cancelled) return
+        if (error) { setSyncStatus('error'); return }
+        if (data) {
+          setFavoriteIds(prev => Array.from(new Set([...prev, ...(data.favorites || [])])))
+          setVisited(prev => {
+            const merged = { ...prev }
+            for (const [id, ts] of Object.entries(data.visited || {})) {
+              if (!merged[id] || new Date(ts) > new Date(merged[id])) merged[id] = ts
+            }
+            return merged
+          })
+          setActiveVisit(prev => prev ?? data.active_visit ?? null)
+          setLastVisit(prev => {
+            if (!data.last_visit) return prev
+            if (!prev) return data.last_visit
+            return new Date(data.last_visit.endedAt) > new Date(prev.endedAt) ? data.last_visit : prev
+          })
+        }
+        setHasMerged(true)
+        setSyncStatus('idle')
+      })
+
+    return () => { cancelled = true }
+  }, [session?.user?.id, hasMerged])
+
+  // Push local progress up after every change, once the initial merge is done.
+  // hasMerged is in the deps deliberately: completing the merge (even with no
+  // local-state changes, e.g. an empty remote row) must still push once.
+  useEffect(() => {
+    if (!session?.user || !hasMerged) return
+    const id = setTimeout(() => {
+      supabase.from('zoo_progress').upsert({
+        id: session.user.id,
+        favorites: favoriteIds,
+        visited,
+        active_visit: activeVisit,
+        last_visit: lastVisit,
+      }).then(({ error }) => {
+        if (error) { console.error('Supabase sync failed', error); setSyncStatus('error') }
+      })
+    }, 800)
+    return () => clearTimeout(id)
+  }, [session?.user?.id, hasMerged, favoriteIds, visited, activeVisit, lastVisit])
+
+  const isLinked  = Boolean(session?.user && !session.user.is_anonymous)
+  const userEmail = session?.user?.email ?? null
+
+  // Link this device's progress to an email (or, if that email already has
+  // linked progress elsewhere, sign into it instead) — either way a magic
+  // link is emailed, and clicking it finishes the process.
+  async function saveProgress(email) {
+    const { error } = await supabase.auth.updateUser({ email }, { emailRedirectTo: window.location.origin })
+    if (error) {
+      const { error: otpError } = await supabase.auth.signInWithOtp({ email, options: { emailRedirectTo: window.location.origin } })
+      if (otpError) throw otpError
+    }
+  }
 
   const allAnimals = useMemo(() =>
     [...staticAnimals, ...customAnimals].map(a =>
@@ -157,6 +268,7 @@ export function DataProvider({ children }) {
       favoriteIds, toggleFavorite, isFavorite,
       visited, toggleVisited, isVisited,
       activeVisit, lastVisit, startVisit, endVisit,
+      isLinked, userEmail, syncStatus, saveProgress,
     }}>
       {children}
     </DataContext.Provider>

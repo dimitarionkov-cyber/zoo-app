@@ -8,9 +8,20 @@
 
 | Version | Date       | Changes |
 |---------|------------|---------|
+| 0.2.1   | 2026-07-26 | Cloud sync for favorites/visited/visit-sessions via Supabase (anonymous auth by default, optional email-link recovery on a new device or after clearing storage) |
 | 0.2.0   | 2026-07-26 | Favorites + Visit Recording core shipped, including a visit-session flow (Start/Current/End visit, live checklist, last-visit recap); Home, Animals list, and Animal Detail redesigned to the paper/ink Hi-Fi spec (Dossier-cards variant); Animals Hub + Search retired into one unified screen; fixed duplicate animal ID and React 19 map crash; added `staging` pre-production branch |
 | 0.1.0   | 2026-05-11 | Added visit recording, AR navigation features; marked recommended routes as done; updated known issues |
 | 0.0.1   | 2026-05-10 | Initial backlog created |
+
+---
+
+## Data Persistence & Sync ✅ Done
+- [x] Anonymous Supabase auth on first load — no signup required for normal use
+- [x] `zoo_progress` table (favorites, visited, active/last visit) synced per device, protected by row-level security
+- [x] Merge-on-connect (union of local + remote) so nothing is lost when a session first syncs
+- [x] Optional "Запази прогреса си" in Settings — links an email to the anonymous account (or signs into an existing one) via magic link, so progress survives a cleared cache or a new device
+- [ ] Not yet handled: explicit sign-out / "use a different account" affordance once linked
+- [ ] Not yet handled: what happens if the same email is linked on two devices that both have *different* local data before their first sync — first-merge-wins per device, not a true 3-way merge
 
 ---
 
