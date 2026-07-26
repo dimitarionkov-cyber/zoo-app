@@ -100,6 +100,7 @@ function CollapsibleGroup({ meta, animals, defaultOpen = true }) {
 }
 
 function AnimalList({ animals }) {
+  const { isFavorite, toggleFavorite, isVisited } = useData()
   return (
     <ul className="space-y-2">
       {animals.map(animal => (
@@ -116,6 +117,16 @@ function AnimalList({ animals }) {
               <p className="text-xs text-zoo-brown opacity-70 italic truncate">{animal.species}</p>
             </div>
             <div className="flex flex-col items-end gap-1 shrink-0">
+              <div className="flex items-center gap-1.5">
+                {isVisited(animal.id) && <span className="text-xs leading-none" title="Видяно">✅</span>}
+                <button
+                  onClick={e => { e.preventDefault(); e.stopPropagation(); toggleFavorite(animal.id) }}
+                  aria-label={isFavorite(animal.id) ? 'Премахни от любими' : 'Добави в любими'}
+                  className="text-base leading-none active:scale-90 transition-transform"
+                >
+                  {isFavorite(animal.id) ? '❤️' : '🤍'}
+                </button>
+              </div>
               <span className={`text-xs font-medium px-2 py-0.5 rounded-full ${DIET_STYLE[animal.diet]?.chip ?? 'bg-gray-100 text-gray-600'}`}>
                 {animal.diet}
               </span>
@@ -137,10 +148,11 @@ function AnimalList({ animals }) {
 export default function AnimalsListPage() {
   const [searchParams] = useSearchParams()
   const navigate = useNavigate()
-  const { allAnimals } = useData()
+  const { allAnimals, favoriteIds } = useData()
 
   const activeType      = searchParams.get('type')
   const activeContinent = searchParams.get('continent')
+  const activeFavorites = searchParams.get('favorites') === '1'
   const query           = searchParams.get('q') || ''
 
   const showGroupToggle = !!activeType && !FLAT_TYPES.has(activeType)
@@ -196,14 +208,15 @@ export default function AnimalsListPage() {
     return allAnimals.filter(a => {
       const matchesType      = !activeType      || a.animalType === activeType
       const matchesContinent = !activeContinent || (a.continents || []).includes(activeContinent)
+      const matchesFavorites = !activeFavorites || favoriteIds.includes(a.id)
       const q = query.toLowerCase()
       const matchesQuery     = !q ||
         a.nameBg.toLowerCase().includes(q) ||
         a.nameEn.toLowerCase().includes(q) ||
         (a.species || '').toLowerCase().includes(q)
-      return matchesType && matchesContinent && matchesQuery
+      return matchesType && matchesContinent && matchesFavorites && matchesQuery
     })
-  }, [allAnimals, activeType, activeContinent, query])
+  }, [allAnimals, activeType, activeContinent, activeFavorites, favoriteIds, query])
 
   // Attach live distance and sort
   const withDist = useMemo(() => {
@@ -245,7 +258,9 @@ export default function AnimalsListPage() {
     return DIET_GROUPS.filter(g => map[g.key]?.length).map(g => ({ ...g, animals: map[g.key] }))
   }, [sorted, activeType])
 
-  const headerMeta = activeType
+  const headerMeta = activeFavorites
+    ? { label: 'Любими', emoji: '❤️' }
+    : activeType
     ? TYPE_META[activeType]
     : activeContinent
     ? CONTINENT_LABELS[activeContinent]
@@ -332,7 +347,7 @@ export default function AnimalsListPage() {
       <div className="flex-1 overflow-y-auto px-4 pb-4 pt-3">
         {sorted.length === 0 ? (
           <p className="text-center text-zoo-brown opacity-60 mt-12 text-sm">
-            Няма намерени животни
+            {activeFavorites ? 'Все още нямате любими животни' : 'Няма намерени животни'}
           </p>
         ) : groupedByType ? (
           Object.entries(groupedByType).map(([type, list]) => (

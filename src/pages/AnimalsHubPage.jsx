@@ -1,5 +1,5 @@
 import { useState, useMemo } from 'react'
-import { useSearchParams } from 'react-router-dom'
+import { useSearchParams, Link } from 'react-router-dom'
 import { useData } from '../context/DataContext'
 import AnimalsListPage from './AnimalsListPage'
 
@@ -24,10 +24,11 @@ const CONTINENT_TILES = [
 
 export default function AnimalsHubPage() {
   const [searchParams, setSearchParams] = useSearchParams()
-  const { allAnimals } = useData()
+  const { allAnimals, favoriteIds } = useData()
 
   const activeType      = searchParams.get('type')
   const activeContinent = searchParams.get('continent')
+  const activeFavorites = searchParams.get('favorites') === '1'
 
   // ── Count animals per category / continent ──────────────────────────────────
   // Must stay above any conditional return (Rules of Hooks)
@@ -48,7 +49,7 @@ export default function AnimalsHubPage() {
   const [activeTab, setActiveTab] = useState('type') // 'type' | 'origin'
 
   // If a filter is active, delegate to the list view
-  if (activeType || activeContinent) {
+  if (activeType || activeContinent || activeFavorites) {
     return <AnimalsListPage />
   }
 
@@ -61,6 +62,22 @@ export default function AnimalsHubPage() {
           {allAnimals.length} вида в Зоопарк София
         </p>
       </div>
+
+      {/* Любими quick access */}
+      {favoriteIds.length > 0 && (
+        <div className="px-4 mt-4">
+          <Link
+            to="/animals/list?favorites=1"
+            className="flex items-center gap-4 px-5 py-4 rounded-2xl border border-red-200 bg-red-50 dark:bg-red-900/20 dark:border-red-800 active:scale-[0.98] transition-transform"
+          >
+            <span className="text-4xl leading-none">❤️</span>
+            <div className="flex-1 min-w-0">
+              <p className="text-lg font-bold leading-tight text-red-700 dark:text-red-300">Любими</p>
+            </div>
+            <span className="text-2xl font-bold tabular-nums text-red-700 dark:text-red-300 opacity-80">{favoriteIds.length}</span>
+          </Link>
+        </div>
+      )}
 
       {/* Tab switcher */}
       <div className="flex mx-4 mt-4 bg-[--color-bg-card] rounded-2xl p-1 border border-[--color-border]">

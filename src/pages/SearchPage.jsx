@@ -96,27 +96,29 @@ function FilterDropdown({ label, options, selected, onToggle, onClear, onClose }
 }
 
 export default function SearchPage() {
-  const { allAnimals } = useData()
-  const [query,         setQuery]         = useState('')
-  const [selectedTypes, setSelectedTypes] = useState(new Set())
-  const [selectedConts, setSelectedConts] = useState(new Set())
-  const [openDropdown,  setOpenDropdown]  = useState(null) // 'type' | 'continent' | null
+  const { allAnimals, isFavorite, toggleFavorite, isVisited } = useData()
+  const [query,          setQuery]          = useState('')
+  const [selectedTypes,  setSelectedTypes]  = useState(new Set())
+  const [selectedConts,  setSelectedConts]  = useState(new Set())
+  const [favoritesOnly,  setFavoritesOnly]  = useState(false)
+  const [openDropdown,   setOpenDropdown]   = useState(null) // 'type' | 'continent' | null
   const inputRef = useRef(null)
 
   useEffect(() => { inputRef.current?.focus() }, [])
 
   const filtered = useMemo(() => {
-    if (!query && selectedTypes.size === 0 && selectedConts.size === 0) return []
+    if (!query && selectedTypes.size === 0 && selectedConts.size === 0 && !favoritesOnly) return []
     return allAnimals.filter(a => {
       const q = query.toLowerCase()
       const matchesQuery     = !q || a.nameBg.toLowerCase().includes(q) || a.nameEn.toLowerCase().includes(q) || (a.species || '').toLowerCase().includes(q)
       const matchesType      = selectedTypes.size === 0 || selectedTypes.has(a.animalType)
       const matchesContinent = selectedConts.size === 0  || (a.continents || []).some(c => selectedConts.has(c))
-      return matchesQuery && matchesType && matchesContinent
+      const matchesFavorite  = !favoritesOnly || isFavorite(a.id)
+      return matchesQuery && matchesType && matchesContinent && matchesFavorite
     })
-  }, [query, selectedTypes, selectedConts, allAnimals])
+  }, [query, selectedTypes, selectedConts, favoritesOnly, allAnimals, isFavorite])
 
-  const showResults = query || selectedTypes.size > 0 || selectedConts.size > 0
+  const showResults = query || selectedTypes.size > 0 || selectedConts.size > 0 || favoritesOnly
 
   function typeButtonLabel() {
     if (selectedTypes.size === 0) return 'Вид'
@@ -210,6 +212,19 @@ export default function SearchPage() {
               </div>
             )}
           </div>
+
+          {/* Favorites-only toggle */}
+          <button
+            onClick={() => setFavoritesOnly(v => !v)}
+            aria-pressed={favoritesOnly}
+            className={`shrink-0 px-3 py-2 rounded-xl border text-sm font-semibold transition-colors ${
+              favoritesOnly
+                ? 'bg-white text-black border-white'
+                : 'bg-white/15 text-white border-white/30'
+            }`}
+          >
+            {favoritesOnly ? '❤️' : '🤍'}
+          </button>
         </div>
       </div>
 
@@ -227,7 +242,7 @@ export default function SearchPage() {
           </div>
         ) : filtered.length === 0 ? (
           <p className="text-center text-zoo-brown opacity-60 mt-12 text-sm">
-            Няма намерени животни
+            {favoritesOnly ? 'Все още нямате любими животни' : 'Няма намерени животни'}
           </p>
         ) : (
           <>
@@ -247,9 +262,21 @@ export default function SearchPage() {
                       <p className="font-semibold text-zoo-green truncate">{animal.nameBg}</p>
                       <p className="text-xs text-zoo-brown opacity-70 italic truncate">{animal.species}</p>
                     </div>
-                    <span className={`text-xs font-medium px-2 py-1 rounded-full shrink-0 ${DIET_STYLE[animal.diet] ?? 'bg-gray-100 text-gray-600'}`}>
-                      {animal.diet}
-                    </span>
+                    <div className="flex flex-col items-end gap-1 shrink-0">
+                      <div className="flex items-center gap-1.5">
+                        {isVisited(animal.id) && <span className="text-xs leading-none" title="Видяно">✅</span>}
+                        <button
+                          onClick={e => { e.preventDefault(); e.stopPropagation(); toggleFavorite(animal.id) }}
+                          aria-label={isFavorite(animal.id) ? 'Премахни от любими' : 'Добави в любими'}
+                          className="text-base leading-none active:scale-90 transition-transform"
+                        >
+                          {isFavorite(animal.id) ? '❤️' : '🤍'}
+                        </button>
+                      </div>
+                      <span className={`text-xs font-medium px-2 py-1 rounded-full ${DIET_STYLE[animal.diet] ?? 'bg-gray-100 text-gray-600'}`}>
+                        {animal.diet}
+                      </span>
+                    </div>
                   </Link>
                 </li>
               ))}

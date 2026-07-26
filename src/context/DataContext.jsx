@@ -55,10 +55,14 @@ export function DataProvider({ children }) {
   const [customAnimals,  setCustomAnimals]  = useState(() => load('zoo_custom_animals', []))
   const [customPois,     setCustomPois]     = useState(() => load('zoo_custom_pois', []))
   const [darkMode,       setDarkMode]       = useState(() => load('zoo_dark_mode', false))
+  const [favoriteIds,    setFavoriteIds]    = useState(() => load('zoo_favorites', []))
+  const [visited,        setVisited]        = useState(() => load('zoo_visited', {})) // { [animalId]: isoTimestamp }
 
   useEffect(() => { localStorage.setItem('zoo_coord_overrides', JSON.stringify(coordOverrides)) }, [coordOverrides])
   useEffect(() => { localStorage.setItem('zoo_custom_animals',  JSON.stringify(customAnimals))  }, [customAnimals])
   useEffect(() => { localStorage.setItem('zoo_custom_pois',     JSON.stringify(customPois))     }, [customPois])
+  useEffect(() => { localStorage.setItem('zoo_favorites',       JSON.stringify(favoriteIds))    }, [favoriteIds])
+  useEffect(() => { localStorage.setItem('zoo_visited',         JSON.stringify(visited))        }, [visited])
   // Apply theme vars on mount (restores saved preference before first paint)
   useState(() => applyTheme(load('zoo_dark_mode', false)))
 
@@ -103,6 +107,26 @@ export function DataProvider({ children }) {
     return JSON.stringify(allAnimals, null, 2)
   }
 
+  function toggleFavorite(id) {
+    setFavoriteIds(prev => prev.includes(id) ? prev.filter(x => x !== id) : [...prev, id])
+  }
+  function isFavorite(id) {
+    return favoriteIds.includes(id)
+  }
+
+  function toggleVisited(id) {
+    setVisited(prev => {
+      if (prev[id]) {
+        const { [id]: _omit, ...rest } = prev
+        return rest
+      }
+      return { ...prev, [id]: new Date().toISOString() }
+    })
+  }
+  function isVisited(id) {
+    return Boolean(visited[id])
+  }
+
   return (
     <DataContext.Provider value={{
       allAnimals, allPois,
@@ -110,6 +134,8 @@ export function DataProvider({ children }) {
       addAnimal, addPoi,
       darkMode, setDarkMode,
       exportAnimalsJSON,
+      favoriteIds, toggleFavorite, isFavorite,
+      visited, toggleVisited, isVisited,
     }}>
       {children}
     </DataContext.Provider>

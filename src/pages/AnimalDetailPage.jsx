@@ -37,10 +37,16 @@ const INFO_SECTIONS = [
   { key: 'distribution',  label: 'Разпространение' },
 ]
 
+const BG_MONTHS = ['яну','фев','мар','апр','май','юни','юли','авг','сеп','окт','ное','дек']
+function formatVisitDate(iso) {
+  const d = new Date(iso)
+  return `${d.getDate()} ${BG_MONTHS[d.getMonth()]} ${d.getFullYear()}`
+}
+
 export default function AnimalDetailPage() {
   const { id } = useParams()
   const navigate = useNavigate()
-  const { allAnimals } = useData()
+  const { allAnimals, isFavorite, toggleFavorite, isVisited, toggleVisited, visited } = useData()
   const animal = allAnimals.find(a => a.id === id)
 
   if (!animal) return (
@@ -74,13 +80,32 @@ export default function AnimalDetailPage() {
             <p className="text-white/60 text-sm italic mt-0.5">({animal.species})</p>
           </div>
 
-          {animal.classification && (
-            <div className="text-right text-white/70 text-xs leading-5 shrink-0">
-              <p>Сем. {animal.classification.family}</p>
-              <p>Разред {animal.classification.order}</p>
-              <p>Клас {animal.classification.class}</p>
+          <div className="flex flex-col items-end gap-2 shrink-0">
+            <div className="flex gap-2">
+              <button
+                onClick={() => toggleFavorite(animal.id)}
+                aria-label={isFavorite(animal.id) ? 'Премахни от любими' : 'Добави в любими'}
+                className="w-8 h-8 rounded-full bg-white/15 flex items-center justify-center text-base leading-none active:scale-90 transition-transform"
+              >
+                {isFavorite(animal.id) ? '❤️' : '🤍'}
+              </button>
+              <button
+                onClick={() => toggleVisited(animal.id)}
+                aria-label={isVisited(animal.id) ? 'Премахни от видяни' : 'Отбележи като видяно'}
+                className="w-8 h-8 rounded-full bg-white/15 flex items-center justify-center text-base leading-none active:scale-90 transition-transform"
+              >
+                {isVisited(animal.id) ? '✅' : '👁️'}
+              </button>
             </div>
-          )}
+
+            {animal.classification && (
+              <div className="text-right text-white/70 text-xs leading-5">
+                <p>Сем. {animal.classification.family}</p>
+                <p>Разред {animal.classification.order}</p>
+                <p>Клас {animal.classification.class}</p>
+              </div>
+            )}
+          </div>
         </div>
       </div>
 
@@ -92,6 +117,13 @@ export default function AnimalDetailPage() {
           <span className="text-9xl opacity-30">{TYPE_EMOJI[animal.animalType] ?? '🐾'}</span>
         )}
       </div>
+
+      {/* Visited strip */}
+      {isVisited(animal.id) && (
+        <div className="px-4 py-2 bg-zoo-green/10 text-xs text-zoo-green font-semibold flex items-center gap-1.5">
+          ✅ Видяно на {formatVisitDate(visited[animal.id])}
+        </div>
+      )}
 
       {/* IUCN status */}
       {animal.iucn && (
