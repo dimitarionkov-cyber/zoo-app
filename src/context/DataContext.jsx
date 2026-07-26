@@ -121,6 +121,12 @@ export function DataProvider({ children }) {
   function toggleVisited(id) {
     setVisited(prev => {
       if (prev[id]) {
+        // Seen on an earlier visit, not yet during this active one — a tap means
+        // "mark as seen now", not "unmark". Only a second tap within the same
+        // active visit should actually remove it.
+        if (activeVisit && prev[id] < activeVisit.startedAt) {
+          return { ...prev, [id]: new Date().toISOString() }
+        }
         const { [id]: _omit, ...rest } = prev
         return rest
       }

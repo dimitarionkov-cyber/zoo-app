@@ -44,7 +44,7 @@
 - [x] Visit summary screen — `/visited`, linked from Settings ("Моят напредък"): progress bar, satellite overview map with a pin per visited animal, sorted list (most recent first)
 - [x] Links naturally with Favorites feature — both live in `DataContext`, same UI pattern
 - [x] **Visit session flow** — Home banner ("Започни посещение" → "Текущо посещение"), `/visit` live checklist page (elapsed time, animals seen since start, shortcuts to Animals/Map, End Visit), and a last-visit recap card at the top of `/visited` (duration + count for that specific session)
-- [ ] Known gap: re-tapping "mark as seen" on an animal already visited on a *previous* trip un-marks it instead of refreshing it for the *current* visit (`toggleVisited` is a plain boolean toggle) — narrow edge case, flagged as a follow-up task
+- [x] Re-tapping "mark as seen" on an animal already visited on a *previous* trip now refreshes its timestamp for the *current* visit instead of un-marking it; a second tap within the same active visit still correctly un-marks
 
 ### Visit Planner
 - [ ] Date picker → fetch 7-day weather (Open-Meteo free API, no key needed)
