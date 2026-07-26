@@ -8,6 +8,7 @@
 
 | Version | Date       | Changes |
 |---------|------------|---------|
+| 0.2.0   | 2026-07-26 | Favorites + Visit Recording core shipped; Home, Animals list, and Animal Detail redesigned to the paper/ink Hi-Fi spec (Dossier-cards variant); Animals Hub + Search retired into one unified screen; fixed duplicate animal ID and React 19 map crash; added `staging` pre-production branch |
 | 0.1.0   | 2026-05-11 | Added visit recording, AR navigation features; marked recommended routes as done; updated known issues |
 | 0.0.1   | 2026-05-10 | Initial backlog created |
 
@@ -25,23 +26,23 @@
 
 ## Priority 2 — Core Missing Features
 
-### Favorites
-- [ ] `localStorage` persist for favorited animal IDs
-- [ ] Heart icon on animal card and detail page
-- [ ] "Любими" section on Animals Hub or Home
-- [ ] Filter by favorites on Search page
+### Favorites ✅ Done
+- [x] `localStorage` persist for favorited animal IDs
+- [x] Heart icon on animal card and detail page
+- [x] Favorites-only toggle on the unified Animals screen (Hub's "Любими" card superseded by this after Hub/Search merged into one screen)
+- [x] Filter by favorites (now on the unified Animals screen, since standalone Search was retired)
 
 ### Food / Amenities Page
 - [ ] Dedicated `/food` page listing POIs with `category: 'food'`
 - [ ] Each item: name, opening hours, distance from user (haversine), directions button
 - [ ] Add to bottom nav or merge into Info page tabs
 
-### Visit Recording
-- [ ] "Mark as seen" button on `AnimalDetailPage`
-- [ ] Visit log stored in `localStorage` (list of seen animal IDs + timestamps)
+### Visit Recording — core done, extras remain
+- [x] "Mark as seen" (visited) toggle on `AnimalDetailPage`, list rows, and search results
+- [x] Visit log stored in `localStorage` (animal ID → timestamp), shown as a banner/date on detail
 - [ ] Optional: add personal photo and note per animal
 - [ ] Visit summary screen (how many seen, which ones, map overlay)
-- [ ] Links naturally with Favorites feature
+- [x] Links naturally with Favorites feature — both live in `DataContext`, same UI pattern
 
 ### Visit Planner
 - [ ] Date picker → fetch 7-day weather (Open-Meteo free API, no key needed)
