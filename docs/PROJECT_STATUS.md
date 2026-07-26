@@ -61,7 +61,7 @@
 
 | File | Status | Notes |
 |---|---|---|
-| `src/data/animals.json` | ✅ Done | **165 animals** — `id`, `nameBg`, `nameEn`, `species`, `lat`, `lng`, `diet`, `animalType`, `iucn`, `stats`, `habitat`, `continents[]`, `classification`, `photo` |
+| `src/data/animals.json` | ✅ Done | **164 animals** — `id`, `nameBg`, `nameEn`, `species`, `lat`, `lng`, `diet`, `animalType`, `iucn`, `stats`, `habitat`, `continents[]`, `classification`, `photo` |
 | `src/data/pois.json` | ✅ Done | Food, medical, entrances, tickets, shops, attractions, parking (×2), bus stops (×2) |
 | `src/data/paths.json` | ✅ Done | Zoo walkway polylines (white) + steps (orange) from OSM |
 | `src/data/routes/` | ✅ Done | 4 pre-computed routes: `main-main` (3.68 km), `main-west` (3.51 km), `west-west` (3.73 km), `west-main` (3.46 km) |

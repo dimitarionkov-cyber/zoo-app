@@ -13,8 +13,8 @@
   },
   "circular": false,
   "totalDistanceM": 3464,
-  "animalCount": 165,
-  "generatedAt": "2026-05-11T16:33:23.429Z",
+  "animalCount": 164,
+  "generatedAt": "2026-07-26T09:08:13.371Z",
   "steps": [
     {
       "step": 0,
@@ -1558,16 +1558,6 @@
     },
     {
       "step": 154,
-      "id": "12170636005",
-      "nameBg": "Белоглав лешояд",
-      "nameEn": "Griffon Vulture",
-      "lat": 42.6587065,
-      "lng": 23.3338521,
-      "legDistM": 0,
-      "animalType": "птица"
-    },
-    {
-      "step": 155,
       "id": "way_1314928272",
       "nameBg": "Носато мече",
       "nameEn": "South American Coati",
@@ -1577,7 +1567,7 @@
       "animalType": "бозайник"
     },
     {
-      "step": 156,
+      "step": 155,
       "id": "12170636004",
       "nameBg": "Черен лешояд (Картал)",
       "nameEn": "Eurasian Black Vulture",
@@ -1587,7 +1577,7 @@
       "animalType": "птица"
     },
     {
-      "step": 157,
+      "step": 156,
       "id": "12170636006",
       "nameBg": "Скален орел",
       "nameEn": "Golden Eagle",
@@ -1597,7 +1587,7 @@
       "animalType": "птица"
     },
     {
-      "step": 158,
+      "step": 157,
       "id": "way_1381812198",
       "nameBg": "Пони",
       "nameEn": "Pony",
@@ -1607,7 +1597,7 @@
       "animalType": "бозайник"
     },
     {
-      "step": 159,
+      "step": 158,
       "id": "12170600567",
       "nameBg": "Розов пеликан",
       "nameEn": "Great White Pelican",
@@ -1617,7 +1607,7 @@
       "animalType": "птица"
     },
     {
-      "step": 160,
+      "step": 159,
       "id": "12170600568",
       "nameBg": "Белобуза гъска",
       "nameEn": "Barnacle Goose",
@@ -1627,7 +1617,7 @@
       "animalType": "птица"
     },
     {
-      "step": 161,
+      "step": 160,
       "id": "12170600565",
       "nameBg": "Поен лебед",
       "nameEn": "Whooper Swan",
@@ -1637,7 +1627,7 @@
       "animalType": "птица"
     },
     {
-      "step": 162,
+      "step": 161,
       "id": "12170600566",
       "nameBg": "Къдроглав пеликан",
       "nameEn": "Dalmatian Pelican",
@@ -1647,7 +1637,7 @@
       "animalType": "птица"
     },
     {
-      "step": 163,
+      "step": 162,
       "id": "12170600564",
       "nameBg": "Ням лебед",
       "nameEn": "Mute Swan",
@@ -1657,7 +1647,7 @@
       "animalType": "птица"
     },
     {
-      "step": 164,
+      "step": 163,
       "id": "12160884131",
       "nameBg": "Черен лебед",
       "nameEn": "Black Swan",
@@ -1667,7 +1657,7 @@
       "animalType": "птица"
     },
     {
-      "step": 165,
+      "step": 164,
       "id": "12210523130",
       "nameBg": "Червенобуза костенурка",
       "nameEn": "Red-eared Slider",
@@ -1677,7 +1667,7 @@
       "animalType": "влечуго"
     },
     {
-      "step": 166,
+      "step": 165,
       "id": "main-entrance",
       "nameBg": "Главен вход",
       "nameEn": "Main Entrance",

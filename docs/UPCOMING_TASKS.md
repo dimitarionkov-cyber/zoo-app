@@ -104,7 +104,7 @@
 
 | Issue | Severity | Notes |
 |---|---|---|
-| Animal images missing for 164/165 animals | High | App looks sparse. Photo sprint needed after zoo visit. |
+| Animal images missing for 163/164 animals | High | App looks sparse. Photo sprint needed after zoo visit. |
 | `allorigins.win` CORS proxy for RSS | Medium | Third-party. Could break at any time. |
 | Bundle size ~690 kB (gzipped 194 kB) | Low | Vite warns >500 kB. Use `React.lazy` for MapPage + AnimalDetailPage. |
 | No error boundary on MapPage | Low | Google Maps load failure shows plain error string. Wrap in `<ErrorBoundary>`. |

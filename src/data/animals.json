@@ -452,24 +452,6 @@
     "group": "birds_of_prey"
   },
   {
-    "id": "12170636005",
-    "nameBg": "Белоглав лешояд",
-    "nameEn": "Griffon Vulture",
-    "species": "Gyps fulvus",
-    "animalType": "птица",
-    "diet": "месояден",
-    "lat": 42.6587065,
-    "lng": 23.3338521,
-    "photo": null,
-    "description": "",
-    "continents": [
-      "europe",
-      "asia",
-      "africa"
-    ],
-    "group": "birds_of_prey"
-  },
-  {
     "id": "12170636006",
     "nameBg": "Скален орел",
     "nameEn": "Golden Eagle",
