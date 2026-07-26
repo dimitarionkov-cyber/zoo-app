@@ -62,13 +62,15 @@ function getZooStatus() {
   return { state, hoursStr, openHr, closeHr }
 }
 
-// ── Pulse keyframe — injected once ────────────────────────────────────────────
+// ── Pulse keyframes — injected once ───────────────────────────────────────────
 let _pulseInjected = false
 function ensurePulse() {
   if (_pulseInjected) return
   _pulseInjected = true
   const s = document.createElement('style')
-  s.textContent = '@keyframes zoo-amber-pulse{0%,100%{box-shadow:0 0 0 0 rgba(217,164,65,0.55)}65%{box-shadow:0 0 0 5px rgba(217,164,65,0)}}'
+  s.textContent =
+    '@keyframes zoo-amber-pulse{0%,100%{box-shadow:0 0 0 0 rgba(217,164,65,0.55)}65%{box-shadow:0 0 0 5px rgba(217,164,65,0)}}' +
+    '@keyframes zoo-green-pulse{0%,100%{box-shadow:0 0 0 0 rgba(47,107,61,0.45)}65%{box-shadow:0 0 0 6px rgba(47,107,61,0)}}'
   document.head.appendChild(s)
 }
 
@@ -198,6 +200,17 @@ function GearSvg() {
     </svg>
   )
 }
+function WalkSvg() {
+  return (
+    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round">
+      <circle cx="13" cy="4" r="1.6"/>
+      <path d="M10.5 8 8 10l1 4-3 6M13.5 8l2 3 3 1.5-1 4.5M10.5 8l3 0 2-2.5"/>
+    </svg>
+  )
+}
+function ChevronSvg() {
+  return <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="m9 6 6 6-6 6"/></svg>
+}
 
 const ACTIONS = [
   { to:'/map',     Svg:MapSvg,    label:'Карта',   sub:'4 мин до пингвини', featured:true  },
@@ -208,7 +221,7 @@ const ACTIONS = [
 
 // ── Component ─────────────────────────────────────────────────────────────────
 export default function HomePage() {
-  const { darkMode } = useData()
+  const { darkMode, activeVisit, startVisit } = useData()
   const c = darkMode ? DARK : LIGHT
 
   ensurePulse()
@@ -347,6 +360,40 @@ export default function HomePage() {
           }
         </div>
       </div>
+
+      {/* ── Visit banner ──────────────────────────────────────────────────── */}
+      <Link
+        to="/visit"
+        onClick={() => { if (!activeVisit) startVisit() }}
+        style={{
+          display:'flex', alignItems:'center', gap:12, textDecoration:'none',
+          background: activeVisit ? c.greenTint : c.ink,
+          border: `1px solid ${activeVisit ? (darkMode ? '#2c3d2e' : '#b9cdaa') : c.ink}`,
+          borderRadius:16, padding:'14px 16px', margin:'0 18px 16px',
+        }}
+      >
+        <span style={{
+          width:34, height:34, borderRadius:'50%', flexShrink:0,
+          background: activeVisit ? c.green : 'rgba(244,239,227,0.14)',
+          color: activeVisit ? (darkMode ? '#11140d' : c.paper) : c.paper,
+          display:'inline-flex', alignItems:'center', justifyContent:'center',
+        }}>
+          {activeVisit
+            ? <span style={{ width:8, height:8, borderRadius:'50%', background:'currentColor', animation:'zoo-green-pulse 1.6s ease-out infinite' }} />
+            : <WalkSvg />}
+        </span>
+        <div style={{ flex:1, minWidth:0 }}>
+          <p style={{ fontFamily:F.display, fontSize:17, fontWeight:500, letterSpacing:'-0.01em', color: activeVisit ? c.greenDeep : c.paper, margin:0 }}>
+            {activeVisit ? 'Текущо посещение' : 'Започни посещение'}
+          </p>
+          <p style={{ fontFamily:F.mono, fontSize:10, textTransform:'uppercase', letterSpacing:'0.1em', color: activeVisit ? c.ink2 : 'rgba(244,239,227,0.6)', margin:'2px 0 0' }}>
+            {activeVisit ? 'на живо · продължи разходката' : 'отбелязвай животните, докато обикаляш'}
+          </p>
+        </div>
+        <span style={{ color: activeVisit ? c.ink3 : 'rgba(244,239,227,0.5)', flexShrink:0 }}>
+          <ChevronSvg />
+        </span>
+      </Link>
 
       {/* ── Quick actions 2x2 ─────────────────────────────────────────────── */}
       <div style={{ display:'grid', gridTemplateColumns:'1fr 1fr', gap:10, margin:'0 18px 18px' }}>

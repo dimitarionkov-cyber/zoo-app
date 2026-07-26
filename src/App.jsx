@@ -12,6 +12,7 @@ const InfoPage        = lazy(() => import('./pages/InfoPage'))
 const SettingsPage    = lazy(() => import('./pages/SettingsPage'))
 const TodayPage       = lazy(() => import('./pages/TodayPage'))
 const VisitSummaryPage = lazy(() => import('./pages/VisitSummaryPage'))
+const VisitPage        = lazy(() => import('./pages/VisitPage'))
 
 function PageLoader() {
   return (
@@ -38,6 +39,7 @@ export default function App() {
               <Route path="info" element={<InfoPage />} />
               <Route path="today" element={<TodayPage />} />
               <Route path="visited" element={<VisitSummaryPage />} />
+              <Route path="visit" element={<VisitPage />} />
               <Route path="settings" element={<SettingsPage />} />
             </Route>
           </Routes>

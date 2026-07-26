@@ -52,6 +52,12 @@ function formatVisitDate(iso) {
   const d = new Date(iso)
   return `${d.getDate()} ${BG_MONTHS[d.getMonth()]} ${d.getFullYear()}`
 }
+function formatElapsed(ms) {
+  const totalMin = Math.max(0, Math.floor(ms / 60000))
+  const h = Math.floor(totalMin / 60)
+  const m = totalMin % 60
+  return h > 0 ? `${h}ч ${m}мин` : `${m}мин`
+}
 
 function BackSvg() {
   return <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="m15 5-7 7 7 7"/></svg>
@@ -87,7 +93,7 @@ function VisitedRow({ animal, c }) {
 
 export default function VisitSummaryPage() {
   const navigate = useNavigate()
-  const { allAnimals, darkMode, visited } = useData()
+  const { allAnimals, darkMode, visited, lastVisit } = useData()
   const { isLoaded } = useMaps()
   const c = darkMode ? DARK : LIGHT
 
@@ -97,6 +103,17 @@ export default function VisitSummaryPage() {
       .map(a => ({ ...a, visitedAt: visited[a.id] }))
       .sort((a, b) => new Date(b.visitedAt) - new Date(a.visitedAt))
   }, [allAnimals, visited])
+
+  const recap = useMemo(() => {
+    if (!lastVisit) return null
+    const start = new Date(lastVisit.startedAt).getTime()
+    const end   = new Date(lastVisit.endedAt).getTime()
+    const count = allAnimals.filter(a => {
+      const t = visited[a.id] ? new Date(visited[a.id]).getTime() : null
+      return t != null && t >= start && t <= end
+    }).length
+    return { count, duration: formatElapsed(end - start) }
+  }, [lastVisit, allAnimals, visited])
 
   const total = allAnimals.length
   const seen = visitedList.length
@@ -128,6 +145,18 @@ export default function VisitSummaryPage() {
         <p style={{ fontFamily: F.mono, fontSize: 11, color: c.ink3, letterSpacing: '0.08em', margin: '4px 0 12px' }}>
           {seen} от {total} видени · {pct}%
         </p>
+
+        {/* Last-visit recap */}
+        {recap && (
+          <div style={{ background: c.greenTint, border: `1px solid ${darkMode ? '#2c3d2e' : '#b9cdaa'}`, borderRadius: 14, padding: '12px 14px', marginBottom: 16 }}>
+            <p style={{ fontFamily: F.mono, fontSize: 10, color: c.greenDeep, textTransform: 'uppercase', letterSpacing: '0.14em', fontWeight: 500, margin: 0 }}>
+              последно посещение
+            </p>
+            <p style={{ fontFamily: F.display, fontSize: 16, fontWeight: 500, color: c.greenDeep, margin: '4px 0 0' }}>
+              🎉 {recap.count} {recap.count === 1 ? 'животно' : 'животни'} за {recap.duration}
+            </p>
+          </div>
+        )}
 
         {/* Progress bar */}
         <div style={{ height: 8, borderRadius: 999, background: c.rule, overflow: 'hidden', marginBottom: 18 }}>

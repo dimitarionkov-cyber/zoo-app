@@ -8,7 +8,7 @@
 
 | Version | Date       | Changes |
 |---------|------------|---------|
-| 0.2.0   | 2026-07-26 | Favorites + Visit Recording core shipped; Home, Animals list, and Animal Detail redesigned to the paper/ink Hi-Fi spec (Dossier-cards variant); Animals Hub + Search retired into one unified screen; fixed duplicate animal ID and React 19 map crash; added `staging` pre-production branch |
+| 0.2.0   | 2026-07-26 | Favorites + Visit Recording core shipped, including a visit-session flow (Start/Current/End visit, live checklist, last-visit recap); Home, Animals list, and Animal Detail redesigned to the paper/ink Hi-Fi spec (Dossier-cards variant); Animals Hub + Search retired into one unified screen; fixed duplicate animal ID and React 19 map crash; added `staging` pre-production branch |
 | 0.1.0   | 2026-05-11 | Added visit recording, AR navigation features; marked recommended routes as done; updated known issues |
 | 0.0.1   | 2026-05-10 | Initial backlog created |
 
@@ -43,6 +43,8 @@
 - [ ] Optional: add personal photo and note per animal
 - [x] Visit summary screen — `/visited`, linked from Settings ("Моят напредък"): progress bar, satellite overview map with a pin per visited animal, sorted list (most recent first)
 - [x] Links naturally with Favorites feature — both live in `DataContext`, same UI pattern
+- [x] **Visit session flow** — Home banner ("Започни посещение" → "Текущо посещение"), `/visit` live checklist page (elapsed time, animals seen since start, shortcuts to Animals/Map, End Visit), and a last-visit recap card at the top of `/visited` (duration + count for that specific session)
+- [ ] Known gap: re-tapping "mark as seen" on an animal already visited on a *previous* trip un-marks it instead of refreshing it for the *current* visit (`toggleVisited` is a plain boolean toggle) — narrow edge case, flagged as a follow-up task
 
 ### Visit Planner
 - [ ] Date picker → fetch 7-day weather (Open-Meteo free API, no key needed)

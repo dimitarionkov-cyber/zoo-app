@@ -57,12 +57,16 @@ export function DataProvider({ children }) {
   const [darkMode,       setDarkMode]       = useState(() => load('zoo_dark_mode', false))
   const [favoriteIds,    setFavoriteIds]    = useState(() => load('zoo_favorites', []))
   const [visited,        setVisited]        = useState(() => load('zoo_visited', {})) // { [animalId]: isoTimestamp }
+  const [activeVisit,    setActiveVisit]    = useState(() => load('zoo_active_visit', null)) // { startedAt } | null
+  const [lastVisit,      setLastVisit]      = useState(() => load('zoo_last_visit', null))   // { startedAt, endedAt } | null
 
   useEffect(() => { localStorage.setItem('zoo_coord_overrides', JSON.stringify(coordOverrides)) }, [coordOverrides])
   useEffect(() => { localStorage.setItem('zoo_custom_animals',  JSON.stringify(customAnimals))  }, [customAnimals])
   useEffect(() => { localStorage.setItem('zoo_custom_pois',     JSON.stringify(customPois))     }, [customPois])
   useEffect(() => { localStorage.setItem('zoo_favorites',       JSON.stringify(favoriteIds))    }, [favoriteIds])
   useEffect(() => { localStorage.setItem('zoo_visited',         JSON.stringify(visited))        }, [visited])
+  useEffect(() => { localStorage.setItem('zoo_active_visit',    JSON.stringify(activeVisit))    }, [activeVisit])
+  useEffect(() => { localStorage.setItem('zoo_last_visit',      JSON.stringify(lastVisit))      }, [lastVisit])
   // Apply theme vars on mount (restores saved preference before first paint)
   useState(() => applyTheme(load('zoo_dark_mode', false)))
 
@@ -127,6 +131,16 @@ export function DataProvider({ children }) {
     return Boolean(visited[id])
   }
 
+  function startVisit() {
+    setLastVisit(null)
+    setActiveVisit({ startedAt: new Date().toISOString() })
+  }
+  function endVisit() {
+    if (!activeVisit) return
+    setLastVisit({ startedAt: activeVisit.startedAt, endedAt: new Date().toISOString() })
+    setActiveVisit(null)
+  }
+
   return (
     <DataContext.Provider value={{
       allAnimals, allPois,
@@ -136,6 +150,7 @@ export function DataProvider({ children }) {
       exportAnimalsJSON,
       favoriteIds, toggleFavorite, isFavorite,
       visited, toggleVisited, isVisited,
+      activeVisit, lastVisit, startVisit, endVisit,
     }}>
       {children}
     </DataContext.Provider>
