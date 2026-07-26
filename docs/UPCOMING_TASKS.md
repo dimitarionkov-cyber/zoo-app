@@ -37,11 +37,11 @@
 - [ ] Each item: name, opening hours, distance from user (haversine), directions button
 - [ ] Add to bottom nav or merge into Info page tabs
 
-### Visit Recording — core done, extras remain
+### Visit Recording ✅ Done (except optional photo/note)
 - [x] "Mark as seen" (visited) toggle on `AnimalDetailPage`, list rows, and search results
 - [x] Visit log stored in `localStorage` (animal ID → timestamp), shown as a banner/date on detail
 - [ ] Optional: add personal photo and note per animal
-- [ ] Visit summary screen (how many seen, which ones, map overlay)
+- [x] Visit summary screen — `/visited`, linked from Settings ("Моят напредък"): progress bar, satellite overview map with a pin per visited animal, sorted list (most recent first)
 - [x] Links naturally with Favorites feature — both live in `DataContext`, same UI pattern
 
 ### Visit Planner

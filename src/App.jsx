@@ -11,6 +11,7 @@ const AnimalDetailPage = lazy(() => import('./pages/AnimalDetailPage'))
 const InfoPage        = lazy(() => import('./pages/InfoPage'))
 const SettingsPage    = lazy(() => import('./pages/SettingsPage'))
 const TodayPage       = lazy(() => import('./pages/TodayPage'))
+const VisitSummaryPage = lazy(() => import('./pages/VisitSummaryPage'))
 
 function PageLoader() {
   return (
@@ -36,6 +37,7 @@ export default function App() {
               <Route path="search" element={<AnimalsListPage />} />
               <Route path="info" element={<InfoPage />} />
               <Route path="today" element={<TodayPage />} />
+              <Route path="visited" element={<VisitSummaryPage />} />
               <Route path="settings" element={<SettingsPage />} />
             </Route>
           </Routes>

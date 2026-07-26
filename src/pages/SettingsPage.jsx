@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { Link } from 'react-router-dom'
 import { useData } from '../context/DataContext'
 import FeedbackModal from '../components/FeedbackModal'
 
@@ -120,7 +121,8 @@ function SectionButton({ open, onClick, children }) {
 }
 
 export default function SettingsPage() {
-  const { darkMode, setDarkMode, addAnimal, addPoi, exportAnimalsJSON } = useData()
+  const { darkMode, setDarkMode, addAnimal, addPoi, exportAnimalsJSON, allAnimals, visited } = useData()
+  const seenCount = Object.keys(visited).length
 
   const [openForm,      setOpenForm]      = useState(null)
   const [animalForm,    setAnimalForm]    = useState(EMPTY_ANIMAL)
@@ -279,6 +281,22 @@ export default function SettingsPage() {
           Копира пълния JSON с всички добавени животни и координати, готов за поставяне в animals.json.
         </p>
       </section>}
+
+      {/* My progress */}
+      <section>
+        <h2 className="text-xs font-bold uppercase tracking-widest text-zoo-brown mb-3">Моят напредък</h2>
+        <Link
+          to="/visited"
+          className="w-full bg-[--color-bg-card] border border-[--color-border] rounded-2xl px-4 py-3 flex items-center gap-3"
+        >
+          <span className="text-xl">✅</span>
+          <div className="flex-1">
+            <p className="text-sm font-semibold text-[--color-text-main]">Видени животни</p>
+            <p className="text-xs text-zoo-brown opacity-60">{seenCount} от {allAnimals.length} видяни</p>
+          </div>
+          <span className="text-zoo-brown opacity-40 text-lg">›</span>
+        </Link>
+      </section>
 
       {/* Feedback */}
       <section>
