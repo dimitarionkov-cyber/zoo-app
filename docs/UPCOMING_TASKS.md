@@ -17,9 +17,12 @@
 
 ## Data Persistence & Sync ✅ Done
 - [x] Anonymous Supabase auth on first load — no signup required for normal use
-- [x] `zoo_progress` table (favorites, visited, active/last visit) synced per device, protected by row-level security
+- [x] `zoo_progress` table (favorites, visited, visits[]) synced per device, protected by row-level security
 - [x] Merge-on-connect (union of local + remote) so nothing is lost when a session first syncs
 - [x] Optional "Запази прогреса си" in Settings — links an email to the anonymous account (or signs into an existing one) via magic link, so progress survives a cleared cache or a new device
+- [x] Settings' confirmation message now names the actual sender so the magic-link email doesn't read as spam
+- [x] Sync-status antenna icon on Home (green = email-linked, grey = anonymous only), links to Settings
+- [x] **Visit tracking** — each Start Visit creates its own record (`visits[]`: id, startedAt, endedAt, per-animal seen times + first-time flag). The live `/visit` checklist and the end-of-visit recap ("🎉 N нови животни") both read from the *current* visit's own data, not just the lifetime seen-map. Lifetime ✅ checkmarks across the app deliberately keep showing "ever seen" status, unchanged by whether a visit is active. `/visited` gets a "История на посещенията" list — every past visit's date/time + count, no per-visit detail page.
 - [ ] Not yet handled: explicit sign-out / "use a different account" affordance once linked
 - [ ] Not yet handled: what happens if the same email is linked on two devices that both have *different* local data before their first sync — first-merge-wins per device, not a true 3-way merge
 - [ ] **Branded auth emails** — currently sent via Supabase's default shared mailer ("Supabase Auth <noreply@mail.app.supabase.io>"), which reads as spammy and can't be customized (subject/body/sender all locked) without Custom SMTP. Needs: a domain (user has one, not yet wired up), an SMTP provider (Resend recommended), then the templates can use the drafted copy — subject "Потвърди имейла си за Sofia Zoo", body confirming the email protects favorites/visited progress

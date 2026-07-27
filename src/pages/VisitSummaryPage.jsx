@@ -52,6 +52,11 @@ function formatVisitDate(iso) {
   const d = new Date(iso)
   return `${d.getDate()} ${BG_MONTHS[d.getMonth()]} ${d.getFullYear()}`
 }
+function formatVisitDateTime(iso) {
+  const d = new Date(iso)
+  const time = d.toLocaleTimeString('bg', { hour: '2-digit', minute: '2-digit' })
+  return `${d.getDate()} ${BG_MONTHS[d.getMonth()]}, ${time}`
+}
 function formatElapsed(ms) {
   const totalMin = Math.max(0, Math.floor(ms / 60000))
   const h = Math.floor(totalMin / 60)
@@ -93,7 +98,7 @@ function VisitedRow({ animal, c }) {
 
 export default function VisitSummaryPage() {
   const navigate = useNavigate()
-  const { allAnimals, darkMode, visited, lastVisit } = useData()
+  const { allAnimals, darkMode, visited, visits, lastVisit } = useData()
   const { isLoaded } = useMaps()
   const c = darkMode ? DARK : LIGHT
 
@@ -106,14 +111,17 @@ export default function VisitSummaryPage() {
 
   const recap = useMemo(() => {
     if (!lastVisit) return null
-    const start = new Date(lastVisit.startedAt).getTime()
-    const end   = new Date(lastVisit.endedAt).getTime()
-    const count = allAnimals.filter(a => {
-      const t = visited[a.id] ? new Date(visited[a.id]).getTime() : null
-      return t != null && t >= start && t <= end
-    }).length
-    return { count, duration: formatElapsed(end - start) }
-  }, [lastVisit, allAnimals, visited])
+    const entries = Object.values(lastVisit.seen || {})
+    const firstTimeCount = entries.filter(e => e.firstTime).length
+    const duration = formatElapsed(new Date(lastVisit.endedAt) - new Date(lastVisit.startedAt))
+    return { total: entries.length, firstTimeCount, duration }
+  }, [lastVisit])
+
+  const pastVisits = useMemo(() => {
+    return visits
+      .filter(v => v.endedAt)
+      .sort((a, b) => new Date(b.startedAt) - new Date(a.startedAt))
+  }, [visits])
 
   const total = allAnimals.length
   const seen = visitedList.length
@@ -153,8 +161,15 @@ export default function VisitSummaryPage() {
               последно посещение
             </p>
             <p style={{ fontFamily: F.display, fontSize: 16, fontWeight: 500, color: c.greenDeep, margin: '4px 0 0' }}>
-              🎉 {recap.count} {recap.count === 1 ? 'животно' : 'животни'} за {recap.duration}
+              {recap.firstTimeCount > 0
+                ? `🎉 ${recap.firstTimeCount} ${recap.firstTimeCount === 1 ? 'ново животно' : 'нови животни'} за ${recap.duration}`
+                : `Видяхте ${recap.total} ${recap.total === 1 ? 'животно' : 'животни'} за ${recap.duration}`}
             </p>
+            {recap.firstTimeCount > 0 && recap.total > recap.firstTimeCount && (
+              <p style={{ fontFamily: F.mono, fontSize: 10, color: c.ink2, margin: '2px 0 0' }}>
+                общо {recap.total} видени това посещение
+              </p>
+            )}
           </div>
         )}
 
@@ -202,6 +217,33 @@ export default function VisitSummaryPage() {
               ))}
             </div>
           </>
+        )}
+
+        {/* Visit history */}
+        {pastVisits.length > 0 && (
+          <div style={{ marginTop: 24 }}>
+            <p style={{ fontFamily: F.mono, fontSize: 10, color: c.ink3, textTransform: 'uppercase', letterSpacing: '0.16em', fontWeight: 500, margin: '0 0 10px' }}>
+              история на посещенията
+            </p>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
+              {pastVisits.map(v => {
+                const count = Object.keys(v.seen || {}).length
+                return (
+                  <div
+                    key={v.id}
+                    style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', background: c.surface, border: `1px solid ${c.rule}`, borderRadius: 14, padding: '10px 14px' }}
+                  >
+                    <span style={{ fontFamily: F.body, fontSize: 13, fontWeight: 600, color: c.ink }}>
+                      {formatVisitDateTime(v.startedAt)}
+                    </span>
+                    <span style={{ fontFamily: F.mono, fontSize: 11, color: c.ink3 }}>
+                      {count} {count === 1 ? 'животно' : 'животни'}
+                    </span>
+                  </div>
+                )
+              })}
+            </div>
+          </div>
         )}
       </div>
     </div>

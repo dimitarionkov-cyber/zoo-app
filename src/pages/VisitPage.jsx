@@ -75,13 +75,16 @@ function VisitRow({ animal, c }) {
 
 export default function VisitPage() {
   const navigate = useNavigate()
-  const { allAnimals, darkMode, visited, activeVisit, endVisit } = useData()
+  const { allAnimals, darkMode, visits, endVisit } = useData()
   const c = darkMode ? DARK : LIGHT
 
-  // Snapshot at mount — ending the visit sets activeVisit to null in context,
-  // but this page is already navigating away at that point and shouldn't
-  // react to that change (avoids a race with the navigate('/visited') call).
-  const [visitSnapshot] = useState(() => activeVisit)
+  // Which visit this page is for, captured once at mount. Looking it up by
+  // id (rather than holding the object itself) keeps it live as new animals
+  // get marked, but — since ending a visit only sets its endedAt and never
+  // removes it from `visits` — the record never disappears out from under
+  // this page, so there's no race with the navigate('/visited') call on end.
+  const [visitId] = useState(() => visits.find(v => !v.endedAt)?.id ?? null)
+  const visit = visits.find(v => v.id === visitId) ?? null
 
   const [now, setNow] = useState(() => Date.now())
   useEffect(() => {
@@ -90,17 +93,19 @@ export default function VisitPage() {
   }, [])
 
   const seenThisVisit = useMemo(() => {
-    if (!visitSnapshot) return []
-    const startedAt = new Date(visitSnapshot.startedAt).getTime()
-    return allAnimals
-      .filter(a => visited[a.id] && new Date(visited[a.id]).getTime() >= startedAt)
-      .map(a => ({ ...a, visitedAt: visited[a.id] }))
+    if (!visit) return []
+    return Object.entries(visit.seen)
+      .map(([id, info]) => {
+        const animal = allAnimals.find(a => a.id === id)
+        return animal ? { ...animal, visitedAt: info.at } : null
+      })
+      .filter(Boolean)
       .sort((a, b) => new Date(b.visitedAt) - new Date(a.visitedAt))
-  }, [allAnimals, visited, visitSnapshot])
+  }, [visit, allAnimals])
 
-  if (!visitSnapshot) return <Navigate to="/" replace />
+  if (!visit) return <Navigate to="/" replace />
 
-  const elapsed = formatElapsed(now - new Date(visitSnapshot.startedAt).getTime())
+  const elapsed = formatElapsed(now - new Date(visit.startedAt).getTime())
 
   const pillStyle = {
     flex: 1, display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: 6,

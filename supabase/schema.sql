@@ -6,8 +6,8 @@ create table if not exists public.zoo_progress (
   id uuid primary key references auth.users(id) on delete cascade,
   favorites jsonb not null default '[]'::jsonb,
   visited jsonb not null default '{}'::jsonb,
-  active_visit jsonb,
-  last_visit jsonb,
+  -- Each element: { id, startedAt, endedAt: iso|null, seen: { [animalId]: { at: iso, firstTime: bool } } }
+  visits jsonb not null default '[]'::jsonb,
   updated_at timestamptz not null default now()
 );
 
@@ -37,3 +37,8 @@ drop trigger if exists zoo_progress_set_updated_at on public.zoo_progress;
 create trigger zoo_progress_set_updated_at
   before update on public.zoo_progress
   for each row execute function public.set_updated_at();
+
+-- ── Migration: run only if you already created zoo_progress before the ──────
+-- switch to a visits[] list (replaces the old single active_visit/last_visit
+-- slots). Safe to run again — IF NOT EXISTS guards it.
+alter table public.zoo_progress add column if not exists visits jsonb not null default '[]'::jsonb;

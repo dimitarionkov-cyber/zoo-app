@@ -35,6 +35,32 @@ const THEME_VARS = {
   },
 }
 
+// One-time migration from the old single active/last-visit slots to the
+// visits[] list — safe to run repeatedly, a no-op once zoo_visits exists.
+function loadVisits() {
+  const existing = load('zoo_visits', null)
+  if (existing) return existing
+  const oldActive = load('zoo_active_visit', null)
+  const oldLast   = load('zoo_last_visit', null)
+  const migrated = []
+  if (oldLast)   migrated.push({ id: oldLast.startedAt,   startedAt: oldLast.startedAt,   endedAt: oldLast.endedAt, seen: {} })
+  if (oldActive) migrated.push({ id: oldActive.startedAt, startedAt: oldActive.startedAt, endedAt: null,            seen: {} })
+  return migrated
+}
+
+// Union two visit lists by id — same visit on both sides merges its `seen`
+// entries together and keeps whichever endedAt actually closed it out.
+function mergeVisits(local, remote) {
+  const byId = new Map(remote.map(v => [v.id, v]))
+  for (const v of local) {
+    const existing = byId.get(v.id)
+    byId.set(v.id, existing
+      ? { ...existing, ...v, endedAt: v.endedAt || existing.endedAt || null, seen: { ...existing.seen, ...v.seen } }
+      : v)
+  }
+  return Array.from(byId.values()).sort((a, b) => new Date(a.startedAt) - new Date(b.startedAt))
+}
+
 function applyTheme(dark) {
   const vars = dark ? THEME_VARS.dark : THEME_VARS.light
   // Inject as an unlayered <style> tag — unlayered rules beat @layer theme
@@ -58,16 +84,22 @@ export function DataProvider({ children }) {
   const [darkMode,       setDarkMode]       = useState(() => load('zoo_dark_mode', false))
   const [favoriteIds,    setFavoriteIds]    = useState(() => load('zoo_favorites', []))
   const [visited,        setVisited]        = useState(() => load('zoo_visited', {})) // { [animalId]: isoTimestamp }
-  const [activeVisit,    setActiveVisit]    = useState(() => load('zoo_active_visit', null)) // { startedAt } | null
-  const [lastVisit,      setLastVisit]      = useState(() => load('zoo_last_visit', null))   // { startedAt, endedAt } | null
+  // Each visit: { id, startedAt, endedAt: iso|null, seen: { [animalId]: { at: iso, firstTime: bool } } }
+  const [visits,         setVisits]         = useState(() => loadVisits())
 
   useEffect(() => { localStorage.setItem('zoo_coord_overrides', JSON.stringify(coordOverrides)) }, [coordOverrides])
   useEffect(() => { localStorage.setItem('zoo_custom_animals',  JSON.stringify(customAnimals))  }, [customAnimals])
   useEffect(() => { localStorage.setItem('zoo_custom_pois',     JSON.stringify(customPois))     }, [customPois])
   useEffect(() => { localStorage.setItem('zoo_favorites',       JSON.stringify(favoriteIds))    }, [favoriteIds])
   useEffect(() => { localStorage.setItem('zoo_visited',         JSON.stringify(visited))        }, [visited])
-  useEffect(() => { localStorage.setItem('zoo_active_visit',    JSON.stringify(activeVisit))    }, [activeVisit])
-  useEffect(() => { localStorage.setItem('zoo_last_visit',      JSON.stringify(lastVisit))      }, [lastVisit])
+  useEffect(() => { localStorage.setItem('zoo_visits',          JSON.stringify(visits))          }, [visits])
+
+  // Derived — the one visit still open, and the most recently completed one.
+  const activeVisit = useMemo(() => visits.find(v => !v.endedAt) ?? null, [visits])
+  const lastVisit = useMemo(() => {
+    const ended = visits.filter(v => v.endedAt).sort((a, b) => new Date(b.endedAt) - new Date(a.endedAt))
+    return ended[0] ?? null
+  }, [visits])
   // Apply theme vars on mount (restores saved preference before first paint)
   useState(() => applyTheme(load('zoo_dark_mode', false)))
 
@@ -124,7 +156,7 @@ export function DataProvider({ children }) {
     setSyncStatus('syncing')
     supabase
       .from('zoo_progress')
-      .select('favorites, visited, active_visit, last_visit')
+      .select('favorites, visited, visits')
       .eq('id', session.user.id)
       .maybeSingle()
       .then(({ data, error }) => {
@@ -139,12 +171,7 @@ export function DataProvider({ children }) {
             }
             return merged
           })
-          setActiveVisit(prev => prev ?? data.active_visit ?? null)
-          setLastVisit(prev => {
-            if (!data.last_visit) return prev
-            if (!prev) return data.last_visit
-            return new Date(data.last_visit.endedAt) > new Date(prev.endedAt) ? data.last_visit : prev
-          })
+          setVisits(prev => mergeVisits(prev, data.visits || []))
         }
         setHasMerged(true)
         setSyncStatus('idle')
@@ -163,14 +190,13 @@ export function DataProvider({ children }) {
         id: session.user.id,
         favorites: favoriteIds,
         visited,
-        active_visit: activeVisit,
-        last_visit: lastVisit,
+        visits,
       }).then(({ error }) => {
         if (error) { console.error('Supabase sync failed', error); setSyncStatus('error') }
       })
     }, 800)
     return () => clearTimeout(id)
-  }, [session?.user?.id, hasMerged, favoriteIds, visited, activeVisit, lastVisit])
+  }, [session?.user?.id, hasMerged, favoriteIds, visited, visits])
 
   const isLinked  = Boolean(session?.user && !session.user.is_anonymous)
   const userEmail = session?.user?.email ?? null
@@ -230,32 +256,43 @@ export function DataProvider({ children }) {
   }
 
   function toggleVisited(id) {
+    const now = new Date().toISOString()
+    const alreadySeenThisVisit = Boolean(activeVisit?.seen?.[id])
+    const isNewLifetime = !visited[id]
+
     setVisited(prev => {
       if (prev[id]) {
         // Seen on an earlier visit, not yet during this active one — a tap means
         // "mark as seen now", not "unmark". Only a second tap within the same
         // active visit should actually remove it.
-        if (activeVisit && prev[id] < activeVisit.startedAt) {
-          return { ...prev, [id]: new Date().toISOString() }
-        }
+        if (activeVisit && !alreadySeenThisVisit) return { ...prev, [id]: now }
         const { [id]: _omit, ...rest } = prev
         return rest
       }
-      return { ...prev, [id]: new Date().toISOString() }
+      return { ...prev, [id]: now }
     })
+
+    if (activeVisit) {
+      setVisits(prev => prev.map(v => {
+        if (v.id !== activeVisit.id) return v
+        if (alreadySeenThisVisit) {
+          const { [id]: _omit, ...restSeen } = v.seen
+          return { ...v, seen: restSeen }
+        }
+        return { ...v, seen: { ...v.seen, [id]: { at: now, firstTime: isNewLifetime } } }
+      }))
+    }
   }
   function isVisited(id) {
     return Boolean(visited[id])
   }
 
   function startVisit() {
-    setLastVisit(null)
-    setActiveVisit({ startedAt: new Date().toISOString() })
+    const id = typeof crypto?.randomUUID === 'function' ? crypto.randomUUID() : `visit_${Date.now()}`
+    setVisits(prev => [...prev, { id, startedAt: new Date().toISOString(), endedAt: null, seen: {} }])
   }
   function endVisit() {
-    if (!activeVisit) return
-    setLastVisit({ startedAt: activeVisit.startedAt, endedAt: new Date().toISOString() })
-    setActiveVisit(null)
+    setVisits(prev => prev.map(v => v.endedAt ? v : { ...v, endedAt: new Date().toISOString() }))
   }
 
   return (
@@ -267,7 +304,7 @@ export function DataProvider({ children }) {
       exportAnimalsJSON,
       favoriteIds, toggleFavorite, isFavorite,
       visited, toggleVisited, isVisited,
-      activeVisit, lastVisit, startVisit, endVisit,
+      visits, activeVisit, lastVisit, startVisit, endVisit,
       isLinked, userEmail, syncStatus, saveProgress,
     }}>
       {children}
