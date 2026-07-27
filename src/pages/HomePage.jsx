@@ -393,12 +393,13 @@ export default function HomePage() {
       >
         <span style={{
           width:34, height:34, borderRadius:'50%', flexShrink:0,
-          background: activeVisit ? c.green : 'rgba(244,239,227,0.14)',
-          color: activeVisit ? (darkMode ? '#11140d' : c.paper) : c.paper,
+          background: activeVisit ? c.card : 'rgba(244,239,227,0.14)',
+          border: activeVisit ? `1px solid ${c.rule}` : 'none',
+          color: c.paper,
           display:'inline-flex', alignItems:'center', justifyContent:'center',
         }}>
           {activeVisit
-            ? <span style={{ width:8, height:8, borderRadius:'50%', background:'currentColor', animation:'zoo-green-pulse 1.6s ease-out infinite' }} />
+            ? <span style={{ width:10, height:10, borderRadius:'50%', background:c.green, animation:'zoo-green-pulse 1.6s ease-out infinite' }} />
             : <WalkSvg />}
         </span>
         <div style={{ flex:1, minWidth:0 }}>
@@ -406,7 +407,9 @@ export default function HomePage() {
             {activeVisit ? 'Текущо посещение' : 'Започни посещение'}
           </p>
           <p style={{ fontFamily:F.mono, fontSize:10, textTransform:'uppercase', letterSpacing:'0.1em', color: activeVisit ? c.ink2 : 'rgba(244,239,227,0.6)', margin:'2px 0 0' }}>
-            {activeVisit ? 'на живо · продължи разходката' : 'отбелязвай животните, докато обикаляш'}
+            {activeVisit
+              ? (() => { const n = Object.keys(activeVisit.seen).length; return `на живо · ${n} ${n === 1 ? 'видяно' : 'видени'}` })()
+              : 'отбелязвай животните, докато обикаляш'}
           </p>
         </div>
         <span style={{ color: activeVisit ? c.ink3 : 'rgba(244,239,227,0.5)', flexShrink:0 }}>

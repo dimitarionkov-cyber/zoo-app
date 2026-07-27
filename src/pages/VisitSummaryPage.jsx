@@ -1,9 +1,6 @@
 import { useMemo } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
-import { GoogleMap, Marker } from '@react-google-maps/api'
 import { useData } from '../context/DataContext'
-import { useMaps } from '../context/MapsContext'
-import ErrorBoundary from '../components/ErrorBoundary'
 
 // ── Font & colour tokens (Hi-Fi spec, shared with Home/Animals/Detail) ────────
 const F = {
@@ -36,26 +33,14 @@ function gradFor(id) {
   return GRADS[hash % GRADS.length]
 }
 
-const ZOO_CENTER = { lat: 42.6583263, lng: 23.3311395 }
-const MAP_OPTIONS = {
-  mapTypeId: 'satellite',
-  disableDefaultUI: true,
-  gestureHandling: 'none',
-  zoomControl: false,
-  clickableIcons: false,
-  minZoom: 16,
-  maxZoom: 19,
-}
-
 const BG_MONTHS = ['яну','фев','мар','апр','май','юни','юли','авг','сеп','окт','ное','дек']
-function formatVisitDate(iso) {
-  const d = new Date(iso)
-  return `${d.getDate()} ${BG_MONTHS[d.getMonth()]} ${d.getFullYear()}`
-}
 function formatVisitDateTime(iso) {
   const d = new Date(iso)
   const time = d.toLocaleTimeString('bg', { hour: '2-digit', minute: '2-digit' })
   return `${d.getDate()} ${BG_MONTHS[d.getMonth()]}, ${time}`
+}
+function formatTime(iso) {
+  return new Date(iso).toLocaleTimeString('bg', { hour: '2-digit', minute: '2-digit' })
 }
 function formatElapsed(ms) {
   const totalMin = Math.max(0, Math.floor(ms / 60000))
@@ -68,7 +53,7 @@ function BackSvg() {
   return <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="m15 5-7 7 7 7"/></svg>
 }
 
-function VisitedRow({ animal, c }) {
+function VisitAnimalRow({ animal, c }) {
   const grad = gradFor(animal.id)
   return (
     <Link
@@ -90,7 +75,7 @@ function VisitedRow({ animal, c }) {
         </p>
       </div>
       <span style={{ fontFamily: F.mono, fontSize: 10, color: c.ink3, flexShrink: 0 }}>
-        {formatVisitDate(animal.visitedAt)}
+        {formatTime(animal.visitedAt)}
       </span>
     </Link>
   )
@@ -99,15 +84,7 @@ function VisitedRow({ animal, c }) {
 export default function VisitSummaryPage() {
   const navigate = useNavigate()
   const { allAnimals, darkMode, visited, visits, lastVisit } = useData()
-  const { isLoaded } = useMaps()
   const c = darkMode ? DARK : LIGHT
-
-  const visitedList = useMemo(() => {
-    return allAnimals
-      .filter(a => visited[a.id])
-      .map(a => ({ ...a, visitedAt: visited[a.id] }))
-      .sort((a, b) => new Date(b.visitedAt) - new Date(a.visitedAt))
-  }, [allAnimals, visited])
 
   const recap = useMemo(() => {
     if (!lastVisit) return null
@@ -117,6 +94,17 @@ export default function VisitSummaryPage() {
     return { total: entries.length, firstTimeCount, duration }
   }, [lastVisit])
 
+  const lastVisitAnimals = useMemo(() => {
+    if (!lastVisit) return []
+    return Object.entries(lastVisit.seen || {})
+      .map(([id, info]) => {
+        const animal = allAnimals.find(a => a.id === id)
+        return animal ? { ...animal, visitedAt: info.at } : null
+      })
+      .filter(Boolean)
+      .sort((a, b) => new Date(b.visitedAt) - new Date(a.visitedAt))
+  }, [lastVisit, allAnimals])
+
   const pastVisits = useMemo(() => {
     return visits
       .filter(v => v.endedAt)
@@ -124,7 +112,7 @@ export default function VisitSummaryPage() {
   }, [visits])
 
   const total = allAnimals.length
-  const seen = visitedList.length
+  const seen = Object.keys(visited).length
   const pct = total ? Math.round((seen / total) * 100) : 0
 
   return (
@@ -154,35 +142,16 @@ export default function VisitSummaryPage() {
           {seen} от {total} видени · {pct}%
         </p>
 
-        {/* Last-visit recap */}
-        {recap && (
-          <div style={{ background: c.greenTint, border: `1px solid ${darkMode ? '#2c3d2e' : '#b9cdaa'}`, borderRadius: 14, padding: '12px 14px', marginBottom: 16 }}>
-            <p style={{ fontFamily: F.mono, fontSize: 10, color: c.greenDeep, textTransform: 'uppercase', letterSpacing: '0.14em', fontWeight: 500, margin: 0 }}>
-              последно посещение
-            </p>
-            <p style={{ fontFamily: F.display, fontSize: 16, fontWeight: 500, color: c.greenDeep, margin: '4px 0 0' }}>
-              {recap.firstTimeCount > 0
-                ? `🎉 ${recap.firstTimeCount} ${recap.firstTimeCount === 1 ? 'ново животно' : 'нови животни'} за ${recap.duration}`
-                : `Видяхте ${recap.total} ${recap.total === 1 ? 'животно' : 'животни'} за ${recap.duration}`}
-            </p>
-            {recap.firstTimeCount > 0 && recap.total > recap.firstTimeCount && (
-              <p style={{ fontFamily: F.mono, fontSize: 10, color: c.ink2, margin: '2px 0 0' }}>
-                общо {recap.total} видени това посещение
-              </p>
-            )}
-          </div>
-        )}
-
         {/* Progress bar */}
         <div style={{ height: 8, borderRadius: 999, background: c.rule, overflow: 'hidden', marginBottom: 18 }}>
           <div style={{ height: '100%', width: `${pct}%`, background: c.green, borderRadius: 999, transition: 'width 0.3s ease' }} />
         </div>
 
-        {seen === 0 ? (
+        {!lastVisit ? (
           <div style={{ textAlign: 'center', padding: '40px 20px' }}>
             <p style={{ fontSize: 40, margin: '0 0 10px' }}>🐾</p>
             <p style={{ fontFamily: F.body, fontSize: 14, color: c.ink2, margin: '0 0 16px' }}>
-              Все още нямате отбелязани животни. Отбележете ги като видени от страницата на всяко животно.
+              Все още нямате завършено посещение. Започнете едно от началния екран и отбележете животните, които виждате.
             </p>
             <Link
               to="/animals"
@@ -193,29 +162,35 @@ export default function VisitSummaryPage() {
           </div>
         ) : (
           <>
-            {/* Overview map */}
-            <div style={{ height: 180, borderRadius: 14, overflow: 'hidden', border: `1px solid ${c.rule}`, marginBottom: 16 }}>
-              <ErrorBoundary fallback={null}>
-                {isLoaded ? (
-                  <GoogleMap mapContainerStyle={{ width: '100%', height: '100%' }} center={ZOO_CENTER} zoom={17} options={MAP_OPTIONS}>
-                    {visitedList.map(a => (
-                      <Marker key={a.id} position={{ lat: a.lat, lng: a.lng }} />
-                    ))}
-                  </GoogleMap>
-                ) : (
-                  <div style={{ width: '100%', height: '100%', background: c.greenTint, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                    <span style={{ color: c.ink3, fontSize: 13 }}>Зарежда карта…</span>
-                  </div>
-                )}
-              </ErrorBoundary>
+            {/* Last-visit recap */}
+            <div style={{ background: c.greenTint, border: `1px solid ${darkMode ? '#2c3d2e' : '#b9cdaa'}`, borderRadius: 14, padding: '12px 14px', marginBottom: 16 }}>
+              <p style={{ fontFamily: F.mono, fontSize: 10, color: c.greenDeep, textTransform: 'uppercase', letterSpacing: '0.14em', fontWeight: 500, margin: 0 }}>
+                последно посещение
+              </p>
+              <p style={{ fontFamily: F.display, fontSize: 16, fontWeight: 500, color: c.greenDeep, margin: '4px 0 0' }}>
+                {recap.firstTimeCount > 0
+                  ? `🎉 ${recap.firstTimeCount} ${recap.firstTimeCount === 1 ? 'ново животно' : 'нови животни'} за ${recap.duration}`
+                  : `Видяхте ${recap.total} ${recap.total === 1 ? 'животно' : 'животни'} за ${recap.duration}`}
+              </p>
+              {recap.firstTimeCount > 0 && recap.total > recap.firstTimeCount && (
+                <p style={{ fontFamily: F.mono, fontSize: 10, color: c.ink2, margin: '2px 0 0' }}>
+                  общо {recap.total} видени това посещение
+                </p>
+              )}
             </div>
 
-            {/* List */}
-            <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
-              {visitedList.map(animal => (
-                <VisitedRow key={animal.id} animal={animal} c={c} />
-              ))}
-            </div>
+            {/* This visit's animals */}
+            {lastVisitAnimals.length === 0 ? (
+              <p style={{ fontSize: 13.5, color: c.ink3, fontStyle: 'italic', textAlign: 'center', padding: '10px' }}>
+                Не отбелязахте животни през това посещение.
+              </p>
+            ) : (
+              <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
+                {lastVisitAnimals.map(animal => (
+                  <VisitAnimalRow key={animal.id} animal={animal} c={c} />
+                ))}
+              </div>
+            )}
           </>
         )}
 
