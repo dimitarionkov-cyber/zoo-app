@@ -200,6 +200,16 @@ function GearSvg() {
     </svg>
   )
 }
+function AntennaSvg() {
+  return (
+    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M12 20v-7"/>
+      <circle cx="12" cy="11" r="1.4" fill="currentColor" stroke="none"/>
+      <path d="M8.7 8.7a4.6 4.6 0 0 1 6.6 0"/>
+      <path d="M5.8 5.8a8.8 8.8 0 0 1 12.4 0"/>
+    </svg>
+  )
+}
 function WalkSvg() {
   return (
     <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round">
@@ -221,7 +231,7 @@ const ACTIONS = [
 
 // ── Component ─────────────────────────────────────────────────────────────────
 export default function HomePage() {
-  const { darkMode, activeVisit, startVisit } = useData()
+  const { darkMode, activeVisit, startVisit, isLinked } = useData()
   const c = darkMode ? DARK : LIGHT
 
   ensurePulse()
@@ -300,12 +310,21 @@ export default function HomePage() {
             {'Здравей'}<span style={{ fontStyle:'normal', fontFamily:F.body, marginLeft:3 }}>, {emoji}</span>
           </p>
         </div>
-        <Link
-          to="/settings"
-          style={{ width:36, height:36, borderRadius:'50%', background:c.card, border:`1px solid ${c.rule}`, display:'inline-flex', alignItems:'center', justifyContent:'center', color:c.ink, textDecoration:'none', flexShrink:0 }}
-        >
-          <GearSvg />
-        </Link>
+        <div style={{ display:'flex', gap:8, flexShrink:0 }}>
+          <Link
+            to="/settings"
+            aria-label={isLinked ? 'Синхронизацията е включена' : 'Включи синхронизация'}
+            style={{ width:36, height:36, borderRadius:'50%', background:c.card, border:`1px solid ${c.rule}`, display:'inline-flex', alignItems:'center', justifyContent:'center', color: isLinked ? c.green : c.ink3, textDecoration:'none' }}
+          >
+            <AntennaSvg />
+          </Link>
+          <Link
+            to="/settings"
+            style={{ width:36, height:36, borderRadius:'50%', background:c.card, border:`1px solid ${c.rule}`, display:'inline-flex', alignItems:'center', justifyContent:'center', color:c.ink, textDecoration:'none' }}
+          >
+            <GearSvg />
+          </Link>
+        </div>
       </div>
 
       {/* ── Today card ────────────────────────────────────────────────────── */}

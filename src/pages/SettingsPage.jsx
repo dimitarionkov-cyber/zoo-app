@@ -310,7 +310,7 @@ export default function SettingsPage() {
           <span className="text-xl">✅</span>
           <div className="flex-1">
             <p className="text-sm font-semibold text-[--color-text-main]">Видени животни</p>
-            <p className="text-xs text-zoo-brown opacity-60">{seenCount} от {allAnimals.length} видяни</p>
+            <p className="text-xs text-zoo-brown opacity-60">{seenCount} от {allAnimals.length} видени</p>
           </div>
           <span className="text-zoo-brown opacity-40 text-lg">›</span>
         </Link>
@@ -330,10 +330,12 @@ export default function SettingsPage() {
         ) : (
           <div className="bg-[--color-bg-card] border border-[--color-border] rounded-2xl px-4 py-3">
             <p className="text-xs text-zoo-brown opacity-70 mb-2">
-              Любимите и видяните животни се пазят на това устройство. Въведете имейл, за да ги възстановите, ако смените телефона или изчистите данните на браузъра.
+              Любимите и видените животни се пазят на това устройство. Въведете имейл, за да ги възстановите, ако смените телефона или изчистите данните на браузъра.
             </p>
             {progressStatus === 'sent' ? (
-              <p className="text-sm font-semibold text-zoo-green">📩 Проверете имейла си за линк за потвърждение.</p>
+              <p className="text-sm font-semibold text-zoo-green">
+                📩 Ще получите имейл от <b>Supabase Auth</b> (noreply@mail.app.supabase.io) — отворете го и натиснете линка вътре, за да потвърдите.
+              </p>
             ) : (
               <form onSubmit={handleSaveProgress} className="flex gap-2">
                 <input

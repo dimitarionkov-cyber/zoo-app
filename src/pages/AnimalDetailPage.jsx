@@ -172,7 +172,7 @@ export default function AnimalDetailPage() {
             <button onClick={() => toggleFavorite(animal.id)} aria-label={fav ? 'Премахни от любими' : 'Добави в любими'} style={iconBtnStyle(fav, 'fav')}>
               <HeartSvg filled={fav} />
             </button>
-            <button onClick={() => toggleVisited(animal.id)} aria-label={vis ? 'Премахни от видяни' : 'Отбележи като видяно'} style={iconBtnStyle(vis, 'visit')}>
+            <button onClick={() => toggleVisited(animal.id)} aria-label={vis ? 'Премахни от видени' : 'Отбележи като видяно'} style={iconBtnStyle(vis, 'visit')}>
               <EyeSvg filled={vis} />
             </button>
           </div>
