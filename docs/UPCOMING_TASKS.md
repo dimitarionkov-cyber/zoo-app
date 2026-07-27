@@ -22,6 +22,7 @@
 - [x] Optional "Запази прогреса си" in Settings — links an email to the anonymous account (or signs into an existing one) via magic link, so progress survives a cleared cache or a new device
 - [ ] Not yet handled: explicit sign-out / "use a different account" affordance once linked
 - [ ] Not yet handled: what happens if the same email is linked on two devices that both have *different* local data before their first sync — first-merge-wins per device, not a true 3-way merge
+- [ ] **Branded auth emails** — currently sent via Supabase's default shared mailer ("Supabase Auth <noreply@mail.app.supabase.io>"), which reads as spammy and can't be customized (subject/body/sender all locked) without Custom SMTP. Needs: a domain (user has one, not yet wired up), an SMTP provider (Resend recommended), then the templates can use the drafted copy — subject "Потвърди имейла си за Sofia Zoo", body confirming the email protects favorites/visited progress
 
 ---
 
