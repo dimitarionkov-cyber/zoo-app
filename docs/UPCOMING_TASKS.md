@@ -73,8 +73,8 @@
 
 ## Priority 3 — Content & Data
 
-- [ ] **More animal data** — Fill missing `stats` (lifespan, weight) for animals with empty fields.
-- [ ] **More animal habitats** — Several animals have empty `habitat` field.
+- [ ] **More animal data — in progress** — User photographed 140+ physical Sofia Zoo enclosure labels; Claude reads each photo directly (vision) and fills in the matching `animals.json` entry's empty fields (`habitat`, `dietDescription`, `reproduction`, `curiousFacts`, `distribution`, `stats`, `iucn`, `classification`) without overwriting anything already set. Source photos live in `zoo-app/label-photos/` (gitignored — reference material, not an app asset). Labels are matched to entries purely by the name/species printed on them (filenames are just iOS camera timestamps). Schema additions made along the way: `stats.wingspan` (birds show wingspan instead of height) and `temperament` (aquarium fish — e.g. "Миролюбива"/Peaceful — useful for anyone stocking a tank). Deliberately *not* capturing: Bulgarian Red Data Book status / Biodiversity Act protection / population trend shown on some labels beyond the standard `iucn` field, and precise `distributionCountries` beyond what a label's text can support (the small inset distribution maps aren't reliable enough to read country-by-country).
+- [ ] **More animal habitats** — Several animals have empty `habitat` field (see above — being filled in from label photos).
 - [ ] **POI data** — Verify opening hours for food POIs; add prices if available.
 - [ ] **Activities / events page** — RSS already on Home; consider dedicated `/activities` page with more posts.
 - [ ] **Map enclosures** — Draw enclosure polygons as map overlay (low priority, visual only).

@@ -30,11 +30,13 @@ const STATS_META = [
   { key: 'weight',   label: 'тегло' },
   { key: 'length',   label: 'дължина' },
   { key: 'height',   label: 'височина' },
+  { key: 'wingspan', label: 'размах на крила' },
 ]
 
 const INFO_SECTIONS = [
   { key: 'habitat',         label: 'Местообитание' },
   { key: 'dietDescription', label: 'Храна' },
+  { key: 'temperament',     label: 'Нрав' },
   { key: 'reproduction',    label: 'Размножаване' },
   { key: 'curiousFacts',    label: 'Любопитно' },
   { key: 'distribution',    label: 'Разпространение' },

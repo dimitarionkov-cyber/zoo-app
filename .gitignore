@@ -16,6 +16,10 @@ dist-ssr
 .env
 .env.local
 
+# Zoo label reference photos — source material for animal-data entry,
+# not app assets (the app hosts its actual species photos remotely)
+/label-photos/
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
